@@ -9,9 +9,11 @@ The goal is not to commit prematurely to a fashionable topic. The project will s
 1. Read [Project Charter](research/PROJECT_CHARTER.md) for scope and research principles.
 2. Read [Current Status](research/STATUS.md) for the current stage and next actions.
 3. Read [Literature Review](research/LITERATURE_REVIEW.md) for the review protocol and paper registry.
-4. Read [Thesis–Paper Map](research/THESIS_PAPER_MAP.md) for how candidate contributions may map to papers.
-5. Read [Decision Log](research/DECISION_LOG.md) before revisiting previously assessed ideas.
-6. Use [Session Handoff](SESSION_HANDOFF.md) when starting a new ChatGPT conversation.
+4. Read [Related-Work Matrix](research/RELATED_WORK_MATRIX.md) for the current paper comparison and overlap warnings.
+5. Read [Initial Research Memo](research/INITIAL_RESEARCH_MEMO.md) for first-pass findings and open questions.
+6. Read [Thesis–Paper Map](research/THESIS_PAPER_MAP.md) for how candidate contributions may map to papers.
+7. Read [Decision Log](research/DECISION_LOG.md) before revisiting previously assessed ideas.
+8. Use [Session Handoff](SESSION_HANDOFF.md) when starting a new ChatGPT conversation.
 
 ## Non-negotiable research principles
 
@@ -36,4 +38,4 @@ The goal is not to commit prematurely to a fashionable topic. The project will s
 
 ## Current state
 
-The repository has just been initialized. **No thesis topic, algorithm, benchmark, or innovation point has been approved yet.** The first substantive task is evidence-based literature research and candidate comparison.
+The repository has been initialized and the first-pass literature map is recorded. **No thesis topic, algorithm, benchmark, or innovation point has been approved yet.** The next task is a deep audit of the closest methods, not premature topic selection.
