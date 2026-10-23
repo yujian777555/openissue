@@ -44,9 +44,9 @@ The first pass reveals a recurring practical tension: candidate-agent evaluation
 - AFlow studies performance/cost trade-offs and notes that workflows optimized under different execution models do not always transfer equally.
 - MemEvolve has already reported meaningful memory-system transfer across tasks, backbones, and agent frameworks, so a generic transfer-memory idea would overlap heavily.
 
-One possible line to investigate is **reliable evolutionary selection under uncertain and expensive agent evaluation**: how to estimate whether a candidate is genuinely better, when to spend additional evaluations, and how to select survivors under a fixed evaluation budget. This is only a hypothesis. Before retaining it, we must audit noisy evolutionary optimization, racing/statistical selection, surrogate-assisted EA, uncertainty calibration, and the exact predictors/evaluation protocols in AgentSquare, ARTEMIS, AFlow, HFlow, and GEPA.
+The initial thought of **reliable evolutionary selection under uncertain and expensive agent evaluation** is not accepted as the thesis core. The user considers the finite-budget framing insufficiently compelling. Treat it only as a possible supporting mechanism/constraint if a stronger Agent capability problem requires it.
 
-Two other lines—failure-conditioned operator selection and cross-task transfer of search experience—are worth comparing, but appear to have higher immediate overlap with GEPA/ARTEMIS/HFlow and MemEvolve respectively.
+The next research pass should identify substantive failure modes in agent behavior and capabilities, then ask whether an evolutionary method can meaningfully improve them. Potential search lanes include planning, tool use, long-horizon reliability, adaptation/generalization, multi-agent coordination, credit assignment, and other areas supported by the literature. These are discovery lanes, not preselected ideas. Failure-conditioned operator choice and cross-task transfer remain possible mechanisms, but must be assessed as part of a more compelling problem and compared with GEPA/ARTEMIS/HFlow/MemEvolve and relevant traditional EC literature.
 
 ## 4. Thesis structure remains an objective, not a forced template
 
@@ -58,7 +58,7 @@ For every candidate contribution, require:
 3. A falsifiable hypothesis.
 4. A strong baseline and ablations.
 5. A held-out generalization test.
-6. A fixed-budget or cost-aware comparison where relevant.
+6. A fixed-budget or cost-aware comparison where relevant, but only as a supporting evaluation dimension—not automatically the central research problem.
 7. A feasible implementation and reproduction plan.
 
 ## 5. Immediate next action
