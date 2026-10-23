@@ -70,13 +70,13 @@ The user considers finite-budget evaluation efficiency insufficiently compelling
 
 ## Next actions (ordered)
 
-1. Close the ToolMaze adoption gate: seek explicit code/data license clarification and validate raw JSON/schema. The RC difference is traced to an intentional 2026-10-20 code change; the paper/README remain stale, so any experiment must report both RC definitions and exposure rate.
-2. Finish mechanism-level comparison of EVOTOOL, HarnessEvolve, EvA, APB-guided refinement, and fixed/reactive recovery controllers. In parallel, audit **policy–failure-curriculum co-evolution** against POET, PAIRED, ACCEL, and other automatic environment-design methods.
-3. Audit APB data/code terms and raw JSONL loading. In parallel, assess τ²-bench (MIT) and BFCL V4 (Apache-2.0) as auxiliary external tests. If neither ToolMaze nor APB has suitable terms, build an independent controlled DAG/fault generator and reserve public benchmark tasks for held-out external checks.
-4. Only after the benchmark and novelty gates pass, define the recovery-policy genotype/DSL and unit-test validity, behavioral difference, and hidden-label leakage guards.
-5. Compare fixed rules, direct reflection/replanning, random structured mutation, greedy one-child mutation, and a static population EA under matched evaluation conditions.
-6. Only if static EA shows repeatable held-out capability gains, compare static HPO with deterministic schedules, classical adaptive operator selection, and self-adaptation.
-7. Then revise the candidate ranking and thesis–paper map. No topic or novelty claim is approved yet.
+1. **Complete the meta-evolution prior-art audit:** read the primary papers and available code for PromptBreeder, Gödel Agent, HyperAgents, RQGM, and SIA; compare their adaptive decisions with classical adaptive operator selection and LLM mutation-control work.
+2. **Close Gate G0 for the recovery candidate:** write a mechanism-by-mechanism difference table against COvolve, Agent-World, SEAL, SENTINEL, EVOTOOL, and HarnessEvolve. Decide whether typed fault-program search plus typed recovery-controller EA is genuinely distinct, rather than a domain-specific combination of known methods.
+3. Continue the ToolMaze/APB code/data-rights and raw-loader checks. In parallel, assess τ²-bench (MIT) and BFCL V4 (Apache-2.0) only as auxiliary external tests. If no controlled benchmark has suitable terms, design an independent DAG/fault generator.
+4. Only after Gates G0 and benchmark validity pass, specify the policy/fault grammar, evaluator contract, hidden-label isolation, and solvability/property tests.
+5. Compare fixed rules, direct reflection/replanning, random structured mutation, greedy one-child mutation, static population EA, and the strongest reproducible prior-art baseline under matched model-call and rollout budgets.
+6. Only if static EA shows repeatable held-out gains, test static HPO, deterministic schedules, classical AOS, and self-adaptation as separate later mechanisms.
+7. Re-rank candidates and update the thesis–paper map only when one direction has a distinct falsifiable claim. No topic or novelty claim is approved yet.
 
 ## Definition of done for the next milestone
 
