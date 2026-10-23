@@ -108,3 +108,27 @@ After these audits, search the broader noisy-optimization and surrogate-assisted
 7. **Finite-budget evaluation allocation:** deprioritized as the thesis core per user direction.
 
 These warnings rule out broad framing, not every possible contribution inside each area. A narrower mechanism may remain viable after code-level comparison and traditional EC prior-art review.
+
+
+## 8. Evolutionary computation roles and parameter-control prior art
+
+| ID | Paper / source | What is evolved or controlled | Why it matters for the thesis |
+|---|---|---|---|
+| P38 | **LLaMEA: A Large Language Model Evolutionary Algorithm for Automatically Generating Metaheuristics** — van Stein & Bäck, IEEE TEVC 2025. [Paper](https://arxiv.org/abs/2405.20132) · [Official code](https://github.com/XAI-liacs/LLaMEA) | Evolves algorithm implementations via LLM generation, mutation, execution-based fitness, and selection. | Shows that evolving an algorithm's structure is different from tuning numeric parameters; useful as an EC-centered method reference. |
+| P39 | **In-the-loop Hyper-Parameter Optimization for LLM-Based Automated Design of Heuristics (LLaMEA-HPO)** — van Stein et al., ACM TELO 2025. [Paper](https://arxiv.org/abs/2410.16309) · [Official code](https://github.com/XAI-liacs/LLaMEA) | Combines LLM-based structural algorithm evolution with SMAC-based numerical hyperparameter optimization. | Direct prior art for separating structural evolution from numerical tuning; “EA plus a hyperparameter optimizer” is not sufficient novelty. |
+| P40 | **Code World Models for Parameter Control in Evolutionary Algorithms** — Sartori & Rodríguez Corominas, arXiv 2026. [Paper](https://arxiv.org/abs/2602.22260) | Synthesizes an executable model of optimizer dynamics and chooses mutation strength online. | Directly relevant to adaptive parameter control; a proposal about LLM-guided mutation-strength adaptation must compare with this method. Its current evidence is on classical combinatorial landscapes, not Agent recovery. |
+| P41 | **Controlling the Mutation in Large Language Models for the Efficient Evolution of Algorithms** — Yin et al., Applications of Evolutionary Computation 2025. [Paper / abstract](https://www.alphaxiv.org/abs/2412.03250) | Uses dynamically adjusted mutation prompts and heavy-tailed mutation-strength ideas in LLM-driven algorithm evolution. | LLM semantic-mutation control is already studied. Verify publisher metadata and inspect the exact algorithm before formal citation or novelty claims. |
+| P42 | **Parameter Control in Evolutionary Algorithms** — Eiben, Hinterding & Michalewicz, IEEE TEVC 1999. [DOI](https://doi.org/10.1109/4235.771166) | Classifies parameter setting/control mechanisms and their adaptation targets. | Foundational distinction between static parameter tuning and online parameter control; mandatory background. |
+| P43 | **A Systematic Literature Review of Adaptive Parameter Control Methods for Evolutionary Algorithms** — Aleti & Moser, 2016. [Publisher record](https://research.monash.edu/en/publications/a-systematic-literature-review-of-adaptive-parameter-control-methods-for-evolutionary-algorithms/) | Reviews adaptive changes to parameters such as mutation rate, crossover rate, and population size. | Establishes that adaptive EA parameters are a mature area; a new method needs a specific control signal, mechanism, and evidence. |
+| P44 | **Automated Robot Function Recovery after Unanticipated Failure or Environmental Change** — Bongard et al., 2004. [Paper PDF](https://meclab.w3.uvm.edu/papers/2004_CEH_Bongard.pdf) | Uses evolutionary methods for controller recovery after unexpected damage or environmental change. | Classic prior art for evolutionary recovery. An LLM-Agent recovery study must identify what is new about tool-mediated, language-level, long-horizon failures. |
+
+### What the official EVOTOOL implementation adds to the audit
+
+Official repository: https://github.com/SYang2000/ACL_2026_EvoTool
+
+The repository exposes `mutation_target` (blame / random / fixed module / all / none), `selection` (diversity / greedy / top-k / static), trajectory/feedback toggles, batch size, epoch count, and selection split settings. The default method uses three epochs over 90 training instances in batches of three (90 generations), retains candidates that win at least one validation instance, and samples parents by validation win frequency. This confirms that mechanism-level ablations—not only a numerical parameter sweep—are needed to isolate the contribution of evolution.
+
+### Methodological warning
+
+For an LLM-mutated policy, a nominal mutation rate is ambiguous unless the realized edit is measured. Track the number of changed modules/rules, structured diff size, semantic behaviour change on fixed probes, validity, and execution outcome. Do not equate a prompt instruction such as “make a small change” with a calibrated mutation-strength parameter.
+
