@@ -208,3 +208,23 @@ Reject or redesign this line if:
 ## 11. Current conclusion
 
 The next practical step is not to announce a new algorithm. It is to validate ToolMaze as an evaluation substrate, reproduce baseline recovery behavior, and test whether an interpretable recovery-policy genotype gives the EA a meaningful search space. Only after a static EA demonstrates capability gains should we invest in parameter control. If static tuning explains the gains, use the simpler method and do not claim adaptive EC as the contribution.
+
+
+## 12. ToolMaze implementation audit — must resolve before using reported metrics
+
+**Important discrepancy found by inspecting the public repository** (current main branch checked 2026-10-23):
+
+- The paper defines mode-level Recovery Cost as an average over all trajectories with an explicit perturbation indicator, so no-hit trajectories contribute zero to the mode-level average: https://arxiv.org/html/2606.05806v1
+- The repository README likewise states “No-hit runs contribute 0”: https://github.com/Zhudongsheng75/ToolMaze/blob/main/README.md
+- However, `evaluation/core/metrics.py` implements `compute_rc` by collecting only runs with `r["hit"]` and non-null `r["rc"]`. This excludes no-hit trajectories from the denominator instead of assigning them zero. Unless the authors intentionally changed the metric without updating the paper/README, this can produce different RC values and must be resolved before using RC to compare methods.
+
+**Required check/fix:**
+1. Create a tiny synthetic fixture with one no-hit run, one hit-and-fail run (RC=1), and one hit-and-success run (known RC).
+2. Compute RC using (a) the paper/README all-run formula and (b) the current code's hit-conditioned formula; assert both outputs and document which definition is used.
+3. Verify whether the paper's reported values were computed with the current implementation or a prior version. If unclear, report both definitions as a sensitivity analysis rather than silently choosing one.
+4. Do not modify upstream code invisibly. If a local patch is needed, record it in the experiment repository and cite the exact upstream commit/version.
+
+**Licensing / reproducibility caveat:** The inspected ToolMaze GitHub tree did not expose a root LICENSE file, and the Hugging Face dataset card did not expose a clear license field in the inspected metadata. This is not a legal conclusion, but code/data licensing must be confirmed before redistributing modified copies or publishing derived artifacts. Record the exact commit and dataset revision used.
+
+This does not disqualify ToolMaze as a benchmark. It changes the gate: benchmark version, metric implementation, task split, and license must be checked before the first baseline is considered reproducible.
+
