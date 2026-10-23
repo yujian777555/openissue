@@ -69,13 +69,13 @@ The user considers finite-budget evaluation efficiency insufficiently compelling
 
 ## Next actions (ordered)
 
-1. Resolve ToolMaze RC denominator discrepancy against paper/README, confirm code/data licensing, inspect task generation/splits, and reproduce a small baseline.
-2. Implement and test a restricted recovery-policy DSL plus hand-written rules; verify that the variation operators produce valid and behaviorally distinct children.
-3. Compare fixed policy, random structured mutation, greedy one-child search, and a static population EA under matched rollout budgets.
-4. Only if static EA shows repeatable capability gains, tune a static configuration with SMAC or random search on train/validation.
-5. Compare static tuned EA with deterministic schedules, classical adaptive operator selection, and self-adaptation; evaluate context-conditioned control only as a candidate mechanism.
-6. Continue closest-work audits (EVOTOOL, HarnessEvolve, EvA, APB, QD recovery) and reject the direction if simple baselines explain the gains.
-7. After these gates, revise the candidate ranking and thesis/paper map. No topic or novelty claim is approved yet.
+1. Close the ToolMaze adoption gate: seek explicit code/data license clarification and validate raw JSON/schema. The RC difference is traced to an intentional 2026-10-20 code change; the paper/README remain stale, so any experiment must report both RC definitions and exposure rate.
+2. Finish mechanism-level comparison of EVOTOOL, HarnessEvolve, EvA, APB-guided refinement, and fixed/reactive recovery controllers. Identify a specific capability gap rather than combining known ingredients.
+3. Audit APB data/code terms and raw JSONL loading. In parallel, assess τ²-bench (MIT) and BFCL V4 (Apache-2.0) as auxiliary external tests. If neither ToolMaze nor APB has suitable terms, build an independent controlled DAG/fault generator and reserve public benchmark tasks for held-out external checks.
+4. Only after the benchmark and novelty gates pass, define the recovery-policy genotype/DSL and unit-test validity, behavioral difference, and hidden-label leakage guards.
+5. Compare fixed rules, direct reflection/replanning, random structured mutation, greedy one-child mutation, and a static population EA under matched evaluation conditions.
+6. Only if static EA shows repeatable held-out capability gains, compare static HPO with deterministic schedules, classical adaptive operator selection, and self-adaptation.
+7. Then revise the candidate ranking and thesis–paper map. No topic or novelty claim is approved yet.
 
 ## Definition of done for the next milestone
 
