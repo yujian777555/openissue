@@ -35,6 +35,8 @@ Do not infer publication acceptance from an arXiv page. Do not infer a limitatio
 
 ## Search log
 
+| 2026-10-23 | EC parameter-control audit: EVOTOOL official implementation, LLaMEA-HPO, Code World Models for Parameter Control, LLM mutation control, classical parameter-control literature, evolutionary recovery controllers | Separate policy evolution from EA parameter tuning/control and determine necessary baselines | Added research/EC_ROLE_AND_PARAMETER_CONTROL.md; generic parameter tuning is not accepted as a sole contribution. |
+
 | 2026-10-23 | Second-pass primary-source search: recent EA-agent evolution, tool-use policy, skills, memory, planning, open-world generalization, continual learning | Identify direct overlaps and concrete capability failure evidence | Registered 22 additional core/adjacent works in RELATED_WORK_MATRIX.md; all candidate gaps remain provisional. |
 
 | Date | Source / query family | Purpose | Outcome / follow-up |
@@ -45,7 +47,7 @@ Do not infer publication acceptance from an arXiv page. Do not infer a limitatio
 
 ## Preliminary registry
 
-The detailed paper list and comparison are maintained in [RELATED_WORK_MATRIX.md](RELATED_WORK_MATRIX.md). It now contains 37 core or closely related works across the first and second search passes. See [CAPABILITY_GAP_REVIEW.md](CAPABILITY_GAP_REVIEW.md) for second-pass synthesis and provisional candidate triage.
+The detailed paper list and comparison are maintained in [RELATED_WORK_MATRIX.md](RELATED_WORK_MATRIX.md). It now contains 44 core or closely related works across the first and second search passes. See [CAPABILITY_GAP_REVIEW.md](CAPABILITY_GAP_REVIEW.md) for second-pass synthesis and provisional candidate triage.
 
 ### Initial core reading order
 
@@ -60,6 +62,10 @@ The detailed paper list and comparison are maintained in [RELATED_WORK_MATRIX.md
 9. EvoAgentX and ADAS — workflow optimization platforms and adjacent methods.
 10. AgentGym and AgentEvolver — adjacent self-evolving agent-learning paradigms.
 11. Du et al. and Chen et al. surveys — broad taxonomy and related-work discovery.
+
+## EC role and parameter-control audit
+
+A separate audit in [EC_ROLE_AND_PARAMETER_CONTROL.md](EC_ROLE_AND_PARAMETER_CONTROL.md) distinguishes (A) the Agent phenotype being evolved, (B) the evolutionary algorithm's own control parameters, and (C) task/environment/evaluation settings. EVOTOOL's official code shows the importance of mechanism-level ablations (mutation target, selection strategy, trajectory/feedback guidance). LLaMEA-HPO separates algorithm-structure evolution from numeric HPO; Code World Models and classical EC literature show that adaptive parameter control is itself established prior art. Therefore a numerical sweep of mutation rate/population size alone is not an adequate thesis contribution.
 
 ## Current interpretation after second pass
 
