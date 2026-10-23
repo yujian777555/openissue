@@ -22,6 +22,18 @@ Therefore, broad topics such as EA for tool use, memory, planning, topology, gen
 3. **Preserving prior capability during task shifts.** This is important, but HarnessEvolve, OpenAgent, EvA, and continual-memory studies directly address adjacent parts of the problem.
 4. **Joint agent/environment co-evolution.** ScaleEnv and APB show that environment/task construction matters, but adversarial curricula and agent/environment co-evolution have a long prior history. Broader EC/RL review is required.
 
+## 2A. New benchmark evidence and narrowed recovery question
+
+**ToolMaze** (June 2026 arXiv preprint; https://arxiv.org/abs/2606.05806; code: https://github.com/Zhudongsheng75/ToolMaze) provides a controlled testbed with DAG complexity C1–C4 crossed with explicit/implicit and transient/permanent perturbations. It deterministically injects faults at specified tool nodes and reports task success (TSR), perturbation recovery (PRR), and recovery cost (RC). This is a useful evaluation substrate, but it does not itself establish an evolutionary-method gap. Its runtime policy must not receive hidden fault labels.
+
+The candidate question is narrowed to a staged test, not a method claim:
+
+> First, does an explicit, typed recovery-policy representation give a static EA a useful search space? Only if yes, does adaptive operator/parameter control improve held-out generalization beyond a strong statically tuned EA and EVOTOOL-style blame-aware policy evolution?
+
+The policy-genotype proposal would encode observable conditions and recovery actions (retry, verify, reroute, backtrack/replan, or terminate/clarify), with typed mutation/crossover operations whose realized edits can be logged. This differs in representation from free-text module prompts, but representation alone is not a novelty claim. EVOTOOL already uses module-level blame and diversity-aware selection; HarnessEvolve already uses reference-trajectory alignment, error clustering, quality gates, and anti-forgetting gates; hierarchical QD has long studied diverse recovery repertoires. A distinct capability/mechanism and controlled evidence are still required.
+
+A staged experimental protocol is recorded in [EC_PARAMETER_CONTROL_EXPERIMENT_PROTOCOL.md](EC_PARAMETER_CONTROL_EXPERIMENT_PROTOCOL.md). It separates policy genes, EA meta-parameters, online controller parameters, and environment/evaluation settings; proposes static HPO, classical adaptive operator selection, self-adaptation, and optional CWM-style control baselines; and includes falsification/stop criteria.
+
 ## 3. Provisional candidate ranking
 
 Scores are qualitative planning aids, not measurements or novelty claims.
