@@ -99,7 +99,15 @@ ToolMaze is an evaluation substrate, not an evolutionary-computation contributio
 - **HarnessEvolve:** reference-trajectory alignment, failure clustering, and acceptance gates already cover broad claims about generic failure attribution and reliable self-evolution.
 - **Hierarchical quality-diversity recovery:** diverse repertoires and experience-guided selection for unexpected physical damage predate LLM agents. “Diversity enables recovery” is not a sufficient novelty claim.
 
-## 7. Gate decision
+## 7. Potential auxiliary benchmarks with clearer repository licensing
+
+These are not direct replacements for ToolMaze's controlled fault-injection design, but may provide external validity checks.
+
+- **τ²-bench / τ-bench 2.0.0** — [official repository](https://github.com/sierra-research/tau2-bench). The current repository and `pyproject.toml` declare MIT. Its released benchmark manifests include frozen tasks across airline, retail, telecom and additional settings, and it evaluates stateful tool-agent-user interaction. It does **not** provide ToolMaze's explicit/implicit × transient/permanent fault matrix, so treat it as a secondary transfer/generalization evaluation rather than the primary recovery environment. An open issue asks about the separate license for public leaderboard trajectory files; do not assume external S3 trajectory dumps inherit the repository license.
+- **Berkeley Function Calling Leaderboard (BFCL V4)** — [official code](https://github.com/ShishirPatil/gorilla) and [dataset card](https://huggingface.co/datasets/gorilla-llm/Berkeley-Function-Calling-Leaderboard). The inspected code is Apache-2.0 and the HF dataset card declares Apache-2.0. V4 includes agentic evaluation surfaces such as multi-turn use, web-search/multi-hop behavior, memory, format sensitivity and error-recovery-related evaluation. It is not a controlled dynamic fault-injection environment; use it only as an auxiliary external test of tool-use robustness, with exact version/category pins.
+- **Independent procedural training environment** — if ToolMaze/APB rights remain unclear, author a small DAG-based tool environment and deterministic fault injector from scratch, with our own code and task generator. This gives a legitimate training/development split and permits OOD task-template/fault combinations. It is experimental infrastructure, not an innovation claim by itself.
+
+## 8. Gate decision
 
 **Current decision: HOLD ToolMaze as the primary benchmark.** Do not start the proposed baseline run yet. First resolve the code/data terms and validate a raw dataset sample/schema. APB is not yet a cleared fallback either: its inspected code tree and dataset card lack explicit license metadata, and its HF viewer currently fails. In parallel, continue the closest-work comparison and seek a benchmark with explicit use terms or design an independent task generator. If no suitable benchmark has clear use terms, design a small independent controlled environment instead of relying on unclear redistribution rights.
 
