@@ -29,7 +29,7 @@ The immediate priority is the thesis proposal/opening report. The target is a co
 - Do not declare novelty without a closest-work comparison.
 - Do not assume RSI is either forbidden or required; evaluate it using evidence and project constraints.
 - Keep evolutionary computation central to the contribution: define the Agent phenotype/genotype, representation, variation operators, selection/replacement, fitness, and EC-specific causal ablations.
-- Use research/EC_PARAMETER_CONTROL_EXPERIMENT_PROTOCOL.md as a proposed test plan, not an approved method. Validate ToolMaze and a static EA over a structured recovery-policy genotype first; only then test adaptive parameter/operator control.
+- Use research/EC_PARAMETER_CONTROL_EXPERIMENT_PROTOCOL.md as a proposed test plan, not an approved method. Do not start static EA experiments until the prior-art distinction gate (G0) and benchmark/data-rights gate are closed.
 - Explicitly separate Agent-policy evolution from the EA's own parameter control and from task/environment/evaluation settings. Do not treat tuning population size or mutation rate alone as the innovation; compare classical adaptive/self-adaptive parameter control, LLaMEA-HPO, Code World Models for Parameter Control, and LLM mutation-control work.
 - Separate verified facts, author claims, interpretations, and hypotheses.
 - Design falsifiable research questions, strong baselines, ablations, held-out generalization tests, and realistic cost estimates.
@@ -37,6 +37,12 @@ The immediate priority is the thesis proposal/opening report. The target is a co
 - Do not center the thesis on finite-budget evaluation efficiency; the user considers that insufficiently compelling. Treat cost as a secondary metric only.
 - The current first candidate to falsify is state-contingent recovery from unseen tool/environment failures; see research/CAPABILITY_GAP_REVIEW.md. It is not an approved topic and must be rejected if it reduces to an incremental variation of EVOTOOL, EvA, HarnessEvolve, APB-guided refinement, or existing QD planning.
 - Generic agent–environment co-evolution is not a novelty claim after the primary-source audit of COvolve, Agent-World, SEAL, SENTINEL, and RLAnything; see research/COEVOLUTION_CANDIDATE_AUDIT.md. Only a narrower typed recovery-program EA + valid fault-program search for held-out fault/topology combinations remains a hypothesis, and Candidate D (meta-evolution of the search mechanism) needs further audit. ToolMaze is currently on hold as the primary benchmark pending data/license checks. Its current code deliberately changed RC to hit-conditioned at commit f8620d8, while the paper/README retain the all-run definition; see research/TOOLMAZE_BENCHMARK_AUDIT.md. If used, report both RC variants and exposure rate, group task variants to prevent leakage, and do not redistribute data/code before terms are confirmed. APB is a useful non-EA planning-refinement baseline but is not yet a license-cleared fallback: its inspected code tree and HF card lack explicit license metadata and its HF viewer fails schema casting. The current τ²-bench repository declares MIT and BFCL V4 code/data declare Apache-2.0; they are auxiliary external tests, not controlled fault-injection replacements. If ToolMaze/APB rights remain unclear, prefer an independently authored procedural DAG/fault environment for policy evolution, with τ²/BFCL as held-out external checks.
+
+### Next concrete action
+
+1. Audit the primary papers/code for PromptBreeder, Gödel Agent, HyperAgents, RQGM, and SIA; compare meta-evolution of the search mechanism with classical AOS and LLM mutation-control.
+2. Complete Gate G0 by documenting exact mechanism-level differences between the narrow typed recovery-program/fault-program hypothesis and COvolve, Agent-World, SEAL, SENTINEL, EVOTOOL, and HarnessEvolve.
+3. Keep ToolMaze on hold until code/data terms and raw schema are validated. If no controlled benchmark is cleared, design an independent DAG/fault generator and reserve τ²-bench/BFCL for held-out external checks.
 
 ### Expected workflow
 
