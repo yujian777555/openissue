@@ -1,7 +1,7 @@
 # Current Project Status
 
 **Last updated:** 2026-10-23  
-**Stage:** 2 — second-pass literature triage; mechanism-level audit pending  
+**Stage:** 2 — second-pass literature triage and mechanism-level audit in progress  
 **Overall status:** OPEN; topic not selected  
 **Source of truth:** this repository
 
@@ -30,6 +30,13 @@ Prepare a defensible graduate thesis proposal on evolutionary computation applie
 - Final 2–3 innovation points and their mapping to papers.
 
 ## Research completed so far
+
+- Added research/EC_PARAMETER_CONTROL_EXPERIMENT_PROTOCOL.md with a staged experiment plan: benchmark sanity, policy DSL, static EA, static HPO, then adaptive parameter/operator control. It defines parameter layers, initial pilot ranges, baselines, metrics, ablations, and stop criteria.
+- Audited ToolMaze (arXiv 2026 + official repository) as a potential controlled evaluation substrate: task DAG complexity C1–C4, explicit/implicit × transient/permanent faults, deterministic injection, valid-path enumeration, and TSR/PRR/recovery-cost metrics. ToolMaze is a benchmark, not an EA contribution.
+- Deep-read key sections of EVOTOOL's paper: its ablations show that targeted module selection, trajectory plus explicit feedback, and diversity-aware selection all matter; its prior-art overlap with generic failure-aware tool-policy evolution is therefore high.
+- Read the method and limitations of Code World Models for Parameter Control and LLaMEA-HPO. CWM controls mutation strength in a classical (1+1)-RLS_k optimizer and depends on problem descriptions/structured transition statistics in harder settings; LLaMEA-HPO separates LLM algorithm-structure search from SMAC tuning of generated-heuristic parameters. Neither establishes that online EA parameter control helps an LLM Agent policy EA.
+- Registered ToolMaze, hierarchical QD recovery, and the 2025 adaptive-operator-selection survey as P45–P47 in the related-work matrix. Generic AOS, self-adaptation, and diverse recovery repertoires must be treated as prior art/baselines.
+
 
 - Added research/EC_ROLE_AND_PARAMETER_CONTROL.md to separate Agent-policy evolution, evolutionary-algorithm parameter control, and task/environment/evaluation settings.
 - Inspected the official EVOTOOL repository (configs, SPEC.md, blame, mutation, selection, and evolution loop). Its central mechanism axes are blame/random/fixed/all/none mutation targets and diversity/greedy/top-k/static selection, with explicit trajectory/feedback ablations—not simply a numerical mutation-rate sweep.
@@ -61,12 +68,13 @@ The user considers finite-budget evaluation efficiency insufficiently compelling
 
 ## Next actions (ordered)
 
-1. Finish the mechanism-level audit of EVOTOOL and record the actual ablations and their limitations.
-2. Read LLaMEA-HPO and Code World Models for Parameter Control in full; compare structural evolution, static HPO, and online control.
-3. Review classical parameter-control and adaptive-operator-selection literature, including self-adaptation.
-4. Audit evolutionary robotics / genetic programming for recovery after unanticipated failures.
-5. Decide whether the strongest contribution should be a constrained Agent-policy representation, a new variation/selection mechanism, or a genuinely distinct parameter controller; reject generic parameter tuning as the sole contribution.
-6. Only then resume candidate ranking and thesis/paper decomposition.
+1. Validate ToolMaze installation, license, task generation/splits, and metric implementation; reproduce a small unperturbed/perturbed baseline.
+2. Implement and test a restricted recovery-policy DSL plus hand-written rules; verify that the variation operators produce valid and behaviorally distinct children.
+3. Compare fixed policy, random structured mutation, greedy one-child search, and a static population EA under matched rollout budgets.
+4. Only if static EA shows repeatable capability gains, tune a static configuration with SMAC or random search on train/validation.
+5. Compare static tuned EA with deterministic schedules, classical adaptive operator selection, and self-adaptation; evaluate context-conditioned control only as a candidate mechanism.
+6. Continue closest-work audits (EVOTOOL, HarnessEvolve, EvA, APB, QD recovery) and reject the direction if simple baselines explain the gains.
+7. After these gates, revise the candidate ranking and thesis/paper map. No topic or novelty claim is approved yet.
 
 ## Definition of done for the next milestone
 
