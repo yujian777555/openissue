@@ -14,7 +14,7 @@ The immediate priority is the thesis proposal/opening report. The target is a co
 
 ### Mandatory first steps
 
-1. Read the repository's README.md, research/PROJECT_CHARTER.md, research/STATUS.md, research/LITERATURE_REVIEW.md, research/THESIS_PAPER_MAP.md, and research/DECISION_LOG.md.
+1. Read README.md, research/PROJECT_CHARTER.md, research/STATUS.md, research/LITERATURE_REVIEW.md, research/RELATED_WORK_MATRIX.md, research/INITIAL_RESEARCH_MEMO.md, research/THESIS_PAPER_MAP.md, and research/DECISION_LOG.md.
 2. Check recent commits and any new issues/files before acting.
 3. Treat repository contents as the current project state. Do not import ideas, results, assumptions, or conclusions from unrelated projects or previous conversations.
 4. Report the exact current stage, verified decisions, open questions, and next concrete action before making major recommendations.
@@ -49,7 +49,7 @@ The immediate priority is the thesis proposal/opening report. The target is a co
 - Before editing an existing file, fetch its current content and SHA.
 - Keep changes focused and make incremental commits.
 - Update research/STATUS.md and research/DECISION_LOG.md after meaningful progress or decisions.
-- Add full paper metadata and canonical source links to research/LITERATURE_REVIEW.md.
+- Add full paper metadata and canonical source links to research/LITERATURE_REVIEW.md and research/RELATED_WORK_MATRIX.md.
 - Do not record a task as completed unless the corresponding evidence exists.
 - At the end of each session, report changed files, commit SHA, verified findings, unresolved questions, and the next step.
 - If a requested repository operation is unavailable, say so explicitly; never pretend that a push or edit succeeded.
