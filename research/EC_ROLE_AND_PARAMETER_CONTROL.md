@@ -210,3 +210,43 @@ None of H1–H3 is approved. They are testable directions for prior-art comparis
 4. Search evolutionary robotics / genetic programming / program synthesis for recovery-controller evolution after unanticipated faults.
 5. Only after these audits, decide whether the thesis contribution should be (a) an Agent policy representation and evolution method, (b) a novel parameter/operator controller, or (c) another better-supported EC-centered mechanism.
 6. Keep the state-contingent recovery problem provisional. If it overlaps too heavily with EVOTOOL and classic recovery controllers, reject it rather than forcing a novelty claim.
+
+
+## 8. Mechanism-level audit update: ToolMaze, HarnessEvolve, QD recovery, and parameter tuning
+
+### ToolMaze supplies a controlled evaluation space, not an EA solution
+
+Paper: https://arxiv.org/abs/2606.05806  
+Official code: https://github.com/Zhudongsheng75/ToolMaze
+
+ToolMaze crosses task-DAG complexity C1–C4 with four perturbation modes: explicit/transient, explicit/permanent, implicit/transient, and implicit/permanent. It injects deterministic faults at predefined tool nodes and enumerates valid recovery paths. It reports Task Success Rate (TSR), Perturbation Recovery Rate (PRR), and Recovery Cost (RC). The paper reports that implicit semantic failures are especially difficult and that larger models do not close the fault-tolerance gap at the same rate as ordinary task execution.
+
+**Implication:** ToolMaze is a promising candidate for controlled experiments on agent recovery and generalization. It does not itself demonstrate that evolution helps. The benchmark's hidden fault labels must not be exposed to the deployed policy; they may be used to stratify analysis or create an explicitly labelled oracle upper bound.
+
+### HarnessEvolve closes several generic “reliable self-evolution” claims
+
+Paper: https://arxiv.org/abs/2609.00829
+
+HarnessEvolve aligns failed runs to reference trajectories, clusters errors, rejects data leakage/prompt bloat, and gates updates against degradation on recent batches plus held-out validation. Therefore reference-trace credit assignment, generic error clustering, anti-shortcut gates, and anti-forgetting acceptance checks are not novel alone. A future method would need to differ at the representation, operator, controller, or a specific recovery capability level.
+
+### Hierarchical QD already studies recovery after unforeseen damage
+
+Paper: https://doi.org/10.1145/3596912
+
+Hierarchical Trial and Error stores diverse lower-level skills and uses experience-guided selection to adapt a robot after physical damage. This predates current LLM agents and rules out broad claims that “a diverse evolutionary repertoire enables recovery from unseen failures.” The new setting would need to demonstrate a specific challenge arising from language-mediated tool use, semantic tool outputs, or long-horizon dependency graphs.
+
+### Parameter-control distinction sharpened
+
+- **LLaMEA-HPO** (ACM DOI: https://doi.org/10.1145/3731567) uses SMAC to tune the numeric parameters of each LLM-generated heuristic, while the LLM evolves algorithmic structure. This is strong prior art for separating structural search from numeric tuning; it does not by itself propose an adaptive controller for an Agent's EA loop.
+- **Code World Models for Parameter Control** (2026 arXiv preprint: https://arxiv.org/abs/2602.22260) synthesizes an executable dynamics model and uses one-step planning to select mutation strength for (1+1)-RLS_k. It reports strong results on LeadingOnes, OneMax, Jump_k, and NK landscapes. However, the work uses known problem descriptions and/or structured empirical transition statistics, studies a single mutation-strength control problem rather than an LLM Agent policy population, and lists limits such as dependence on transition statistics for NK and restricted landscape coverage. It is a relevant comparison, not a ready-made Agent method.
+- **Adaptive operator selection (AOS)** is a mature family. Its design normally separates operator credit assignment from operator selection; probability matching, adaptive pursuit, and bandit-style controllers are established baselines. “Use recent progress to raise the probability of a successful operator” is not new by itself.
+- **EVOTOOL** already tests targeted mutation and selection mechanisms with controlled ablations. The paper's ablations show that mutation targeting, trajectory plus natural-language feedback, and population selection each affect results. A proposal must compare against these components, not just a default prompt search.
+
+### Revised audit conclusion
+
+The first recovery candidate remains provisional, but the main testable question is narrower:
+
+> Can a measurable, structured representation of recovery rules provide a useful evolutionary search space, and does a specific parameter/operator-control mechanism improve generalization to held-out combinations of tool-fault semantics and task-graph structure beyond static tuning and existing blame-aware prompt evolution?
+
+Do not approve this as a novelty claim yet. It must survive the full comparison with EVOTOOL, HarnessEvolve, ToolMaze, QD recovery, and classical AOS/self-adaptation.
+
