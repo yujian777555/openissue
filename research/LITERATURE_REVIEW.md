@@ -37,34 +37,27 @@ Do not infer publication acceptance from an arXiv page. Do not infer a limitatio
 
 | Date | Source / query family | Purpose | Outcome / follow-up |
 |---|---|---|---|
-| 2026-10-23 | Pending first systematic search | Establish recent-paper corpus and taxonomy | Not started |
+| 2026-10-23 | Search: evolutionary algorithms for LLM agents, agent design/workflow search, prompt evolution, multi-agent evolution | Find direct EA + agent methods and current baselines | Found EvoAgent, AgentSquare, AFlow, EvoPrompt, EvoAgentX, ARTEMIS, GEPA, HFlow, MemEvolve and adjacent self-evolving agent work. |
+| 2026-10-23 | Search: agent optimization surveys and EC–MAS surveys | Build a field taxonomy and locate overlooked prior art | Found Du et al. (ACM Computing Surveys 2026) and Chen et al. (IEEE/CAA Journal of Automatica Sinica 2025). |
+| 2026-10-23 | Primary-source review: ICLR/ACL proceedings and arXiv full text | Inspect mechanisms, evaluation, and stated limitations | Read abstract/method/results portions of several core papers; full close-work audit remains incomplete. |
 
-## Paper registry
+## Preliminary registry
 
-No papers have been fully screened and registered yet.
+The detailed first-pass paper list and comparison are maintained in [RELATED_WORK_MATRIX.md](RELATED_WORK_MATRIX.md). It currently covers 15 core or closely related works, including paper metadata, primary links, evolved object, established claims, overlap warnings, and candidate audit questions.
 
-Use this schema for each paper:
+### Initial core reading order
 
-| Field | What to record |
-|---|---|
-| ID | Stable local identifier, e.g. P001 |
-| Citation | Authors, exact title, venue/status, year |
-| Canonical source | DOI / proceedings / arXiv URL |
-| Code/data | Official repository and benchmark URLs |
-| Research question | What problem is addressed? |
-| Evolved object | What exactly is encoded and changed? |
-| Evolution method | Representation, initialization, variation, selection, replacement, budget |
-| Agent/task | Model, tools, environment, task family |
-| Fitness/evaluation | Objective, judge, splits, metrics |
-| Baselines | Strongest and closest comparisons |
-| Results | Verified quantitative results with source/table/figure references |
-| Limitations | Author-stated vs independently supported limitations |
-| Reproducibility | Code, configs, datasets, cost, missing details |
-| Overlap risk | Closest work and what it already establishes |
-| Borrowable ideas | Mechanisms worth adapting |
-| Potential extension | Testable extension, explicitly marked as a hypothesis |
-| Relevance | High / medium / low, with reason |
-| Status | Discovery / screened / full-text reviewed / code inspected / reproduced |
+1. AgentSquare — modular agent search, recombination, and performance prediction.
+2. AFlow — workflow representation, MCTS, execution feedback, cost, and transfer.
+3. GEPA — trajectory reflection, prompt evolution, Pareto-based selection, rollout efficiency.
+4. ARTEMIS — whole-agent configuration optimization, mixed-type search, statistical evidence, and compute costs.
+5. HFlow — preference feedback, hierarchical experience memory, and cost-aware workflow evolution.
+6. MemEvolve — memory architecture meta-evolution and cross-task/model/framework transfer.
+7. EvoAgent — evolutionary generation of multi-agent systems.
+8. EvoPrompt and Promptbreeder — foundational prompt evolution.
+9. EvoAgentX and ADAS — workflow optimization platforms and adjacent methods.
+10. AgentGym and AgentEvolver — adjacent self-evolving agent-learning paradigms.
+11. Du et al. and Chen et al. surveys — broad taxonomy and related-work discovery.
 
 ## Comparison dimensions
 
