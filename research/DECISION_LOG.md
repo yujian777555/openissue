@@ -45,3 +45,12 @@ Record consequential project decisions here so future sessions do not reopen set
 - **Evidence:** First-pass review of EvoPrompt, AgentSquare, EvoAgent, AFlow, EvoAgentX, GEPA, ARTEMIS, HFlow, and MemEvolve. See research/RELATED_WORK_MATRIX.md and research/INITIAL_RESEARCH_MEMO.md.
 - **Caveat:** This is not a rejection of those areas. A specific, meaningful improvement may still be possible after deeper comparison.
 - **Revisit when:** Close-work audits and broader EA literature review are complete.
+
+## D-005 — Do not make finite evaluation budget the central thesis problem
+
+- **Date:** 2026-10-23
+- **Status:** Accepted as current scope guidance
+- **Decision:** Do not center the thesis on fitness estimation, evaluation-budget allocation, or survivor selection merely because Agent evaluation is noisy and expensive. Evaluation cost may remain a secondary constraint or metric when relevant.
+- **Rationale:** The user judges the finite-budget problem insufficiently compelling as the main research contribution. The thesis should target a meaningful Agent capability/behavior limitation and use evolutionary computation to improve it.
+- **Implication:** Continue literature review by extracting substantive failure modes and improvement opportunities from recent EA + Agent work, rather than defaulting to evaluation efficiency.
+- **Revisit when:** A concrete agent capability problem is supported by literature and shows a clear, feasible evolutionary-method contribution.
