@@ -31,6 +31,11 @@ Prepare a defensible graduate thesis proposal on evolutionary computation applie
 
 ## Research completed so far
 
+- Added research/EC_ROLE_AND_PARAMETER_CONTROL.md to separate Agent-policy evolution, evolutionary-algorithm parameter control, and task/environment/evaluation settings.
+- Inspected the official EVOTOOL repository (configs, SPEC.md, blame, mutation, selection, and evolution loop). Its central mechanism axes are blame/random/fixed/all/none mutation targets and diversity/greedy/top-k/static selection, with explicit trajectory/feedback ablations—not simply a numerical mutation-rate sweep.
+- Added LLaMEA-HPO, Code World Models for Parameter Control, LLM mutation-control work, classical parameter-control references, and evolutionary recovery-controller work to the related-work matrix.
+- Key methodological conclusion: structural/behavioural evolution and numerical hyperparameter tuning must be separated. Parameter control is mature EC prior art; no new method or thesis topic has been approved.
+
 - Second-pass search expanded the related-work matrix from 15 to 37 core or adjacent papers/works, including 2026 work on tool-policy evolution, multi-agent evolution, skills, memory, planning, open-world shifts, and continual adaptation.
 - Added research/CAPABILITY_GAP_REVIEW.md with field-crowding evidence, a provisional candidate comparison, and an explicit falsification plan.
 - Found direct overlap for failure attribution (EVOTOOL/EvoMAS/HarnessEvolve), group/open-ended evolution (GEA/CORAL/EvE), skill and memory evolution (CoEvoSkills/Mem²Evolve/SkillComposer/ReMe/MCMA/MemEvolve), and planning (EvoPlan/APB/EvA/QD planning).
@@ -55,6 +60,14 @@ The user considers finite-budget evaluation efficiency insufficiently compelling
 - Do not treat this scope adjustment as a rejection of all work on evaluation reliability; retain it as supporting background only if a stronger problem requires it.
 
 ## Next actions (ordered)
+
+1. Finish the mechanism-level audit of EVOTOOL and record the actual ablations and their limitations.
+2. Read LLaMEA-HPO and Code World Models for Parameter Control in full; compare structural evolution, static HPO, and online control.
+3. Review classical parameter-control and adaptive-operator-selection literature, including self-adaptation.
+4. Audit evolutionary robotics / genetic programming for recovery after unanticipated failures.
+5. Decide whether the strongest contribution should be a constrained Agent-policy representation, a new variation/selection mechanism, or a genuinely distinct parameter controller; reject generic parameter tuning as the sole contribution.
+6. Only then resume candidate ranking and thesis/paper decomposition.
+
 
 1. Deep-read EVOTOOL, EvoMAS, EvA, HarnessEvolve, APB, and the 2026 quality-diversity planning paper; record representation, failure signals, recovery behavior, evolutionary unit, and generalization protocol.
 2. Read CostBench and OpenAgent to separate planning errors, tool failures, infeasible tasks, and distribution shifts.
