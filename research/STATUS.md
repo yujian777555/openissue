@@ -36,6 +36,7 @@ Prepare a defensible graduate thesis proposal on evolutionary computation applie
 - Deep-read key sections of EVOTOOL's paper: its ablations show that targeted module selection, trajectory plus explicit feedback, and diversity-aware selection all matter; its prior-art overlap with generic failure-aware tool-policy evolution is therefore high.
 - Read the method and limitations of Code World Models for Parameter Control and LLaMEA-HPO. CWM controls mutation strength in a classical (1+1)-RLS_k optimizer and depends on problem descriptions/structured transition statistics in harder settings; LLaMEA-HPO separates LLM algorithm-structure search from SMAC tuning of generated-heuristic parameters. Neither establishes that online EA parameter control helps an LLM Agent policy EA.
 - Registered ToolMaze, hierarchical QD recovery, and the 2025 adaptive-operator-selection survey as P45–P47 in the related-work matrix. Generic AOS, self-adaptation, and diverse recovery repertoires must be treated as prior art/baselines.
+- Found a ToolMaze reproducibility issue: paper and README define mode-level RC with no-hit runs contributing zero, but the inspected public `evaluation/core/metrics.py` excludes no-hit runs from the denominator. The protocol now requires a synthetic fixture and resolution before RC comparisons. The inspected code tree/dataset card also lacked clear license metadata; confirm before redistribution.
 
 
 - Added research/EC_ROLE_AND_PARAMETER_CONTROL.md to separate Agent-policy evolution, evolutionary-algorithm parameter control, and task/environment/evaluation settings.
@@ -68,7 +69,7 @@ The user considers finite-budget evaluation efficiency insufficiently compelling
 
 ## Next actions (ordered)
 
-1. Validate ToolMaze installation, license, task generation/splits, and metric implementation; reproduce a small unperturbed/perturbed baseline.
+1. Resolve ToolMaze RC denominator discrepancy against paper/README, confirm code/data licensing, inspect task generation/splits, and reproduce a small baseline.
 2. Implement and test a restricted recovery-policy DSL plus hand-written rules; verify that the variation operators produce valid and behaviorally distinct children.
 3. Compare fixed policy, random structured mutation, greedy one-child search, and a static population EA under matched rollout budgets.
 4. Only if static EA shows repeatable capability gains, tune a static configuration with SMAC or random search on train/validation.
