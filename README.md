@@ -13,11 +13,12 @@ The goal is not to commit prematurely to a fashionable topic. The project will s
 5. Read [Capability-Gap Review](research/CAPABILITY_GAP_REVIEW.md) for second-pass 2026 literature and provisional candidate triage.
 6. Read [EC Parameter-Control Experiment Protocol](research/EC_PARAMETER_CONTROL_EXPERIMENT_PROTOCOL.md) for the staged policy-search, parameter-tuning, and adaptive-control experiment plan.
 7. Read [ToolMaze Benchmark Audit](research/TOOLMAZE_BENCHMARK_AUDIT.md) before adopting ToolMaze or running recovery-policy experiments.
-8. Read [EC Role and Parameter Control](research/EC_ROLE_AND_PARAMETER_CONTROL.md) for the distinction between Agent-policy evolution, EA parameter control, and ordinary hyperparameter tuning.
-9. Read [Initial Research Memo](research/INITIAL_RESEARCH_MEMO.md) for first-pass findings and open questions.
-10. Read [Thesis–Paper Map](research/THESIS_PAPER_MAP.md) for how candidate contributions may map to papers.
-11. Read [Decision Log](research/DECISION_LOG.md) before revisiting previously assessed ideas.
-12. Use [Session Handoff](SESSION_HANDOFF.md) when starting a new ChatGPT conversation.
+8. Read [Co-Evolution Candidate Audit](research/COEVOLUTION_CANDIDATE_AUDIT.md) before treating policy–environment co-evolution as a novelty claim.
+9. Read [EC Role and Parameter Control](research/EC_ROLE_AND_PARAMETER_CONTROL.md) for the distinction between Agent-policy evolution, EA parameter control, and ordinary hyperparameter tuning.
+10. Read [Initial Research Memo](research/INITIAL_RESEARCH_MEMO.md) for first-pass findings and open questions.
+11. Read [Thesis–Paper Map](research/THESIS_PAPER_MAP.md) for how candidate contributions may map to papers.
+12. Read [Decision Log](research/DECISION_LOG.md) before revisiting previously assessed ideas.
+13. Use [Session Handoff](SESSION_HANDOFF.md) when starting a new ChatGPT conversation.
 
 ## Non-negotiable research principles
 
