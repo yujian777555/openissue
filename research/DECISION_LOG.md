@@ -150,3 +150,14 @@ Record consequential project decisions here so future sessions do not reopen set
 - **Implication:** A narrower hypothesis may be tested: EA over typed executable recovery programs coupled to a constrained grammar of valid tool-fault transformations, targeting held-out combinations of fault semantics and task-DAG topology. This is not yet a novelty claim; domain shift alone is insufficient. Compare against EVOTOOL, reflection/replanning, policy-only EA, failure-driven task generation, and adversarial co-evolution.
 - **Alternative:** Add meta-evolution of the search mechanism to the literature audit because the survey describes it as an early area, while checking PromptBreeder, Gödel Agent, HyperAgents, RQGM, and classical adaptive operator selection.
 - **Revisit when:** The mechanism-level audit establishes a difference and a matched-budget experiment can falsify it.
+
+
+## D-015 — Generic meta-evolution is not a novelty claim
+
+- **Date:** 2026-10-23
+- **Status:** Accepted
+- **Decision:** Downgrade Candidate D in its broad form. Do not claim novelty for a self-improving optimizer, an evolving mutation prompt, an editable meta-agent, or a co-evolved evaluator.
+- **Evidence:** Primary-source audit in `research/META_EVOLUTION_CANDIDATE_AUDIT.md`. Promptbreeder evolves task and mutation prompts; Gödel Agent, Darwin Gödel Machine, and HyperAgents study recursive self-modification and evolution of improvement routines; RQGM co-evolves agents and evaluators; SIA selects between harness and weight updates; Meta-Harness searches harness code; MetaBench-Harness evolves benchmark-generation workflows; MoMHa studies multi-objective harness optimization. Classical adaptive operator selection is mature prior art.
+- **Implication:** Only a narrow transferable search-controller hypothesis remains: learn to choose among typed policy-edit/structural operators using out-of-sample operator-impact evidence, and prove transfer to held-out tasks against classical AOS and the closest self-modification systems. This is not yet a validated gap.
+- **Next action:** Broaden the candidate search to other underexplored intersections before selecting any thesis topic.
+- **Revisit when:** A mechanism-level distinction and feasible falsification plan are established.
