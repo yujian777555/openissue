@@ -39,6 +39,7 @@ Do not infer publication acceptance from an arXiv page. Do not infer a limitatio
 |---|---|---|---|
 | 2026-10-23 | ToolMaze benchmark version, metric, dataset-schema, and license audit | Determine whether the benchmark can support evolutionary recovery-policy experiments | Added research/TOOLMAZE_BENCHMARK_AUDIT.md. Current code intentionally uses hit-conditioned RC while paper/README use all-run RC; dataset split/license remain blockers. |
 | 2026-10-23 | APB (arXiv v3) and EvA (ACL 2026) primary-source audit | Strengthen non-EA planning/recovery baselines and identify adjacent adaptive-control methods | Registered P48–P49; APB-guided refinement and EvA abstraction/rollback are direct comparisons, not EA contributions. |
+| 2026-10-23 | License and evaluation-scope audit: τ²-bench 2.0.0 and BFCL V4 | Find auxiliary benchmarks with clearer code/data terms while preserving a separate controlled training environment | Registered P50–P51. τ²-bench (MIT) and BFCL V4 (Apache-2.0) are auxiliary external tests, not substitutes for controlled failure injection.
 | 2026-10-23 | EC parameter-control audit: EVOTOOL official implementation, LLaMEA-HPO, Code World Models for Parameter Control, LLM mutation control, classical parameter-control literature, evolutionary recovery controllers | Separate policy evolution from EA parameter tuning/control and determine necessary baselines | Added research/EC_ROLE_AND_PARAMETER_CONTROL.md; generic parameter tuning is not accepted as a sole contribution. |
 | 2026-10-23 | Second-pass primary-source search: recent EA-agent evolution, tool-use policy, skills, memory, planning, open-world generalization, continual learning | Identify direct overlaps and concrete capability failure evidence | Registered 22 additional core/adjacent works in RELATED_WORK_MATRIX.md; all candidate gaps remain provisional. |
 | 2026-10-23 | Search: evolutionary algorithms for LLM agents, agent design/workflow search, prompt evolution, multi-agent evolution | Find direct EA + agent methods and current baselines | Found EvoAgent, AgentSquare, AFlow, EvoPrompt, EvoAgentX, ARTEMIS, GEPA, HFlow, MemEvolve and adjacent self-evolving agent work. |
@@ -47,7 +48,7 @@ Do not infer publication acceptance from an arXiv page. Do not infer a limitatio
 
 ## Preliminary registry
 
-The detailed paper list and comparison are maintained in [RELATED_WORK_MATRIX.md](RELATED_WORK_MATRIX.md). It now contains 49 core or closely related works across the first and second search passes. See [CAPABILITY_GAP_REVIEW.md](CAPABILITY_GAP_REVIEW.md) for second-pass synthesis and provisional candidate triage.
+The detailed paper list and comparison are maintained in [RELATED_WORK_MATRIX.md](RELATED_WORK_MATRIX.md). It now contains 51 core or closely related works across the first and second search passes. See [CAPABILITY_GAP_REVIEW.md](CAPABILITY_GAP_REVIEW.md) for second-pass synthesis and provisional candidate triage.
 
 ### Initial core reading order
 
