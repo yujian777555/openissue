@@ -39,6 +39,37 @@
 
 
 
+## 3. Evidence-backed warnings from the first pass
+
+1. **Prompt-only evolution is crowded.** EvoPrompt, Promptbreeder, and GEPA already cover evolutionary or reflective evolution of prompts; GEPA additionally uses execution trajectories and Pareto-front lessons.
+2. **Generic architecture/workflow evolution is crowded.** AgentSquare, EvoAgent, AFlow, HFlow, EvoAgentX, and ADAS cover different slices of agent modules, multi-agent populations, workflow graphs, or end-to-end configurations.
+3. **Memory evolution and transfer are crowded.** MemEvolve explicitly evolves memory architecture and reports transfer across tasks, models, and frameworks. HFlow also uses hierarchical experience memory.
+4. **Cost-aware optimization is not new by itself.** AFlow reports performance/cost trade-offs; HFlow explicitly includes cost in utility; MemEvolve reports performance, cost, delay, and steps; ARTEMIS studies accuracy/cost trade-offs.
+5. **A benchmark score increase alone is insufficient.** ARTEMIS reports that gains can be task-dependent and that not every result is statistically significant; its authors also flag validation, cost, and transfer as challenges.
+6. **“Self-evolving” is not synonymous with “evolutionary algorithm.”** AgentGym and AgentEvolver are important adjacent work, but their training/data-generation mechanisms must be distinguished from population-based evolutionary search.
+
+## 4. Candidate research openings to audit — not approved innovations
+
+| Candidate question | Evidence motivating further audit | Main overlap / risk | What must be checked next |
+|---|---|---|---|
+| **A. Reliability-aware fitness estimation and evaluation-budget allocation for stochastic agents** | ARTEMIS reports validation/generalization difficulties and a case without statistical significance; AgentSquare uses a low-cost performance predictor; HFlow aggregates scores over repeated evaluations. | No novelty claim yet. Noisy evolutionary optimization, racing methods, surrogate-assisted EA, calibration, and confidence-aware selection may already cover the idea. | Determine whether uncertainty calibration and adaptive replication are absent from the closest methods; formulate a distinct algorithm and a testable benefit under a fixed evaluation budget. |
+| **B. Failure-conditioned operator choice and credit assignment** | Existing systems use execution logs, reflection, semantic mutation, and experience memory. | Very high overlap with GEPA, ARTEMIS, HFlow, and AFlow. “Use failure traces to mutate” is not novel by itself. | Only retain if a specific attribution/causal mechanism differs materially from trajectory reflection and semantic genetic operators. |
+| **C. Transfer of evolutionary search experience across tasks or agent frameworks** | ARTEMIS lists transfer learning as future work; HFlow uses hierarchical memory; MemEvolve already reports cross-task/model/framework generalization. | Very high overlap. A generic memory or warm-start mechanism is unlikely to suffice. | Identify a narrower transfer problem and show what information is transferred, how it changes the EA, and why existing memory-based transfer is insufficient. |
+
+These are research questions to investigate, not recommendations to implement yet. The shortlist must remain open until the closest-work comparison is complete.
+
+## 5. Next paper audits
+
+Priority order:
+1. AgentSquare: inspect the performance predictor, search loop, cost accounting, and held-out evaluation.
+2. AFlow: inspect workflow representation, MCTS feedback, execution-model transfer, and search budget.
+3. GEPA: inspect Pareto selection, trajectory diagnosis, rollout accounting, and held-out performance.
+4. ARTEMIS: inspect the mixed-type genotype, semantic mutation/crossover, statistical tests, and the availability of executable artifacts.
+5. HFlow: inspect preference feedback, repeated-score aggregation, memory-guided operator selection, and the limitations of model-simulated human feedback.
+6. MemEvolve: inspect its meta-evolution representation, fitness, transfer protocol, and compute budget.
+
+After these audits, search the broader noisy-optimization and surrogate-assisted evolutionary literature before selecting an innovation point.
+
 ## 6. Second-pass papers (2026)
 
 | ID | Paper and status | Evolved object / capability | Prior-art consequence |
@@ -77,34 +108,3 @@
 7. **Finite-budget evaluation allocation:** deprioritized as the thesis core per user direction.
 
 These warnings rule out broad framing, not every possible contribution inside each area. A narrower mechanism may remain viable after code-level comparison and traditional EC prior-art review.
-
-## 3. Evidence-backed warnings from the first pass
-
-1. **Prompt-only evolution is crowded.** EvoPrompt, Promptbreeder, and GEPA already cover evolutionary or reflective evolution of prompts; GEPA additionally uses execution trajectories and Pareto-front lessons.
-2. **Generic architecture/workflow evolution is crowded.** AgentSquare, EvoAgent, AFlow, HFlow, EvoAgentX, and ADAS cover different slices of agent modules, multi-agent populations, workflow graphs, or end-to-end configurations.
-3. **Memory evolution and transfer are crowded.** MemEvolve explicitly evolves memory architecture and reports transfer across tasks, models, and frameworks. HFlow also uses hierarchical experience memory.
-4. **Cost-aware optimization is not new by itself.** AFlow reports performance/cost trade-offs; HFlow explicitly includes cost in utility; MemEvolve reports performance, cost, delay, and steps; ARTEMIS studies accuracy/cost trade-offs.
-5. **A benchmark score increase alone is insufficient.** ARTEMIS reports that gains can be task-dependent and that not every result is statistically significant; its authors also flag validation, cost, and transfer as challenges.
-6. **“Self-evolving” is not synonymous with “evolutionary algorithm.”** AgentGym and AgentEvolver are important adjacent work, but their training/data-generation mechanisms must be distinguished from population-based evolutionary search.
-
-## 4. Candidate research openings to audit — not approved innovations
-
-| Candidate question | Evidence motivating further audit | Main overlap / risk | What must be checked next |
-|---|---|---|---|
-| **A. Reliability-aware fitness estimation and evaluation-budget allocation for stochastic agents** | ARTEMIS reports validation/generalization difficulties and a case without statistical significance; AgentSquare uses a low-cost performance predictor; HFlow aggregates scores over repeated evaluations. | No novelty claim yet. Noisy evolutionary optimization, racing methods, surrogate-assisted EA, calibration, and confidence-aware selection may already cover the idea. | Determine whether uncertainty calibration and adaptive replication are absent from the closest methods; formulate a distinct algorithm and a testable benefit under a fixed evaluation budget. |
-| **B. Failure-conditioned operator choice and credit assignment** | Existing systems use execution logs, reflection, semantic mutation, and experience memory. | Very high overlap with GEPA, ARTEMIS, HFlow, and AFlow. “Use failure traces to mutate” is not novel by itself. | Only retain if a specific attribution/causal mechanism differs materially from trajectory reflection and semantic genetic operators. |
-| **C. Transfer of evolutionary search experience across tasks or agent frameworks** | ARTEMIS lists transfer learning as future work; HFlow uses hierarchical memory; MemEvolve already reports cross-task/model/framework generalization. | Very high overlap. A generic memory or warm-start mechanism is unlikely to suffice. | Identify a narrower transfer problem and show what information is transferred, how it changes the EA, and why existing memory-based transfer is insufficient. |
-
-These are research questions to investigate, not recommendations to implement yet. The shortlist must remain open until the closest-work comparison is complete.
-
-## 5. Next paper audits
-
-Priority order:
-1. AgentSquare: inspect the performance predictor, search loop, cost accounting, and held-out evaluation.
-2. AFlow: inspect workflow representation, MCTS feedback, execution-model transfer, and search budget.
-3. GEPA: inspect Pareto selection, trajectory diagnosis, rollout accounting, and held-out performance.
-4. ARTEMIS: inspect the mixed-type genotype, semantic mutation/crossover, statistical tests, and the availability of executable artifacts.
-5. HFlow: inspect preference feedback, repeated-score aggregation, memory-guided operator selection, and the limitations of model-simulated human feedback.
-6. MemEvolve: inspect its meta-evolution representation, fitness, transfer protocol, and compute budget.
-
-After these audits, search the broader noisy-optimization and surrogate-assisted evolutionary literature before selecting an innovation point.
