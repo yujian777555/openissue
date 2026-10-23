@@ -74,3 +74,15 @@ Record consequential project decisions here so future sessions do not reopen set
 - **Evidence:** EVOTOOL official code exposes mechanism-level axes (blame/random/fixed/all/none mutation target; diversity/greedy/top-k/static selection; trajectory/feedback guidance). LLaMEA-HPO separates structural algorithm evolution from SMAC-based HPO. Code World Models for Parameter Control (2026), the LLM mutation-control line, and classical EC parameter-control literature directly study adaptive parameter settings. See research/EC_ROLE_AND_PARAMETER_CONTROL.md and P38–P44 in research/RELATED_WORK_MATRIX.md.
 - **Implication:** Any proposed EC innovation must state its genotype, representation, variation operators, selection/replacement, fitness, parameter-control policy, and the ablations needed to show the EC mechanism itself causes the capability gain.
 - **Revisit when:** Mechanism-level audits identify a concrete capability limitation and a distinct EC contribution supported by primary-source evidence.
+
+
+## D-008 — Validate the evolutionary contribution in stages
+
+- **Date:** 2026-10-23
+- **Status:** Accepted as research procedure; topic remains provisional
+- **Decision:** For the recovery-policy candidate, first validate the benchmark and policy representation, then test a static EA, then test static HPO, and only if the EA adds capability test adaptive parameter/operator control.
+- **Rationale:** Adaptive operator selection, self-adaptation, and mutation-strength control are mature research areas. Starting with a complex adaptive controller before showing that evolution helps would confound policy representation, evolutionary search, and parameter-control effects.
+- **Evaluation candidate:** ToolMaze, because it offers deterministic perturbation injection, a task-DAG complexity axis, explicit/implicit and transient/permanent fault types, enumerated recovery paths, and TSR/PRR/recovery-cost metrics.
+- **Closest-work warnings:** EVOTOOL already has blame-aware targeted mutation and diversity-aware selection; HarnessEvolve has reference-trajectory alignment, error clustering, quality/performance gates; hierarchical QD has diverse repertoire-based recovery; classical AOS/self-adaptation prior art is extensive.
+- **Required comparisons:** fixed rule baseline, direct reflection/replanning, random mutation, greedy one-child search, static EA, statically tuned EA, classical AOS, self-adaptation, and an EVOTOOL-style baseline if reproducible.
+- **Revisit when:** ToolMaze baseline reproduction and the first static-EA pilot produce verified evidence.
