@@ -77,3 +77,22 @@ If the candidate is simply EVOTOOL plus a state machine, reject it. If the audit
 4. Search traditional evolutionary robotics, genetic programming for reactive policies, program synthesis, dynamic optimization, and adversarial/curriculum co-evolution.
 5. Attempt to falsify the recovery candidate against the closest work; if overlap is too high, compare compositional generalization and agent/environment co-evolution instead.
 6. Do not draft final innovation claims until a mechanism-level comparison identifies a real gap.
+
+
+## 6. Reassessment after benchmark-source audit
+
+The recovery-policy candidate remains **the first candidate to falsify**, not the selected thesis topic. The new ToolMaze audit lowers its immediate feasibility: ToolMaze and APB have unresolved explicit code/data licensing; ToolMaze's RC definition changed in code while paper/README remain stale; both HF viewers currently fail schema loading. A benchmark-dependent implementation should not begin until the data/rights gate is resolved.
+
+| Candidate after this audit | Potential strength | Main risk / required falsification | Current action |
+|---|---|---|---|
+| **A. Evolution of state-contingent recovery policies** | Concrete capability failure; typed policy genotypes and executable external metrics can make EC's role testable. | High overlap with EVOTOOL, EvA, HarnessEvolve, APB-guided refinement, fixed reactive controllers and QD recovery; ToolMaze/APB data terms are unresolved. | Keep as first candidate to falsify; do not implement yet. |
+| **B. Co-evolution of recovery policies and failure curricula** | Makes EC central in two interacting populations: (i) policies that recover, (ii) valid, solvable task/fault scenarios that expose weaknesses. Could target generalization to unseen combinations of semantic corruption, transient/permanent faults and task topology. | Adversarial environment design, automatic curricula and open-ended evolution have substantial prior art (e.g. POET, PAIRED, ACCEL). A generator can exploit the policy or create invalid/impossible tasks. Need compare against random curriculum, fixed curriculum, policy-only EA, and existing environment-design methods; task validity and difficulty must be independently checked. | Promote to a parallel literature audit, not a novelty claim. This alternative also reduces dependence on third-party benchmark task data if we author the generator from scratch. |
+| **C. Compositional generalization of skill/recovery programs** | Tests whether evolved primitives compose on unseen tool/skill combinations rather than memorizing whole tasks. | Direct overlap with skill composition, memory evolution, modular policy search and genetic programming; requires a precise compositional split and a distinct operator/representation contribution. | Keep as a fallback, but below A/B until the closest-work audit is complete. |
+
+### Candidate paper chain if A/B survives the audit (illustrative only)
+
+- **Paper 1 — Search space and policy evolution:** show whether a typed, executable recovery-policy genotype improves over fixed rules, reflection/replanning, random edits and greedy mutation. If static EA does not help, stop this line.
+- **Paper 2 — Policy–curriculum co-evolution:** only if Paper 1 establishes a useful policy search space, test whether evolving valid fault/task curricula improves held-out recovery generalization beyond policy-only EA and fixed/random curricula.
+- **Paper 3 — Transfer and robustness:** test frozen policies on a distinct, clearly licensed external environment such as selected τ²-bench/BFCL tasks, with no evolution on final evaluation cases. This paper is optional and should be dropped if it merely reuses the same result or does not establish a separate claim.
+
+This is a decomposition hypothesis, not an approved 2–3 paper plan. Do not populate the thesis–paper map until the closest-work audit establishes independent, defensible claims. Evaluation-budget allocation remains secondary and is not promoted.
