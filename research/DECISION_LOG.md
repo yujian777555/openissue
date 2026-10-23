@@ -86,3 +86,13 @@ Record consequential project decisions here so future sessions do not reopen set
 - **Closest-work warnings:** EVOTOOL already has blame-aware targeted mutation and diversity-aware selection; HarnessEvolve has reference-trajectory alignment, error clustering, quality/performance gates; hierarchical QD has diverse repertoire-based recovery; classical AOS/self-adaptation prior art is extensive.
 - **Required comparisons:** fixed rule baseline, direct reflection/replanning, random mutation, greedy one-child search, static EA, statically tuned EA, classical AOS, self-adaptation, and an EVOTOOL-style baseline if reproducible.
 - **Revisit when:** ToolMaze baseline reproduction and the first static-EA pilot produce verified evidence.
+
+
+## D-009 — Benchmark metric and license verification is a hard gate
+
+- **Date:** 2026-10-23
+- **Status:** Accepted
+- **Decision:** ToolMaze remains a candidate benchmark, not an approved experimental substrate, until its metrics and data/code usage terms are verified.
+- **Evidence:** The paper defines mode-level RC with an exposure indicator, and the README says no-hit runs contribute zero. The inspected current public `evaluation/core/metrics.py` computes RC over hit runs only, excluding no-hit cases from the denominator. For an illustrative three-run case (no-hit = 0, hit-fail = 1, hit-success = 0.2), the paper/README definition gives 0.4 while the current hit-conditioned implementation gives 0.6. The inspected GitHub tree had no visible root LICENSE file and the Hugging Face dataset card did not expose a clear license field.
+- **Implication:** Create a synthetic metric fixture, determine which version produced published results, report both variants if unresolved, and confirm code/data terms before redistribution. Do not compare methods using the current RC implementation without disclosing this discrepancy.
+- **Revisit when:** The metric discrepancy and licensing are verified against an authoritative release or author clarification.
