@@ -127,3 +127,15 @@ Record consequential project decisions here so future sessions do not reopen set
 - **Evidence:** ToolMaze and APB have unresolved code/data license metadata and current Hugging Face viewer/schema friction. τ²-bench's repository declares MIT and BFCL V4 code/dataset declare MIT/Apache-2.0 respectively, but neither supplies ToolMaze's exact controlled fault matrix. τ²-bench's public leaderboard trajectory files have a separate license question.
 - **Implication:** If permissions for ToolMaze/APB cannot be confirmed, build a small independent DAG/fault generator for training/development and reserve τ²-bench/BFCL categories for frozen external evaluation. The generator is infrastructure, not a claimed innovation. Pin benchmark versions and avoid evolving directly on final public test tasks.
 - **Revisit when:** Code/data terms are confirmed and the target recovery capability plus baselines are finalized.
+
+
+## D-013 — Audit policy–curriculum co-evolution in parallel, without approving it
+
+- **Date:** 2026-10-23
+- **Status:** Accepted as a research procedure
+- **Decision:** Do not force state-contingent recovery-policy evolution to become the thesis topic. Audit a second candidate in parallel: co-evolution of an agent recovery policy and a valid failure/task curriculum.
+- **Rationale:** The policy-only candidate has direct overlap with EVOTOOL, EvA, HarnessEvolve, APB-guided refinement, and QD recovery, while its most direct benchmark candidates have unresolved data/code terms. A procedural environment generator could remove third-party task-data dependence and make evolutionary computation central in both policy and curriculum search.
+- **Prior-art warning:** Adversarial environment design and automatic curricula have substantial history, including POET, PAIRED, and ACCEL. “Co-evolution” alone is not novel. The audit must test whether LLM tool-failure semantics and held-out compositional fault generalization reveal a specific gap.
+- **Required comparisons:** fixed curriculum, random curriculum, policy-only EA, curriculum-only search, policy–curriculum co-evolution, and a strong non-EA recovery/reflection baseline. Validate task solvability independently to prevent generator reward hacking.
+- **Implication:** Paper 1 (static EA over policy genotype) is a gate; Paper 2 (co-evolution) proceeds only if Paper 1 shows evolutionary capability gains; Paper 3 (external transfer) is optional and must establish an independent claim. Do not fill the thesis–paper map yet.
+- **Revisit when:** The policy-only and co-evolution prior-art audits identify a mechanism-level difference with a feasible evaluation design.
