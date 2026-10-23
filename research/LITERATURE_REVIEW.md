@@ -35,6 +35,8 @@ Do not infer publication acceptance from an arXiv page. Do not infer a limitatio
 
 ## Search log
 
+| 2026-10-23 | Second-pass primary-source search: recent EA-agent evolution, tool-use policy, skills, memory, planning, open-world generalization, continual learning | Identify direct overlaps and concrete capability failure evidence | Registered 22 additional core/adjacent works in RELATED_WORK_MATRIX.md; all candidate gaps remain provisional. |
+
 | Date | Source / query family | Purpose | Outcome / follow-up |
 |---|---|---|---|
 | 2026-10-23 | Search: evolutionary algorithms for LLM agents, agent design/workflow search, prompt evolution, multi-agent evolution | Find direct EA + agent methods and current baselines | Found EvoAgent, AgentSquare, AFlow, EvoPrompt, EvoAgentX, ARTEMIS, GEPA, HFlow, MemEvolve and adjacent self-evolving agent work. |
@@ -43,7 +45,7 @@ Do not infer publication acceptance from an arXiv page. Do not infer a limitatio
 
 ## Preliminary registry
 
-The detailed first-pass paper list and comparison are maintained in [RELATED_WORK_MATRIX.md](RELATED_WORK_MATRIX.md). It currently covers 15 core or closely related works, including paper metadata, primary links, evolved object, established claims, overlap warnings, and candidate audit questions.
+The detailed paper list and comparison are maintained in [RELATED_WORK_MATRIX.md](RELATED_WORK_MATRIX.md). It now contains 37 core or closely related works across the first and second search passes. See [CAPABILITY_GAP_REVIEW.md](CAPABILITY_GAP_REVIEW.md) for second-pass synthesis and provisional candidate triage.
 
 ### Initial core reading order
 
@@ -58,6 +60,10 @@ The detailed first-pass paper list and comparison are maintained in [RELATED_WOR
 9. EvoAgentX and ADAS — workflow optimization platforms and adjacent methods.
 10. AgentGym and AgentEvolver — adjacent self-evolving agent-learning paradigms.
 11. Du et al. and Chen et al. surveys — broad taxonomy and related-work discovery.
+
+## Current interpretation after second pass
+
+The 2026 literature directly covers generic tool-policy evolution, failure attribution, multi-agent configuration evolution, skill/verifier co-evolution, memory/experience evolution, plan-level evolution, quality-diversity planning, open-world generalization, and continual adaptation. The next milestone is mechanism-level comparison and attempted falsification of candidate gaps, not more broad keyword collection. Finite-budget evaluation remains a secondary consideration, not the central thesis problem.
 
 ## Comparison dimensions
 
