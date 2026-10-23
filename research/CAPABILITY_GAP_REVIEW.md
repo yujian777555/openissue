@@ -86,8 +86,8 @@ The recovery-policy candidate remains **the first candidate to falsify**, not th
 | Candidate after this audit | Potential strength | Main risk / required falsification | Current action |
 |---|---|---|---|
 | **A. Evolution of state-contingent recovery policies** | Concrete capability failure; typed policy genotypes and executable external metrics can make EC's role testable. | High overlap with EVOTOOL, EvA, HarnessEvolve, APB-guided refinement, fixed reactive controllers and QD recovery; ToolMaze/APB data terms are unresolved. | Keep as first candidate to falsify; do not implement yet. |
-| **B. Co-evolution of recovery policies and failure curricula** | Makes EC central in two interacting populations: (i) policies that recover, (ii) valid, solvable task/fault scenarios that expose weaknesses. Could target generalization to unseen combinations of semantic corruption, transient/permanent faults and task topology. | Adversarial environment design, automatic curricula and open-ended evolution have substantial prior art (e.g. POET, PAIRED, ACCEL). A generator can exploit the policy or create invalid/impossible tasks. Need compare against random curriculum, fixed curriculum, policy-only EA, and existing environment-design methods; task validity and difficulty must be independently checked. | Promote to a parallel literature audit, not a novelty claim. This alternative also reduces dependence on third-party benchmark task data if we author the generator from scratch. |
-| **C. Compositional generalization of skill/recovery programs** | Tests whether evolved primitives compose on unseen tool/skill combinations rather than memorizing whole tasks. | Direct overlap with skill composition, memory evolution, modular policy search and genetic programming; requires a precise compositional split and a distinct operator/representation contribution. | Keep as a fallback, but below A/B until the closest-work audit is complete. |
+| **B. Policy–failure-curriculum co-evolution** | Can adapt a recovery policy and the faults/tasks that reveal its blind spots. | **Generic formulation fails the novelty gate** after COvolve, Agent-World, SEAL, SENTINEL, and RLAnything. “Generate tasks from failures” and “co-evolve policy/environment” are already covered. | Downgrade. Retain only a narrower hypothesis: EA over typed recovery programs plus valid typed fault transformations, with held-out fault-semantics × DAG-topology generalization. See [COEVOLUTION_CANDIDATE_AUDIT.md](COEVOLUTION_CANDIDATE_AUDIT.md). |
+| **C. Compositional generalization of skill/recovery programs** | Tests whether evolved primitives compose on unseen tool/skill combinations rather than memorizing whole tasks. | Direct overlap with skill composition, memory evolution, modular policy search and genetic programming; requires a precise compositional split and a distinct operator/representation contribution. | Keep as a fallback pending the new audit. |\n| **D. Meta-evolution of the search mechanism** | Adapt which artifact/operator to evolve, when to trigger edits, and how to select or validate candidates. | The 2026 co-evolution survey calls meta-co-evolution early, but PromptBreeder, Gödel Agent, HyperAgents, RQGM, and classical AOS/self-adaptation are adjacent prior art. | Add to the literature audit; do not rank until the exact overlap and feasible algorithmic question are established. |
 
 ### Candidate paper chain if A/B survives the audit (illustrative only)
 
@@ -96,3 +96,21 @@ The recovery-policy candidate remains **the first candidate to falsify**, not th
 - **Paper 3 — Transfer and robustness:** test frozen policies on a distinct, clearly licensed external environment such as selected τ²-bench/BFCL tasks, with no evolution on final evaluation cases. This paper is optional and should be dropped if it merely reuses the same result or does not establish a separate claim.
 
 This is a decomposition hypothesis, not an approved 2–3 paper plan. Do not populate the thesis–paper map until the closest-work audit establishes independent, defensible claims. Evaluation-budget allocation remains secondary and is not promoted.
+
+
+## 7. Reassessment after co-evolution prior-art audit
+
+The generic Candidate B is now **downgraded**. The primary-source review found direct tool-agent/environment adaptation in Agent-World and SEAL, failure-driven executable task generation in SENTINEL, and LLM policy/environment adversarial co-evolution in COvolve. RLAnything broadens the overlap to environment–policy–reward joint optimization. See [COEVOLUTION_CANDIDATE_AUDIT.md](COEVOLUTION_CANDIDATE_AUDIT.md) and P52–P57 in the related-work matrix.
+
+The remaining narrow candidate is not “co-evolution” in general. It is the testable possibility that a *typed fault-program grammar* over valid task DAGs, jointly searched with an explicit executable recovery controller, produces better held-out **cross-combinations** of fault semantics and graph topology than:
+- policy-only EA;
+- failure-driven task generation / reflection;
+- an EVOTOOL-style policy evolution baseline;
+- a COvolve-style adversarial policy–environment baseline where reproducible;
+- fixed and random curricula.
+
+This distinction remains speculative. If its gains reduce to using more targeted tasks, a more expressive representation, or extra inference calls, it is not an EC contribution. The generator must be independently checked for solvability and must not expose hidden fault labels to the acting policy.
+
+The new Candidate D (meta-evolution of the search mechanism) is worth auditing because the survey identifies meta-co-evolution as an early area, but it overlaps with PromptBreeder, Gödel Agent, HyperAgents, RQGM, and mature adaptive operator selection. Do not rank D above A until those primary sources and implementations are checked.
+
+**Current research action:** complete G0 (mechanism-level differentiation) before any implementation. The thesis–paper map remains unpopulated.
