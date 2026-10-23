@@ -48,9 +48,11 @@ Do not infer publication acceptance from an arXiv page. Do not infer a limitatio
 | 2026-10-23 | Primary-source audit: Agent-World, SEAL, SENTINEL, COvolve, RLAnything, and co-evolution survey | Falsify generic policy–failure-curriculum co-evolution | Registered P52–P57 and added research/COEVOLUTION_CANDIDATE_AUDIT.md; generic co-evolution and failure-driven task generation are too crowded to claim as novel. |
 | 2026-10-23 | Primary-source audit: Promptbreeder, Gödel Agent, DGM, HyperAgents, RQGM, SIA, Meta-Harness, MetaBench-Harness, MoMHa | Test whether meta-evolution of the search mechanism is a distinct thesis direction | Registered P58–P65 and added research/META_EVOLUTION_CANDIDATE_AUDIT.md; generic self-improving optimizer, evaluator co-evolution, and harness/benchmark-generation search are already studied. |
 
+| 2026-10-23 | Primary-source audit: ResiliBench, Atomix, state-race guards, Harmony Harness, safety taxonomy, Vera | Search for a less generic agent-reliability problem with explicit state invariants and measurable outcomes | Registered P66–P71 and added research/TRANSACTIONAL_AGENT_ROBUSTNESS_CANDIDATE_AUDIT.md. Transaction-aware recovery-policy evolution is a candidate to test, not an approved novelty claim. |
+
 ## Preliminary registry
 
-The detailed paper list and comparison are maintained in [RELATED_WORK_MATRIX.md](RELATED_WORK_MATRIX.md). It now contains 65 core or closely related works across the first and second search passes. See [CAPABILITY_GAP_REVIEW.md](CAPABILITY_GAP_REVIEW.md) for second-pass synthesis and provisional candidate triage.
+The detailed paper list and comparison are maintained in [RELATED_WORK_MATRIX.md](RELATED_WORK_MATRIX.md). It now contains 71 core or closely related works across the first and second search passes. See [CAPABILITY_GAP_REVIEW.md](CAPABILITY_GAP_REVIEW.md) for second-pass synthesis and provisional candidate triage.
 
 ### Initial core reading order
 
