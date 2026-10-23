@@ -45,6 +45,8 @@ Do not infer publication acceptance from an arXiv page. Do not infer a limitatio
 | 2026-10-23 | Search: evolutionary algorithms for LLM agents, agent design/workflow search, prompt evolution, multi-agent evolution | Find direct EA + agent methods and current baselines | Found EvoAgent, AgentSquare, AFlow, EvoPrompt, EvoAgentX, ARTEMIS, GEPA, HFlow, MemEvolve and adjacent self-evolving agent work. |
 | 2026-10-23 | Search: agent optimization surveys and EC–MAS surveys | Build a field taxonomy and locate overlooked prior art | Found Du et al. (ACM Computing Surveys 2026) and Chen et al. (IEEE/CAA Journal of Automatica Sinica 2025). |
 | 2026-10-23 | Primary-source review: ICLR/ACL proceedings and arXiv full text | Inspect mechanisms, evaluation, and stated limitations | Read abstract/method/results portions of several core papers; full close-work audit remains incomplete. |
+| 2026-10-23 | Primary-source audit: Agent-World, SEAL, SENTINEL, COvolve, RLAnything, and co-evolution survey | Falsify generic policy–failure-curriculum co-evolution | Registered P52–P57 and added research/COEVOLUTION_CANDIDATE_AUDIT.md; generic co-evolution and failure-driven task generation are too crowded to claim as novel. |
+| 2026-10-23 | Primary-source audit: Promptbreeder, Gödel Agent, DGM, HyperAgents, RQGM, SIA, Meta-Harness, MetaBench-Harness, MoMHa | Test whether meta-evolution of the search mechanism is a distinct thesis direction | Registered P58–P65 and added research/META_EVOLUTION_CANDIDATE_AUDIT.md; generic self-improving optimizer, evaluator co-evolution, and harness/benchmark-generation search are already studied. |
 
 ## Preliminary registry
 
