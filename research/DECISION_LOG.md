@@ -139,3 +139,14 @@ Record consequential project decisions here so future sessions do not reopen set
 - **Required comparisons:** fixed curriculum, random curriculum, policy-only EA, curriculum-only search, policy–curriculum co-evolution, and a strong non-EA recovery/reflection baseline. Validate task solvability independently to prevent generator reward hacking.
 - **Implication:** Paper 1 (static EA over policy genotype) is a gate; Paper 2 (co-evolution) proceeds only if Paper 1 shows evolutionary capability gains; Paper 3 (external transfer) is optional and must establish an independent claim. Do not fill the thesis–paper map yet.
 - **Revisit when:** The policy-only and co-evolution prior-art audits identify a mechanism-level difference with a feasible evaluation design.
+
+
+## D-014 — Generic policy–environment co-evolution is not a novelty claim
+
+- **Date:** 2026-10-23
+- **Status:** Accepted
+- **Decision:** Downgrade Candidate B. Do not present “co-evolve a tool agent and failure curriculum” or “generate tasks from failures” as the thesis innovation.
+- **Evidence:** Primary-source audit in `research/COEVOLUTION_CANDIDATE_AUDIT.md`. COvolve (GECCO 2026) co-evolves LLM-generated executable policies and environments in a zero-sum game; Agent-World synthesizes tool/database environments and tasks and uses multi-environment RL with capability-gap-driven expansion; SEAL adapts a tool-use learning interface and policy updates from verifier-grounded failure diagnoses; SENTINEL generates executable tasks from failure patterns and trains with RL; RLAnything jointly adapts environment, policy, and reward. The 2026 co-evolution survey explicitly maps this landscape.
+- **Implication:** A narrower hypothesis may be tested: EA over typed executable recovery programs coupled to a constrained grammar of valid tool-fault transformations, targeting held-out combinations of fault semantics and task-DAG topology. This is not yet a novelty claim; domain shift alone is insufficient. Compare against EVOTOOL, reflection/replanning, policy-only EA, failure-driven task generation, and adversarial co-evolution.
+- **Alternative:** Add meta-evolution of the search mechanism to the literature audit because the survey describes it as an early area, while checking PromptBreeder, Gödel Agent, HyperAgents, RQGM, and classical adaptive operator selection.
+- **Revisit when:** The mechanism-level audit establishes a difference and a matched-budget experiment can falsify it.
