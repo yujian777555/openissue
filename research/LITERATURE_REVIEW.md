@@ -35,7 +35,8 @@ Do not infer publication acceptance from an arXiv page. Do not infer a limitatio
 
 ## Search log
 
-| 2026-10-23 | ToolMaze benchmark audit and recovery-policy experiment protocol | Identify a controlled fault-injection testbed and prevent premature novelty claims | Added P45–P47 and research/EC_PARAMETER_CONTROL_EXPERIMENT_PROTOCOL.md; candidate remains provisional. |\n| 2026-10-23 | EC parameter-control audit: EVOTOOL official implementation, LLaMEA-HPO, Code World Models for Parameter Control, LLM mutation control, classical parameter-control literature, evolutionary recovery controllers | Separate policy evolution from EA parameter tuning/control and determine necessary baselines | Added research/EC_ROLE_AND_PARAMETER_CONTROL.md; generic parameter tuning is not accepted as a sole contribution. |
+| 2026-10-23 | ToolMaze benchmark audit and recovery-policy experiment protocol | Identify a controlled fault-injection testbed and prevent premature novelty claims | Added P45–P47 and research/EC_PARAMETER_CONTROL_EXPERIMENT_PROTOCOL.md; candidate remains provisional. |
+| 2026-10-23 | EC parameter-control audit: EVOTOOL official implementation, LLaMEA-HPO, Code World Models for Parameter Control, LLM mutation control, classical parameter-control literature, evolutionary recovery controllers | Separate policy evolution from EA parameter tuning/control and determine necessary baselines | Added research/EC_ROLE_AND_PARAMETER_CONTROL.md; generic parameter tuning is not accepted as a sole contribution. |
 
 | 2026-10-23 | Second-pass primary-source search: recent EA-agent evolution, tool-use policy, skills, memory, planning, open-world generalization, continual learning | Identify direct overlaps and concrete capability failure evidence | Registered 22 additional core/adjacent works in RELATED_WORK_MATRIX.md; all candidate gaps remain provisional. |
 
