@@ -167,6 +167,28 @@ For an LLM-mutated policy, a nominal mutation rate is ambiguous unless the reali
 
 See [COEVOLUTION_CANDIDATE_AUDIT.md](COEVOLUTION_CANDIDATE_AUDIT.md) for the full mechanism-level audit and falsification gates.
 
+## 11. Meta-evolution and search-mechanism evolution
+
+| ID | Paper / status | What evolves / adapts | Consequence for candidate triage |
+|---|---|---|---|
+| P58 | **Gödel Agent: A Self-Referential Agent Framework for Recursive Self-Improvement** — Yin et al., ACL 2025. [Paper](https://arxiv.org/abs/2410.04444) | Can inspect and modify its own runtime code, including the routines responsible for analyzing and modifying itself. | Generic recursive self-modification of an agent and its improvement routine is already studied. |
+| P59 | **Darwin Gödel Machine: Open-Ended Evolution of Self-Improving Agents** — Zhang et al., ICLR 2026. [Paper](https://proceedings.iclr.cc/paper_files/paper/2026/hash/aa5f5e6eb6f613ec412f1d948dfa21a5-Abstract-Conference.html) · [arXiv](https://arxiv.org/abs/2505.22954) | Evolves a growing archive of code-modified agents; empirically evaluates variants and samples archive members for continued open-ended search. | Open-ended evolutionary self-improvement of agent code is directly established. Archive-based self-modification alone is not a gap. |
+| P60 | **HyperAgents** — Zhang et al., arXiv 2026. [Paper](https://arxiv.org/abs/2603.19461) | Unifies task agent and meta-agent in an editable program; the procedure that modifies future agents is itself editable. | Direct overlap with self-referential evolution of the improvement mechanism. |
+| P61 | **The Red Queen Gödel Machine: Co-Evolving Agents and Their Evaluators** — Iacob et al., arXiv 2026. [Paper](https://arxiv.org/abs/2606.26294) | Co-evolves task agents and learned evaluators under non-stationary utilities; evaluator replacements can alter the search curriculum and reduce dependence on a fixed objective. | Direct overlap for evolving fitness/evaluators and adapting selection criteria. Any proposal must address evaluator exploitation and maintain independent anchors. |
+| P62 | **SIA: Self Improving AI with Harness & Weight Updates** — Hebbar et al., arXiv 2026. [Paper](https://arxiv.org/abs/2605.27276) | A feedback agent chooses between editing the task-specific harness and updating model weights via RL, interleaving both actions. | “Learn which component to update” is already studied in an adjacent non-EA framework; a distinct EC mechanism and matched baseline are required. |
+| P63 | **Meta-Harness: End-to-End Optimization of Model Harnesses** — Lee et al., COLM 2026. [Paper](https://arxiv.org/abs/2603.28052) · [Code](https://github.com/stanford-iris-lab/meta-harness) | Agentic outer-loop search over harness source code using the history of candidate code, execution traces, and evaluation scores. | Generic harness-code search and access to rich history are established; a new code representation or proposer alone is insufficient. |
+| P64 | **MetaBench-Harness: Unlocking End-to-End Optimization of Benchmark Harnesses** — Chen et al., arXiv preprint, 2026-09-27. [Paper](https://arxiv.org/abs/2609.33411) | Outer meta-harness iteratively refines the benchmark-generation workflow while an inner loop generates and evaluates new benchmark instances. | Direct overlap with evolving task/benchmark generation machinery; a generator-evolution claim needs a specific distinction and external validation. |
+| P65 | **MoMHa: Multi-Objective Optimization of LLM Harnesses over Accuracy, Safety, and Tokens** — Mukherjee & Tanjim, arXiv preprint, 2026-09-25. [Paper](https://arxiv.org/abs/2609.30967) | Optimizes harnesses over accuracy, behavioral safety, and token use using a multi-objective/combined-reward approach. | Multi-objective harness optimization is active; a simple Pareto or multi-objective extension is not sufficient novelty. |
+
+### Candidate decision after meta-evolution audit
+
+- **Generic meta-evolution / self-improving optimizer:** not approved as a novelty claim. Promptbreeder (P11), Gödel Agent, DGM, and HyperAgents already evolve prompts, code, or the improvement procedure.
+- **Evolving evaluation criteria:** high overlap with RQGM; benchmark-generation workflow evolution overlaps with MetaBench-Harness.
+- **Choosing what to update:** adjacent work includes SIA, Meta-Harness, and mature adaptive operator selection.
+- **Remaining hypothesis:** a transferable controller that chooses among typed policy-edit/structural operators using out-of-sample operator-impact evidence could be investigated, but it must beat classical AOS and the closest self-modification/harness systems under matched budgets. This is not yet a validated gap.
+
+See [META_EVOLUTION_CANDIDATE_AUDIT.md](META_EVOLUTION_CANDIDATE_AUDIT.md) for the primary-source comparison and falsification tests.
+
 ### Revised parameter-control interpretation
 
 The relevant layers are: (1) the Agent policy genes being evolved, (2) the EA's meta-parameters and online operator controller, and (3) task/environment/evaluation settings. LLaMEA-HPO primarily separates algorithm-structure generation from numeric tuning of the generated heuristic; CWM parameter control models a classical optimizer's mutation-strength dynamics; neither alone demonstrates that adaptive control helps an LLM Agent policy EA. The next experiment should first show that a static EA over a meaningful policy representation improves capability, then test whether parameter control adds a gain beyond a strong static HPO configuration.
