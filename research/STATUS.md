@@ -1,7 +1,7 @@
 # Current Project Status
 
 **Last updated:** 2026-10-23  
-**Stage:** 1 — first-pass literature mapping; reconsidering the problem focus  
+**Stage:** 2 — second-pass literature triage; mechanism-level audit pending  
 **Overall status:** OPEN; topic not selected  
 **Source of truth:** this repository
 
@@ -31,6 +31,11 @@ Prepare a defensible graduate thesis proposal on evolutionary computation applie
 
 ## Research completed so far
 
+- Second-pass search expanded the related-work matrix from 15 to 37 core or adjacent papers/works, including 2026 work on tool-policy evolution, multi-agent evolution, skills, memory, planning, open-world shifts, and continual adaptation.
+- Added research/CAPABILITY_GAP_REVIEW.md with field-crowding evidence, a provisional candidate comparison, and an explicit falsification plan.
+- Found direct overlap for failure attribution (EVOTOOL/EvoMAS/HarnessEvolve), group/open-ended evolution (GEA/CORAL/EvE), skill and memory evolution (CoEvoSkills/Mem²Evolve/SkillComposer/ReMe/MCMA/MemEvolve), and planning (EvoPlan/APB/EvA/QD planning).
+- No candidate is approved. The first candidate to audit is state-contingent recovery from unseen tool/environment failures, but it has significant overlap risk and must be rejected if it reduces to a small variant of EVOTOOL or existing recovery/planning methods.
+
 - Initialized project charter, literature protocol, thesis–paper map, decision log, and session handoff.
 - Performed a first-pass search across recent agent/EA papers and surveys.
 - Registered a preliminary matrix of 15 papers or closely related works in research/RELATED_WORK_MATRIX.md.
@@ -51,13 +56,13 @@ The user considers finite-budget evaluation efficiency insufficiently compelling
 
 ## Next actions (ordered)
 
-1. Deep-audit the current core papers (AgentSquare, AFlow, GEPA, ARTEMIS, HFlow, MemEvolve) to understand what capabilities and mechanisms they already improve—not just their evaluation costs.
-2. Extract concrete agent failure modes and limitations from papers, supplements, benchmarks, and official code.
-3. Broaden the search to evolutionary computation methods that improve substantive agent behavior/capability (e.g. planning, tool use, long-horizon reliability, adaptation/generalization, coordination, credit assignment, or other evidence-backed areas); do not preselect among these categories.
-4. For each candidate problem, identify the strongest borrowable baseline and a specific improvement hypothesis; compare it against the closest work and traditional EC literature.
-5. Rank candidate research questions by importance, novelty potential, methodological depth, feasibility, and ability to support 2–3 connected but independently defensible papers.
-6. Select a provisional umbrella problem only after this comparison.
-7. Draft the proposal: background, problem, related work, research questions, proposed method, innovation points, experiments, schedule, risks, and expected outcomes.
+1. Deep-read EVOTOOL, EvoMAS, EvA, HarnessEvolve, APB, and the 2026 quality-diversity planning paper; record representation, failure signals, recovery behavior, evolutionary unit, and generalization protocol.
+2. Read CostBench and OpenAgent to separate planning errors, tool failures, infeasible tasks, and distribution shifts.
+3. Inspect official code for the closest methods where available; verify what can actually be reproduced.
+4. Search traditional evolutionary robotics, genetic programming for reactive policies, program synthesis, dynamic optimization, and adversarial/curriculum co-evolution.
+5. Try to falsify the leading candidate (state-contingent recovery from unseen failures) against EVOTOOL and other baselines; if overlap is too high, compare compositional generalization and agent/environment co-evolution instead.
+6. Produce a mechanism-level overlap table and revised candidate ranking. Do not draft final innovation claims before this is done.
+7. Select a provisional umbrella problem only after the candidate survives the audit; then draft the proposal and 2–3 distinct paper plans.
 
 ## Definition of done for the next milestone
 
