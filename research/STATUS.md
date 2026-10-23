@@ -1,7 +1,7 @@
 # Current Project Status
 
 **Last updated:** 2026-10-23  
-**Stage:** 1 — first-pass literature mapping and close-work triage  
+**Stage:** 1 — first-pass literature mapping; reconsidering the problem focus  
 **Overall status:** OPEN; topic not selected  
 **Source of truth:** this repository
 
@@ -41,14 +41,22 @@ Prepare a defensible graduate thesis proposal on evolutionary computation applie
 
 This is a **first-pass map**, not a systematic review and not a novelty assessment. Some papers have been read at abstract/method/results level; not every paper, supplement, or codebase has been fully audited. Candidate research questions remain hypotheses. No innovation point is approved.
 
+## Latest scope adjustment (2026-10-23)
+
+The user considers finite-budget evaluation efficiency insufficiently compelling as the central thesis problem. Therefore:
+- Do **not** promote evaluation-budget allocation, noisy-fitness estimation, or survivor selection under limited evaluation budget as the default thesis direction.
+- Evaluation cost may remain a secondary constraint/metric when relevant, but must not drive topic selection merely because it is measurable.
+- Refocus the next search on important agent capability/behavior limitations where evolutionary computation could enable a substantive improvement, while remaining open to borrowing and improving existing methods.
+- Do not treat this scope adjustment as a rejection of all work on evaluation reliability; retain it as supporting background only if a stronger problem requires it.
+
 ## Next actions (ordered)
 
-1. Deep-audit AgentSquare, AFlow, GEPA, ARTEMIS, HFlow, and MemEvolve.
-2. Record their exact representations, operators, selection methods, fitness definitions, evaluation splits, budgets, and reported limitations.
-3. Inspect official code and reproducibility details for the strongest candidate baselines.
-4. Search the broader noisy-fitness EA, racing/statistical selection, surrogate-assisted EA, and uncertainty-calibration literature.
-5. Compare candidate research questions against the closest prior work and rank them by novelty, depth, feasibility, and ability to support 2–3 connected papers.
-6. Select a provisional umbrella problem only after this audit.
+1. Deep-audit the current core papers (AgentSquare, AFlow, GEPA, ARTEMIS, HFlow, MemEvolve) to understand what capabilities and mechanisms they already improve—not just their evaluation costs.
+2. Extract concrete agent failure modes and limitations from papers, supplements, benchmarks, and official code.
+3. Broaden the search to evolutionary computation methods that improve substantive agent behavior/capability (e.g. planning, tool use, long-horizon reliability, adaptation/generalization, coordination, credit assignment, or other evidence-backed areas); do not preselect among these categories.
+4. For each candidate problem, identify the strongest borrowable baseline and a specific improvement hypothesis; compare it against the closest work and traditional EC literature.
+5. Rank candidate research questions by importance, novelty potential, methodological depth, feasibility, and ability to support 2–3 connected but independently defensible papers.
+6. Select a provisional umbrella problem only after this comparison.
 7. Draft the proposal: background, problem, related work, research questions, proposed method, innovation points, experiments, schedule, risks, and expected outcomes.
 
 ## Definition of done for the next milestone
