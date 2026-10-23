@@ -54,3 +54,13 @@ Record consequential project decisions here so future sessions do not reopen set
 - **Rationale:** The user judges the finite-budget problem insufficiently compelling as the main research contribution. The thesis should target a meaningful Agent capability/behavior limitation and use evolutionary computation to improve it.
 - **Implication:** Continue literature review by extracting substantive failure modes and improvement opportunities from recent EA + Agent work, rather than defaulting to evaluation efficiency.
 - **Revisit when:** A concrete agent capability problem is supported by literature and shows a clear, feasible evolutionary-method contribution.
+
+
+## D-006 — 2026 literature requires capability-level and mechanism-level triage
+
+- **Date:** 2026-10-23
+- **Status:** Accepted as research procedure
+- **Decision:** Do not select a thesis topic from broad labels such as tool-use evolution, memory/skill evolution, planning evolution, multi-agent evolution, or generalization. The second-pass literature shows substantial recent overlap in all these areas.
+- **Evidence:** Second-pass sources registered in research/RELATED_WORK_MATRIX.md and synthesized in research/CAPABILITY_GAP_REVIEW.md, including EVOTOOL, EvoMAS, EvA, GEA, CORAL, CoEvoSkills, Mem²Evolve, HarnessEvolve, OpenAgent, ScaleEnv, APB, EvoPlan, and SkillComposer.
+- **Current audit candidate:** State-contingent recovery from unseen tool/environment failures, explicitly provisional and subject to rejection if too close to EVOTOOL, EvA, HarnessEvolve, APB, or quality-diversity planning.
+- **Revisit when:** Full-text and code-level comparisons identify a concrete unaddressed failure mode and a distinct evolutionary mechanism.
