@@ -37,7 +37,8 @@ Do not infer publication acceptance from an arXiv page. Do not infer a limitatio
 
 | Date | Source / query family | Purpose | Outcome / follow-up |
 |---|---|---|---|
-| 2026-10-23 | ToolMaze benchmark audit and recovery-policy experiment protocol | Identify a controlled fault-injection testbed and prevent premature novelty claims | Added P45–P47 and research/EC_PARAMETER_CONTROL_EXPERIMENT_PROTOCOL.md; candidate remains provisional. |
+| 2026-10-23 | ToolMaze benchmark version, metric, dataset-schema, and license audit | Determine whether the benchmark can support evolutionary recovery-policy experiments | Added research/TOOLMAZE_BENCHMARK_AUDIT.md. Current code intentionally uses hit-conditioned RC while paper/README use all-run RC; dataset split/license remain blockers. |
+| 2026-10-23 | APB (arXiv v3) and EvA (ACL 2026) primary-source audit | Strengthen non-EA planning/recovery baselines and identify adjacent adaptive-control methods | Registered P48–P49; APB-guided refinement and EvA abstraction/rollback are direct comparisons, not EA contributions. |
 | 2026-10-23 | EC parameter-control audit: EVOTOOL official implementation, LLaMEA-HPO, Code World Models for Parameter Control, LLM mutation control, classical parameter-control literature, evolutionary recovery controllers | Separate policy evolution from EA parameter tuning/control and determine necessary baselines | Added research/EC_ROLE_AND_PARAMETER_CONTROL.md; generic parameter tuning is not accepted as a sole contribution. |
 | 2026-10-23 | Second-pass primary-source search: recent EA-agent evolution, tool-use policy, skills, memory, planning, open-world generalization, continual learning | Identify direct overlaps and concrete capability failure evidence | Registered 22 additional core/adjacent works in RELATED_WORK_MATRIX.md; all candidate gaps remain provisional. |
 | 2026-10-23 | Search: evolutionary algorithms for LLM agents, agent design/workflow search, prompt evolution, multi-agent evolution | Find direct EA + agent methods and current baselines | Found EvoAgent, AgentSquare, AFlow, EvoPrompt, EvoAgentX, ARTEMIS, GEPA, HFlow, MemEvolve and adjacent self-evolving agent work. |
@@ -46,7 +47,7 @@ Do not infer publication acceptance from an arXiv page. Do not infer a limitatio
 
 ## Preliminary registry
 
-The detailed paper list and comparison are maintained in [RELATED_WORK_MATRIX.md](RELATED_WORK_MATRIX.md). It now contains 47 core or closely related works across the first and second search passes. See [CAPABILITY_GAP_REVIEW.md](CAPABILITY_GAP_REVIEW.md) for second-pass synthesis and provisional candidate triage.
+The detailed paper list and comparison are maintained in [RELATED_WORK_MATRIX.md](RELATED_WORK_MATRIX.md). It now contains 49 core or closely related works across the first and second search passes. See [CAPABILITY_GAP_REVIEW.md](CAPABILITY_GAP_REVIEW.md) for second-pass synthesis and provisional candidate triage.
 
 ### Initial core reading order
 
@@ -64,7 +65,7 @@ The detailed paper list and comparison are maintained in [RELATED_WORK_MATRIX.md
 
 ## EC role and parameter-control audit
 
-A staged experiment protocol is now recorded in [EC_PARAMETER_CONTROL_EXPERIMENT_PROTOCOL.md](EC_PARAMETER_CONTROL_EXPERIMENT_PROTOCOL.md). It proposes validating ToolMaze as a benchmark, first testing static EA over an interpretable recovery-policy representation, and only then testing adaptive parameter/operator control. It includes static HPO, classical AOS, self-adaptation, optional CWM-style control, and explicit stop criteria. A separate audit in [EC_ROLE_AND_PARAMETER_CONTROL.md](EC_ROLE_AND_PARAMETER_CONTROL.md) distinguishes (A) the Agent phenotype being evolved, (B) the evolutionary algorithm's own control parameters, and (C) task/environment/evaluation settings. EVOTOOL's official code shows the importance of mechanism-level ablations (mutation target, selection strategy, trajectory/feedback guidance). LLaMEA-HPO separates algorithm-structure evolution from numeric HPO; Code World Models and classical EC literature show that adaptive parameter control is itself established prior art. Therefore a numerical sweep of mutation rate/population size alone is not an adequate thesis contribution.
+A staged experiment protocol is now recorded in [EC_PARAMETER_CONTROL_EXPERIMENT_PROTOCOL.md](EC_PARAMETER_CONTROL_EXPERIMENT_PROTOCOL.md). It proposes validating a recovery benchmark first, then testing static EA over an interpretable recovery-policy representation, and only then testing adaptive parameter/operator control. ToolMaze is currently on hold as the primary benchmark pending metric-version, data-schema, and license checks; see TOOLMAZE_BENCHMARK_AUDIT.md. It includes static HPO, classical AOS, self-adaptation, optional CWM-style control, and explicit stop criteria. A separate audit in [EC_ROLE_AND_PARAMETER_CONTROL.md](EC_ROLE_AND_PARAMETER_CONTROL.md) distinguishes (A) the Agent phenotype being evolved, (B) the evolutionary algorithm's own control parameters, and (C) task/environment/evaluation settings. EVOTOOL's official code shows the importance of mechanism-level ablations (mutation target, selection strategy, trajectory/feedback guidance). LLaMEA-HPO separates algorithm-structure evolution from numeric HPO; Code World Models and classical EC literature show that adaptive parameter control is itself established prior art. Therefore a numerical sweep of mutation rate/population size alone is not an adequate thesis contribution.
 
 ## Current interpretation after second pass
 
