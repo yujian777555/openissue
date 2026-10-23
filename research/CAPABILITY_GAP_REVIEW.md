@@ -32,6 +32,10 @@ The candidate question is narrowed to a staged test, not a method claim:
 
 The policy-genotype proposal would encode observable conditions and recovery actions (retry, verify, reroute, backtrack/replan, or terminate/clarify), with typed mutation/crossover operations whose realized edits can be logged. This differs in representation from free-text module prompts, but representation alone is not a novelty claim. EVOTOOL already uses module-level blame and diversity-aware selection; HarnessEvolve already uses reference-trajectory alignment, error clustering, quality gates, and anti-forgetting gates; hierarchical QD has long studied diverse recovery repertoires. A distinct capability/mechanism and controlled evidence are still required.
 
+### ToolMaze metric implementation discrepancy
+
+The public paper and README define recovery cost so no-hit trajectories contribute zero to the mode-level mean, but the inspected `evaluation/core/metrics.py` filters to hit runs when calculating RC. A three-run toy case (no-hit RC=0, hit-fail RC=1, hit-success RC=0.2) yields 0.4 under the paper/README definition and 0.6 under the current hit-conditioned code. Thus the benchmark is only a candidate substrate until the metric version used for published results is established or both definitions are reported. The inspected code repository also did not expose a root LICENSE file and the dataset card did not expose a clear license field; confirm licensing before redistribution.
+
 A staged experimental protocol is recorded in [EC_PARAMETER_CONTROL_EXPERIMENT_PROTOCOL.md](EC_PARAMETER_CONTROL_EXPERIMENT_PROTOCOL.md). It separates policy genes, EA meta-parameters, online controller parameters, and environment/evaluation settings; proposes static HPO, classical adaptive operator selection, self-adaptation, and optional CWM-style control baselines; and includes falsification/stop criteria.
 
 ## 3. Provisional candidate ranking
