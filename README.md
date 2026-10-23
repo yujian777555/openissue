@@ -10,10 +10,11 @@ The goal is not to commit prematurely to a fashionable topic. The project will s
 2. Read [Current Status](research/STATUS.md) for the current stage and next actions.
 3. Read [Literature Review](research/LITERATURE_REVIEW.md) for the review protocol and paper registry.
 4. Read [Related-Work Matrix](research/RELATED_WORK_MATRIX.md) for the current paper comparison and overlap warnings.
-5. Read [Initial Research Memo](research/INITIAL_RESEARCH_MEMO.md) for first-pass findings and open questions.
-6. Read [Thesis–Paper Map](research/THESIS_PAPER_MAP.md) for how candidate contributions may map to papers.
-7. Read [Decision Log](research/DECISION_LOG.md) before revisiting previously assessed ideas.
-8. Use [Session Handoff](SESSION_HANDOFF.md) when starting a new ChatGPT conversation.
+5. Read [Capability-Gap Review](research/CAPABILITY_GAP_REVIEW.md) for second-pass 2026 literature and provisional candidate triage.
+6. Read [Initial Research Memo](research/INITIAL_RESEARCH_MEMO.md) for first-pass findings and open questions.
+7. Read [Thesis–Paper Map](research/THESIS_PAPER_MAP.md) for how candidate contributions may map to papers.
+8. Read [Decision Log](research/DECISION_LOG.md) before revisiting previously assessed ideas.
+9. Use [Session Handoff](SESSION_HANDOFF.md) when starting a new ChatGPT conversation.
 
 ## Non-negotiable research principles
 
@@ -38,4 +39,4 @@ The goal is not to commit prematurely to a fashionable topic. The project will s
 
 ## Current state
 
-The repository has been initialized and the first-pass literature map is recorded. **No thesis topic, algorithm, benchmark, or innovation point has been approved yet.** The next task is a deep audit of the closest methods, not premature topic selection.
+The first and second-pass literature maps are recorded, including a provisional capability-gap review. **No thesis topic, algorithm, benchmark, or innovation point has been approved yet.** The next task is a mechanism-level audit of the closest methods, not premature topic selection.
