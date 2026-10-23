@@ -39,6 +39,7 @@ Prepare a defensible graduate thesis proposal on evolutionary computation applie
 - ToolMaze adoption remains blocked: Hugging Face exposes one split named `train` rather than a documented optimization train/validation/test protocol, its viewer currently fails nested-schema inference, and neither the code tree nor dataset card exposes an explicit license. The new `research/TOOLMAZE_BENCHMARK_AUDIT.md` specifies split-leakage prevention, dual RC reporting, and the license gate.
 - Audited recent primary sources for Agent-World, SEAL, SENTINEL, COvolve, RLAnything, and the 2026 co-evolution survey. Generic agent–environment co-evolution and failure-driven task generation are too crowded to claim as novel. Added P52–P57 and `research/COEVOLUTION_CANDIDATE_AUDIT.md`; typed recovery-program EA plus valid fault-program search remains a speculative narrow hypothesis.
 - Audited Promptbreeder, Gödel Agent, Darwin Gödel Machine, HyperAgents, RQGM, SIA, Meta-Harness, MetaBench-Harness, and MoMHa. Generic meta-evolution, evaluator co-evolution, and harness/benchmark-generation search are also crowded. Added P58–P65 and `research/META_EVOLUTION_CANDIDATE_AUDIT.md`; only a narrow transferable search-controller question remains speculative.
+- Broadened the candidate search to transactional tool-agent reliability: partial side effects, state races, and irreversible actions. Added P66–P71 (ResiliBench, Atomix, semantic state-race guards, Harmony Harness, safety taxonomy, Vera) and `research/TRANSACTIONAL_AGENT_ROBUSTNESS_CANDIDATE_AUDIT.md`. Candidate E is now a bounded, transaction-aware recovery-controller EA under immutable hard safety contracts; it is a candidate to test, not a novelty claim.
 
 
 - Added research/EC_ROLE_AND_PARAMETER_CONTROL.md to separate Agent-policy evolution, evolutionary-algorithm parameter control, and task/environment/evaluation settings.
@@ -71,12 +72,13 @@ The user considers finite-budget evaluation efficiency insufficiently compelling
 
 ## Next actions (ordered)
 
-1. **Broaden the candidate search beyond the two crowded families** (generic recovery-policy evolution/co-evolution and generic meta-evolution). Compare less-crowded combinations across compositional transfer, multi-objective robustness, agent-component interaction, and evolutionary archive/diversity mechanisms. Do not turn a taxonomy label into a topic without a mechanism-level gap.
-2. For every candidate surviving the broader scan, identify 3–5 closest papers and inspect their primary methods/code. Rank by evidence-backed novelty, EC centrality, experiment feasibility, and graduate timeline; include a clear reject criterion.
-3. Keep the typed recovery-program/fault-program hypothesis and transferable search-controller hypothesis only as provisional baselines for comparison, not approved directions.
-4. Continue ToolMaze/APB code/data-rights and raw-loader checks only if the narrowed recovery question survives G0. If no controlled benchmark has suitable terms, design an independent DAG/fault generator; use τ²-bench/BFCL only as held-out external checks.
-5. Do not implement a full EA, run a large API experiment, or populate the thesis–paper map until one candidate passes the closest-work and feasibility gates.
-6. After the candidate ranking is evidence-backed, propose a coherent umbrella problem and 2–3 linked contributions; do not force three if only two survive.
+1. **Compare the three remaining narrow candidates** in one scorecard: (A) typed recovery-program evolution, (D) transferable search-controller learning, and (E) transaction-aware recovery-controller evolution. Generic co-evolution and generic meta-evolution are already downgraded.
+2. Prioritize Candidate E for a focused falsification audit because its safety contract and observable state transitions are concrete. Compare the proposed controller with Atomix + fixed rules, semantic-predicate guards, ResiliBench-style stochastic faults, Harmony Harness, and Vera-style deterministic verification. Do not assume EA is needed.
+3. Audit the code/data licenses and runnable interfaces of ResiliBench, Atomix, Harmony Harness, and Vera before planning a reproduction. If benchmark terms are unclear, author a small independent transactional tool simulator and use licensed external benchmarks only for held-out checks.
+4. Define an immutable safety contract and state oracle; test partial effects, duplicate calls, races, reversible/irreversible actions, and hidden-label leakage before any optimization.
+5. Only if fixed rules/runtime enforcement leave a measurable policy gap, compare random controller search, greedy edits, static EA, and the strongest reproducible harness-evolution baseline under matched model-call/rollout budgets.
+6. Require a better safe-completion/false-abort frontier and held-out race × reversibility × topology generalization. If not, reject Candidate E and return to the broader candidate ranking.
+7. Do not implement a full EA or populate the thesis–paper map until one candidate passes novelty, benchmark-rights, and feasibility gates.
 
 ## Definition of done for the next milestone
 
