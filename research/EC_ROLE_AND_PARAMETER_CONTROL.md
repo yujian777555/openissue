@@ -250,3 +250,10 @@ The first recovery candidate remains provisional, but the main testable question
 
 Do not approve this as a novelty claim yet. It must survive the full comparison with EVOTOOL, HarnessEvolve, ToolMaze, QD recovery, and classical AOS/self-adaptation.
 
+
+### ToolMaze implementation caveat discovered in the public code
+
+The paper's RC definition averages the per-trajectory recovery penalty over all trajectories with an explicit perturbation indicator, and its README says no-hit runs contribute zero. However, the inspected `evaluation/core/metrics.py` implementation excludes no-hit runs from `compute_rc`'s denominator by filtering for `r["hit"]`. This is a concrete paper/README/code discrepancy that may change the reported RC. Before adopting the benchmark, build a three-case synthetic fixture (no-hit, hit-and-fail, hit-and-success), calculate both formulas, and determine which implementation generated the paper's results. Do not use RC comparisons until this is resolved or both variants are reported. See https://arxiv.org/html/2606.05806v1 and https://github.com/Zhudongsheng75/ToolMaze/blob/main/evaluation/core/metrics.py.
+
+The inspected public GitHub tree did not expose a root LICENSE file and the Hugging Face dataset card did not expose a clear license field in its metadata. Confirm code/data licensing before redistributing modified copies or derived artifacts. This is a reproducibility check, not a legal conclusion.
+
