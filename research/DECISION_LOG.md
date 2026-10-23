@@ -36,3 +36,12 @@ Record consequential project decisions here so future sessions do not reopen set
 - **Decision:** Neither automatically exclude nor automatically select RSI / recursive self-improvement.
 - **Rationale:** Its suitability depends on current prior art, objective evaluation, reproducibility, cost, and whether a specific tractable problem exists.
 - **Revisit when:** Relevant recent papers and evaluation methods have been reviewed.
+
+## D-004 — Broad EA + agent directions require narrow differentiation
+
+- **Date:** 2026-10-23
+- **Status:** Provisional evidence-based warning
+- **Decision:** Do not use generic prompt evolution, modular agent search, multi-agent generation, workflow evolution, whole-agent configuration tuning, memory evolution, or cost-aware optimization as a thesis innovation claim without a precise mechanism-level distinction.
+- **Evidence:** First-pass review of EvoPrompt, AgentSquare, EvoAgent, AFlow, EvoAgentX, GEPA, ARTEMIS, HFlow, and MemEvolve. See research/RELATED_WORK_MATRIX.md and research/INITIAL_RESEARCH_MEMO.md.
+- **Caveat:** This is not a rejection of those areas. A specific, meaningful improvement may still be possible after deeper comparison.
+- **Revisit when:** Close-work audits and broader EA literature review are complete.
