@@ -95,13 +95,13 @@ ToolMaze is an evaluation substrate, not an evolutionary-computation contributio
 
 - **EVOTOOL (ACL 2026):** already evolves modular tool-use prompts with trajectory-grounded blame attribution, targeted mutation, and diversity-aware selection. It is the closest EA-based baseline for failure-focused tool policy evolution.
 - **EvA / Evolving Agents (ACL 2026):** uses quasi-symbolic abstractions, a Perceptor/Actor/Controller arrangement, and rollback to adapt under mid-episode distribution shifts. The abstract does not establish that it is a conventional population-based EA; treat it as an adjacent adaptive-controller baseline, not mislabel it as an EA.
-- **Agent Planning Benchmark (APB, arXiv v3 revised 2026-10-05):** 4,209 cases across 22 domains, including broken tools and unsolvable tasks; the paper also reports APB-guided refinement on ToolSandbox and τ²-bench. It is a potential external evaluation / non-EA refinement baseline, subject to its own code/data/license audit.
+- **Agent Planning Benchmark (APB, arXiv v3 revised 2026-10-05):** 4,209 cases across 22 domains, including broken tools and unsolvable tasks; the paper reports APB-guided refinement on ToolSandbox and τ²-bench. It is a useful non-EA refinement baseline conceptually, but **not a license-cleared fallback**: the inspected GitHub tree has no LICENSE file, the HF card declares no explicit license, and the HF viewer fails a schema/column-casting step. The six named task-category files are not a documented train/validation/test split for policy evolution. Audit data rights and raw JSONL loading before considering it.
 - **HarnessEvolve:** reference-trajectory alignment, failure clustering, and acceptance gates already cover broad claims about generic failure attribution and reliable self-evolution.
 - **Hierarchical quality-diversity recovery:** diverse repertoires and experience-guided selection for unexpected physical damage predate LLM agents. “Diversity enables recovery” is not a sufficient novelty claim.
 
 ## 7. Gate decision
 
-**Current decision: HOLD ToolMaze as the primary benchmark.** Do not start the proposed baseline run yet. First resolve the code/data terms and validate a raw dataset sample/schema. In parallel, continue the closest-work comparison and inspect APB's license/data interface as a possible external benchmark. If no suitable benchmark has clear use terms, design a small independent controlled environment instead of relying on unclear redistribution rights.
+**Current decision: HOLD ToolMaze as the primary benchmark.** Do not start the proposed baseline run yet. First resolve the code/data terms and validate a raw dataset sample/schema. APB is not yet a cleared fallback either: its inspected code tree and dataset card lack explicit license metadata, and its HF viewer currently fails. In parallel, continue the closest-work comparison and seek a benchmark with explicit use terms or design an independent task generator. If no suitable benchmark has clear use terms, design a small independent controlled environment instead of relying on unclear redistribution rights.
 
 The provisional scientific question remains falsifiable:
 
