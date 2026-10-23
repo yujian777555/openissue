@@ -70,7 +70,7 @@ The user considers finite-budget evaluation efficiency insufficiently compelling
 ## Next actions (ordered)
 
 1. Close the ToolMaze adoption gate: seek explicit code/data license clarification and validate raw JSON/schema. The RC difference is traced to an intentional 2026-10-20 code change; the paper/README remain stale, so any experiment must report both RC definitions and exposure rate.
-2. Finish mechanism-level comparison of EVOTOOL, HarnessEvolve, EvA, APB-guided refinement, and fixed/reactive recovery controllers. Identify a specific capability gap rather than combining known ingredients.
+2. Finish mechanism-level comparison of EVOTOOL, HarnessEvolve, EvA, APB-guided refinement, and fixed/reactive recovery controllers. In parallel, audit **policy–failure-curriculum co-evolution** against POET, PAIRED, ACCEL, and other automatic environment-design methods.
 3. Audit APB data/code terms and raw JSONL loading. In parallel, assess τ²-bench (MIT) and BFCL V4 (Apache-2.0) as auxiliary external tests. If neither ToolMaze nor APB has suitable terms, build an independent controlled DAG/fault generator and reserve public benchmark tasks for held-out external checks.
 4. Only after the benchmark and novelty gates pass, define the recovery-policy genotype/DSL and unit-test validity, behavioral difference, and hidden-label leakage guards.
 5. Compare fixed rules, direct reflection/replanning, random structured mutation, greedy one-child mutation, and a static population EA under matched evaluation conditions.
