@@ -14,7 +14,7 @@ The immediate priority is the thesis proposal/opening report. The target is a co
 
 ### Mandatory first steps
 
-1. Read README.md, research/PROJECT_CHARTER.md, research/STATUS.md, research/LITERATURE_REVIEW.md, research/RELATED_WORK_MATRIX.md, research/CAPABILITY_GAP_REVIEW.md, research/EC_ROLE_AND_PARAMETER_CONTROL.md, research/EC_PARAMETER_CONTROL_EXPERIMENT_PROTOCOL.md, research/INITIAL_RESEARCH_MEMO.md, research/THESIS_PAPER_MAP.md, and research/DECISION_LOG.md.
+1. Read README.md, research/PROJECT_CHARTER.md, research/STATUS.md, research/LITERATURE_REVIEW.md, research/RELATED_WORK_MATRIX.md, research/CAPABILITY_GAP_REVIEW.md, research/EC_ROLE_AND_PARAMETER_CONTROL.md, research/EC_PARAMETER_CONTROL_EXPERIMENT_PROTOCOL.md, research/TOOLMAZE_BENCHMARK_AUDIT.md, research/INITIAL_RESEARCH_MEMO.md, research/THESIS_PAPER_MAP.md, and research/DECISION_LOG.md.
 2. Check recent commits and any new issues/files before acting.
 3. Treat repository contents as the current project state. Do not import ideas, results, assumptions, or conclusions from unrelated projects or previous conversations.
 4. Report the exact current stage, verified decisions, open questions, and next concrete action before making major recommendations.
@@ -29,7 +29,8 @@ The immediate priority is the thesis proposal/opening report. The target is a co
 - Do not declare novelty without a closest-work comparison.
 - Do not assume RSI is either forbidden or required; evaluate it using evidence and project constraints.
 - Keep evolutionary computation central to the contribution: define the Agent phenotype/genotype, representation, variation operators, selection/replacement, fitness, and EC-specific causal ablations.
-- Use research/EC_PARAMETER_CONTROL_EXPERIMENT_PROTOCOL.md as a proposed test plan, not an approved method. Validate ToolMaze and a static EA over a structured recovery-policy genotype first; only then test adaptive parameter/operator control.\n- Explicitly separate Agent-policy evolution from the EA's own parameter control and from task/environment/evaluation settings. Do not treat tuning population size or mutation rate alone as the innovation; compare classical adaptive/self-adaptive parameter control, LLaMEA-HPO, Code World Models for Parameter Control, and LLM mutation-control work.
+- Use research/EC_PARAMETER_CONTROL_EXPERIMENT_PROTOCOL.md as a proposed test plan, not an approved method. Validate ToolMaze and a static EA over a structured recovery-policy genotype first; only then test adaptive parameter/operator control.
+- Explicitly separate Agent-policy evolution from the EA's own parameter control and from task/environment/evaluation settings. Do not treat tuning population size or mutation rate alone as the innovation; compare classical adaptive/self-adaptive parameter control, LLaMEA-HPO, Code World Models for Parameter Control, and LLM mutation-control work.
 - Separate verified facts, author claims, interpretations, and hypotheses.
 - Design falsifiable research questions, strong baselines, ablations, held-out generalization tests, and realistic cost estimates.
 - Avoid combining unrelated tricks or forcing three contributions if the evidence does not support them.
