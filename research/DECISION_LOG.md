@@ -96,3 +96,14 @@ Record consequential project decisions here so future sessions do not reopen set
 - **Evidence:** The paper defines mode-level RC with an exposure indicator, and the README says no-hit runs contribute zero. The inspected current public `evaluation/core/metrics.py` computes RC over hit runs only, excluding no-hit cases from the denominator. For an illustrative three-run case (no-hit = 0, hit-fail = 1, hit-success = 0.2), the paper/README definition gives 0.4 while the current hit-conditioned implementation gives 0.6. The inspected GitHub tree had no visible root LICENSE file and the Hugging Face dataset card did not expose a clear license field.
 - **Implication:** Create a synthetic metric fixture, determine which version produced published results, report both variants if unresolved, and confirm code/data terms before redistribution. Do not compare methods using the current RC implementation without disclosing this discrepancy.
 - **Revisit when:** The metric discrepancy and licensing are verified against an authoritative release or author clarification.
+
+
+## D-010 — ToolMaze metric version drift is intentional in code but documentation is stale
+
+- **Date:** 2026-10-23
+- **Status:** Accepted
+- **Decision:** Do not describe the RC difference as an accidental code bug. Pin the code version and report both definitions if ToolMaze is used.
+- **Evidence:** Current official code HEAD `f8620d841b67a72ac921caee9df87af6ab9befbb` (2026-10-20) explicitly says it changed RC from all-sample to exposure-conditioned; no-hit runs are `rc=None` and excluded from the denominator. The paper's Eq. (4) and README still say no-hit runs contribute zero. For per-run penalties [0, 1, 0.2], all-run RC is 0.4 and hit-conditioned RC is 0.6; exposure rate is 2/3.
+- **Additional blockers:** The HF dataset page exposes one split named `train`, not a documented train/validation/test split; its viewer fails nested-schema inference; no root code LICENSE or explicit dataset-card license was found in inspected sources.
+- **Implication:** ToolMaze is on hold as the primary benchmark. If later adopted, pin source/data revisions, validate raw JSON schema, group all perturbation variants by base task/template, report both RC definitions plus exposure rate, and confirm code/data terms before redistribution. APB is a possible external benchmark, but its own license and data interface must be audited.
+- **Revisit when:** License terms are confirmed and the dataset/schema is validated, or a clearly licensed alternative benchmark is selected.
