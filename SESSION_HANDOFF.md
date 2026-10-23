@@ -14,7 +14,7 @@ The immediate priority is the thesis proposal/opening report. The target is a co
 
 ### Mandatory first steps
 
-1. Read README.md, research/PROJECT_CHARTER.md, research/STATUS.md, research/LITERATURE_REVIEW.md, research/RELATED_WORK_MATRIX.md, research/INITIAL_RESEARCH_MEMO.md, research/THESIS_PAPER_MAP.md, and research/DECISION_LOG.md.
+1. Read README.md, research/PROJECT_CHARTER.md, research/STATUS.md, research/LITERATURE_REVIEW.md, research/RELATED_WORK_MATRIX.md, research/CAPABILITY_GAP_REVIEW.md, research/INITIAL_RESEARCH_MEMO.md, research/THESIS_PAPER_MAP.md, and research/DECISION_LOG.md.
 2. Check recent commits and any new issues/files before acting.
 3. Treat repository contents as the current project state. Do not import ideas, results, assumptions, or conclusions from unrelated projects or previous conversations.
 4. Report the exact current stage, verified decisions, open questions, and next concrete action before making major recommendations.
@@ -32,6 +32,8 @@ The immediate priority is the thesis proposal/opening report. The target is a co
 - Separate verified facts, author claims, interpretations, and hypotheses.
 - Design falsifiable research questions, strong baselines, ablations, held-out generalization tests, and realistic cost estimates.
 - Avoid combining unrelated tricks or forcing three contributions if the evidence does not support them.
+- Do not center the thesis on finite-budget evaluation efficiency; the user considers that insufficiently compelling. Treat cost as a secondary metric only.
+- The current first candidate to falsify is state-contingent recovery from unseen tool/environment failures; see research/CAPABILITY_GAP_REVIEW.md. It is not an approved topic and must be rejected if it reduces to an incremental variation of EVOTOOL, EvA, HarnessEvolve, APB, or existing QD planning.
 
 ### Expected workflow
 
