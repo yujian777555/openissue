@@ -66,3 +66,12 @@ For every candidate contribution, require:
 Deeply audit the six closest papers listed in research/RELATED_WORK_MATRIX.md. Record their exact representations, variation operators, selection criteria, fitness definitions, data splits, costs, and limitations. Then search the broader evolutionary-optimization literature for existing solutions to the most promising bottleneck.
 
 Only after that should we rank candidate umbrella problems and draft the proposal's 2–3 innovation points.
+
+
+## 6. Second-pass findings (2026-10-23)
+
+The 2026 literature is denser than the first pass suggested. EVOTOOL combines tool-policy modules, trajectory-grounded blame attribution, targeted mutation, and diversity-aware selection. EvoMAS evolves structured MAS configurations with trace feedback and cross-query memory. EvA studies reusable quasi-symbolic reasoning abstractions and mid-episode adaptation. GEA and CORAL cover group-based/open-ended multi-agent evolution and experience sharing. CoEvoSkills and Mem2Evolve cover skill/verifier co-evolution and capability-asset/experience co-evolution. HarnessEvolve targets credit assignment, shortcut learning, and catastrophic forgetting. SkillComposer, ReMe, MCMA, MAGNET, and MemEvolve cover memory/skill evolution and transfer. APB, EvoPlan, and a 2026 quality-diversity planning paper cover planning diagnosis, plan evolution, and behavior-diverse policy archives. OpenAgent and ScaleEnv address distribution shifts and environment diversity.
+
+Do not select a broad problem label like agent adaptation, skill evolution, tool-use improvement, or multi-agent evolution. A more specific candidate worth trying to falsify is **state-contingent recovery from unseen tool/environment failures**. It is important and testable, but overlap is substantial: EVOTOOL localizes and repairs tool-policy failures; EvA handles mid-episode shifts; HarnessEvolve gates updates for reliability; APB diagnoses broken-tool and infeasible-task behavior; the QD planning work uses stall detection, rollback, and policy switching. This candidate survives only if an explicit representation and evolutionary mechanism can be shown to solve a materially different problem.
+
+Compositional generalization and agent/environment co-evolution remain comparison candidates, not approved directions. The next work is a mechanism-level audit, code inspection, and comparison with traditional EC, evolutionary robotics, and genetic programming. Do not force three papers from an unvalidated idea.
