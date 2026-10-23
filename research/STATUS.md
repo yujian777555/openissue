@@ -49,7 +49,7 @@ Prepare a defensible graduate thesis proposal on evolutionary computation applie
 
 ## Evidence state and caveats
 
-This is a **first-pass map**, not a systematic review and not a novelty assessment. Some papers have been read at abstract/method/results level; not every paper, supplement, or codebase has been fully audited. Candidate research questions remain hypotheses. No innovation point is approved.
+This is a **multi-pass preliminary map**, not a completed systematic review or novelty assessment. Some papers have been read at abstract/method/results level; not every paper, supplement, or codebase has been fully audited. Candidate research questions remain hypotheses. No innovation point is approved.
 
 ## Latest scope adjustment (2026-10-23)
 
@@ -67,15 +67,6 @@ The user considers finite-budget evaluation efficiency insufficiently compelling
 4. Audit evolutionary robotics / genetic programming for recovery after unanticipated failures.
 5. Decide whether the strongest contribution should be a constrained Agent-policy representation, a new variation/selection mechanism, or a genuinely distinct parameter controller; reject generic parameter tuning as the sole contribution.
 6. Only then resume candidate ranking and thesis/paper decomposition.
-
-
-1. Deep-read EVOTOOL, EvoMAS, EvA, HarnessEvolve, APB, and the 2026 quality-diversity planning paper; record representation, failure signals, recovery behavior, evolutionary unit, and generalization protocol.
-2. Read CostBench and OpenAgent to separate planning errors, tool failures, infeasible tasks, and distribution shifts.
-3. Inspect official code for the closest methods where available; verify what can actually be reproduced.
-4. Search traditional evolutionary robotics, genetic programming for reactive policies, program synthesis, dynamic optimization, and adversarial/curriculum co-evolution.
-5. Try to falsify the leading candidate (state-contingent recovery from unseen failures) against EVOTOOL and other baselines; if overlap is too high, compare compositional generalization and agent/environment co-evolution instead.
-6. Produce a mechanism-level overlap table and revised candidate ranking. Do not draft final innovation claims before this is done.
-7. Select a provisional umbrella problem only after the candidate survives the audit; then draft the proposal and 2–3 distinct paper plans.
 
 ## Definition of done for the next milestone
 
