@@ -115,3 +115,22 @@ This distinction remains speculative. If its gains reduce to using more targeted
 The generic Candidate D (meta-evolution of the search mechanism) is now also downgraded after auditing Promptbreeder, Gödel Agent, DGM, HyperAgents, RQGM, SIA, Meta-Harness, MetaBench-Harness, and MoMHa. The survey’s “early-stage” label does not mean its submechanisms are absent. Only a narrow transferable search-controller question remains speculative; see [META_EVOLUTION_CANDIDATE_AUDIT.md](META_EVOLUTION_CANDIDATE_AUDIT.md).
 
 **Current research action:** complete G0 (mechanism-level differentiation) before any implementation. The thesis–paper map remains unpopulated.
+
+
+## 8. Transaction-aware recovery policy candidate (Candidate E)
+
+A third candidate is added after the second broadening pass: evolutionary synthesis of a bounded controller for **stateful tool workflows with partial effects, races, and irreversible actions**. The full audit is [TRANSACTIONAL_AGENT_ROBUSTNESS_CANDIDATE_AUDIT.md](TRANSACTIONAL_AGENT_ROBUSTNESS_CANDIDATE_AUDIT.md), with primary sources P66–P71.
+
+| Candidate | Potential strength | Closest overlap / failure condition | Current action |
+|---|---|---|---|
+| **E. Transaction-aware recovery-controller evolution** | Concrete high-impact capability; hard state invariants and deterministic environment-state verification permit objective measurement. Optimize safe completion vs false abort, not raw success alone. | Atomix already supplies a transaction-aware runtime; state-race guard work formalizes commit predicates; ResiliBench covers stochastic tool failures; Harmony Harness/MoMHa evolve harnesses over functionality and safety; Vera supplies executable safety cases. If a runtime guard plus fixed rules matches the EA, reject it. | Promote to candidate comparison only. Test the controller's incremental value over Atomix + fixed policies before claiming an EC contribution. |
+
+### Required experimental distinction
+
+- Keep the safety monitor/verifier immutable and outside the evolved genome; unsafe actions cannot be traded for higher task success.
+- Evolve only a bounded decision controller around transaction-aware tools: verify, refresh, safe/idempotent retry, checkpoint, compensate, request confirmation, replan, or abort.
+- Evaluate on controlled partial-effect, race, duplicate-call, and irreversible-action scenarios with explicit state invariants.
+- Compare against Atomix + fixed rules, conservative abort, semantic-predicate guards, direct reflection/replanning, and Harmony-Harness-style multi-objective evolution where reproducible.
+- Hold out combinations of race type × reversibility × task topology and report both unsafe attempts and false aborts. If only benchmark score improves without a better safe-completion frontier, reject the method.
+
+Candidate E may be more concrete than generic co-evolution/meta-evolution, but its novelty gate remains open. Do not select it until the exact method difference and feasible benchmark/implementation are verified.
