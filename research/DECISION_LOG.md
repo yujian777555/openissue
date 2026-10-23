@@ -161,3 +161,14 @@ Record consequential project decisions here so future sessions do not reopen set
 - **Implication:** Only a narrow transferable search-controller hypothesis remains: learn to choose among typed policy-edit/structural operators using out-of-sample operator-impact evidence, and prove transfer to held-out tasks against classical AOS and the closest self-modification systems. This is not yet a validated gap.
 - **Next action:** Broaden the candidate search to other underexplored intersections before selecting any thesis topic.
 - **Revisit when:** A mechanism-level distinction and feasible falsification plan are established.
+
+
+## D-016 — Test transaction-aware recovery control before choosing a thesis topic
+
+- **Date:** 2026-10-23
+- **Status:** Accepted as a candidate-screening procedure; topic remains unapproved
+- **Decision:** Add Candidate E: evolutionary synthesis of a bounded recovery controller around stateful transactional tools, under immutable safety contracts. Compare it with the policy-only recovery and transferable search-controller candidates before selecting the thesis topic.
+- **Rationale:** Recent primary sources establish a concrete, consequential problem: stochastic tool failures and flawed instructions (ResiliBench), partial/irreversible tool effects and transaction settlement (Atomix), state-race guard precision, and safety/functionality Pareto trade-offs in evolutionary harness search (Harmony Harness). This gives observable state invariants and deterministic evaluation signals.
+- **Closest-work warnings:** Atomix already provides a transaction-aware runtime; semantic state-race guards and Vera-style executable safety verification are direct baselines; Harmony Harness and MoMHa already evolve harnesses over functionality/safety/cost. The contribution cannot be “EA optimizes safety and success” or a new benchmark alone.
+- **Required gate:** Show that an evolved bounded controller improves the safe-completion/false-abort frontier over Atomix + fixed rules, conservative abort, semantic-predicate guards, reflection/replanning, and a reproducible harness-evolution baseline under matched budgets. Hard safety invariants must remain outside the evolved genome.
+- **Revisit when:** Code/data rights are verified and the first matched-budget pilot demonstrates or falsifies an EA-specific benefit.
