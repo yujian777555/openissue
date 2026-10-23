@@ -117,3 +117,13 @@ Record consequential project decisions here so future sessions do not reopen set
 - **Evidence:** The APB paper (arXiv v3, 2026-10-05) describes 4,209 cases across 22 domains, broken-tool/unsolvable settings, and APB-guided refinement evaluated on ToolSandbox and τ²-bench. The inspected APB code repository has no root LICENSE; the Hugging Face dataset card declares no explicit license and its viewer currently fails schema/column casting. The six dataset files are task categories, not a declared policy-search train/validation/test protocol.
 - **Implication:** Treat APB-guided refinement as a strong non-EA baseline conceptually, but audit code/data rights, raw JSONL loading, and leakage before use. If neither APB nor ToolMaze has suitable terms, build an independent controlled task generator or select a benchmark with clear use terms.
 - **Revisit when:** Dataset/code license and reproducibility checks are complete.
+
+
+## D-012 — Separate the controlled evolution environment from external evaluation
+
+- **Date:** 2026-10-23
+- **Status:** Accepted as a planning rule; benchmark choice remains open
+- **Decision:** Do not force ToolMaze or APB to serve as both the evolution/training environment and the final test set. Prefer a clearly licensed controlled environment for policy search; use frozen public benchmarks only as held-out external checks.
+- **Evidence:** ToolMaze and APB have unresolved code/data license metadata and current Hugging Face viewer/schema friction. τ²-bench's repository declares MIT and BFCL V4 code/dataset declare MIT/Apache-2.0 respectively, but neither supplies ToolMaze's exact controlled fault matrix. τ²-bench's public leaderboard trajectory files have a separate license question.
+- **Implication:** If permissions for ToolMaze/APB cannot be confirmed, build a small independent DAG/fault generator for training/development and reserve τ²-bench/BFCL categories for frozen external evaluation. The generator is infrastructure, not a claimed innovation. Pin benchmark versions and avoid evolving directly on final public test tasks.
+- **Revisit when:** Code/data terms are confirmed and the target recovery capability plus baselines are finalized.
