@@ -107,3 +107,13 @@ Record consequential project decisions here so future sessions do not reopen set
 - **Additional blockers:** The HF dataset page exposes one split named `train`, not a documented train/validation/test split; its viewer fails nested-schema inference; no root code LICENSE or explicit dataset-card license was found in inspected sources.
 - **Implication:** ToolMaze is on hold as the primary benchmark. If later adopted, pin source/data revisions, validate raw JSON schema, group all perturbation variants by base task/template, report both RC definitions plus exposure rate, and confirm code/data terms before redistribution. APB is a possible external benchmark, but its own license and data interface must be audited.
 - **Revisit when:** License terms are confirmed and the dataset/schema is validated, or a clearly licensed alternative benchmark is selected.
+
+
+## D-011 — APB is a useful baseline concept, not a license-cleared benchmark
+
+- **Date:** 2026-10-23
+- **Status:** Accepted
+- **Decision:** Keep APB in the prior-work and potential external-evaluation matrix, but do not treat it as a ready replacement for ToolMaze.
+- **Evidence:** The APB paper (arXiv v3, 2026-10-05) describes 4,209 cases across 22 domains, broken-tool/unsolvable settings, and APB-guided refinement evaluated on ToolSandbox and τ²-bench. The inspected APB code repository has no root LICENSE; the Hugging Face dataset card declares no explicit license and its viewer currently fails schema/column casting. The six dataset files are task categories, not a declared policy-search train/validation/test protocol.
+- **Implication:** Treat APB-guided refinement as a strong non-EA baseline conceptually, but audit code/data rights, raw JSONL loading, and leakage before use. If neither APB nor ToolMaze has suitable terms, build an independent controlled task generator or select a benchmark with clear use terms.
+- **Revisit when:** Dataset/code license and reproducibility checks are complete.
