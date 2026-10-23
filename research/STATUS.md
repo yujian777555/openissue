@@ -1,7 +1,7 @@
 # Current Project Status
 
 **Last updated:** 2026-10-23  
-**Stage:** 0 — project setup and research scoping  
+**Stage:** 1 — first-pass literature mapping and close-work triage  
 **Overall status:** OPEN; topic not selected  
 **Source of truth:** this repository
 
@@ -18,6 +18,7 @@ Prepare a defensible graduate thesis proposal on evolutionary computation applie
 - Related work may be borrowed and improved; novelty does not require being completely unrelated to prior work.
 - Existing work must be examined carefully before accepting or rejecting an idea.
 - This project must be resumable across new ChatGPT conversations using repository records.
+- Do not import candidate directions or conclusions from unrelated projects or previous conversations.
 
 ## Not yet decided
 
@@ -28,18 +29,26 @@ Prepare a defensible graduate thesis proposal on evolutionary computation applie
 - Which papers or codebases will be the primary baselines.
 - Final 2–3 innovation points and their mapping to papers.
 
-## Current evidence state
+## Research completed so far
 
-No literature survey has yet been completed in this repository. Do not present candidate directions as validated research gaps or claim novelty at this stage.
+- Initialized project charter, literature protocol, thesis–paper map, decision log, and session handoff.
+- Performed a first-pass search across recent agent/EA papers and surveys.
+- Registered a preliminary matrix of 15 papers or closely related works in research/RELATED_WORK_MATRIX.md.
+- Wrote research/INITIAL_RESEARCH_MEMO.md to capture what is already crowded and which candidate questions require deeper auditing.
+- Confirmed that broad claims about prompt evolution, multi-agent generation, modular agent search, workflow evolution, whole-agent configuration tuning, memory evolution, and cost-aware optimization have substantial prior art.
+
+## Evidence state and caveats
+
+This is a **first-pass map**, not a systematic review and not a novelty assessment. Some papers have been read at abstract/method/results level; not every paper, supplement, or codebase has been fully audited. Candidate research questions remain hypotheses. No innovation point is approved.
 
 ## Next actions (ordered)
 
-1. Build a recent-literature corpus on EA/EC + LLM agents, including relevant 2024–2026 papers and essential earlier foundations.
-2. Classify papers by evolved object, evolutionary mechanism, task/environment, evaluation, and maturity/reproducibility.
-3. Identify and read the closest papers in full; inspect code and supplements where available.
-4. Create a comparison matrix and record explicit overlap / differentiation for candidate ideas.
-5. Generate a shortlist of researchable problems; score each for novelty, feasibility, depth, and ability to support 2–3 connected papers.
-6. Select a provisional umbrella problem only after reviewing the evidence.
+1. Deep-audit AgentSquare, AFlow, GEPA, ARTEMIS, HFlow, and MemEvolve.
+2. Record their exact representations, operators, selection methods, fitness definitions, evaluation splits, budgets, and reported limitations.
+3. Inspect official code and reproducibility details for the strongest candidate baselines.
+4. Search the broader noisy-fitness EA, racing/statistical selection, surrogate-assisted EA, and uncertainty-calibration literature.
+5. Compare candidate research questions against the closest prior work and rank them by novelty, depth, feasibility, and ability to support 2–3 connected papers.
+6. Select a provisional umbrella problem only after this audit.
 7. Draft the proposal: background, problem, related work, research questions, proposed method, innovation points, experiments, schedule, risks, and expected outcomes.
 
 ## Definition of done for the next milestone
@@ -47,7 +56,7 @@ No literature survey has yet been completed in this repository. Do not present c
 The literature-scouting milestone is complete only when there is:
 - a cited and verifiable set of relevant papers;
 - a taxonomy and comparison matrix;
-- a small set of closest-work analyses;
+- deep analyses of the closest prior work;
 - a ranked shortlist with explicit uncertainty and reasons;
 - a recommended provisional direction with a falsifiable research question;
 - no unsupported claims that the direction is novel.
