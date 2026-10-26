@@ -229,3 +229,14 @@ Record consequential project decisions here so future sessions do not reopen set
 - **Evidence boundary:** The code-level parent fallback is verified, but the exact effect on the published executability metric remains unresolved. Do not claim that the metric is inflated.
 - **Implication:** Keep EvoMAS as a strong baseline/code-audit target, but broaden the thesis candidate search rather than turning a domain-specific reimplementation of known mating/surrogate mechanisms into an innovation claim.
 - **Next action:** Find a different, falsifiable Agent + EC method-improvement opportunity; require primary-source prior-art and data-feasibility gates before implementation.
+
+
+## D-022 — Communication evolution is a screening lane, not an approved candidate
+
+- **Date:** 2026-10-26
+- **Status:** Exploratory; no topic or innovation point approved
+- **Decision:** Screen whether evolutionary computation can materially improve communication-protocol transfer and monitorability across unseen or heterogeneous LLM agents, but do not claim novelty for generic protocol evolution, topology optimization, or message consolidation.
+- **Evidence:** The new research/COMMUNICATION_EVOLUTION_LANE_SCREEN.md registers P100–P104. CLSR (ICML 2026) already evolves and routes compact symbolic communication protocols; MOC (ICML 2026) optimizes multi-order message aggregation; GTD (ACL 2026) generates task-adaptive communication topologies with proxy-guided multi-objective rewards; GlossoGen provides a controlled language-evolution platform; the emergent-language survey covers zero-shot coordination and channel evolution.
+- **Feasibility caveats:** The code URL listed on the CLSR proceedings page currently returns 404 in the checked web view; MOC has a public implementation; GTD's code link is hosted on an anonymous 4open URL; GlossoGen has a public MIT-licensed repository. Runnable-code status, exact benchmark contracts, and reproducibility still require audit.
+- **Required gate:** Show a specific capability failure not already addressed by CLSR/GlossoGen and define an evolutionary representation/operator/selection mechanism that adds more than a new scenario or objective weight. Cost/token reduction may remain secondary, not the central thesis problem.
+- **Next action:** Audit the closest methods and determine whether a transfer/monitorability gap survives. If not, drop this lane and continue the broader search.
