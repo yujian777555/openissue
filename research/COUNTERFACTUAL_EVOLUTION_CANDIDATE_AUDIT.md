@@ -71,6 +71,42 @@ At least one of the following must be demonstrated, and it must survive direct a
 
 If the gains arise only because the method runs more rollouts, uses a stronger proposer, or gets access to hidden labels, reject it. Finite-budget efficiency is not the main contribution; budgets must nevertheless be matched to avoid confounding.
 
+## 4. A more precise mechanism hypothesis
+
+The generic version—use paired outcome deltas to update operator probabilities—is too close to ordinary adaptive operator selection. The only variant worth carrying to the next prior-art gate is **interventional operator-interaction-guided variation**.
+
+### Objects and estimands
+
+Let a policy genome be a typed recovery state machine with editable loci (conditions, transitions, actions, guards). Let (g) be a parent, (o_i) an edit operator applied to locus (i), and (z) a controlled task/fault-twin scenario. Let (Y(g,z)) be the outcome vector, measured from the external effect ledger and task oracle. Hard safety violations are a separate feasibility gate, not a score that can be traded against task success.
+
+For a single edit, estimate the paired effect:
+[
+\widehat{\tau}_{i}(z)=Y(g\oplus o_i,z)-Y(g,z).
+]
+
+For two candidate edits, evaluate the four matched variants (parent, edit i, edit j, both edits) and estimate the non-additive interaction:
+[
+\widehat{\kappa}_{ij}(z)=Y(g\oplus o_i\oplus o_j,z)-Y(g\oplus o_i,z)-Y(g\oplus o_j,z)+Y(g,z).
+]
+
+Estimate these quantities separately for success, false-abort rate, and duplicate/unsafe side effects across fault families and task topologies. The safety gate remains external: any candidate violating a hard invariant on the designated validation suite is infeasible regardless of its success score.
+
+### Search rule to test
+
+1. Run matched fault-twin evaluations for the parent and candidate edits. The acting policy never sees the intervention label.
+2. Build a policy-edit interaction graph: nodes are typed editable loci/operators; edges are retained only when the estimated interaction is stable across resamples and has a beneficial direction on preregistered outcomes.
+3. Use the graph to propose co-mutations of interacting loci; use a held-out validation split to select survivors. When no reliable interaction is found, fall back to a baseline mutation/selection rule rather than forcing linkage.
+4. Keep the interaction graph and operator rewards training-only. Evaluate on held-out combinations of fault semantics × task-DAG topology × tool-contract affordance.
+
+This is not yet an approved algorithm. The graph threshold, estimator uncertainty rule, multiobjective survivor selection, and transfer protocol must be preregistered. The method must be compared with ordinary paired-fitness AOS and classical linkage-learning GAs, not only with random mutation.
+
+### Why this may be more distinct—and why it may still fail
+
+- EVOTOOL attributes failures to policy modules and mutates the blamed module; it does not, in the reviewed method description, estimate factorial causal interaction effects between edits.
+- Causal Agent Replay estimates causal effects of trajectory-step interventions and Shapley contributions; it is not an evolutionary operator-linkage algorithm.
+- Classical AOS adapts operator probabilities from historical performance; linkage-learning GAs infer variable dependencies from the population. The proposed mechanism would need to show that controlled interventional interaction estimates add information not captured by either baseline.
+- If the graph is simply a noisy reward-correlation matrix, if paired differences alone explain all gains, or if standard linkage learning matches it, reject the candidate.
+
 ## 5. Minimum falsification plan
 
 | Gate | Required comparison | Stop condition |
