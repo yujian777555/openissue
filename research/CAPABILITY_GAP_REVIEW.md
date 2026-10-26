@@ -142,7 +142,7 @@ Candidate F is the next method-level hypothesis, documented in [COUNTERFACTUAL_E
 
 | Candidate | Potential method contribution | Direct overlap / stop condition | Current action |
 |---|---|---|---|
-| **F. Counterfactual-evidence-guided evolutionary search** | Estimate which policy substructures/operators causally change outcomes using controlled fault-twin interventions; use this signal to guide evolutionary edits and test transfer to held-out fault × topology combinations. | EVOTOOL already does blame-guided targeted mutation; Causal Agent Replay provides intervention-based causal attribution; Counterfactual Planning uses counterfactual rewards; classical adaptive operator selection is mature. If the method only concatenates those components or wins from extra rollouts, reject it. | Prioritize Gate F0: specify the exact estimator/update rule and compare mechanism-by-mechanism before implementation. No topic approved. |
+| **F. Interventional operator-interaction-guided evolution** | Estimate paired causal effects of typed policy edits and non-additive interactions between edit pairs; use a verified interaction graph to guide co-mutation and test held-out fault × topology generalization. | EVOTOOL does blame-guided targeted mutation; Causal Agent Replay estimates causal step attribution; Counterfactual Planning uses counterfactual rewards; classical AOS and linkage-learning GAs are mature. If interaction estimates reduce to reward correlation, or paired AOS/linkage learning matches it, reject it. | Provisional next hypothesis only. The exact estimand is now specified in [COUNTERFACTUAL_EVOLUTION_CANDIDATE_AUDIT.md](COUNTERFACTUAL_EVOLUTION_CANDIDATE_AUDIT.md); complete the closest-work gate before implementation. |
 
 ### Required Gate F0
 
