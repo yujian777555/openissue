@@ -73,8 +73,8 @@ The user considers finite-budget evaluation efficiency insufficiently compelling
 
 ## Next actions (ordered)
 
-1. **Close Gate F0 before implementation:** specify the exact counterfactual estimand, policy-edit/operator credit estimator, and operator-update rule in research/COUNTERFACTUAL_EVOLUTION_CANDIDATE_AUDIT.md.
-2. Compare the proposed mechanism against EVOTOOL's blame-guided targeted mutation, Causal Agent Replay's intervention-based attribution, Counterfactual Planning, and classical AOS/self-adaptation. Decide whether the method is more than a combination of known parts.
+1. **Close Gate F0 before implementation:** audit whether interventional operator-interaction-guided variation is distinct from EVOTOOL, Causal Agent Replay, Counterfactual Planning, classical AOS/self-adaptation, and linkage-learning GAs. The candidate audit now defines paired single-edit effects and factorial two-edit interaction estimates.
+2. Test whether the proposed interaction graph adds predictive value beyond ordinary paired-fitness AOS and standard linkage learning. If not, reject Candidate F as an incremental combination of known components.
 3. If F0 survives, design a small independent tool-fault simulator with hidden fault labels, an external state/effect oracle, paired fault twins, and held-out fault-semantics × task-topology combinations. Use Atomix as a licensed runtime baseline if integration is appropriate; do not use ResiliBench/Vera data until rights are clarified.
 4. Run no API-heavy experiment yet. First validate paired-world construction, hidden-label isolation, state invariants, and repeatable deterministic baselines.
 5. If a pilot is justified, compare fixed rules, simple paired-fitness selection, LLM blame, classical AOS, static EA, and the proposed causal-credit EA under matched model calls/rollouts.
