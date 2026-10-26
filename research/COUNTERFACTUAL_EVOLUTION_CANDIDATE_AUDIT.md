@@ -77,7 +77,7 @@ The generic version—use paired outcome deltas to update operator probabilities
 
 ### Objects and estimands
 
-Let a policy genome be a typed recovery state machine with editable loci (conditions, transitions, actions, guards). Let (g) be a parent, (o_i) an edit operator applied to locus (i), and (z) a controlled task/fault-twin scenario. Let (Y(g,z)) be the outcome vector, measured from the external effect ledger and task oracle. Hard safety violations are a separate feasibility gate, not a score that can be traded against task success.
+Let a policy genome be a typed recovery state machine with editable loci (conditions, transitions, actions, guards). Let \\(g\\) be a parent, \\(o_i\\) an edit operator applied to locus \\(i\\), and \\(z\\) a controlled task/fault-twin scenario. Let \\(Y(g,z)\\) be the outcome vector, measured from the external effect ledger and task oracle. Hard safety violations are a separate feasibility gate, not a score that can be traded against task success.
 
 For a single edit, estimate the paired effect:
 [
