@@ -44,11 +44,11 @@ The most recent candidate screened was **G: task-conditioned, lineage-aware pare
 
 ### Next concrete action
 
-1. Treat Candidate G's current formulation as **G0 NOT PASSED / DO NOT IMPLEMENT AS WRITTEN**; preserve the prior-art reasoning in `research/CANDIDATE_G_G0_REASSESSMENT.md`.
-2. Keep the EvoMAS fallback/executability issue as a code-level audit caveat. Do not claim the published execution rate is inflated until the paper's exact denominator and fallback incidence are independently verified.
-3. Screen the communication-evolution lane in `research/COMMUNICATION_EVOLUTION_LANE_SCREEN.md` as one possible next direction. The initial search found direct overlap from CLSR, MOC, GTD, and GlossoGen; audit whether any narrow transfer/monitorability failure remains outside prior work. This is not an approved candidate.
-4. For every new candidate, complete a closest-work comparison and data/benchmark feasibility gate before implementation or API experiments.
-5. Only after one core candidate survives, design the pilot and map connected thesis contributions; do not force three contributions prematurely.
+1. Keep Candidate G and Candidate H0 at **NOT PASSED / DO NOT IMPLEMENT AS WRITTEN**; keep Candidates E and F downgraded in their current formulations.
+2. Read research/COMMUNICATION_EVOLUTION_CANDIDATE_H_REASSESSMENT.md for the second-pass overlap audit. CLSR covers symbolic-protocol evolution and cross-model/domain transfer; GlossoGen covers newcomer-agent transmission and monitorability; CPE covers rollout-driven communication-policy evolution; GTD, MOC, and ProtocolBench cover topology generation, message consolidation, and protocol routing.
+3. Treat the live CLSR (pzqpzq/LSF_MDia) and CPE (xbmxb/GenUI) code URLs as currently unavailable through direct retrieval; cached search content is not proof of runnable code. Do not assume MOC/GTD reuse rights until verified.
+4. Broaden the search outside the current crowded lanes. Choose a strong, inspectable Agent+EC baseline with a concrete, code-verifiable limitation; propose an algorithm-level improvement and compare it with the closest paper and classical EC baselines.
+5. Do not start expensive API experiments or implementation until the novelty, method, benchmark, and license gates pass. No thesis topic or innovation point is approved.
 
 ### Expected workflow
 

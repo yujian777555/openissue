@@ -60,9 +60,11 @@ Do not infer publication acceptance from an arXiv page. Do not infer a limitatio
 
 | 2026-10-26 | Initial communication-evolution lane screen | Determine whether protocol transfer/monitorability offers a new Agent + EC mechanism after Candidate G failed G0 | Registered P100–P104 and added `research/COMMUNICATION_EVOLUTION_LANE_SCREEN.md`. CLSR directly evolves compact symbolic protocols; MOC covers multi-order message consolidation; GTD covers task-adaptive topology generation; GlossoGen studies controlled language emergence/transmission; the emergent-language survey covers zero-shot coordination. Generic protocol/topology evolution is crowded; no candidate approved. |
 
+| 2026-10-26 | Second-pass communication-evolution audit: CLSR full text, GlossoGen paper/platform, CPE (EMNLP 2026), GTD, MOC, ProtocolBench, LMAC, communication-alignment survey, human-like emergent language, and population-turnover studies | Test whether transfer to unseen/heterogeneous agents plus monitorability remains a distinct EC mechanism | Added P105–P112 and research/COMMUNICATION_EVOLUTION_CANDIDATE_H_REASSESSMENT.md. Candidate H0 did not pass as stated: the main axes are already covered across protocol evolution, newcomer transmission, communication-policy evolution, topology synthesis, message merging, and protocol routing. Live CLSR/CPE code retrieval and MOC/GTD reuse terms remain unresolved. |
+
 ## Preliminary registry
 
-The detailed paper list and comparison are maintained in [RELATED_WORK_MATRIX.md](RELATED_WORK_MATRIX.md). It contains indexed entries P01–P104, including repeated papers in candidate-specific audit sections; the unique-paper count has not yet been reconciled, so this is not yet a completed systematic-review corpus. See [CAPABILITY_GAP_REVIEW.md](CAPABILITY_GAP_REVIEW.md) for second-pass synthesis and provisional candidate triage.
+The detailed paper list and comparison are maintained in [RELATED_WORK_MATRIX.md](RELATED_WORK_MATRIX.md). It contains indexed entries P01–P112, including repeated papers in candidate-specific audit sections; the unique-paper count has not yet been reconciled, so this is not yet a completed systematic-review corpus. See [CAPABILITY_GAP_REVIEW.md](CAPABILITY_GAP_REVIEW.md) for second-pass synthesis and provisional candidate triage.
 
 ### Initial core reading order
 

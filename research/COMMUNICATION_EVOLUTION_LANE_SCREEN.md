@@ -1,7 +1,7 @@
 # Communication Evolution Lane — Initial Prior-Art Screen
 
 **Date:** 2026-10-26  
-**Status:** exploratory screening lane only; **not an approved thesis topic or innovation claim**.  
+**Status:** second-pass screened; Candidate H0 **did not pass as currently formulated**. The lane remains useful as related-work context, not an approved thesis topic or innovation claim.  
 **Project boundary:** All research records and project-state changes are maintained in yujian777555/openissue only.
 
 ## 1. Why this lane is being screened
@@ -96,3 +96,22 @@ Do not promote this lane to Candidate H if:
 - the only measurable gain is token reduction without a meaningful capability or robustness improvement.
 
 **Current decision:** continue a focused prior-art and feasibility audit of this lane as one option in the broader search. No implementation, benchmark adoption, thesis title, or innovation point is approved.
+
+
+## 6. Second-pass audit result (2026-10-26)
+
+The focused audit is recorded in COMMUNICATION_EVOLUTION_CANDIDATE_H_REASSESSMENT.md. The proposed question—evolve protocols that transfer to unseen/heterogeneous agents while preserving human monitorability—does **not** pass H0 as stated.
+
+Newly checked primary sources add important overlap:
+
+- **CLSR full text** (https://arxiv.org/abs/2606.29354): reusable symbolic LSFs include grammar/contract constraints; evolution uses correctness/token Pareto selection and elitist inheritance; the paper reports cross-model generator/inference transfer and cross-domain transfer. Cross-model mismatch can reduce accuracy, and the authors flag transfer to tools and multi-agent environments as future work.
+- **GlossoGen full text and current MIT-licensed platform** (https://arxiv.org/abs/2609.01491; https://github.com/agencyenterprise/GlossoGen): a newcomer agent is swapped into a running team and learns from message/action history without the original postmortem definition. Transmission varies by language/model; emergent language can be hard for humans to understand. The paper also notes privileged environment-state access and effectively unbounded newcomer reasoning time as limitations.
+- **CPE, EMNLP 2026** (https://aclanthology.org/2026.emnlp-main.2038/): rollout-driven communication-policy prompt evolution with a train gate and best-so-far validation gate. It is not a population EA, but generic feedback-driven policy evolution is already studied.
+- **ProtocolBench/ProtocolRouter** (https://proceedings.mlr.press/v306/du26l.html) evaluates success, latency, message overhead, and failure robustness and adapts protocol choice to scenario/module requirements. MOC (ICML 2026) covers multi-order evidence streams and semantic-topological merging; GTD (ACL 2026) covers task-adaptive topology generation.
+- **Communication Alignment** (Findings of EMNLP 2026), **Searching for the Most Human-like Emergent Language** (EMNLP 2025), **population-turnover/language-drift** work (CoNLL 2026), and **heteromorphic-population** work (TACL 2026) further establish communication alignment, human-like transfer, newcomer learning, and heterogeneity as active prior art.
+
+A weighted combination of success, transfer, and monitorability is not a sufficient EC contribution. A surviving method would need a formal, distinct genotype/operator/selection mechanism and evidence beyond CLSR, GlossoGen, CPE, classical evolutionary communication, and the closest quality-diversity / compatibility-selection methods.
+
+**Availability caveats:** direct GitHub/API retrieval of the CLSR URL stated by the paper and the CPE URL stated by the paper returned 404 during this audit. Cached search results for the CLSR URL show a README snapshot describing a broader MDia extension, but the live repository was not retrievable; treat it as an unresolved prior-art warning, not verified runnable code. MOC's inspected repository root did not show a license file, and GTD's linked implementation is hosted on an anonymous 4open URL; confirm rights before reuse.
+
+**Decision:** H0 NOT PASSED / DO NOT IMPLEMENT AS WRITTEN. Broaden the thesis candidate search to a different strong, inspectable Agent+EC baseline.

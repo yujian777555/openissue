@@ -240,3 +240,15 @@ Record consequential project decisions here so future sessions do not reopen set
 - **Feasibility caveats:** The code URL listed on the CLSR proceedings page currently returns 404 in the checked web view; MOC has a public implementation; GTD's code link is hosted on an anonymous 4open URL; GlossoGen has a public MIT-licensed repository. Runnable-code status, exact benchmark contracts, and reproducibility still require audit.
 - **Required gate:** Show a specific capability failure not already addressed by CLSR/GlossoGen and define an evolutionary representation/operator/selection mechanism that adds more than a new scenario or objective weight. Cost/token reduction may remain secondary, not the central thesis problem.
 - **Next action:** Audit the closest methods and determine whether a transfer/monitorability gap survives. If not, drop this lane and continue the broader search.
+
+
+## D-023 — Communication evolution does not pass the current novelty gate
+
+- **Date:** 2026-10-26
+- **Status:** Accepted negative finding for the current formulation
+- **Decision:** Do not implement Candidate H as currently stated: evolving communication protocols for transfer to unseen/heterogeneous agents while adding monitorability constraints.
+- **Evidence:** research/COMMUNICATION_EVOLUTION_CANDIDATE_H_REASSESSMENT.md and the expanded communication lane audit. CLSR (ICML 2026) evolves reusable symbolic protocols and tests cross-model/cross-domain transfer; GlossoGen directly studies newcomer-agent transmission and human monitorability; CPE (EMNLP 2026) evolves communication policies from rollout feedback; GTD, MOC, and ProtocolBench cover topology generation, message aggregation, and constraint-aware protocol routing. Emergent-language work also covers human-like language, cross-play/zero-shot coordination, learnability, and population turnover.
+- **Rationale:** A weighted combination of task success, transfer, and interpretability is not a distinct evolutionary mechanism. The current formulation does not define a new genotype, variation operator, selection/replacement rule, or formal property that survives closest-work comparison.
+- **Evidence boundary:** Direct retrieval of the stated CLSR and CPE code URLs returned 404 in this audit. A cached search snapshot appears to describe a broader MDia extension, but the live repository was not retrievable; treat it as an unresolved prior-art warning, not verified runnable code. MOC/GTD code reuse terms also remain unresolved.
+- **Implication:** Keep communication evolution as background or a future evaluation setting, not an approved thesis direction. Broaden the candidate search to a different strong, inspectable Agent+EC baseline and require a concrete mechanism-level improvement before implementation.
+- **Revisit when:** New primary-source evidence reveals a specific unaddressed failure and a distinct evolutionary mechanism—not merely a new benchmark or objective weight.

@@ -49,3 +49,6 @@ The goal is not to commit prematurely to a fashionable topic. The project will s
 ## Current state
 
 The first and second-pass literature maps are recorded, including a provisional capability-gap review. **No thesis topic, algorithm, benchmark, or innovation point has been approved yet.** The next task is a mechanism-level audit of the closest methods, not premature topic selection.
+
+18. Use [Communication Evolution Lane Screen](research/COMMUNICATION_EVOLUTION_LANE_SCREEN.md) before promoting any communication-protocol or topology idea.
+19. Read [Candidate H0 Reassessment](research/COMMUNICATION_EVOLUTION_CANDIDATE_H_REASSESSMENT.md) before reopening communication evolution; the current transfer/monitorability formulation did not pass its novelty gate.

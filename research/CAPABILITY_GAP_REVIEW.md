@@ -155,3 +155,10 @@ Candidate F was a method-level hypothesis, documented in [COUNTERFACTUAL_EVOLUTI
 3. Decide whether the proposed signal changes evolutionary selection in a way that simple paired fitness differences, UCB/probability matching, or an LLM blamer cannot reproduce.
 4. Only after a written mechanism-level difference is established should an independent simulator or Atomix-based pilot be considered.
 
+
+
+## Update — communication evolution second-pass gate (2026-10-26)
+
+Candidate H0, “evolve communication protocols for transfer to unseen/heterogeneous agents while maintaining human monitorability,” did not pass its current novelty gate. CLSR already evolves symbolic protocols and evaluates cross-model/domain transfer; GlossoGen studies newcomer-agent transmission and opaque language; CPE studies rollout-driven communication-policy evolution; GTD, MOC, and ProtocolBench cover topology generation, message aggregation, and protocol routing. Human-like transfer, communication alignment, zero-shot coordination, and population turnover are also established prior art. See research/COMMUNICATION_EVOLUTION_CANDIDATE_H_REASSESSMENT.md and P100–P112 of research/RELATED_WORK_MATRIX.md.
+
+Do not implement this formulation or treat it as an innovation point. The next search should target a different strong, inspectable Agent+EC baseline and a concrete algorithmic limitation. Any future communication candidate must specify a mechanism beyond adding transfer/interpretability as weighted fitness terms and must pass a fresh closest-work audit.
