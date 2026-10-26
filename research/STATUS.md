@@ -1,6 +1,6 @@
 # Current Project Status
 
-**Last updated:** 2026-10-23  
+**Last updated:** 2026-10-26  
 **Stage:** 2 — second-pass literature triage and mechanism-level audit in progress  
 **Overall status:** OPEN; topic not selected  
 **Source of truth:** this repository
