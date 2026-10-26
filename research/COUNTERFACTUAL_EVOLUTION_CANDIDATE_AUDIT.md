@@ -77,17 +77,17 @@ The generic version—use paired outcome deltas to update operator probabilities
 
 ### Objects and estimands
 
-Let a policy genome be a typed recovery state machine with editable loci (conditions, transitions, actions, guards). Let \\(g\\) be a parent, \\(o_i\\) an edit operator applied to locus \\(i\\), and \\(z\\) a controlled task/fault-twin scenario. Let \\(Y(g,z)\\) be the outcome vector, measured from the external effect ledger and task oracle. Hard safety violations are a separate feasibility gate, not a score that can be traded against task success.
+Let a policy genome be a typed recovery state machine with editable loci (conditions, transitions, actions, guards). Let \(g\) be a parent, \(o_i\) an edit operator applied to locus \(i\), and \(z\) a controlled task/fault-twin scenario. Let \(Y(g,z)\) be the outcome vector, measured from the external effect ledger and task oracle. Hard safety violations are a separate feasibility gate, not a score that can be traded against task success.
 
 For a single edit, estimate the paired effect:
-[
+\[
 \widehat{\tau}_{i}(z)=Y(g\oplus o_i,z)-Y(g,z).
-]
+\]
 
 For two candidate edits, evaluate the four matched variants (parent, edit i, edit j, both edits) and estimate the non-additive interaction:
-[
+\[
 \widehat{\kappa}_{ij}(z)=Y(g\oplus o_i\oplus o_j,z)-Y(g\oplus o_i,z)-Y(g\oplus o_j,z)+Y(g,z).
-]
+\]
 
 Estimate these quantities separately for success, false-abort rate, and duplicate/unsafe side effects across fault families and task topologies. The safety gate remains external: any candidate violating a hard invariant on the designated validation suite is infeasible regardless of its success score.
 
