@@ -172,3 +172,25 @@ Record consequential project decisions here so future sessions do not reopen set
 - **Closest-work warnings:** Atomix already provides a transaction-aware runtime; semantic state-race guards and Vera-style executable safety verification are direct baselines; Harmony Harness and MoMHa already evolve harnesses over functionality/safety/cost. The contribution cannot be “EA optimizes safety and success” or a new benchmark alone.
 - **Required gate:** Show that an evolved bounded controller improves the safe-completion/false-abort frontier over Atomix + fixed rules, conservative abort, semantic-predicate guards, reflection/replanning, and a reproducible harness-evolution baseline under matched budgets. Hard safety invariants must remain outside the evolved genome.
 - **Revisit when:** Code/data rights are verified and the first matched-budget pilot demonstrates or falsifies an EA-specific benefit.
+
+
+## D-017 — Broad transaction-aware recovery evolution fails the novelty gate
+
+- **Date:** 2026-10-26
+- **Status:** Accepted
+- **Decision:** Downgrade Candidate E from a potential thesis topic to a comparison setting. Do not claim “evolutionary transaction-aware recovery controller” as novel in its broad form.
+- **Evidence:** Second-pass primary-source review in `research/TRANSACTIONAL_AGENT_ROBUSTNESS_CANDIDATE_AUDIT.md` and P66–P79 of the related-work matrix. Atomix, Cordon, Agentic Transaction, AIR, LIMBO, Verified Tool Calls, Bench2Robust, Sentry, ResiliBench, and Harmony Harness cover transactional execution, non-atomic failures, recovery, controlled recoverability, incident response, and/or evolutionary harness optimization.
+- **Code/data gate:** Atomix has Apache-2.0 code, a runtime, baseline implementations, tests, and local experiment configs. ResiliBench's linked repository exposes supplementary JSON artifacts without a top-level license or full runner; Vera's inspected root has no top-level software license; the Harmony Harness repository found is third-party, not author-linked official code. LIMBO, Bench2Robust, Cordon, Agentic Transaction, and Verified Tool Calls have no confirmed official runnable release in the inspected paper pages.
+- **Implication:** A new controller representation, safety metric, or benchmark alone is not enough. Any future work in this domain must be justified by a distinct EC mechanism and compared with strong existing methods.
+- **Revisit when:** A method-level novelty claim survives a direct comparison and the evaluation substrate has clear rights and executable contracts.
+
+## D-018 — Counterfactual-evidence-guided evolutionary search is the next hypothesis, not an approved topic
+
+- **Date:** 2026-10-26
+- **Status:** Provisional
+- **Decision:** Investigate whether measured interventional outcome deltas can improve evolutionary credit assignment, mutation-target selection, or operator adaptation for agent policies.
+- **Evidence:** Candidate audit in `research/COUNTERFACTUAL_EVOLUTION_CANDIDATE_AUDIT.md`; related works P80–P84 include Causal Agent Replay, Counterfactual Planning, JTPRO, ContDa, and Gecko. The key direct overlaps are EVOTOOL, CAR, Counterfactual Planning, and mature adaptive operator selection.
+- **Potential contribution:** A precise interventional estimator/update rule that predicts which edits or operators causally improve held-out policy performance, beyond trajectory-only blame, simple paired fitness differences, and classical AOS.
+- **Required Gate F0:** Write the estimand and algorithm, compare mechanism-by-mechanism with EVOTOOL, Causal Agent Replay, Counterfactual Planning, AOS/self-adaptation, and test whether the credit signal predicts out-of-sample gains.
+- **Stop condition:** The method is only a combination of known components, requires hidden fault labels, or loses to EVOTOOL/AOS under matched calls and held-out fault × topology generalization.
+- **Revisit when:** Gate F0 establishes a defensible mechanism-level distinction. No implementation or thesis topic is approved yet.
