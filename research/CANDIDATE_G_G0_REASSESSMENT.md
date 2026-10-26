@@ -94,4 +94,5 @@ Primary code entry points:
 - The 2018 DPS + BR abstract is available at https://www.sciencedirect.com/science/article/pii/S1568494618301571.
 - PAIR and LMEA are preprints; their existence establishes overlap but should not be described as peer-reviewed publications without a separate venue check.
 - The GPDPS⁽ᵒ⁾ article is a 2026 journal publication and is the most direct newly found overlap in this pass.
+- A secondary review flags the fallback/executability issue as a potential measurement confound: https://pith.science/paper/2602.06511. This is not the authoritative metric definition and is treated only as a lead for verification.
 - The precise effect of EvoMAS fallback behavior on reported executability remains unresolved.
