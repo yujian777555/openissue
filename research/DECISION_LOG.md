@@ -205,3 +205,16 @@ Record consequential project decisions here so future sessions do not reopen set
 - **Implication:** “Counterfactual effects + interaction graph + EA” is not a sufficient method novelty claim. A surviving proposal would need a formal agent-policy-specific estimator/update rule that adds information beyond empirical linkage learning and causal repair/attribution, with held-out transfer evidence.
 - **Next action:** Broaden the candidate search again; do not force a thesis topic around the current recovery/counterfactual family.
 - **Revisit when:** A distinct mechanism is specified and passes direct comparison with the closest prior art.
+
+
+## D-020 — Candidate G is a concrete improvement hypothesis, not a novelty claim
+
+- **Date:** 2026-10-26
+- **Status:** Provisional; Gate G0 open
+- **Decision:** Focus the next research pass on a possible improvement to EvoMAS's parent-pair selection: task-family-conditioned prediction of actual offspring improvement using lineage-linked observations.
+- **Code evidence:** Official `amazon-science/EvoMAS` source inspected through GitHub. Invalid mutation returns the original configuration; invalid crossover returns the better parent; crossover selects the two highest observed rewards; per-step operation records omit parent IDs/pair identity; the experience schema lacks lineage, task-family ID, and repeated-trial uncertainty. In `mas_index.py`, a comment says “Sort by win rate” but the actual key is cumulative `total_wins`, followed by `avg_accuracy`.
+- **Prior-art warning:** Classical diverse partner selection with brood recombination explicitly uses parent phenotype strengths/weaknesses to estimate crossover benefit; adaptive mating is older EC work; PAIR and LMEA cover LLM-guided parent selection; MECo, MTHS, and EoH-S cover cross-task population interaction/transfer and complementary selection. Thus generic offspring-yield-aware mating is not novel.
+- **Possible distinction:** Online, task-conditioned estimation of lineage-linked child improvement for structured MAS configurations, with explicit accounting for invalid proposals/repairs/fallback and transfer to held-out task families. This distinction must be proven against the closest baselines.
+- **Next test:** Offline predictive-value analysis first; compare out-of-sample pair-yield prediction against parent fitness, structural diversity, task-conditioned individual fitness, PAIR-style LLM compatibility, and classical diverse-partner selection. Do not start expensive LLM experiments until G0 passes.
+- **Stop condition:** If lineage-linked offspring yield adds no predictive value or is matched by PAIR/classical mating under controlled splits, reject Candidate G.
+- **Caution:** The code-level fallback issue is verified, but the effect on published executability numbers is not yet recomputed. Do not state that the paper's metric is inflated as a confirmed result.
