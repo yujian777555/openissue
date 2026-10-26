@@ -123,7 +123,7 @@ A third candidate is added after the second broadening pass: evolutionary synthe
 
 | Candidate | Potential strength | Closest overlap / failure condition | Current action |
 |---|---|---|---|
-| **E. Transaction-aware recovery-controller evolution** | Concrete high-impact capability; hard state invariants and deterministic environment-state verification permit objective measurement. Optimize safe completion vs false abort, not raw success alone. | Atomix already supplies a transaction-aware runtime; state-race guard work formalizes commit predicates; ResiliBench covers stochastic tool failures; Harmony Harness/MoMHa evolve harnesses over functionality and safety; Vera supplies executable safety cases. If a runtime guard plus fixed rules matches the EA, reject it. | Promote to candidate comparison only. Test the controller's incremental value over Atomix + fixed policies before claiming an EC contribution. |
+| **E. Transaction-aware recovery-controller evolution** | Concrete and measurable; immutable safety contracts and external state verification are possible. | **Broad novelty gate failed.** Atomix, Cordon, Agentic Transaction, AIR, LIMBO, Verified Tool Calls, Bench2Robust, Sentry, ResiliBench, and Harmony Harness cover the key runtime/recovery/evolution ingredients. A controller genome plus safety/functionality metrics is not sufficient. | Downgrade to a comparison setting, not a thesis topic. See the second-pass section of [TRANSACTIONAL_AGENT_ROBUSTNESS_CANDIDATE_AUDIT.md](TRANSACTIONAL_AGENT_ROBUSTNESS_CANDIDATE_AUDIT.md). |
 
 ### Required experimental distinction
 
@@ -134,3 +134,20 @@ A third candidate is added after the second broadening pass: evolutionary synthe
 - Hold out combinations of race type × reversibility × task topology and report both unsafe attempts and false aborts. If only benchmark score improves without a better safe-completion frontier, reject the method.
 
 Candidate E may be more concrete than generic co-evolution/meta-evolution, but its novelty gate remains open. Do not select it until the exact method difference and feasible benchmark/implementation are verified.
+
+
+## 9. Counterfactual-evidence-guided evolutionary search (Candidate F)
+
+Candidate F is the next method-level hypothesis, documented in [COUNTERFACTUAL_EVOLUTION_CANDIDATE_AUDIT.md](COUNTERFACTUAL_EVOLUTION_CANDIDATE_AUDIT.md). The possible contribution is not counterfactual evaluation itself. It is using measured interventional deltas to guide evolutionary credit assignment, mutation-target selection, and operator adaptation.
+
+| Candidate | Potential method contribution | Direct overlap / stop condition | Current action |
+|---|---|---|---|
+| **F. Counterfactual-evidence-guided evolutionary search** | Estimate which policy substructures/operators causally change outcomes using controlled fault-twin interventions; use this signal to guide evolutionary edits and test transfer to held-out fault × topology combinations. | EVOTOOL already does blame-guided targeted mutation; Causal Agent Replay provides intervention-based causal attribution; Counterfactual Planning uses counterfactual rewards; classical adaptive operator selection is mature. If the method only concatenates those components or wins from extra rollouts, reject it. | Prioritize Gate F0: specify the exact estimator/update rule and compare mechanism-by-mechanism before implementation. No topic approved. |
+
+### Required Gate F0
+
+1. Define the causal estimand for policy-edit/operator impact and explain how paired interventions handle stochastic model behavior.
+2. Distinguish the method from EVOTOOL's trajectory-grounded blame, Causal Agent Replay's step-level interventions/Shapley attribution, Counterfactual Planning, and classical AOS/self-adaptation.
+3. Decide whether the proposed signal changes evolutionary selection in a way that simple paired fitness differences, UCB/probability matching, or an LLM blamer cannot reproduce.
+4. Only after a written mechanism-level difference is established should an independent simulator or Atomix-based pilot be considered.
+
