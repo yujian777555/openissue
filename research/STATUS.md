@@ -73,13 +73,12 @@ The user considers finite-budget evaluation efficiency insufficiently compelling
 
 ## Next actions (ordered)
 
-1. **Close Gate F0 before implementation:** audit whether interventional operator-interaction-guided variation is distinct from EVOTOOL, Causal Agent Replay, Counterfactual Planning, classical AOS/self-adaptation, and linkage-learning GAs. The candidate audit now defines paired single-edit effects and factorial two-edit interaction estimates.
-2. Test whether the proposed interaction graph adds predictive value beyond ordinary paired-fitness AOS and standard linkage learning. If not, reject Candidate F as an incremental combination of known components.
-3. If F0 survives, design a small independent tool-fault simulator with hidden fault labels, an external state/effect oracle, paired fault twins, and held-out fault-semantics × task-topology combinations. Use Atomix as a licensed runtime baseline if integration is appropriate; do not use ResiliBench/Vera data until rights are clarified.
-4. Run no API-heavy experiment yet. First validate paired-world construction, hidden-label isolation, state invariants, and repeatable deterministic baselines.
-5. If a pilot is justified, compare fixed rules, simple paired-fitness selection, LLM blame, classical AOS, static EA, and the proposed causal-credit EA under matched model calls/rollouts.
-6. Require held-out compositional gains without safety regressions. If the method loses to EVOTOOL/AOS or the credit signal is not predictive, reject F and broaden the candidate search again.
-7. Do not approve a thesis topic or populate the thesis–paper map until Gate F0 and feasibility gates pass.
+1. **Gate F0 is not passed yet.** New primary-source findings add CausalFlow (counterfactual repair), Graph-Constrained Joint Replay / Minimal Repair Family Recovery (pairwise intervention sets), and 2026 EC work on learning variable importance/interactions for variation. See P85–P90 and `research/COUNTERFACTUAL_EVOLUTION_CANDIDATE_AUDIT.md`.
+2. Do not implement Candidate F as currently described: counterfactual attribution + pairwise effects + interaction-graph-guided EA risks being an incremental combination of established methods.
+3. Broaden the search to other EC-agent intersections, prioritizing mechanisms not reducible to prompt mutation, generic failure attribution, operator selection, or linkage learning. For each candidate, state the optimized object, exact EC mechanism, closest 3–5 papers, and reject condition.
+4. Compare the surviving candidates against the user's thesis constraints (EC central, method improvement, 2–3 connected but not forced contributions, no finite-budget-centered claim) and realistic implementation/benchmark feasibility.
+5. Only if a genuinely distinct mechanism survives the paper/code audit should a small synthetic pilot be designed. No API-heavy experiment yet.
+6. Do not approve a thesis topic or populate the thesis–paper map until the novelty and feasibility gates pass.
 
 ## Definition of done for the next milestone
 
