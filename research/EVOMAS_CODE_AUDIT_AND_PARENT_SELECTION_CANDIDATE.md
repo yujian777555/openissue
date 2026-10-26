@@ -91,6 +91,33 @@ This is only valuable if observed pair-level offspring outcomes add predictive i
 | [What Makes an LLM a Good Optimizer? (Findings of ACL 2026)](https://aclanthology.org/2026.findings-acl.1252/) | Finds that successful LLM-guided evolutionary search tends to make localized refinements; novelty alone does not predict final quality. | Use trajectory diagnostics and test whether offspring-yield selection improves search quality, not only configuration novelty. |
 | [Break It Down, Pass It On: Cross-Task Skill Transfer in LLM Agents](https://arxiv.org/abs/2608.20274) | Finds that skill transfer can be negative; subtask-level and text-form skills transfer better on average in its evaluated setting, and joint specificity/abstractness predicts utility. | Motivation for transfer diagnostics, not evidence that the proposed EA is novel. |
 
+## 4A. Additional direct overlap: this mechanism has classical evolutionary precedents
+
+The parent-pair offspring-yield idea needs to be judged against evolutionary computation itself, not only recent LLM-agent papers:
+
+| Work | Established mechanism | Consequence for Candidate G |
+|---|---|---|
+| [Diverse Partner Selection with Brood Recombination in Genetic Programming](https://www.sciencedirect.com/science/article/pii/S1568494618301571) | Uses relative strengths/weaknesses of parent phenotypes to estimate whether crossover is beneficial; permits successful pairs to produce more offspring. | Very high conceptual overlap with selecting pairs by expected offspring improvement. “Learn which pair yields better offspring” is not new in general EA/GP. |
+| [A Novel Mating Approach for Genetic Algorithms](https://doi.org/10.1162/EVCO_a_00067) | Formalizes exploitative, explorative, and self-adaptive mating strategies using a mating index. | Pairing policies that adapt exploitation/exploration are established. |
+| [On the Dynamics of Mating Preferences in Genetic Programming](https://link.springer.com/article/10.1007/s12293-025-00466-2) | Studies evolving mate preferences and the relationship between preference depth, offspring fitness gains, and population diversity. | Dynamic mating preference and offspring outcomes have recent EC literature. |
+| [PAIR: A Novel Large Language Model-Guided Selection Strategy for Evolutionary Algorithms](https://arxiv.org/abs/2503.03239) | LLM chooses mating partners using fitness, diversity, and crossover compatibility. | An LLM judging pair compatibility is directly covered. The candidate must learn from *observed lineage-linked child outcomes*, not simply prompt an LLM to select a pair. |
+| [Large Language Models as Evolutionary Optimizers (LMEA)](https://arxiv.org/abs/2310.19046) | LLM selects parents and performs crossover/mutation in an EA. | LLM-mediated parent selection is established. |
+| [MECo](https://arxiv.org/abs/2610.03316) | Maintains task-conditioned heuristic populations, uses cross-task transfer gaps to guide interactions/recombination, and selects a compact set by complementary source-task coverage. | Task-conditioned population interaction and transfer-aware selection are directly studied in automated heuristic design. |
+| [MTHS](https://proceedings.mlr.press/v306/liu26ge.html) | Co-evolves task-agnostic metaheuristics and task-specific programs, transferring elite knowledge across tasks. | Cross-task transfer of evolutionary components is established, albeit for generated heuristics rather than MAS configuration mating. |
+| [EoH-S](https://ojs.aaai.org/index.php/AAAI/article/view/41038) | Evolves a complementary set of heuristics with population management and memetic search. | Complementarity-aware archive/population selection is established in LLM-driven heuristic design. |
+
+### Refined distinction needed
+
+The only plausible narrow distinction is **online, task-family-conditioned prediction of actual offspring improvement for structured LLM-generated MAS configurations**, learned from explicit lineage-linked outcomes and calibrated for invalid generation/repair/fallback. It must show value beyond:
+1. classical diverse partner selection / brood recombination;
+2. PAIR's LLM compatibility judgment;
+3. fitness-only top-two pairing;
+4. task-conditioned individual fitness;
+5. MECo-style transfer/coverage selection;
+6. random/diversity pairing.
+
+This is a possible *domain-specific method improvement*, not an established novelty claim. If a standard offspring-improvement predictor or PAIR plus lineage logging matches it, reject the proposed mechanism or narrow it further.
+
 ## 5. Minimum experiment to decide whether the candidate survives
 
 ### Gate G0 — algorithmic distinctness
@@ -129,6 +156,6 @@ Reject Candidate G if:
 
 ## 6. Decision
 
-**Candidate G is worth a focused prior-art and code-reproduction audit, not yet a thesis topic.** It is a concrete improvement path on an existing strong paper, and the official code exposes measurable issues in how offspring validity and parent-pair lineage are represented. The strongest novelty risk is that evolvability-aware mating and task-conditioned parent selection may be considered incremental extensions of PAIR, multi-task evolutionary optimization, and adaptive strategy selection.
+**Candidate G remains worth a focused, falsifiable method-improvement audit, not yet a thesis topic.** It is a concrete improvement path on an existing strong paper, and the official code exposes measurable issues in how offspring validity and parent-pair lineage are represented. The strongest novelty risk is that evolvability-aware mating and task-conditioned parent selection may be considered incremental extensions of PAIR, multi-task evolutionary optimization, and adaptive strategy selection.
 
 The next step is to verify the EvoMAS paper's exact execution-rate denominator and fallback reporting, inspect its published ablations, then implement only a small offline analysis of existing logs or synthetic lineage data to test whether pair-level offspring yield is predictable. No full LLM experiment should start until G0 passes.
