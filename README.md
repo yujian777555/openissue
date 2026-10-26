@@ -16,11 +16,12 @@ The goal is not to commit prematurely to a fashionable topic. The project will s
 8. Read [Co-Evolution Candidate Audit](research/COEVOLUTION_CANDIDATE_AUDIT.md) before treating policy–environment co-evolution as a novelty claim.
 9. Read [Meta-Evolution Candidate Audit](research/META_EVOLUTION_CANDIDATE_AUDIT.md) before treating self-improving search mechanisms as a novelty claim.
 10. Read [Transactional Agent Robustness Candidate Audit](research/TRANSACTIONAL_AGENT_ROBUSTNESS_CANDIDATE_AUDIT.md) before promoting transaction-aware recovery-controller evolution.
-11. Read [EC Role and Parameter Control](research/EC_ROLE_AND_PARAMETER_CONTROL.md) for the distinction between Agent-policy evolution, EA parameter control, and ordinary hyperparameter tuning.
-12. Read [Initial Research Memo](research/INITIAL_RESEARCH_MEMO.md) for first-pass findings and open questions.
-13. Read [Thesis–Paper Map](research/THESIS_PAPER_MAP.md) for how candidate contributions may map to papers.
-14. Read [Decision Log](research/DECISION_LOG.md) before revisiting previously assessed ideas.
-15. Use [Session Handoff](SESSION_HANDOFF.md) when starting a new ChatGPT conversation.
+11. Read [Counterfactual Evolution Candidate Audit](research/COUNTERFACTUAL_EVOLUTION_CANDIDATE_AUDIT.md) before promoting counterfactual-evidence-guided evolutionary search.
+12. Read [EC Role and Parameter Control](research/EC_ROLE_AND_PARAMETER_CONTROL.md) for the distinction between Agent-policy evolution, EA parameter control, and ordinary hyperparameter tuning.
+13. Read [Initial Research Memo](research/INITIAL_RESEARCH_MEMO.md) for first-pass findings and open questions.
+14. Read [Thesis–Paper Map](research/THESIS_PAPER_MAP.md) for how candidate contributions may map to papers.
+15. Read [Decision Log](research/DECISION_LOG.md) before revisiting previously assessed ideas.
+16. Use [Session Handoff](SESSION_HANDOFF.md) when starting a new ChatGPT conversation.
 
 ## Non-negotiable research principles
 
