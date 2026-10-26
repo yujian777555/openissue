@@ -17,12 +17,12 @@ The goal is not to commit prematurely to a fashionable topic. The project will s
 9. Read [Meta-Evolution Candidate Audit](research/META_EVOLUTION_CANDIDATE_AUDIT.md) before treating self-improving search mechanisms as a novelty claim.
 10. Read [EvoMAS Code Audit and Parent-Selection Candidate](research/EVOMAS_CODE_AUDIT_AND_PARENT_SELECTION_CANDIDATE.md) before evaluating Candidate G.
 11. Read [Transactional Agent Robustness Candidate Audit](research/TRANSACTIONAL_AGENT_ROBUSTNESS_CANDIDATE_AUDIT.md) before promoting transaction-aware recovery-controller evolution.
-11. Read [Counterfactual Evolution Candidate Audit](research/COUNTERFACTUAL_EVOLUTION_CANDIDATE_AUDIT.md) before promoting counterfactual-evidence-guided evolutionary search.
-12. Read [EC Role and Parameter Control](research/EC_ROLE_AND_PARAMETER_CONTROL.md) for the distinction between Agent-policy evolution, EA parameter control, and ordinary hyperparameter tuning.
-13. Read [Initial Research Memo](research/INITIAL_RESEARCH_MEMO.md) for first-pass findings and open questions.
-14. Read [Thesis–Paper Map](research/THESIS_PAPER_MAP.md) for how candidate contributions may map to papers.
-15. Read [Decision Log](research/DECISION_LOG.md) before revisiting previously assessed ideas.
-16. Use [Session Handoff](SESSION_HANDOFF.md) when starting a new ChatGPT conversation.
+12. Read [Counterfactual Evolution Candidate Audit](research/COUNTERFACTUAL_EVOLUTION_CANDIDATE_AUDIT.md) before promoting counterfactual-evidence-guided evolutionary search.
+13. Read [EC Role and Parameter Control](research/EC_ROLE_AND_PARAMETER_CONTROL.md) for the distinction between Agent-policy evolution, EA parameter control, and ordinary hyperparameter tuning.
+14. Read [Initial Research Memo](research/INITIAL_RESEARCH_MEMO.md) for first-pass findings and open questions.
+15. Read [Thesis–Paper Map](research/THESIS_PAPER_MAP.md) for how candidate contributions may map to papers.
+16. Read [Decision Log](research/DECISION_LOG.md) before revisiting previously assessed ideas.
+17. Use [Session Handoff](SESSION_HANDOFF.md) when starting a new ChatGPT conversation.
 
 ## Non-negotiable research principles
 
