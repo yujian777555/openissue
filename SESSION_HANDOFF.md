@@ -14,7 +14,7 @@ The immediate priority is the thesis proposal/opening report. The target is a co
 
 ### Mandatory first steps
 
-1. Read README.md, research/PROJECT_CHARTER.md, research/STATUS.md, research/LITERATURE_REVIEW.md, research/RELATED_WORK_MATRIX.md, research/CAPABILITY_GAP_REVIEW.md, research/EC_ROLE_AND_PARAMETER_CONTROL.md, research/EC_PARAMETER_CONTROL_EXPERIMENT_PROTOCOL.md, research/TOOLMAZE_BENCHMARK_AUDIT.md, research/COEVOLUTION_CANDIDATE_AUDIT.md, research/META_EVOLUTION_CANDIDATE_AUDIT.md, research/TRANSACTIONAL_AGENT_ROBUSTNESS_CANDIDATE_AUDIT.md, research/COUNTERFACTUAL_EVOLUTION_CANDIDATE_AUDIT.md, research/INITIAL_RESEARCH_MEMO.md, research/THESIS_PAPER_MAP.md, and research/DECISION_LOG.md.
+1. Read README.md, research/PROJECT_CHARTER.md, research/STATUS.md, research/LITERATURE_REVIEW.md, research/RELATED_WORK_MATRIX.md, research/CAPABILITY_GAP_REVIEW.md, research/EC_ROLE_AND_PARAMETER_CONTROL.md, research/EC_PARAMETER_CONTROL_EXPERIMENT_PROTOCOL.md, research/TOOLMAZE_BENCHMARK_AUDIT.md, research/COEVOLUTION_CANDIDATE_AUDIT.md, research/META_EVOLUTION_CANDIDATE_AUDIT.md, research/TRANSACTIONAL_AGENT_ROBUSTNESS_CANDIDATE_AUDIT.md, research/COUNTERFACTUAL_EVOLUTION_CANDIDATE_AUDIT.md, research/EVOMAS_CODE_AUDIT_AND_PARENT_SELECTION_CANDIDATE.md, research/INITIAL_RESEARCH_MEMO.md, research/THESIS_PAPER_MAP.md, and research/DECISION_LOG.md.
 2. Check recent commits and any new issues/files before acting.
 3. Treat repository contents as the current project state. Do not import ideas, results, assumptions, or conclusions from unrelated projects or previous conversations.
 4. Report the exact current stage, verified decisions, open questions, and next concrete action before making major recommendations.
@@ -40,11 +40,14 @@ The immediate priority is the thesis proposal/opening report. The target is a co
 
 Candidate E (transaction-aware recovery-controller evolution) has been downgraded after a second-pass audit found direct overlap with Atomix, Cordon, Agentic Transaction, AIR, LIMBO, Verified Tool Calls, Bench2Robust, Sentry, ResiliBench, and Harmony Harness. See research/TRANSACTIONAL_AGENT_ROBUSTNESS_CANDIDATE_AUDIT.md. Candidate F (counterfactual-interaction-guided evolutionary search) has **not passed Gate F0**: CausalFlow, Graph-Constrained Joint Replay/MRFR, Causal Agent Replay, Counterfactual Planning, GAwLL, and 2026 EC work on variable-interaction learning create direct overlap. See research/COUNTERFACTUAL_EVOLUTION_CANDIDATE_AUDIT.md. Do not implement the current formulation; broaden the candidate search again. No candidate is approved.
 
+The newest concrete candidate is **G: task-conditioned, lineage-aware parent-pair selection for EvoMAS**, documented in `research/EVOMAS_CODE_AUDIT_AND_PARENT_SELECTION_CANDIDATE.md`. The official code audit verified parent-fallback behavior for invalid offspring, top-two-reward crossover, missing pair lineage in traces, and a mismatch between the win-rate comment and cumulative-win sorting. The novelty gate remains OPEN because PAIR/LMEA, classical diverse partner selection + brood recombination, adaptive mating, MECo, MTHS, and EoH-S are direct overlaps. Do not claim the paper's executability metric is inflated until the exact denominator is independently verified. Do not start expensive LLM experiments yet.
+
 ### Next concrete action
 
-1. Broaden candidate search beyond the crowded recovery, counterfactual attribution, generic meta-evolution, and interaction-graph/linkage-learning families.
-2. For each surviving candidate, specify the optimized object, exact EC mechanism, closest 3–5 works, feasibility, and explicit stop condition.
-3. Do not implement Candidate F unless a genuinely distinct estimator/update rule is found; do not start API-heavy experiments. Keep ToolMaze on hold.
+1. Close Candidate G's prior-art gate against PAIR/LMEA, classical diverse partner selection/brood recombination, adaptive mating, MECo/MTHS/EoH-S.
+2. Verify the EvoMAS paper's execution-rate denominator and whether fallback incidence is reported; keep the claim provisional until verified.
+3. Run only an offline predictive-value analysis of lineage-linked offspring yield before considering any API experiment. Reject G if it adds no signal beyond parent fitness, diversity, and existing mating methods.
+4. Keep all work in `openissue`; never mix it with `agentfotagent` or other projects.
 
 ### Expected workflow
 
