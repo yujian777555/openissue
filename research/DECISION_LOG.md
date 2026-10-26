@@ -194,3 +194,14 @@ Record consequential project decisions here so future sessions do not reopen set
 - **Required Gate F0:** Write the estimand and algorithm, compare mechanism-by-mechanism with EVOTOOL, Causal Agent Replay, Counterfactual Planning, AOS/self-adaptation, and test whether the credit signal predicts out-of-sample gains.
 - **Stop condition:** The method is only a combination of known components, requires hidden fault labels, or loses to EVOTOOL/AOS under matched calls and held-out fault × topology generalization.
 - **Revisit when:** Gate F0 establishes a defensible mechanism-level distinction. No implementation or thesis topic is approved yet.
+
+
+## D-019 — Counterfactual interaction-guided evolution is not yet distinct
+
+- **Date:** 2026-10-26
+- **Status:** Accepted as a negative prior-art finding; candidate remains unapproved
+- **Decision:** Do not implement Candidate F in its current form.
+- **Evidence:** Updated audit in `research/COUNTERFACTUAL_EVOLUTION_CANDIDATE_AUDIT.md` and P85–P90 in `research/RELATED_WORK_MATRIX.md`. CausalFlow generates counterfactual repairs from interventional attribution; Graph-Constrained Joint Replay / Minimal Repair Family Recovery evaluates singleton and pair repairs over dependency graphs; Causal Agent Replay estimates interventional and Shapley effects; Counterfactual Planning uses counterfactual rewards; GAwLL and a 2026 *Evolutionary Computation* paper already learn variable-importance/interaction graphs to guide variation.
+- **Implication:** “Counterfactual effects + interaction graph + EA” is not a sufficient method novelty claim. A surviving proposal would need a formal agent-policy-specific estimator/update rule that adds information beyond empirical linkage learning and causal repair/attribution, with held-out transfer evidence.
+- **Next action:** Broaden the candidate search again; do not force a thesis topic around the current recovery/counterfactual family.
+- **Revisit when:** A distinct mechanism is specified and passes direct comparison with the closest prior art.
