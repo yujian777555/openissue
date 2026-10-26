@@ -52,3 +52,6 @@ The first and second-pass literature maps are recorded, including a provisional 
 
 18. Use [Communication Evolution Lane Screen](research/COMMUNICATION_EVOLUTION_LANE_SCREEN.md) before promoting any communication-protocol or topology idea.
 19. Read [Candidate H0 Reassessment](research/COMMUNICATION_EVOLUTION_CANDIDATE_H_REASSESSMENT.md) before reopening communication evolution; the current transfer/monitorability formulation did not pass its novelty gate.
+
+19. Read [Candidate H0 Reassessment](research/COMMUNICATION_EVOLUTION_CANDIDATE_H_REASSESSMENT.md) before reopening communication evolution; the current transfer/monitorability formulation did not pass its novelty gate.
+20. Read [Agent Skill/Workflow Generalization Lane Screen](research/AGENT_SKILL_GENERALIZATION_LANE_SCREEN.md) for the next exploratory lane; it is not an approved candidate.

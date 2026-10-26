@@ -14,7 +14,7 @@ The immediate priority is the thesis proposal/opening report. The target is a co
 
 ### Mandatory first steps
 
-1. Read README.md, research/PROJECT_CHARTER.md, research/STATUS.md, research/LITERATURE_REVIEW.md, research/RELATED_WORK_MATRIX.md, research/CAPABILITY_GAP_REVIEW.md, research/EC_ROLE_AND_PARAMETER_CONTROL.md, research/EC_PARAMETER_CONTROL_EXPERIMENT_PROTOCOL.md, research/TOOLMAZE_BENCHMARK_AUDIT.md, research/COEVOLUTION_CANDIDATE_AUDIT.md, research/META_EVOLUTION_CANDIDATE_AUDIT.md, research/TRANSACTIONAL_AGENT_ROBUSTNESS_CANDIDATE_AUDIT.md, research/COUNTERFACTUAL_EVOLUTION_CANDIDATE_AUDIT.md, research/EVOMAS_CODE_AUDIT_AND_PARENT_SELECTION_CANDIDATE.md, research/CANDIDATE_G_G0_REASSESSMENT.md, research/COMMUNICATION_EVOLUTION_LANE_SCREEN.md, research/COMMUNICATION_EVOLUTION_CANDIDATE_H_REASSESSMENT.md, research/INITIAL_RESEARCH_MEMO.md, research/THESIS_PAPER_MAP.md, and research/DECISION_LOG.md.
+1. Read README.md, research/PROJECT_CHARTER.md, research/STATUS.md, research/LITERATURE_REVIEW.md, research/RELATED_WORK_MATRIX.md, research/CAPABILITY_GAP_REVIEW.md, research/EC_ROLE_AND_PARAMETER_CONTROL.md, research/EC_PARAMETER_CONTROL_EXPERIMENT_PROTOCOL.md, research/TOOLMAZE_BENCHMARK_AUDIT.md, research/COEVOLUTION_CANDIDATE_AUDIT.md, research/META_EVOLUTION_CANDIDATE_AUDIT.md, research/TRANSACTIONAL_AGENT_ROBUSTNESS_CANDIDATE_AUDIT.md, research/COUNTERFACTUAL_EVOLUTION_CANDIDATE_AUDIT.md, research/EVOMAS_CODE_AUDIT_AND_PARENT_SELECTION_CANDIDATE.md, research/CANDIDATE_G_G0_REASSESSMENT.md, research/COMMUNICATION_EVOLUTION_LANE_SCREEN.md, research/COMMUNICATION_EVOLUTION_CANDIDATE_H_REASSESSMENT.md, research/AGENT_SKILL_GENERALIZATION_LANE_SCREEN.md, research/INITIAL_RESEARCH_MEMO.md, research/THESIS_PAPER_MAP.md, and research/DECISION_LOG.md.
 2. Check recent commits and any new issues/files before acting.
 3. Treat repository contents as the current project state. Do not import ideas, results, assumptions, or conclusions from unrelated projects or previous conversations.
 4. Report the exact current stage, verified decisions, open questions, and next concrete action before making major recommendations.
@@ -44,11 +44,11 @@ The most recent candidate screened was **G: task-conditioned, lineage-aware pare
 
 ### Next concrete action
 
-1. Keep Candidate G and Candidate H0 at **NOT PASSED / DO NOT IMPLEMENT AS WRITTEN**; keep Candidates E and F downgraded in their current formulations.
-2. Read research/COMMUNICATION_EVOLUTION_CANDIDATE_H_REASSESSMENT.md for the second-pass overlap audit. CLSR covers symbolic-protocol evolution and cross-model/domain transfer; GlossoGen covers newcomer-agent transmission and monitorability; CPE covers rollout-driven communication-policy evolution; GTD, MOC, and ProtocolBench cover topology generation, message consolidation, and protocol routing.
-3. Treat the live CLSR (pzqpzq/LSF_MDia) and CPE (xbmxb/GenUI) code URLs as currently unavailable through direct retrieval; cached search content is not proof of runnable code. Do not assume MOC/GTD reuse rights until verified.
-4. Broaden the search outside the current crowded lanes. Choose a strong, inspectable Agent+EC baseline with a concrete, code-verifiable limitation; propose an algorithm-level improvement and compare it with the closest paper and classical EC baselines.
-5. Do not start expensive API experiments or implementation until the novelty, method, benchmark, and license gates pass. No thesis topic or innovation point is approved.
+1. Keep Candidates E, F, G, and H0 downgraded in their current formulations. The communication-evolution formulation did not pass its novelty gate.
+2. Deep-audit the new exploratory lane in research/AGENT_SKILL_GENERALIZATION_LANE_SCREEN.md: GSO (held-out skill generalization), Faithful Self-Evolvers (causal experience-use interventions), H-EPM, AgentEvo, DIVE, and CATArena.
+3. Inspect the official Faithfulness evaluation code and DIVE implementation, but do not reuse code/data until their license terms are confirmed. GSO, H-EPM, AgentEvo, and CATArena code availability still needs verification.
+4. Identify a concrete EC mechanism that is absent from the closest methods and classical GP/EC baselines. A weighted generalization/faithfulness score, new skill format, or memory graph alone does not pass.
+5. If this lane is also crowded, stop and choose a different inspectable Agent+EC baseline. Do not start expensive API experiments or implementation before novelty, method, benchmark, and license gates pass.
 
 ### Expected workflow
 

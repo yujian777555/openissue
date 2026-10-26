@@ -62,6 +62,8 @@ Prepare a defensible graduate thesis proposal on evolutionary computation applie
 - Wrote research/INITIAL_RESEARCH_MEMO.md to capture what is already crowded and which candidate questions require deeper auditing.
 - Confirmed that broad claims about prompt evolution, multi-agent generation, modular agent search, workflow evolution, whole-agent configuration tuning, memory evolution, and cost-aware optimization have substantial prior art.
 
+- Initial-screened a second potential lane around skill/workflow generalization and faithful experience use. GSO reports substantial train-to-test skill regression; Faithful Self-Evolvers finds that condensed experience is often ignored/misused; H-EPM, AgentEvo, DIVE, and CATArena already cover adjacent memory, workflow, task-diversity, and evolutionary-capability questions. See research/AGENT_SKILL_GENERALIZATION_LANE_SCREEN.md. This is only a lane to audit, not an accepted candidate.
+
 ## Evidence state and caveats
 
 This is a **multi-pass preliminary map**, not a completed systematic review or novelty assessment. Some papers have been read at abstract/method/results level; not every paper, supplement, or codebase has been fully audited. Candidate research questions remain hypotheses. No innovation point is approved.
@@ -76,12 +78,12 @@ The user considers finite-budget evaluation efficiency insufficiently compelling
 
 ## Next actions (ordered)
 
-1. **Keep Candidates E, F, G, and H0 downgraded in their current formulations.** Reopen only if new primary-source evidence or a materially different algorithmic mechanism emerges; see the candidate-specific reassessment files.
-2. Broaden the candidate search outside the already-crowded communication, recovery, counterfactual-interaction, generic meta-evolution, and parent-pair-selection formulations.
-3. Select one strong Agent+EC baseline with inspectable code and measurable results. Audit the genotype/phenotype mapping, variation, selection/replacement, evaluation contract, and paper-to-code correspondence before proposing changes.
-4. For the strongest concrete limitation, write an algorithm-level patch hypothesis and compare it directly against the closest method and classical EC baselines. A changed application, added objective, or weighted-score combination alone is not sufficient.
-5. Verify benchmark/code/data rights and define a leakage-safe, held-out test before any API or formal experiment.
-6. Only after a candidate passes those gates, design a controlled pilot and map possible connected thesis contributions. Do not force three contributions prematurely.
+1. Keep Candidates E, F, G, and H0 downgraded in their current formulations. Reopen only if new primary-source evidence or a materially different algorithmic mechanism emerges.
+2. **Deep-audit the skill/workflow generalization and experience-faithfulness lane** in research/AGENT_SKILL_GENERALIZATION_LANE_SCREEN.md. Read GSO and Faithful Self-Evolvers in depth, inspect the actual intervention/evaluation code, and compare with H-EPM and AgentEvo.
+3. Require a concrete evolutionary mechanism—not just a generalization metric, faithfulness score, skill format, or memory graph. Compare the proposed representation/operators/selection with classical GP/EC and the closest current methods.
+4. Verify code/data rights and whether the necessary benchmarks permit a leakage-safe held-out test. The Faithfulness and DIVE repositories are accessible but their inspected roots did not expose LICENSE files; resolve this before reuse.
+5. If this lane collapses to weighted objectives or a rediscovery of existing memory/workflow methods, stop and screen another strong, inspectable Agent+EC baseline.
+6. Do not start expensive API experiments or implementation until the novelty, method, benchmark, and license gates pass. Do not force three thesis contributions prematurely.
 
 ## Definition of done for the next milestone
 

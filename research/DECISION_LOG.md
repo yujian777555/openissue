@@ -252,3 +252,13 @@ Record consequential project decisions here so future sessions do not reopen set
 - **Evidence boundary:** Direct retrieval of the stated CLSR and CPE code URLs returned 404 in this audit. A cached search snapshot appears to describe a broader MDia extension, but the live repository was not retrievable; treat it as an unresolved prior-art warning, not verified runnable code. MOC/GTD code reuse terms also remain unresolved.
 - **Implication:** Keep communication evolution as background or a future evaluation setting, not an approved thesis direction. Broaden the candidate search to a different strong, inspectable Agent+EC baseline and require a concrete mechanism-level improvement before implementation.
 - **Revisit when:** New primary-source evidence reveals a specific unaddressed failure and a distinct evolutionary mechanism—not merely a new benchmark or objective weight.
+
+
+## D-024 — Next screening lane: skill/workflow generalization and experience faithfulness
+
+- **Date:** 2026-10-26
+- **Status:** Exploratory; not a candidate acceptance
+- **Decision:** After the communication-evolution formulation failed its novelty gate, screen whether evolutionary computation can improve held-out generalization and faithful use of agent experience/skills.
+- **Evidence:** GSO (arXiv 2609.39148) reports that most skills improving on training tasks do not retain all gains on held-out tasks; Faithful Self-Evolvers (ICML 2026) measures causal dependence on raw and condensed experience and finds condensed experience can be ignored/misused; H-EPM, AgentEvo, DIVE, and CATArena cover adjacent memory, workflow evolution, task diversity, and iterative improvement.
+- **Guardrail:** This is a research lane, not an approved thesis topic or innovation point. A new fitness term, memory graph, skill format, or task-specific-skill policy alone is not enough.
+- **Next gate:** Deep-read GSO and Faithful Self-Evolvers, inspect official evaluation code, compare with H-EPM and AgentEvo, and define a concrete EC genotype/operator/selection mechanism. Stop if the proposal reduces to weighted generalization/faithfulness objectives or duplicates existing methods.
