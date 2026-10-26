@@ -14,7 +14,7 @@ The immediate priority is the thesis proposal/opening report. The target is a co
 
 ### Mandatory first steps
 
-1. Read README.md, research/PROJECT_CHARTER.md, research/STATUS.md, research/LITERATURE_REVIEW.md, research/RELATED_WORK_MATRIX.md, research/CAPABILITY_GAP_REVIEW.md, research/EC_ROLE_AND_PARAMETER_CONTROL.md, research/EC_PARAMETER_CONTROL_EXPERIMENT_PROTOCOL.md, research/TOOLMAZE_BENCHMARK_AUDIT.md, research/COEVOLUTION_CANDIDATE_AUDIT.md, research/META_EVOLUTION_CANDIDATE_AUDIT.md, research/TRANSACTIONAL_AGENT_ROBUSTNESS_CANDIDATE_AUDIT.md, research/COUNTERFACTUAL_EVOLUTION_CANDIDATE_AUDIT.md, research/EVOMAS_CODE_AUDIT_AND_PARENT_SELECTION_CANDIDATE.md, research/CANDIDATE_G_G0_REASSESSMENT.md, research/INITIAL_RESEARCH_MEMO.md, research/THESIS_PAPER_MAP.md, and research/DECISION_LOG.md.
+1. Read README.md, research/PROJECT_CHARTER.md, research/STATUS.md, research/LITERATURE_REVIEW.md, research/RELATED_WORK_MATRIX.md, research/CAPABILITY_GAP_REVIEW.md, research/EC_ROLE_AND_PARAMETER_CONTROL.md, research/EC_PARAMETER_CONTROL_EXPERIMENT_PROTOCOL.md, research/TOOLMAZE_BENCHMARK_AUDIT.md, research/COEVOLUTION_CANDIDATE_AUDIT.md, research/META_EVOLUTION_CANDIDATE_AUDIT.md, research/TRANSACTIONAL_AGENT_ROBUSTNESS_CANDIDATE_AUDIT.md, research/COUNTERFACTUAL_EVOLUTION_CANDIDATE_AUDIT.md, research/EVOMAS_CODE_AUDIT_AND_PARENT_SELECTION_CANDIDATE.md, research/CANDIDATE_G_G0_REASSESSMENT.md, research/COMMUNICATION_EVOLUTION_LANE_SCREEN.md, research/INITIAL_RESEARCH_MEMO.md, research/THESIS_PAPER_MAP.md, and research/DECISION_LOG.md.
 2. Check recent commits and any new issues/files before acting.
 3. Treat repository contents as the current project state. Do not import ideas, results, assumptions, or conclusions from unrelated projects or previous conversations.
 4. Report the exact current stage, verified decisions, open questions, and next concrete action before making major recommendations.
@@ -46,7 +46,7 @@ The most recent candidate screened was **G: task-conditioned, lineage-aware pare
 
 1. Treat Candidate G's current formulation as **G0 NOT PASSED / DO NOT IMPLEMENT AS WRITTEN**; preserve the prior-art reasoning in `research/CANDIDATE_G_G0_REASSESSMENT.md`.
 2. Keep the EvoMAS fallback/executability issue as a code-level audit caveat. Do not claim the published execution rate is inflated until the paper's exact denominator and fallback incidence are independently verified.
-3. Resume a broader mechanism-level search across strong 2024–2026 Agent + evolutionary-computation papers. Require a concrete agent capability/behavior limitation and a distinct EC mechanism, not merely a new domain or added scoring features.
+3. Screen the communication-evolution lane in `research/COMMUNICATION_EVOLUTION_LANE_SCREEN.md` as one possible next direction. The initial search found direct overlap from CLSR, MOC, GTD, and GlossoGen; audit whether any narrow transfer/monitorability failure remains outside prior work. This is not an approved candidate.
 4. For every new candidate, complete a closest-work comparison and data/benchmark feasibility gate before implementation or API experiments.
 5. Only after one core candidate survives, design the pilot and map connected thesis contributions; do not force three contributions prematurely.
 
