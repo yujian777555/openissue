@@ -50,9 +50,12 @@ Do not infer publication acceptance from an arXiv page. Do not infer a limitatio
 
 | 2026-10-23 | Primary-source audit: ResiliBench, Atomix, state-race guards, Harmony Harness, safety taxonomy, Vera | Search for a less generic agent-reliability problem with explicit state invariants and measurable outcomes | Registered P66–P71 and added research/TRANSACTIONAL_AGENT_ROBUSTNESS_CANDIDATE_AUDIT.md. Transaction-aware recovery-policy evolution is a candidate to test, not an approved novelty claim. |
 
+| 2026-10-26 | Second-pass primary-source audit: Cordon, Agentic Transaction, Verified Tool Calls, LIMBO, Sentry, Bench2Robust, AIR, IdempotencyBench | Falsify the broad transaction-aware recovery-controller candidate and verify code/data availability | Registered P72–P79. Candidate E is downgraded: the problem is important but transaction systems, wrappers, runtime recovery, and learned recovery are already directly studied. Atomix is the clearest currently licensed runnable baseline; several other sources have unresolved or absent code/data terms. |
+| 2026-10-26 | Candidate search: counterfactual attribution and tool-interface adaptation | Identify an EC-centered method gap after the recovery-controller candidate failed the broad novelty gate | Registered P80–P84 and added research/COUNTERFACTUAL_EVOLUTION_CANDIDATE_AUDIT.md. Counterfactual-guided evolutionary credit is a hypothesis only; Causal Agent Replay, Counterfactual Planning, EVOTOOL, and classical AOS are direct overlaps. Tool-schema/documentation optimization is also crowded by JTPRO and ContDa. |
+
 ## Preliminary registry
 
-The detailed paper list and comparison are maintained in [RELATED_WORK_MATRIX.md](RELATED_WORK_MATRIX.md). It now contains 71 core or closely related works across the first and second search passes. See [CAPABILITY_GAP_REVIEW.md](CAPABILITY_GAP_REVIEW.md) for second-pass synthesis and provisional candidate triage.
+The detailed paper list and comparison are maintained in [RELATED_WORK_MATRIX.md](RELATED_WORK_MATRIX.md). It now contains 84 core or closely related works across the first and second search passes. See [CAPABILITY_GAP_REVIEW.md](CAPABILITY_GAP_REVIEW.md) for second-pass synthesis and provisional candidate triage.
 
 ### Initial core reading order
 
