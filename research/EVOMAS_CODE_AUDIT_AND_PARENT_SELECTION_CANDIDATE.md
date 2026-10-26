@@ -3,7 +3,7 @@
 **Audit date:** 2026-10-26  
 **Repository inspected:** [amazon-science/EvoMAS](https://github.com/amazon-science/EvoMAS), branch main  
 **Thesis workspace:** [yujian777555/openissue](https://github.com/yujian777555/openissue) only. No files or conclusions were written to any other user project.  
-**Status:** A concrete improvement candidate is now defined, but its novelty gate remains OPEN. No experiment or thesis topic is approved.
+**Status:** The original Candidate G formulation did not pass Gate G0 after the additional 2026 prior-art audit. Do not implement it as written; see `research/CANDIDATE_G_G0_REASSESSMENT.md`. No experiment or thesis topic is approved.
 
 ## 1. Why audit EvoMAS?
 
@@ -156,6 +156,8 @@ Reject Candidate G if:
 
 ## 6. Decision
 
-**Candidate G remains worth a focused, falsifiable method-improvement audit, not yet a thesis topic.** It is a concrete improvement path on an existing strong paper, and the official code exposes measurable issues in how offspring validity and parent-pair lineage are represented. The strongest novelty risk is that evolvability-aware mating and task-conditioned parent selection may be considered incremental extensions of PAIR, multi-task evolutionary optimization, and adaptive strategy selection.
+**Current formulation: G0 NOT PASSED; DO NOT IMPLEMENT AS WRITTEN.** The new direct prior art GPDPS⁽ᵒ⁾ (2026) combines diverse partner selection, brood recombination, surrogate offspring-performance estimation, and offspring selection. Together with DPS+BR, PAIR/LMEA, MECo/MTHS, and EoH-S, this means generic offspring-yield-aware, LLM-guided, task-conditioned mating is not a defensible novelty claim. Structured MAS configuration is a relevant target domain but does not by itself establish a new method.
 
-The next step is to verify the EvoMAS paper's exact execution-rate denominator and fallback reporting, inspect its published ablations, then implement only a small offline analysis of existing logs or synthetic lineage data to test whether pair-level offspring yield is predictable. No full LLM experiment should start until G0 passes.
+The earlier code audit remains useful as a baseline audit. The exact impact of fallback behavior on the published executability metric remains unverified; no inflation claim is authorized. No existing lineage-linked data is present in `openissue`, and the original EvoMAS traces omit parent IDs, so an “offline analysis of existing logs” cannot currently be run. Reopen only if a formal mechanism distinction is identified before collecting expensive outcomes; otherwise broaden candidate search.
+
+See the full assessment, evidence boundaries, and next steps in [`research/CANDIDATE_G_G0_REASSESSMENT.md`](CANDIDATE_G_G0_REASSESSMENT.md).

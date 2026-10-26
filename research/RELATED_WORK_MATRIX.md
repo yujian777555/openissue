@@ -1,6 +1,6 @@
 # Preliminary Related-Work Matrix
 
-**Updated:** 2026-10-23  
+**Updated:** 2026-10-26  
 **Status:** First-pass mapping; not a completed systematic review  
 **Interpretation rule:** Published claims below are summaries of the cited papers. The “overlap risk” is our preliminary assessment, not a novelty verdict.
 
@@ -283,5 +283,6 @@ Candidate F is **not approved** and Gate F0 is **not passed**. The currently des
 | P96 | **Multi-Task Evolution for Zero-Shot Cross-Problem Generalization using LLMs (MECo)** — Xie et al., arXiv preprint, 2026-10-02. [Paper](https://arxiv.org/abs/2610.03316) | Task-conditioned heuristic populations interact through transfer gaps; selection rewards complementary coverage across source-task combinations. | Task-conditioned population interaction and transfer-aware selection are directly studied in LLM-based heuristic design. |
 | P97 | **Hierarchical Representations for Cross-task Automated Heuristic Design using LLMs (MTHS)** — Liu et al., ICML 2026. [Paper](https://proceedings.mlr.press/v306/liu26ge.html) | Co-evolves task-agnostic metaheuristics and task-specific programs, transferring elite programs across tasks. | Cross-task evolutionary knowledge transfer is established; MAS configuration-specific mating must demonstrate additional value. |
 | P98 | **EoH-S: Evolution of Heuristic Set Using LLMs for Automated Heuristic Design** — Liu et al., AAAI 2026. [Paper](https://ojs.aaai.org/index.php/AAAI/article/view/41038) | Uses complementary population management and memetic search to evolve a set of heuristics with diverse performance across instances. | Complementarity-aware population/solution-set selection is established in LLM-driven evolutionary design. |
+| P99 | **Genetic Programming with Advanced Diverse Partner Selection for Dynamic Scheduling (GPDPS⁽ᵒ⁾)** — Xu et al., *Expert Systems with Applications*, 2026. [Paper](https://www.sciencedirect.com/science/article/pii/S0957417426010717) · [DOI](https://doi.org/10.1016/j.eswa.2026.132158) | Combines advanced diverse partner selection, brood recombination, surrogate estimation of candidate offspring performance, and offspring selection. | Direct overlap for the combination of mating selection and offspring-quality prediction; Candidate G's current formulation must not claim this combination as novel. |
 
-Candidate G's remaining hypothesis is narrow: online task-family-conditioned prediction of actual offspring improvement from explicit lineage-linked MAS outcomes, accounting for validity, repair, and fallback. It must beat P91–P98, classical diverse-partner selection, and fitness-only pairing on held-out task families. This is a domain-specific method-improvement candidate, not a novelty claim.
+Candidate G's current formulation did not pass Gate G0 after adding P99: GPDPS⁽ᵒ⁾ directly combines diverse partner selection with surrogate offspring-performance estimation and offspring selection. See `research/CANDIDATE_G_G0_REASSESSMENT.md`. Do not implement the current formulation as written; retain the EvoMAS audit as a baseline/reproducibility note and broaden the candidate search.

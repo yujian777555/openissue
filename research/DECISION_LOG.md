@@ -218,3 +218,14 @@ Record consequential project decisions here so future sessions do not reopen set
 - **Next test:** Offline predictive-value analysis first; compare out-of-sample pair-yield prediction against parent fitness, structural diversity, task-conditioned individual fitness, PAIR-style LLM compatibility, and classical diverse-partner selection. Do not start expensive LLM experiments until G0 passes.
 - **Stop condition:** If lineage-linked offspring yield adds no predictive value or is matched by PAIR/classical mating under controlled splits, reject Candidate G.
 - **Caution:** The code-level fallback issue is verified, but the effect on published executability numbers is not yet recomputed. Do not state that the paper's metric is inflated as a confirmed result.
+
+
+## D-021 — Candidate G's current formulation fails the prior-art gate
+
+- **Date:** 2026-10-26
+- **Status:** Accepted negative prior-art finding; current formulation rejected
+- **Decision:** Do not implement Candidate G as currently specified. Its core claim—selecting parent pairs using predicted offspring improvement, optionally conditioned on task family—does not yet provide a defensible mechanism-level distinction.
+- **Evidence:** `research/CANDIDATE_G_G0_REASSESSMENT.md` adds GPDPS⁽ᵒ⁾ (2026), which combines diverse partner selection, brood recombination, surrogate offspring-performance estimation, and offspring selection. Existing direct overlaps include DPS+BR (2018), PAIR, LMEA, MECo, MTHS, and EoH-S. The official EvoMAS code also lacks parent-pair IDs in operation traces, and no lineage-linked run logs are present in `openissue`.
+- **Evidence boundary:** The code-level parent fallback is verified, but the exact effect on the published executability metric remains unresolved. Do not claim that the metric is inflated.
+- **Implication:** Keep EvoMAS as a strong baseline/code-audit target, but broaden the thesis candidate search rather than turning a domain-specific reimplementation of known mating/surrogate mechanisms into an innovation claim.
+- **Next action:** Find a different, falsifiable Agent + EC method-improvement opportunity; require primary-source prior-art and data-feasibility gates before implementation.

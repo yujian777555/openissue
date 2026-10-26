@@ -56,10 +56,11 @@ Do not infer publication acceptance from an arXiv page. Do not infer a limitatio
 | 2026-10-26 | Primary-source audit: CausalFlow, Graph-Constrained Joint Replay/MRFR, 2026 GA interaction learning, GAwLL | Falsify counterfactual-interaction-guided evolutionary search before implementation | Registered P85–P90 in RELATED_WORK_MATRIX.md and updated COUNTERFACTUAL_EVOLUTION_CANDIDATE_AUDIT.md. Gate F0 is not passed; the proposed combination risks being incremental. |
 
 | 2026-10-26 | Direct code audit: EvoMAS parent selection; prior-art pass on PAIR, LMEA, classical mating selection, MECo, MTHS, EoH-S | Find a concrete method improvement in a strong existing Agent+EA paper and falsify novelty risk | Added `research/EVOMAS_CODE_AUDIT_AND_PARENT_SELECTION_CANDIDATE.md`; registered P91–P98. Candidate G remains provisional. Fallback behavior is verified in code, but published executability-rate impact is not independently recalculated. |
+| 2026-10-26 | Candidate G G0 reassessment: GPDPS⁽ᵒ⁾ and offline-data feasibility | Test whether lineage-aware offspring-yield selection is distinct from existing mating and surrogate-assisted evolution | Registered P99 and added `research/CANDIDATE_G_G0_REASSESSMENT.md`. GPDPS⁽ᵒ⁾ combines diverse partner selection, brood recombination, surrogate offspring-performance estimation, and offspring selection; Candidate G's current formulation does not pass G0. `openissue` has no lineage-linked run logs, and EvoMAS operation traces omit parent-pair IDs, so the planned offline analysis cannot be run on existing records. The exact executability-rate denominator remains unresolved. |
 
 ## Preliminary registry
 
-The detailed paper list and comparison are maintained in [RELATED_WORK_MATRIX.md](RELATED_WORK_MATRIX.md). It now contains 84 core or closely related works across the first and second search passes. See [CAPABILITY_GAP_REVIEW.md](CAPABILITY_GAP_REVIEW.md) for second-pass synthesis and provisional candidate triage.
+The detailed paper list and comparison are maintained in [RELATED_WORK_MATRIX.md](RELATED_WORK_MATRIX.md). It contains indexed entries P01–P99, including repeated papers in candidate-specific audit sections; the unique-paper count has not yet been reconciled, so this is not yet a completed systematic-review corpus. See [CAPABILITY_GAP_REVIEW.md](CAPABILITY_GAP_REVIEW.md) for second-pass synthesis and provisional candidate triage.
 
 ### Initial core reading order
 
