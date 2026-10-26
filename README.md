@@ -23,6 +23,7 @@ The goal is not to commit prematurely to a fashionable topic. The project will s
 15. Read [Thesis–Paper Map](research/THESIS_PAPER_MAP.md) for how candidate contributions may map to papers.
 16. Read [Decision Log](research/DECISION_LOG.md) before revisiting previously assessed ideas.
 17. Use [Session Handoff](SESSION_HANDOFF.md) when starting a new ChatGPT conversation.
+18. Read [Communication Evolution Lane Screen](research/COMMUNICATION_EVOLUTION_LANE_SCREEN.md) before promoting any communication-protocol or topology idea.
 
 ## Non-negotiable research principles
 
