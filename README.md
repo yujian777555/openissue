@@ -55,3 +55,6 @@ The first and second-pass literature maps are recorded, including a provisional 
 
 19. Read [Candidate H0 Reassessment](research/COMMUNICATION_EVOLUTION_CANDIDATE_H_REASSESSMENT.md) before reopening communication evolution; the current transfer/monitorability formulation did not pass its novelty gate.
 20. Read [Agent Skill/Workflow Generalization Lane Screen](research/AGENT_SKILL_GENERALIZATION_LANE_SCREEN.md) for the next exploratory lane; it is not an approved candidate.
+
+20. Read [Agent Skill/Workflow Generalization Lane Screen](research/AGENT_SKILL_GENERALIZATION_LANE_SCREEN.md) for the next exploratory lane; it is not an approved candidate.
+21. Read [Faithful Self-Evolvers Code Audit](research/FAITHFUL_SELF_EVOLVERS_CODE_AUDIT.md) for the source-code findings and limitations before using this work as a baseline.

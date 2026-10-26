@@ -262,3 +262,14 @@ Record consequential project decisions here so future sessions do not reopen set
 - **Evidence:** GSO (arXiv 2609.39148) reports that most skills improving on training tasks do not retain all gains on held-out tasks; Faithful Self-Evolvers (ICML 2026) measures causal dependence on raw and condensed experience and finds condensed experience can be ignored/misused; H-EPM, AgentEvo, DIVE, and CATArena cover adjacent memory, workflow evolution, task diversity, and iterative improvement.
 - **Guardrail:** This is a research lane, not an approved thesis topic or innovation point. A new fitness term, memory graph, skill format, or task-specific-skill policy alone is not enough.
 - **Next gate:** Deep-read GSO and Faithful Self-Evolvers, inspect official evaluation code, compare with H-EPM and AgentEvo, and define a concrete EC genotype/operator/selection mechanism. Stop if the proposal reduces to weighted generalization/faithfulness objectives or duplicates existing methods.
+
+
+## D-025 — First-pass Faithful Self-Evolvers code audit
+
+- **Date:** 2026-10-26
+- **Status:** Code observations accepted; no candidate accepted
+- **Decision:** Retain the experience-faithfulness lane for deeper literature audit, but do not implement an EA method yet.
+- **Observed:** ExpeL's irrelevant/filler interventions are stochastic partial replacements (80% replace, 20% preserve); ReasoningBank is explicitly a condensed-only setting; cdt/src/stats_frscore.py appears to rescale a cumulative vector inside its sample loop, and cdt/src/stats_igscore.py may count one excluded row in the denominator.
+- **Scope caution:** These observations concern intervention strength and secondary plotting/aggregation. They do not by themselves invalidate the paper's primary behavioral results. Compare the helpers with the paper equations and saved per-sample artifacts before making stronger claims.
+- **Rights:** The public repository is retrievable, but a root LICENSE file was not found; no code/data reuse is approved.
+- **Next:** Deep-read GSO and compare its task-specific skill generation with H-EPM and AgentEvo. Reject any proposal that merely adds faithfulness/generalization terms to fitness.

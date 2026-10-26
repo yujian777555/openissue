@@ -169,3 +169,8 @@ Do not implement this formulation or treat it as an innovation point. The next s
 A second lane is now queued for deeper review, not accepted as a candidate. GSO reports that only 5 of 21 training-improved skills retain all gains on held-out tasks; Faithful Self-Evolvers finds that condensed experience can be ignored or misused; H-EPM, AgentEvo, DIVE, and CATArena already cover adjacent memory/workflow evolution, task diversity, and iterative improvement. See research/AGENT_SKILL_GENERALIZATION_LANE_SCREEN.md and P113–P118 in research/RELATED_WORK_MATRIX.md.
 
 The only acceptable continuation is a mechanism-level evolutionary improvement that beats the closest methods and classical EC baselines. Adding a generalization metric, faithfulness score, or new memory representation by itself is not enough.
+
+
+## Update — Faithful Self-Evolvers source-code audit (2026-10-26)
+
+The official Faithfulness repository was inspected. ExpeL's irrelevant/filler perturbations preserve the original insight in 20% of cases; ReasoningBank is explicitly a condensed-only setting. The secondary FR-score plotting helper appears order-dependent, and the IG-score averaging helper may count an excluded row. These are potential intervention/plot interpretation issues, not proof that primary task-success or experience-faithfulness results are invalid. See research/FAITHFUL_SELF_EVOLVERS_CODE_AUDIT.md. Code/data reuse remains blocked because a root LICENSE file was not found.

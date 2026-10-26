@@ -65,3 +65,15 @@ But this is only a prompt for further literature and code review. It may collaps
 ## 5. Next action
 
 Deep-audit the GSO and Faithful Self-Evolvers papers and their actual evaluation code, then compare the proposed skill/experience representation against H-EPM and AgentEvo. Determine whether a concrete evolutionary operator or selection mechanism can address a specific failure that those methods do not already solve. Do not start API experiments or implementation yet.
+
+
+## 6. First-pass code audit: Faithful Self-Evolvers (2026-10-26)
+
+A direct read of the official repository adds implementation-level cautions; details are in research/FAITHFUL_SELF_EVOLVERS_CODE_AUDIT.md.
+
+- ExpeL's empty intervention removes insights; its corrupted intervention applies randomized edits. Its irrelevant and filler-token conditions replace each item with probability 0.8 and preserve the original with probability 0.2, so these are stochastic partial perturbations rather than full semantic removal.
+- ReasoningBank is explicitly a condensed-only setting in the README; its raw few-shot modification branch being commented out is consistent with that scope.
+- The secondary FR-score plotting helper in cdt/src/stats_frscore.py appears to divide the cumulative score vector by 8 inside the per-sample loop, making aggregation order-dependent. The secondary IG-score averaging helper appears to count an excluded row in its denominator. These are code-level plotting concerns; they do not by themselves invalidate primary behavioral results and must be checked against the paper equations and saved artifacts.
+- The official repository is accessible, but a root LICENSE file was not found. Do not reuse code/data until terms are confirmed.
+
+This makes Faithful Self-Evolvers a valuable source of evaluation interventions, but not yet an EC candidate. The novelty gate remains unchanged.

@@ -64,6 +64,8 @@ Prepare a defensible graduate thesis proposal on evolutionary computation applie
 
 - Initial-screened a second potential lane around skill/workflow generalization and faithful experience use. GSO reports substantial train-to-test skill regression; Faithful Self-Evolvers finds that condensed experience is often ignored/misused; H-EPM, AgentEvo, DIVE, and CATArena already cover adjacent memory, workflow, task-diversity, and evolutionary-capability questions. See research/AGENT_SKILL_GENERALIZATION_LANE_SCREEN.md. This is only a lane to audit, not an accepted candidate.
 
+- Completed a first-pass source-code audit of Faithful Self-Evolvers: ExpeL's irrelevant/filler interventions are stochastic partial replacements; ReasoningBank is explicitly condensed-only; secondary FR/IG plotting helpers contain possible aggregation issues requiring comparison with the paper equations. These observations are not evidence that the paper's primary behavioral results are invalid. See research/FAITHFUL_SELF_EVOLVERS_CODE_AUDIT.md; code/data reuse is blocked pending license clarification.
+
 ## Evidence state and caveats
 
 This is a **multi-pass preliminary map**, not a completed systematic review or novelty assessment. Some papers have been read at abstract/method/results level; not every paper, supplement, or codebase has been fully audited. Candidate research questions remain hypotheses. No innovation point is approved.
@@ -79,7 +81,7 @@ The user considers finite-budget evaluation efficiency insufficiently compelling
 ## Next actions (ordered)
 
 1. Keep Candidates E, F, G, and H0 downgraded in their current formulations. Reopen only if new primary-source evidence or a materially different algorithmic mechanism emerges.
-2. **Deep-audit the skill/workflow generalization and experience-faithfulness lane** in research/AGENT_SKILL_GENERALIZATION_LANE_SCREEN.md. Read GSO and Faithful Self-Evolvers in depth, inspect the actual intervention/evaluation code, and compare with H-EPM and AgentEvo.
+2. **Deep-audit the skill/workflow generalization and experience-faithfulness lane** in research/AGENT_SKILL_GENERALIZATION_LANE_SCREEN.md. Read GSO in depth and verify code availability; compare its method against H-EPM and AgentEvo. Faithful Self-Evolvers code has received a first-pass audit, recorded in research/FAITHFUL_SELF_EVOLVERS_CODE_AUDIT.md.
 3. Require a concrete evolutionary mechanism—not just a generalization metric, faithfulness score, skill format, or memory graph. Compare the proposed representation/operators/selection with classical GP/EC and the closest current methods.
 4. Verify code/data rights and whether the necessary benchmarks permit a leakage-safe held-out test. The Faithfulness and DIVE repositories are accessible but their inspected roots did not expose LICENSE files; resolve this before reuse.
 5. If this lane collapses to weighted objectives or a rediscovery of existing memory/workflow methods, stop and screen another strong, inspectable Agent+EC baseline.
