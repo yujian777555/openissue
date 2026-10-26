@@ -39,7 +39,8 @@ Prepare a defensible graduate thesis proposal on evolutionary computation applie
 - ToolMaze adoption remains blocked: Hugging Face exposes one split named `train` rather than a documented optimization train/validation/test protocol, its viewer currently fails nested-schema inference, and neither the code tree nor dataset card exposes an explicit license. The new `research/TOOLMAZE_BENCHMARK_AUDIT.md` specifies split-leakage prevention, dual RC reporting, and the license gate.
 - Audited recent primary sources for Agent-World, SEAL, SENTINEL, COvolve, RLAnything, and the 2026 co-evolution survey. Generic agent–environment co-evolution and failure-driven task generation are too crowded to claim as novel. Added P52–P57 and `research/COEVOLUTION_CANDIDATE_AUDIT.md`; typed recovery-program EA plus valid fault-program search remains a speculative narrow hypothesis.
 - Audited Promptbreeder, Gödel Agent, Darwin Gödel Machine, HyperAgents, RQGM, SIA, Meta-Harness, MetaBench-Harness, and MoMHa. Generic meta-evolution, evaluator co-evolution, and harness/benchmark-generation search are also crowded. Added P58–P65 and `research/META_EVOLUTION_CANDIDATE_AUDIT.md`; only a narrow transferable search-controller question remains speculative.
-- Broadened the candidate search to transactional tool-agent reliability: partial side effects, state races, and irreversible actions. Added P66–P71 (ResiliBench, Atomix, semantic state-race guards, Harmony Harness, safety taxonomy, Vera) and `research/TRANSACTIONAL_AGENT_ROBUSTNESS_CANDIDATE_AUDIT.md`. Candidate E is now a bounded, transaction-aware recovery-controller EA under immutable hard safety contracts; it is a candidate to test, not a novelty claim.
+- Broadened the candidate search to transactional tool-agent reliability and added P66–P71. A second-pass audit added P72–P79 (Cordon, Agentic Transaction, Verified Tool Calls, LIMBO, Sentry, Bench2Robust, AIR, IdempotencyBench) and found that broad transaction-aware recovery-controller evolution is too crowded to claim as novel. Atomix is the clearest licensed runnable runtime baseline; ResiliBench and Vera reuse rights remain unresolved, and several newer papers have no confirmed official code/data release.
+- Added P80–P84 (Causal Agent Replay, Counterfactual Planning, JTPRO, ContDa, Gecko) and `research/COUNTERFACTUAL_EVOLUTION_CANDIDATE_AUDIT.md`. Candidate F—counterfactual-evidence-guided evolutionary credit assignment—is now the next algorithmic hypothesis, but EVOTOOL, causal attribution, counterfactual planning, and classical AOS are direct overlaps. No candidate has passed the novelty gate.
 
 
 - Added research/EC_ROLE_AND_PARAMETER_CONTROL.md to separate Agent-policy evolution, evolutionary-algorithm parameter control, and task/environment/evaluation settings.
@@ -72,13 +73,13 @@ The user considers finite-budget evaluation efficiency insufficiently compelling
 
 ## Next actions (ordered)
 
-1. **Compare the three remaining narrow candidates** in one scorecard: (A) typed recovery-program evolution, (D) transferable search-controller learning, and (E) transaction-aware recovery-controller evolution. Generic co-evolution and generic meta-evolution are already downgraded.
-2. Prioritize Candidate E for a focused falsification audit because its safety contract and observable state transitions are concrete. Compare the proposed controller with Atomix + fixed rules, semantic-predicate guards, ResiliBench-style stochastic faults, Harmony Harness, and Vera-style deterministic verification. Do not assume EA is needed.
-3. Audit the code/data licenses and runnable interfaces of ResiliBench, Atomix, Harmony Harness, and Vera before planning a reproduction. If benchmark terms are unclear, author a small independent transactional tool simulator and use licensed external benchmarks only for held-out checks.
-4. Define an immutable safety contract and state oracle; test partial effects, duplicate calls, races, reversible/irreversible actions, and hidden-label leakage before any optimization.
-5. Only if fixed rules/runtime enforcement leave a measurable policy gap, compare random controller search, greedy edits, static EA, and the strongest reproducible harness-evolution baseline under matched model-call/rollout budgets.
-6. Require a better safe-completion/false-abort frontier and held-out race × reversibility × topology generalization. If not, reject Candidate E and return to the broader candidate ranking.
-7. Do not implement a full EA or populate the thesis–paper map until one candidate passes novelty, benchmark-rights, and feasibility gates.
+1. **Close Gate F0 before implementation:** specify the exact counterfactual estimand, policy-edit/operator credit estimator, and operator-update rule in research/COUNTERFACTUAL_EVOLUTION_CANDIDATE_AUDIT.md.
+2. Compare the proposed mechanism against EVOTOOL's blame-guided targeted mutation, Causal Agent Replay's intervention-based attribution, Counterfactual Planning, and classical AOS/self-adaptation. Decide whether the method is more than a combination of known parts.
+3. If F0 survives, design a small independent tool-fault simulator with hidden fault labels, an external state/effect oracle, paired fault twins, and held-out fault-semantics × task-topology combinations. Use Atomix as a licensed runtime baseline if integration is appropriate; do not use ResiliBench/Vera data until rights are clarified.
+4. Run no API-heavy experiment yet. First validate paired-world construction, hidden-label isolation, state invariants, and repeatable deterministic baselines.
+5. If a pilot is justified, compare fixed rules, simple paired-fitness selection, LLM blame, classical AOS, static EA, and the proposed causal-credit EA under matched model calls/rollouts.
+6. Require held-out compositional gains without safety regressions. If the method loses to EVOTOOL/AOS or the credit signal is not predictive, reject F and broaden the candidate search again.
+7. Do not approve a thesis topic or populate the thesis–paper map until Gate F0 and feasibility gates pass.
 
 ## Definition of done for the next milestone
 
