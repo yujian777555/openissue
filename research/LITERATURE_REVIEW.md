@@ -55,6 +55,8 @@ Do not infer publication acceptance from an arXiv page. Do not infer a limitatio
 
 | 2026-10-26 | Primary-source audit: CausalFlow, Graph-Constrained Joint Replay/MRFR, 2026 GA interaction learning, GAwLL | Falsify counterfactual-interaction-guided evolutionary search before implementation | Registered P85–P90 in RELATED_WORK_MATRIX.md and updated COUNTERFACTUAL_EVOLUTION_CANDIDATE_AUDIT.md. Gate F0 is not passed; the proposed combination risks being incremental. |
 
+| 2026-10-26 | Direct code audit: EvoMAS parent selection; prior-art pass on PAIR, LMEA, classical mating selection, MECo, MTHS, EoH-S | Find a concrete method improvement in a strong existing Agent+EA paper and falsify novelty risk | Added `research/EVOMAS_CODE_AUDIT_AND_PARENT_SELECTION_CANDIDATE.md`; registered P91–P98. Candidate G remains provisional. Fallback behavior is verified in code, but published executability-rate impact is not independently recalculated. |
+
 ## Preliminary registry
 
 The detailed paper list and comparison are maintained in [RELATED_WORK_MATRIX.md](RELATED_WORK_MATRIX.md). It now contains 84 core or closely related works across the first and second search passes. See [CAPABILITY_GAP_REVIEW.md](CAPABILITY_GAP_REVIEW.md) for second-pass synthesis and provisional candidate triage.
