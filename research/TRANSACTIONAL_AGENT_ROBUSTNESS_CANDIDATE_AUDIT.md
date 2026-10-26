@@ -80,3 +80,28 @@ The final test must hold out combinations of race type × side-effect reversibil
 This direction is more concretely tied to a consequential agent capability than generic co-evolution, but it still overlaps with Atomix, ResiliBench, state-race guard research, Harmony Harness, MoMHa, and Vera. It passes the *problem importance / measurability* screen provisionally; it has not passed the *distinct evolutionary mechanism* screen.
 
 The next step is to test whether the evolution of controller policies contributes anything beyond a transactional runtime plus simple rules. If not, reject it. Do not claim the environment, safety metric, or multi-objective EA alone as the innovation.
+
+
+## 8. Second-pass falsification and implementation gate (2026-10-26)
+
+The broader formulation is now **downgraded**. The direct overlap is not limited to Atomix and ResiliBench:
+- Cordon and Agentic Transaction study task-scoped semantic/ACID-like transaction boundaries for agent workflows.
+- Verified Tool Calls already adds postcondition verification, verify-before-retry, and idempotency keys.
+- LIMBO directly evaluates ambiguous write outcomes, late commits, redelivery, and duplicate side effects with a ground-truth effect ledger; it also shows a client-side policy cannot guarantee exactly-once when the tool contract lacks the necessary capability.
+- AIR provides incident detection, tool-mediated recovery, and reusable guardrail synthesis.
+- Sentry learns failure-conditioned recovery lessons from verified repairs.
+- Bench2Robust explicitly controls whether an episode requires retry, fallback, or escalation and studies learned recovery with RL.
+- Harmony Harness already uses evolutionary multi-objective optimization over harness functionality/security.
+
+These results leave no basis for claiming novelty for “evolve a transactional recovery controller” alone. A new genome, a new safety metric, or a new combination of an existing runtime and EA is not enough.
+
+### Implementation/rights gate
+
+- **Atomix:** Apache-2.0; inspected source tree includes the Python runtime, fixed protocol baselines (OCC revalidate/retry and TCC confirm), tests, and local experiment configurations. This is the clearest runnable baseline currently available, but its test suite has not been run in this project session.
+- **ResiliBench:** the linked repository currently contains supplementary JSON tool/task registries; no top-level license file or license metadata was present, and the inspected root has no full experiment runner. Treat as a paper-specified benchmark and unlicensed/unverified data artifact until the authors clarify terms.
+- **Vera:** the official root contains LEGAL.md but no top-level software license file; do not assume permissive reuse.
+- **Harmony Harness:** no author-linked official code repository was visible on the inspected arXiv page. A third-party extension is not an official reproduction.
+- **LIMBO, Bench2Robust, Cordon, Agentic Transaction, and Verified Tool Calls:** no confirmed official runnable code/data link was found in the inspected paper pages.
+- **Sentry:** MIT-licensed source package exists, but reproducing its benchmark setup requires substantial external environments and API configuration; it has not been independently run here.
+
+**Decision:** Keep Candidate E only as a comparison setting for a stronger EC method. Do not use it as the thesis umbrella unless a distinct algorithmic mechanism survives Gate F0 in [COUNTERFACTUAL_EVOLUTION_CANDIDATE_AUDIT.md](COUNTERFACTUAL_EVOLUTION_CANDIDATE_AUDIT.md).
