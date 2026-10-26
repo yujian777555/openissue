@@ -253,3 +253,19 @@ A narrower method hypothesis is to use measured interventions to estimate the ca
 
 The next gate is a mechanism-level comparison, not implementation: show that the proposed interventional credit signal adds value beyond trajectory-only blame, CAR-style causal attribution, classical AOS, and EVOTOOL under matched model-call/rollout conditions and held-out fault × topology combinations.
 
+
+
+## 15. Additional counterfactual repair and evolutionary interaction learning (2026-10-26)
+
+| ID | Paper / status | What it studies | Consequence for Candidate F |
+|---|---|---|---|
+| P85 | **CausalFlow: Causal Attribution and Counterfactual Repair for LLM Agent Failures** — Bonagiri et al., arXiv preprint, 2026-05-25. [Paper](https://arxiv.org/abs/2605.25338) | Interventional attribution over execution traces; generates minimal counterfactual repairs and validated wrong-step/corrected-step pairs for test-time repair or learning. | Direct overlap with counterfactual attribution plus targeted repair generation. A causal signal used to mutate a policy is not sufficient novelty. |
+| P86 | **Localizing Emergent Failures in Agentic AI: Recovering Minimal Repair Families via Counterfactual Replay** — Li et al., arXiv v2, 2026-09-06. [Paper](https://arxiv.org/abs/2608.29228) | Graph-Constrained Joint Replay searches singleton and pair event sets, validating each repair with counterfactual replay and paired clean counterparts; reports controlled DAG and multi-agent experiments. | Direct overlap with pairwise intervention effects and dependency-graph-constrained joint repairs. A policy-edit interaction graph needs a stronger distinction than “evaluate pairs.” |
+| P87 | **Learning Variable Importance and Interaction in Genetic Algorithms for Pseudo-Boolean Optimization** — Tinós et al., *Evolutionary Computation*, online first 2026-09-15. [Paper/DOI](https://doi.org/10.1162/EVCO.a.406) | Learns variable importance and interactions as a by-product of GA optimization and uses the estimates to design mutation/recombination operators; evaluates on NK landscapes and feature-selection tasks. | Very high overlap for interaction-guided evolutionary variation. Candidate F must prove that agent-policy interventional credit adds value beyond empirical linkage learning, not merely that it uses an interaction graph. |
+| P88 | **Genetic Algorithm with Linkage Learning (GAwLL)** — Tinós et al., GECCO 2023. [Paper](https://doi.org/10.1145/3583131.3590387) | Learns an empirical weighted variable-interaction graph as a by-product of GA search without extra fitness evaluations. | Direct baseline for interaction-graph construction and linkage-guided variation. |
+| P89 | **Causal Agent Replay: Counterfactual Attribution for LLM-Agent Failures** — Shah, arXiv 2026-06-06. [Paper](https://arxiv.org/abs/2606.08275) | Intervenes on agent trajectory steps, replays downstream behavior, and uses contrastive causal effects and Monte-Carlo Shapley attribution for interacting steps. | Direct baseline for intervention-based agent attribution and interaction credit. |
+| P90 | **Counterfactual Planning for Generalizable Agents’ Actions** — Fu et al., AAAI 2026. [Paper](https://ojs.aaai.org/index.php/AAAI/article/view/40184) | Uses causal state representations and counterfactual reward for action generalization under stochastic feedback. | Direct baseline for counterfactual action evaluation. |
+
+### Updated Candidate F status
+
+Candidate F is **not approved** and Gate F0 is **not passed**. The currently described method risks being a simple combination of counterfactual repair/attribution with known linkage-learning evolutionary algorithms. Do not begin implementation unless a formal estimand and update rule establish a nontrivial distinction against P85–P90, EVOTOOL, and classical AOS.
