@@ -2,6 +2,8 @@
 
 ## Status
 
+**State update (2026-10-26):** This is a historical second-pass candidate review, not the current decision source. Later audits downgraded Candidate E, Candidate F did not pass F0, and Candidate G's current formulation did not pass G0. See `STATUS.md`, `DECISION_LOG.md`, and `CANDIDATE_G_G0_REASSESSMENT.md`. Historical action labels below are not authorization to implement a candidate.
+
 No thesis direction is approved. The second-pass literature map now includes recent 2026 work across tool-use policy evolution, multi-agent evolution, skills, memory, planning, open-world generalization, and continual adaptation. The user has explicitly deprioritized finite evaluation budget as the thesis core.
 
 ## 1. Crowded research areas
@@ -69,7 +71,9 @@ For state-contingent recovery, compare:
 
 If the candidate is simply EVOTOOL plus a state machine, reject it. If the audit identifies a distinct failure mode and principled representation/search mechanism, retain it.
 
-## 5. Next actions
+## 5. Next actions (historical; superseded by later audits)
+
+The following actions describe the initial second-pass plan. Current project direction is tracked in `STATUS.md` and `SESSION_HANDOFF.md`; do not treat this list as authorization to execute a recovery experiment.
 
 1. Deep-read EVOTOOL, EvoMAS, EvA, HarnessEvolve, APB, and the 2026 quality-diversity planning paper.
 2. Read CostBench and OpenAgent to distinguish planning errors, tool failures, infeasible tasks, and distribution shifts.
@@ -133,16 +137,16 @@ A third candidate is added after the second broadening pass: evolutionary synthe
 - Compare against Atomix + fixed rules, conservative abort, semantic-predicate guards, direct reflection/replanning, and Harmony-Harness-style multi-objective evolution where reproducible.
 - Hold out combinations of race type × reversibility × task topology and report both unsafe attempts and false aborts. If only benchmark score improves without a better safe-completion frontier, reject the method.
 
-Candidate E may be more concrete than generic co-evolution/meta-evolution, but its novelty gate remains open. Do not select it until the exact method difference and feasible benchmark/implementation are verified.
+Candidate E's broad novelty gate was later found to fail after the second-pass audit; it is now a comparison setting, not a thesis topic. See `TRANSACTIONAL_AGENT_ROBUSTNESS_CANDIDATE_AUDIT.md` and D-017 in `DECISION_LOG.md`.
 
 
 ## 9. Counterfactual-evidence-guided evolutionary search (Candidate F)
 
-Candidate F is the next method-level hypothesis, documented in [COUNTERFACTUAL_EVOLUTION_CANDIDATE_AUDIT.md](COUNTERFACTUAL_EVOLUTION_CANDIDATE_AUDIT.md). The possible contribution is not counterfactual evaluation itself. It is using measured interventional deltas to guide evolutionary credit assignment, mutation-target selection, and operator adaptation.
+Candidate F was a method-level hypothesis, documented in [COUNTERFACTUAL_EVOLUTION_CANDIDATE_AUDIT.md](COUNTERFACTUAL_EVOLUTION_CANDIDATE_AUDIT.md), but the current formulation later **did not pass Gate F0** after direct overlap with counterfactual repair/attribution and linkage-learning EA. Do not implement it as written; see D-019 in `DECISION_LOG.md`.
 
 | Candidate | Potential method contribution | Direct overlap / stop condition | Current action |
 |---|---|---|---|
-| **F. Interventional operator-interaction-guided evolution** | Estimate paired causal effects of typed policy edits and non-additive interactions between edit pairs; use a verified interaction graph to guide co-mutation and test held-out fault × topology generalization. | EVOTOOL does blame-guided targeted mutation; Causal Agent Replay estimates causal step attribution; Counterfactual Planning uses counterfactual rewards; classical AOS and linkage-learning GAs are mature. If interaction estimates reduce to reward correlation, or paired AOS/linkage learning matches it, reject it. | Provisional next hypothesis only. The exact estimand is now specified in [COUNTERFACTUAL_EVOLUTION_CANDIDATE_AUDIT.md](COUNTERFACTUAL_EVOLUTION_CANDIDATE_AUDIT.md); complete the closest-work gate before implementation. |
+| **F. Interventional operator-interaction-guided evolution** | Estimate paired causal effects of typed policy edits and non-additive interactions between edit pairs; use a verified interaction graph to guide co-mutation and test held-out fault × topology generalization. | EVOTOOL does blame-guided targeted mutation; Causal Agent Replay estimates causal step attribution; Counterfactual Planning uses counterfactual rewards; classical AOS and linkage-learning GAs are mature. If interaction estimates reduce to reward correlation, or paired AOS/linkage learning matches it, reject it. | **Current formulation not approved; Gate F0 not passed. Do not implement as written.** See [COUNTERFACTUAL_EVOLUTION_CANDIDATE_AUDIT.md](COUNTERFACTUAL_EVOLUTION_CANDIDATE_AUDIT.md) and D-019. |
 
 ### Required Gate F0
 

@@ -1,5 +1,7 @@
 # Evolutionary Computation's Role and Parameter Control for Agent Improvement
 
+**Status note (2026-10-26):** This document records the earlier recovery-policy/parameter-control research line. That line is not the active candidate: broad recovery directions were downgraded after prior-art and benchmark audits. Do not execute the ToolMaze/recovery experiment plan unless the current `research/STATUS.md` explicitly reopens it; see `research/CAPABILITY_GAP_REVIEW.md` and `research/TOOLMAZE_BENCHMARK_AUDIT.md`.
+
 **Date:** 2026-10-23  
 **Status:** Methodological research note; no final thesis topic or algorithm approved  
 **Purpose:** Make evolutionary computation a substantive research method, not a generic wrapper for LLM prompt tweaking or a few numerical hyperparameters.
@@ -244,7 +246,7 @@ Hierarchical Trial and Error stores diverse lower-level skills and uses experien
 
 ### Revised audit conclusion
 
-The first recovery candidate remains provisional, but the main testable question is narrower:
+The recovery candidate discussed here was subsequently downgraded after direct prior-art overlap and benchmark/data-rights blockers. The following question is historical, not an approved implementation target; it may be reopened only after a new novelty and feasibility review:
 
 > Can a measurable, structured representation of recovery rules provide a useful evolutionary search space, and does a specific parameter/operator-control mechanism improve generalization to held-out combinations of tool-fault semantics and task-graph structure beyond static tuning and existing blame-aware prompt evolution?
 
