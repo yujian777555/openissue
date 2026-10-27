@@ -145,3 +145,15 @@ Primary sources revisited:
 - DRL-AEOSF, 2026: https://doi.org/10.1016/j.swevo.2026.102453.
 
 **Synthesis:** the original operator + strength + lineage combination is too generic. The active hypothesis is scale-conditioned lineage-value credit: test whether downstream operator value should be estimated conditional on realized behavioral displacement under matched parent/task/state comparisons. This remains a candidate, not a novelty claim. Required comparisons include diversity/parent-distance AOS and a naive joint operator–strength controller with raw lineage return. No formal experiment or implementation has begun.
+
+
+## Update — EvoTool baseline and benchmark integrity audit (2026-10-27)
+
+- Yang et al. (2026), *EvoTool: Self-Evolving Tool-Use Policy Optimization in LLM Agents via Blame-Aware Mutation and Diversity-Aware Selection*, ACL 2026, pp. 43553–43572. Paper: https://aclanthology.org/2026.acl-long.2016/ ; official code: https://github.com/SYang2000/ACL_2026_EvoTool . The code is MIT licensed, supports a local OpenAI-compatible endpoint and deterministic offline tool execution, and exposes targeted mutation and diversity-aware selection ablations. Treat it as a strong direct baseline.
+- Yao et al. (2024), *τ-bench: A Benchmark for Tool-Agent-User Interaction in Real-World Domains*, https://arxiv.org/abs/2406.12045 ; repository: https://github.com/sierra-research/tau-bench . The repository is MIT licensed, but its README now warns that the task versions are outdated and directs users to the updated τ-bench line.
+- Updated τ-bench / τ³-bench repository: https://github.com/sierra-research/tau2-bench . Its code license is MIT; the EvoTool adapter targets the older interface, so an adapter port and evaluator verification are needed.
+- BFCL v4 / Gorilla official repository: https://github.com/ShishirPatil/gorilla ; the repository identifies Apache-2.0 licensing. Upstream dataset/annotation terms still require separate review before redistributing any derived benchmark artifact.
+
+**Benchmark-integrity finding:** EvoTool's τ-bench builder iterates canonical test tasks before train/dev and selects the first 150 valid instances; the reference runner subsequently shuffles that loaded set before assigning 90/30/30 train/selection/test. Thus the demo's internal held-out split is disjoint by instance ID but is not guaranteed to be disjoint from the benchmark's canonical test pool. It is appropriate for smoke testing only, not for claims of official held-out τ-bench performance. The BFCL demo subset is also a custom subset; if used during evolution, its reported held-out score must be labelled as a custom split.
+
+See research/PROPOSAL_GAP_MATRIX_R1.md for the locked family-split protocol and baseline ladder.

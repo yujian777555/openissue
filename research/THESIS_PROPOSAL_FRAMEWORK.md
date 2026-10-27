@@ -237,3 +237,12 @@ The first OSLVC sketch—operator-specific behavior scale + joint control + line
 The refined candidate is **scale-conditioned lineage-value credit**: estimate the continuation value of an operator conditional on the actual behavior displacement it generates, using matched parent/task/state comparisons. The central hypothesis is that raw operator reward may confound operator quality with perturbation magnitude. The candidate must beat (i) tuned static HPO, (ii) classical AOS including diversity/parent-distance credit, (iii) ELMER-style strength-only control, (iv) LVPG-style lineage-only control, and (v) a naive joint operator–strength controller using raw lineage return. See `research/OSLVC_R1_SCALE_CONDITIONED_LINEAGE_CREDIT.md`.
 
 This is a more precise hypothesis, not a confirmed innovation. If the conditional credit adds no value, drop it; do not retain it merely because it sounds novel. Communication-protocol evolution remains excluded.
+
+
+## 13. Source and benchmark gate update (2026-10-27)
+
+The latest audit adds a strong direct Agent+EC baseline: EvoTool (ACL 2026), whose official implementation provides blame-aware targeted mutation, diversity-aware population selection, and an offline tool executor. These mechanisms must be included in the baseline ladder; neither targeted mutation nor diversity-aware selection is a new contribution for this thesis.
+
+A benchmark-integrity issue was also identified: the EvoTool τ-bench converter selects from canonical test tasks before train/dev, after which the reference runner randomly splits the 150-instance demo subset. The resulting demo test split is not guaranteed to be independent of the official benchmark test pool. Use this subset for smoke testing only. Final evaluation must split by task template or tool/API family, freeze test tasks, and verify upstream data terms. The original τ-bench repository warns that its tasks are outdated; the updated τ³-bench line is a possible external-validation target after adapter work.
+
+The official ICML/PMLR EvoMAS record confirms a seven-strategy portfolio, adaptive strategy selection, role-level evolution, curriculum, and reflective meta-controller, but exact reward/credit equations remain unverified in this pass. G0 is still open. See research/EVOMAS_HIL_METHOD_AUDIT_R1.md and research/PROPOSAL_GAP_MATRIX_R1.md.

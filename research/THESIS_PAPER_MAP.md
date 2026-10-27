@@ -59,3 +59,11 @@ A candidate paper is ready only when:
 Paper B's candidate is no longer described as merely combining operator choice, mutation scale, and lineage credit. Its testable core is **scale-conditioned lineage-value credit**: estimate operator-specific continuation value conditional on realized behavior displacement under matched parent/task/state comparisons. Paper A remains the possible operator-specific behavior-response calibration study, but it is independently publishable only if it improves downstream search beyond ELMER. Paper C remains optional; held-out task evaluation alone is not an innovation.
 
 Detailed specification and rejection criteria: `research/OSLVC_R1_SCALE_CONDITIONED_LINEAGE_CREDIT.md`.
+
+
+## 6. Benchmark and baseline gate update (2026-10-27)
+
+- EvoTool (ACL 2026, MIT code) is a strong direct baseline and an efficient local/offline feasibility harness. Its targeted mutation and diversity-aware selection must be reproduced or fairly compared, not counted as innovations.
+- The bundled τ-bench demo split must not be used as final official evaluation: its builder selects canonical test tasks before train/dev and the runner randomly partitions the resulting demo pool. Use it only for smoke testing unless a corrected task-family split is built from clean source partitions.
+- Paper A/B readiness now requires a predeclared task-template or tool/API-family-held-out split, independent upstream data/license verification, and a locked external evaluation set. BFCL v4 is a candidate controlled benchmark; updated τ³-bench is a candidate external validation set after adapter verification.
+- Detailed method and split audit: research/EVOMAS_HIL_METHOD_AUDIT_R1.md and research/PROPOSAL_GAP_MATRIX_R1.md.

@@ -389,3 +389,15 @@ Record consequential project decisions here so future sessions do not reopen set
 - **Stop rule:** If the conditional credit does not beat the naive joint controller and strong AOS baselines, remove it. If the full EvoMAS HIL method already implements equivalent credit, revise the method rather than merely rename it.
 - **Scope:** This decision refines a candidate; it does not approve the thesis topic or innovation points. No implementation or paid experiment is authorized yet.
 - **Record:** `research/OSLVC_R1_SCALE_CONDITIONED_LINEAGE_CREDIT.md`.
+
+
+## D-037 — Treat EvoTool as a strong baseline, reject demo split as final evaluation
+
+- **Date:** 2026-10-27
+- **Status:** Provisional protocol decision
+- **Decision:** Use the public EvoTool implementation as a strong candidate baseline/harness, but do not use its bundled random 90/30/30 demo split as the thesis's final external test protocol without rebuilding the split by task template/API family.
+- **Evidence:** EvoTool code is MIT licensed and its README documents a local OpenAI-compatible model interface, deterministic offline executor, and four benchmark adapters. The tau-bench builder orders canonical test tasks before train/dev and selects the first 150 valid tasks; split_instances then shuffles the loaded instances before assigning train/selection/test. The original tau-bench README explicitly warns that task versions are outdated and recommends the updated tau-bench line.
+- **Protocol:** smoke tests may use the bundled demo subset; final experiments must use a locked family-held-out split, separate calibration probes from validation/test, and label custom splits as custom—not official benchmark scores. Audit upstream data terms independently of repository code licenses.
+- **Method implication:** EvoTool's blame-aware targeted mutation and diversity-aware selection are established baselines. They are not candidate innovations. The candidate remains scale-conditioned lineage-value credit and must beat strong AOS and naive joint-control baselines.
+- **Gate:** G1 remains open pending data terms and split verification. No experiment or paid API call authorized.
+- **Records:** research/EVOMAS_HIL_METHOD_AUDIT_R1.md, research/PROPOSAL_GAP_MATRIX_R1.md.

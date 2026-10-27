@@ -88,3 +88,11 @@ The first and second-pass literature maps are recorded, including a provisional 
 
 - [OSLVC-R1: Scale-Conditioned Lineage-Value Credit](research/OSLVC_R1_SCALE_CONDITIONED_LINEAGE_CREDIT.md): revised, falsifiable candidate that tests whether operator credit should be conditioned on realized Agent behavior displacement when estimating lineage continuation value. This is a hypothesis, not an approved novelty claim.
 - The next step is to finish the published EvoMAS: Heuristics in the Loop method audit and benchmark/license feasibility check. No implementation or paid experiment has started.
+
+
+## Research update — source and benchmark feasibility audit (2026-10-27)
+
+- [EvoMAS method audit R1](research/EVOMAS_HIL_METHOD_AUDIT_R1.md): official ICML/PMLR abstract verified; exact reward equations, final implementation, and displacement/lineage mechanism remain unverified because the full PDF could not be extracted in this session. Gate G0 remains OPEN.
+- [Proposal-ready gap matrix R1](research/PROPOSAL_GAP_MATRIX_R1.md): closest-work matrix, falsifiable research questions, baseline ladder, parameter-tuning protocol, and benchmark/split risks.
+- **Important benchmark caution:** the EvoTool reference code is MIT-licensed and offers offline execution, but its τ-bench demo builder selects canonical test tasks before train/dev and the runner then randomly partitions the demo subset. Do not treat that subset as an untouched official test set. The original τ-bench repository itself warns that its tasks are outdated.
+- No experiment or paid API call has been started. The next gate is readable full-text EvoMAS audit plus a verified family-held-out benchmark split.

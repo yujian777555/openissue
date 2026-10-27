@@ -222,3 +222,12 @@ A fresh primary-source check confirms that the broad OSLVC fusion is not enough 
 The revised candidate is **scale-conditioned lineage-value credit**: test whether an operator's continuation value can be estimated more reliably by conditioning on the *realized behavior displacement* and comparing matched parent/task/state moves, rather than assigning raw immediate or lineage reward to an operator–strength pair. This is a hypothesis, not a novelty verdict. See `research/OSLVC_R1_SCALE_CONDITIONED_LINEAGE_CREDIT.md`.
 
 Required new baseline: classical AOS using diversity/parent-distance reward, plus a naive joint operator–strength controller with raw lineage return. If OSLVC-R1 cannot beat these controls, remove the residualized credit mechanism. The full EvoMAS: Heuristics in the Loop method audit remains open; do not mark Gate G0 closed.
+
+
+## 8. Direct baseline and benchmark integrity audit (2026-10-27)
+
+EvoTool (ACL 2026) is now confirmed as a strong direct baseline with MIT-licensed official code, local-model support, deterministic offline execution, trajectory-grounded blame attribution, targeted mutation, and diversity-aware selection. These mechanisms must be compared against and are not new contributions by themselves.
+
+A critical benchmark caveat: the EvoTool τ-bench converter selects from canonical test tasks before train/dev and takes the first 150 valid instances; the runner then shuffles/splits that demo subset into train/selection/test. This does not guarantee a clean split against the official test pool. The original τ-bench README warns its tasks are outdated. Use the bundled subset only for smoke testing; for final evidence, create task-template/tool-API-family-held-out partitions from verified source splits and test on an untouched external family. BFCL is a candidate offline controlled benchmark, but data terms and the custom split must be documented.
+
+The official PMLR abstract confirms the broad EvoMAS mechanisms, but the exact credit/state equations and final code still remain unverified. Do not close G0 or make a claim that EvoMAS lacks displacement-conditioned lineage credit. See research/EVOMAS_HIL_METHOD_AUDIT_R1.md and research/PROPOSAL_GAP_MATRIX_R1.md.
