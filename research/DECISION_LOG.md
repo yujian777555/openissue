@@ -423,3 +423,14 @@ Record consequential project decisions here so future sessions do not reopen set
 - **Implication:** Exact strategy-selection state, reward/credit equation, lineage use, behavior-displacement conditioning, final code/license, and detailed split/seed protocol remain unverified.
 - **Boundary:** Retrieval failure is not evidence of absence. Do not certify OSLVC-R1 novelty or infer a gap from the abstract.
 - **Next action:** Obtain a readable final PDF or verified author-provided source, then conduct line-by-line mechanism comparison. No implementation or paid experiment is authorized by this decision.
+
+
+## D-039 — Use a clean split and a falsification-first benchmark protocol
+
+- **Date:** 2026-10-27
+- **Status:** Provisional
+- **Decision:** Treat EvoTool as a strong direct baseline, but do not use its bundled τ-bench demo partition as final test evidence. Prefer a pinned official τ²/τ³-bench release for realistic validation, subject to task-manifest overlap and adapter checks; use an independently authored deterministic tool-task suite to isolate the proposed mechanism.
+- **Evidence:** EvoTool's MIT-licensed implementation defines a four-module evolvable policy and a concrete targeted-mutation/diversity-selection loop. Its demo builder selects tasks in test→train→dev source order before the demo runner partitions the resulting pool. The official τ²/τ³-bench repository has an MIT license, frozen benchmark manifests, and explicit domain task splits; v2.0 differs from 1.x and must be pinned. An independent BFCL v4 review found defects affecting 24/50 sampled tasks, so BFCL should not be the only evidence source.
+- **Method consequence:** test operator/strength response heterogeneity first; equalize descendant evaluation counts for lineage-value comparisons; compare against tuned static EA, EvoTool, classical AOS, ELMER-style scale control, LVPG-style lineage control, and naive joint controls.
+- **Boundary:** This does not certify OSLVC-R1 novelty or approve a final benchmark. The exact τ²/τ³ manifest overlap and final EvoMAS HIL method remain open. No full experiment or paid API call has been run.
+- **Record:** `research/BENCHMARK_AND_BASELINE_DECISION_R2.md`.
