@@ -175,3 +175,11 @@ The user clarified that the current task is preparation for the **master's thesi
 - The current official `sierra-research/tau2-bench` release line is the leading realistic benchmark candidate. Pin one version; verify overlap between the source train/test lists and the frozen `text-v1` manifest before choosing the final split.
 - BFCL v4 is secondary only unless the exact selected task subset is audited; an independent review reported defects in 24/50 sampled tasks.
 - No benchmark, thesis topic, or innovation point is approved. OSLVC-R1 remains a falsifiable hypothesis. No full experiment or paid API call was performed.
+
+
+## τ²-bench split-overlap finding (2026-10-27)
+
+- Compared the official frozen `text-v1` subsets with source `train/test` task IDs: airline_50 = 30 train + 20 test; retail_50 = 28 train + 22 test; telecom_50 = 27 train + 23 test.
+- Therefore the full `text-v1` frozen subset is **not** an untouched test set if policy evolution uses the source train partition. Do not report its full score as held-out generalization.
+- The source train/test lists also do not by themselves guarantee task-family separation. Group near-duplicate tasks using redacted scenario instructions, issue/template metadata, and tool/action signatures before freezing train/validation/test.
+- Details and protocol: `research/BENCHMARK_AND_BASELINE_DECISION_R2.md`. No model experiment was run.
