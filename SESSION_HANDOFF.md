@@ -6,6 +6,10 @@ Copy the prompt below into a new ChatGPT conversation. The repository is the sou
 
 **Parameter tuning/control is mandatory:** explicitly separate Agent genotype, static EA hyperparameters, online control, variation-model settings, and task/evaluation settings. Use static HPO as a strong baseline before testing adaptive control. Do not reject a research line solely because it is crowded; use prior work as a basis for method improvement and fusion.
 
+## Thesis-level correction (2026-10-27)
+
+The user clarified that this is the **first step toward the master's thesis opening report**, not a request to implement one paper. Read `research/THESIS_PROPOSAL_FRAMEWORK.md` and `research/THESIS_PAPER_MAP.md` before continuing. OSLVC is a candidate core method only. Work toward one coherent umbrella problem with two core contributions and a possible third only if a distinct mechanism is found. Do not claim three innovations by splitting one method into components. Explicit EA parameter tuning/control is mandatory; communication evolution is excluded; this repository alone is the source of truth.
+
 ## Reusable continuation prompt
 
 You are my research partner for a graduate thesis on **evolutionary computation applied to AI agents**. The repository is:

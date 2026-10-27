@@ -75,3 +75,10 @@ The first and second-pass literature maps are recorded, including a provisional 
 - [Joint operator–mutation-scale control candidate](research/EC_PARAMETER_CONTROL_FUSION_CANDIDATE.md): active exploratory plan for tuning the EA explicitly and improving/fusing ELMER, LVPG, adaptive operator selection, and EvoMAS strategy control. This is a hypothesis, not an approved novelty claim.
 - [EC role and parameter control](research/EC_ROLE_AND_PARAMETER_CONTROL.md): separates Agent phenotype, static EA hyperparameters, online control, and evaluation settings.
 - Research rule: prior-art overlap is not an automatic reason to abandon a direction; use it to define the exact mechanism improvement, baselines, and falsifiable tests.
+
+
+## Thesis proposal framework (2026-10-27)
+
+- [硕士毕业论文开题框架（候选版）](research/THESIS_PROPOSAL_FRAMEWORK.md): thesis-level umbrella problem, provisional title, connected research contents, parameter-tuning plan, experiment design, and opening-report outline.
+- [Thesis–Paper Contribution Map](research/THESIS_PAPER_MAP.md): maps candidate Paper A/B and optional Paper C; no innovation claim is pre-approved.
+- Project framing: the immediate deliverable is the thesis opening report, not a standalone OSLVC paper. OSLVC remains a candidate core method; two strong connected contributions are preferable to three weak or duplicated claims.

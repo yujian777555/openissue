@@ -1,64 +1,54 @@
 # Thesis–Paper Contribution Map
 
-## Status
+**Updated:** 2026-10-27  
+**Status:** Proposal-stage candidate map; not approved as final thesis topic or innovation claims.
 
-**Not yet populated with candidate innovations.** This is a planning template, not a claim that the project already has 2–3 validated contributions.
+## 1. Working thesis framing
 
-## Integration principle
+**Provisional title:** 《面向复杂工具任务的大语言模型智能体策略自适应演化优化方法研究》
 
-The thesis should tell one coherent story. Each small paper should answer a distinct research question, while contributing to the same umbrella problem or agent-optimization framework.
+**Umbrella problem:** How to make evolutionary optimization of structured LLM-Agent tool-use policies behaviorally controllable, adaptively governed, and effective on held-out task families.
 
-A possible structural pattern (not a chosen research direction):
+**Core evolutionary-computation role:** representation/genotype design, variation operators, static EA hyperparameter optimization, online operator/scale control, lineage credit assignment, selection and held-out generalization evaluation.
 
-- **Paper A — Core mechanism:** identify and solve one central bottleneck in evolutionary optimization of agents.
-- **Paper B — Complementary mechanism or extension:** address a separate bottleneck that is logically downstream or orthogonal to Paper A.
-- **Paper C — Generalization, robustness, or system-level integration:** test a distinct hypothesis that strengthens the common research narrative.
+**Current core hypothesis:** per-operator behavioral-scale calibration, joint operator–scale control, and lineage-value credit may improve Agent task success and cross-task generalization. This remains a hypothesis, not a novelty verdict.
 
-This pattern must be changed if literature evidence suggests a better decomposition. Do not force three papers if only two defensible contributions exist.
+## 2. Candidate contribution map
 
-## Candidate umbrella problem
-
-- Problem statement: TBD
-- Target agent capability / setting: TBD
-- Why evolutionary computation is the right methodological lens: TBD
-- Evidence of importance: TBD
-- Closest prior work: TBD
-- Main falsifiable hypothesis: TBD
-
-## Contribution matrix
-
-| Dimension | Contribution 1 / Paper A | Contribution 2 / Paper B | Contribution 3 / Paper C |
+| Dimension | Paper A — Behavior-scale calibration (candidate) | Paper B — Adaptive joint control (core candidate) | Paper C — Transfer/generalization (optional) |
 |---|---|---|---|
-| Research question | TBD | TBD | TBD |
-| Limitation addressed | TBD | TBD | TBD |
-| Proposed mechanism | TBD | TBD | TBD |
-| Why it should work | TBD | TBD | TBD |
-| Closest prior work | TBD | TBD | TBD |
-| Difference from prior work | TBD | TBD | TBD |
-| Primary baseline(s) | TBD | TBD | TBD |
-| Benchmark / environment | TBD | TBD | TBD |
-| Main metric | TBD | TBD | TBD |
-| Essential ablations | TBD | TBD | TBD |
-| Generalization test | TBD | TBD | TBD |
-| Cost / compute estimate | TBD | TBD | TBD |
-| Failure criterion | TBD | TBD | TBD |
-| Paper readiness gate | TBD | TBD | TBD |
+| Research question | Do heterogeneous Agent variation operators map the same requested strength to different realized behavior changes, and does operator-specific calibration improve search? | Does selecting operator and scale jointly, with lineage-value credit, beat strong static HPO and single-mechanism controllers? | Can a learned controller transfer to held-out task families through a distinct mechanism rather than merely being evaluated on them? |
+| Prior-art anchor | ELMER | ELMER, LVPG, classical AOS/self-adaptation, EvoMAS: Heuristics in the Loop | MECo/MTHS and task-conditioned evolutionary transfer |
+| Candidate mechanism | Measure parent/child tool/action trace displacement on shared probes; calibrate strength by operator; separately track validity and task success | State-conditioned action (a=(operator, scale)); use immediate and downstream lineage signals; compare with fixed HPO, AOS, ELMER-style scale-only and LVPG-style lineage-only controllers | Only after a separate mechanism-level gap audit; possible task-conditioned initialization/transfer of control preferences |
+| Primary metric | Task success after evolution and calibration fidelity; distance correlation alone is insufficient | Held-out task success and improvement over strong static/AOS baselines | Held-out task-family success and transfer gap |
+| Essential ablations | Shared vs per-operator calibration; no scale control; nominal text labels vs realized traces | Joint vs independent heads; immediate vs lineage credit; no state features; strongest fixed configuration | No transfer vs task-specific training vs transferred controller |
+| Independence gate | Must improve downstream search quality, not just predict distance | Must show added value beyond A and all direct control baselines | Must have a distinct transfer mechanism; held-out testing alone is not a third innovation |
+| Status | Candidate, uncertain independent-paper value | Main method candidate, not yet approved | Optional; do not force |
 
-## Dependency and independence test
+## 3. Contribution dependencies
 
-For each pair of proposed contributions, answer:
-1. Does the later contribution depend on the earlier one technically, or only share infrastructure?
-2. Can each paper make a distinct claim without double-counting the same result?
-3. Could each paper be rejected independently while the thesis remains coherent?
-4. Are the baselines and experiments sufficient to establish each contribution's individual value?
-5. Does each paper have a clear audience and plausible venue range?
+- Paper A provides a calibrated behavioral action space for Paper B if its benefit is supported.
+- Paper B is the core algorithmic contribution and must stand against strong static HPO, classical AOS, ELMER-style strength-only control, LVPG-style lineage-only control, and the closest Agent-evolution baseline.
+- Paper C is not yet an innovation point. If no distinct transfer method survives the prior-art review, transfer becomes a generalization experiment within Paper B and the thesis targets two strong contributions instead of three weak ones.
 
-## Proposal gate
+## 4. Current closest-work constraints
 
-Do not freeze the innovation points until:
-- the closest prior work is documented;
-- novelty/overlap has been reviewed;
-- each contribution has a plausible implementation path;
-- the common benchmark and evaluation design are defensible;
-- the expected time and API/compute budget are realistic;
-- the contribution set is coherent and not merely a collection of heuristics.
+- EVOTOOL already covers modular tool-use policy, trajectory-grounded blame, targeted mutation, and diversity-aware selection.
+- EvoMAS: Evolutionary Generation already covers structured MAS configuration evolution, feedback-conditioned mutation/crossover, and experience memory.
+- EvoMAS: Heuristics in the Loop already covers adaptive strategy portfolios and reflective meta-control.
+- ELMER already covers behavior-grounded mutation-scale calibration.
+- LVPG already covers state/horizon-dependent mutation intensity and lineage-level return.
+- LLaMEA-HPO establishes that static hyperparameter tuning should be separated from structural search.
+- Classical AOS and self-adaptation are mandatory baselines.
+
+Therefore no generic claim such as “evolutionary Agent optimization,” “adaptive operator selection,” “behavioral mutation strength,” “lineage reward,” or “cross-task transfer” is sufficient on its own.
+
+## 5. Paper readiness gate
+
+A candidate paper is ready only when:
+1. closest-work mechanism comparison is source-verified;
+2. benchmark/code/data rights and reproduction are confirmed;
+3. static EA hyperparameters are tuned on train/validation and then frozen;
+4. direct strong baselines and predeclared ablations are completed;
+5. task success/generalization gains are reproducible across seeds;
+6. the paper's claim is distinct from the other thesis contributions.

@@ -364,3 +364,16 @@ Record consequential project decisions here so future sessions do not reopen set
 - **Evidence:** The official PMLR abstract establishes seven strategies, adaptive strategy selection, role evolution, curriculum, and Cyber Creator. An accessible earlier manuscript appendix describes sampling operators from a strategy distribution; LLM-based selection using performance, structure, and rule compliance; and periodic updates to the rule set and strategy distribution from a historical log every K generations. Curriculum scoring averages performance over previous difficulty stages. The linked anonymous code mirror was not accessible in this audit.
 - **Interpretation:** Generic adaptive strategy portfolios and reflective evolutionary meta-control are directly covered. The currently evidenced distinction for OSLVC is the *operator-conditioned behavioral-scale calibration plus lineage-value credit for the joint operator–scale action*, but the final PMLR version must be checked before treating this as a gap.
 - **Next:** reconcile the earlier manuscript appendix against the final PMLR paper; verify whether an accessible official implementation exists; then freeze or revise the novelty matrix.
+
+
+## D-035 — Frame the work as a thesis proposal, not one standalone paper
+
+- **Date:** 2026-10-27
+- **Status:** Accepted user clarification
+- **Decision:** The immediate deliverable is the opening report for the master's thesis. The thesis needs one coherent umbrella problem and 2–3 connected candidate research contents; OSLVC is only a possible core method/paper candidate, not the thesis itself.
+- **Working title:** 《面向复杂工具任务的大语言模型智能体策略自适应演化优化方法研究》. Provisional, not final.
+- **Umbrella question:** How to make evolutionary optimization of structured LLM-Agent tool-use policies behaviorally controllable, adaptively governed, and effective on held-out task families.
+- **Candidate structure:** (A) operator-specific behavior-scale calibration, if it improves downstream search beyond ELMER; (B) joint operator–scale control with lineage value, if it beats static HPO/AOS and ELMER/LVPG-style baselines; (C) a distinct cross-task transfer mechanism only if prior-art review supports it. Held-out evaluation alone is not a third innovation.
+- **Rationale:** The thesis must connect multiple method contributions under a common Agent policy representation and evaluation protocol. Do not force three papers or count one mechanism three times.
+- **Required next steps:** Finish the EvoMAS: Heuristics in the Loop final-paper mechanism audit; confirm direct-baseline code/data licenses; select a reproducible task suite; draft proposal literature-gap matrix and experiment feasibility plan. Static EA tuning must precede adaptive control experiments.
+- **Record:** `research/THESIS_PROPOSAL_FRAMEWORK.md` and updated `research/THESIS_PAPER_MAP.md`.

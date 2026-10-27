@@ -1,7 +1,7 @@
 # Current Project Status
 
 **Last updated:** 2026-10-27  
-**Stage:** 2 — second-pass literature triage and mechanism-level audit in progress  
+**Stage:** 3 — thesis-level proposal framing and candidate-method validation  
 **Overall status:** OPEN; topic not selected  
 **Source of truth:** this repository
 
@@ -118,3 +118,14 @@ The literature-scouting milestone is complete only when there is:
 ## Update protocol
 
 At the end of every meaningful research session, update this file with what was verified, files and sources added, decisions made and why, unresolved questions, the next concrete action, and the relevant commit SHA when available.
+
+
+## Thesis-level framing update (2026-10-27)
+
+The user clarified that the current task is preparation for the **master's thesis proposal/opening report**, not the development of one standalone paper. The thesis must provide one coherent umbrella problem and 2–3 connected research contents; OSLVC is only a candidate core method, not the thesis title or three pre-approved innovations.
+
+- Added `research/THESIS_PROPOSAL_FRAMEWORK.md` in Chinese, with a provisional title, umbrella research question, prior-art boundaries, two core candidate contributions plus one optional transfer extension, explicit EA parameter-tuning protocol, experiment plan, opening-report structure, and decision gates.
+- Updated `research/THESIS_PAPER_MAP.md` to map candidate paper A (operator-specific behavior-scale calibration), paper B (joint operator–scale adaptive control with lineage value), and optional paper C (transfer mechanism). Paper C must not be counted as an innovation unless it has a distinct mechanism beyond held-out evaluation.
+- Current working title: 《面向复杂工具任务的大语言模型智能体策略自适应演化优化方法研究》. This is provisional and must not be treated as final until the closest-work audit, benchmark/license gate, and feasibility baseline are complete.
+- Confirmed prior-art constraints: EVOTOOL covers modular tool-use policy, blame-aware targeted mutation, and diversity selection; EvoMAS covers structured MAS configuration evolution and feedback-conditioned variation; EvoMAS: Heuristics in the Loop covers adaptive strategy portfolios and reflective meta-control; ELMER covers behavior-grounded mutation scale; LVPG covers state/horizon-dependent scale control and lineage credit. A generic combination is not enough.
+- No implementation or paid API experiment authorized yet. Next action is to finish mechanism-level comparison and benchmark/license feasibility, then produce a proposal-ready literature-gap matrix—not to prematurely lock three innovation claims.
