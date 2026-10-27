@@ -68,9 +68,11 @@ Do not infer publication acceptance from an arXiv page. Do not infer a limitatio
 
 | 2026-10-27 | Second-pass skill-lane audit plus initial black-box test-time search screen: SkillComposer, Rep2Skill, MetaMem, Live-Evo, SelSkill, Skill Following, False Frontiers, AMC, ASMC, LP-SMC, DUPO, and T-MAP | Decide whether skill generalization remains viable and identify a different inspectable Agent+EC problem | Added P119–P130 to research/RELATED_WORK_MATRIX.md; downgraded the broad skill/experience lane in research/AGENT_SKILL_LANE_REASSESSMENT.md. Opened research/BLACK_BOX_AGENT_TEST_TIME_SEARCH_LANE_SCREEN.md and research/AMC_CODE_AUDIT.md. AMC's current public clone path may alias mutable environment clients; verify before using as baseline. No implementation or API experiment started. |
 
+| 2026-10-27 | Second-pass black-box trajectory-search audit: SE-Agent, ToolTree, TTHE, TBETS, and plan-optimization survey | Test whether state-validated evolutionary crossover is a distinct mechanism beyond trajectory recombination and known planning validity checks | Added P131–P135 to research/RELATED_WORK_MATRIX.md. Candidate I0 did not pass as written; SE-Agent covers trajectory revision/recombination/refinement, ToolTree covers tool-trajectory MCTS, and TBETS/plan-optimization literature cover legality-aware plan recombination. No implementation or API experiment started. |
+
 ## Preliminary registry
 
-The detailed paper list and comparison are maintained in [RELATED_WORK_MATRIX.md](RELATED_WORK_MATRIX.md). It contains indexed entries P01–P130, including repeated papers in candidate-specific audit sections; the unique-paper count has not yet been reconciled, so this is not yet a completed systematic-review corpus. See [CAPABILITY_GAP_REVIEW.md](CAPABILITY_GAP_REVIEW.md) for second-pass synthesis and provisional candidate triage.
+The detailed paper list and comparison are maintained in [RELATED_WORK_MATRIX.md](RELATED_WORK_MATRIX.md). It contains indexed entries P01–P135, including repeated papers in candidate-specific audit sections; the unique-paper count has not yet been reconciled, so this is not yet a completed systematic-review corpus. See [CAPABILITY_GAP_REVIEW.md](CAPABILITY_GAP_REVIEW.md) for second-pass synthesis and provisional candidate triage.
 
 ### Initial core reading order
 

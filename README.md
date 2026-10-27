@@ -66,3 +66,5 @@ The first and second-pass literature maps are recorded, including a provisional 
 - [AMC direct code audit](research/AMC_CODE_AUDIT.md): records a potential particle/client aliasing issue in the current public main snapshot; verify before reproducing, and do not infer paper-result invalidity from code inspection alone.
 - [Black-box agent test-time search lane](research/BLACK_BOX_AGENT_TEST_TIME_SEARCH_LANE_SCREEN.md): an exploratory candidate for state-validated trajectory recombination; no method or thesis innovation is approved.
 - User constraint: communication evolution is excluded from the thesis candidate pool unless the user explicitly reopens it.
+
+- [Trajectory-search second-pass audit](research/BLACK_BOX_AGENT_TEST_TIME_SEARCH_LANE_SCREEN.md): Candidate I0 did not pass as stated after SE-Agent, ToolTree, TTHE, TBETS, and classical plan-optimization overlap was added.

@@ -56,3 +56,30 @@ Do not implement until all of the following are satisfied:
 ## 5. Next action
 
 Complete the prior-art audit for state-compatible plan crossover and inspect AMC's exact environment-cloning semantics. Only then decide whether this lane passes Gate I0. No API experiments, formal benchmark runs, or implementation are authorized by this screen.
+
+
+## 6. Second-pass prior-art gate (2026-10-27): NOT PASSED AS WRITTEN
+
+The initial screen underweighted direct prior art. The current formulation—“evolve black-box agent trajectories with state-validated crossover”—does not pass Gate I0 as stated.
+
+- **SE-Agent (NeurIPS 2025)** directly optimizes multi-step agent trajectories using revision, recombination, and refinement. Its current public implementation's crossover operator chooses the two most recent trajectory summaries and asks an LLM to synthesize a hybrid strategy; it does not literally splice environment action sequences at matched states. Nevertheless, the broad claim that evolutionary agents can recombine prior trajectories is already covered.
+  - Paper: https://proceedings.neurips.cc/paper_files/paper/2025/hash/a911e543a95493ae5004fdc01909043e-Abstract-Conference.html
+  - Code: https://github.com/wanghuacan/SE-Agent
+- **ToolTree (ICLR 2026)** performs MCTS-style search over tool-call trajectories with pre-execution and post-execution evaluation and bidirectional pruning.
+  - Project: https://syang2000.github.io/ICLR_2026_ToolTree/index.html
+- **Turn-Based Evolutionary Tree Search (TBETS, 2025 thesis)** combines MCTS with evolutionary mutation/crossover over multi-action sequences and checks move legality during crossover. Its game domain differs from tool-using LLM agents, but legality-aware sequence recombination is established adjacent work.
+  - Record: https://hdl.handle.net/10919/137607
+- **A Survey on Plan Optimization (IJCAI 2024)** reviews plan-space local search and genetic plan optimization, noting that ordinary GA crossover can produce invalid plans. Validity checking/repair is a known planning concern, not by itself a novel operator.
+  - Survey: https://www.ijcai.org/proceedings/2024/0879.pdf
+- **TTHE (Test-Time Harness Evolution, 2026 preprint)** evolves executable harnesses from unlabeled test-time execution traces. This is adjacent to test-time evolutionary improvement, even though it evolves the control program rather than per-instance action sequences.
+  - Paper: https://arxiv.org/abs/2607.08124
+
+### What remains different—and why it is not enough yet
+
+SE-Agent's crossover is strategy-level, while the candidate proposes state-validated action-sequence recombination. This is a representation difference, but not yet a defensible research contribution: classical planning and TBETS already address executable-plan validity, and ToolTree/AMC cover tool-trajectory search. Simply moving state-compatible crossover into an LLM tool environment may be an application port.
+
+**Decision:** Gate I0 is **NOT PASSED for the current formulation**. Do not implement state-validated crossover as currently described. The lane may only be reopened if a precise mechanism is identified that is not reducible to SE-Agent-style trajectory recombination plus known planning validity checks, and it beats mutation-only EA and the strongest feasible search baselines.
+
+## 7. Next action
+
+Broaden the search beyond the currently crowded skill, trajectory-recombination, tool-policy evolution, communication, recovery, counterfactual-credit, and generic meta-evolution lanes. Do not invent a new candidate name or implement a method before a primary-source/code audit reveals a concrete mechanism-level gap.

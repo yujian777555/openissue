@@ -181,3 +181,10 @@ The official Faithfulness repository was inspected. ExpeL's irrelevant/filler pe
 The user explicitly excluded communication evolution from the thesis candidate pool. The broad skill/generalization/experience-faithfulness lane is also downgraded after checking SkillComposer, Rep2Skill, MetaMem, Live-Evo, SelSkill, and Skill Following; see research/AGENT_SKILL_LANE_REASSESSMENT.md.
 
 A different exploratory question is now queued: state-validated evolutionary search over per-instance black-box agent trajectories, compared with AMC/SMC and classical plan-space search. This is not approved. The AMC current-main implementation has a potential clone/client aliasing defect that must be verified before baseline use; see research/AMC_CODE_AUDIT.md. A plain GA-for-SMC substitution, generic diversity objective, or trajectory-aware EA claim is not sufficient because adjacent methods already cover much of this space.
+
+
+## Update — trajectory-search lane second-pass result (2026-10-27)
+
+Candidate I0, state-validated evolutionary recombination over black-box agent trajectories, did not pass its current novelty gate. SE-Agent already evolves trajectories through revision/recombination/refinement; ToolTree provides strong MCTS-based tool-trajectory search; TTHE evolves harnesses at test time; TBETS and classical plan optimization address legality-aware action-sequence recombination. See P131–P135 and research/BLACK_BOX_AGENT_TEST_TIME_SEARCH_LANE_SCREEN.md.
+
+Do not implement the current formulation. The next task is to broaden the search to a different inspectable Agent+EC baseline and require a precise method-level difference before naming another candidate. The user's communication-evolution exclusion remains binding.

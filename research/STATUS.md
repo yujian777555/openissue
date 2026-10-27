@@ -71,6 +71,8 @@ Prepare a defensible graduate thesis proposal on evolutionary computation applie
 - Reassessed the skill/workflow generalization and experience-faithfulness lane after checking SkillComposer, Rep2Skill, MetaMem, Live-Evo, SelSkill, and Skill Following. The broad formulation is too close to direct 2026 prior art and is downgraded; see research/AGENT_SKILL_LANE_REASSESSMENT.md.
 - Opened a new exploratory lane for evolutionary test-time search over black-box agent trajectories. AMC (ICML 2026) is a direct baseline, but a current-main code audit found a potential resampling clone/client aliasing defect that must be verified before reproduction. See research/BLACK_BOX_AGENT_TEST_TIME_SEARCH_LANE_SCREEN.md and research/AMC_CODE_AUDIT.md. This is not an approved candidate; no API or benchmark experiment has started.
 
+- Completed a second-pass prior-art audit for the black-box trajectory-search lane. SE-Agent already recombines prior trajectories, ToolTree searches tool-call trajectories with MCTS, TTHE evolves harnesses at test time, and TBETS/classical plan optimization cover legality-aware plan recombination. Candidate I0 does not pass as formulated; see research/BLACK_BOX_AGENT_TEST_TIME_SEARCH_LANE_SCREEN.md. Do not implement state-validated crossover as currently described.
+
 ## Evidence state and caveats
 
 This is a **multi-pass preliminary map**, not a completed systematic review or novelty assessment. Some papers have been read at abstract/method/results level; not every paper, supplement, or codebase has been fully audited. Candidate research questions remain hypotheses. No innovation point is approved.
@@ -85,12 +87,12 @@ The user considers finite-budget evaluation efficiency insufficiently compelling
 
 ## Next actions (ordered)
 
-1. Keep Candidates E, F, G, H0, and the broad skill/experience lane downgraded in their current formulations. Communication evolution is excluded by the user and must not be reopened.
-2. Deep-audit the black-box agent test-time search lane in research/BLACK_BOX_AGENT_TEST_TIME_SEARCH_LANE_SCREEN.md. Compare state-validated trajectory recombination against AMC/SMC, ASMC, LP-SMC, EVOTOOL, DUPO, T-MAP, and classical plan-space GA/GP, MCTS, beam search, and best-of-N.
-3. Resolve the potential AMC particle-independence defect recorded in research/AMC_CODE_AUDIT.md with a minimal local test. Do not infer that the paper's results are invalid; distinguish the public branch from the exact experimental snapshot.
-4. Define a non-leaking observable-state equivalence rule and check whether trajectory crossover is already covered by classical evolutionary planning. If it is not distinct, stop this lane before implementation.
-5. Verify the licenses and execution contracts of any selected benchmark and dependencies; the AMC root is Apache-2.0 but vendored environments/data need separate checks.
-6. Only after the novelty and baseline-integrity gates pass, design a deterministic pilot. Do not start expensive API experiments or force three thesis contributions prematurely.
+1. Keep Candidates E, F, G, H0, the broad skill/experience lane, and Candidate I0 in their current downgraded/not-passed states. Communication evolution is excluded by the user and must not be reopened.
+2. Broaden the candidate search outside the crowded skill, trajectory-recombination, tool-policy evolution, recovery, counterfactual-credit, communication, and generic meta-evolution formulations.
+3. For each new direction, start from one inspectable strong Agent+EC baseline and audit its actual genotype/phenotype, operators, selection/replacement, evaluation protocol, and code-paper correspondence.
+4. Require a mechanism-level difference supported by primary sources and a falsifiable hypothesis. A new benchmark, objective weight, simple application port, or “GA instead of SMC” is insufficient.
+5. Check benchmark/code/data rights and evaluation leakage before implementation. Do not start API experiments or formal benchmark runs until the novelty and reproducibility gates pass.
+6. Do not force three thesis innovations before one defensible central algorithmic contribution is identified.
 
 ## Definition of done for the next milestone
 

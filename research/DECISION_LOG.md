@@ -302,3 +302,14 @@ Record consequential project decisions here so future sessions do not reopen set
 - **Baseline-integrity warning:** Current public AMC main appears to reuse the same mutable client object in AgentGymAgent.clone(); because SMC resamples with replacement, sibling clones may share one environment ID. See research/AMC_CODE_AUDIT.md. Reproduce this in a minimal local test before relying on AMC.
 - **Stop condition:** If state-compatible plan crossover is already established or fails to beat mutation-only EA and the strongest feasible non-EA search under matched conditions, abandon the lane.
 - **Guardrail:** No API experiment, formal benchmark run, or implementation is approved before the novelty, baseline-integrity, and benchmark/license gates pass.
+
+
+## D-029 — Candidate I0 does not pass the trajectory-search novelty gate as formulated
+
+- **Date:** 2026-10-27
+- **Status:** Accepted negative finding for current formulation
+- **Decision:** Do not implement state-validated evolutionary crossover over black-box agent trajectories as currently described.
+- **Evidence:** SE-Agent (NeurIPS 2025) directly performs trajectory revision, recombination, and refinement; its public crossover implementation synthesizes a strategy from two trajectory summaries. ToolTree (ICLR 2026) searches tool-call trajectories using MCTS and dual feedback. TTHE evolves executable harnesses at test time. TBETS and the IJCAI 2024 plan-optimization survey establish adjacent prior art for evolutionary action-sequence search and legality checking during recombination. See P131–P135 and research/BLACK_BOX_AGENT_TEST_TIME_SEARCH_LANE_SCREEN.md.
+- **Rationale:** State-validated action-sequence crossover differs from SE-Agent's strategy-level synthesis, but legality-aware plan recombination is established in evolutionary planning. That difference is not yet enough to support a thesis claim.
+- **Implication:** Keep AMC code audit as a reproducibility note, not as a reason to pursue the lane. Broaden candidate search instead of forcing this mechanism.
+- **Reopen only if:** A distinct operator or formal search property is identified that cannot be reduced to existing trajectory recombination plus known plan-validity checks, and it has a credible comparison against mutation-only EA and strong non-EA planning baselines.

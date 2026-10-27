@@ -45,10 +45,10 @@ The most recent candidate screened was **G: task-conditioned, lineage-aware pare
 ### Next concrete action
 
 1. Respect the user's explicit constraint: communication evolution is excluded from the thesis candidate pool. Do not reopen it unless the user asks.
-2. Keep Candidates E, F, G, H0, and the broad skill/generalization/experience-faithfulness lane downgraded in their current formulations. See research/AGENT_SKILL_LANE_REASSESSMENT.md.
-3. Continue the new exploratory lane in research/BLACK_BOX_AGENT_TEST_TIME_SEARCH_LANE_SCREEN.md: compare state-validated trajectory recombination with AMC/SMC, ASMC, LP-SMC, EVOTOOL, DUPO, T-MAP, and classical plan-space GA/GP, MCTS, beam search, and best-of-N.
-4. Resolve the potential AMC clone/client aliasing issue from research/AMC_CODE_AUDIT.md using a minimal local test before treating the public implementation as a valid baseline. Do not claim that the published paper results are invalid.
-5. Verify whether state-compatible crossover is already covered in evolutionary planning. If the method-level difference is not clear, stop before implementation. No API experiments or formal benchmark runs are approved yet.
+2. Keep Candidates E, F, G, H0, the broad skill/generalization lane, and Candidate I0 downgraded/not passed in their current formulations.
+3. Read research/BLACK_BOX_AGENT_TEST_TIME_SEARCH_LANE_SCREEN.md: the second pass found direct overlap from SE-Agent (trajectory recombination), ToolTree (tool-trajectory MCTS), TTHE (test-time harness evolution), and TBETS/classical plan optimization (validity-aware recombination). Do not implement state-validated crossover as currently described.
+4. Keep research/AMC_CODE_AUDIT.md as a baseline-integrity warning only; verify the clone/client aliasing with a minimal local test before relying on AMC, and do not infer that the published paper results are invalid.
+5. Broaden the search to a different inspectable Agent+EC baseline. Require a mechanism-level difference, primary-source prior-art comparison, code audit, and falsifiable stop condition before naming a new candidate. No API experiments or implementation are approved yet.
 
 ### Expected workflow
 
