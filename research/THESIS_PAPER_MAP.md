@@ -61,15 +61,14 @@ Paper B's candidate is no longer described as merely combining operator choice, 
 Detailed specification and rejection criteria: `research/OSLVC_R1_SCALE_CONDITIONED_LINEAGE_CREDIT.md`.
 
 
-## 6. Benchmark and baseline gate update (2026-10-27, revised after exact split audit)
+## 6. Benchmark and baseline gate update (2026-10-27, revised after split and evaluator audits)
 
-- EvoTool (ACL 2026, MIT code) is the strongest direct implementation baseline; targeted mutation, blame attribution, and diversity selection are prior art.
-- Its bundled τ-bench demo pool is not a valid final test because the builder selects from upstream test tasks before train/dev and the runner then partitions that pool.
-- The official `sierra-research/tau2-bench` repository is the leading realistic validation candidate, but the version must be pinned and task families must be grouped before tuning.
-- Exact source-level overlap: `airline_50` has 30 source-train / 20 source-test IDs; `retail_50` has 28 / 22; `telecom_50` has 27 / 23. Therefore, the complete frozen `text-v1` manifest cannot be called held-out if evolution uses the source-train partition.
-- Use locked test groups or a clearly labelled custom family-held-out split; do not report custom-split scores as official leaderboard results.
-- BFCL v4 is secondary only unless the selected task subset is audited. ToolMaze remains blocked pending rights/split review.
-- Full protocol: `research/BENCHMARK_AND_BASELINE_DECISION_R2.md`.
+- EvoTool (ACL 2026, MIT code) is the strongest direct Agent-policy evolution baseline; its bundled τ-bench demo split is not valid final test evidence.
+- Tool-Veritas (Apache-2.0 subproject) is a candidate local deterministic execution substrate, not a pre-approved benchmark. It currently contains 70 examples across 16 domains and needs an independently verified family-held-out task set; its author-reported evaluator agreement has not been independently reproduced here.
+- The official `sierra-research/tau2-bench` repository remains a realistic external-validation candidate, but Bhat et al. (2026) report evaluator–human disagreement in its Retail sample (11/112). Audit the exact selected tasks and scoring rules; do not treat the official score as unquestionable ground truth.
+- Exact source split overlap remains: `airline_50` = 30 train / 20 test IDs; `retail_50` = 28 / 22; `telecom_50` = 27 / 23. The complete frozen `text-v1` manifest cannot be called held-out if evolution used the source-train partition.
+- Epoch AI separately reports defects affecting 24/50 sampled BFCL v4 tasks; use BFCL only as an audited secondary check.
+- Main success oracle should verify goal-relevant state outcomes; tool-call validity and conversational quality must be separate metrics. See `research/BENCHMARK_AND_BASELINE_DECISION_R2.md`.
 ## 7. Additional nearest prior art: Hu et al. EvoMAS (2026)
 
 Hu et al.'s *EvoMAS: Evolutionary Generation of Multi-Agent Systems* already combines execution-feedback-conditioned mutation/crossover, task-relevance-based parent selection, reward-based pool updates, and cross-query experience memory. Paper A cannot claim feedback-guided mutation or memory alone, and Paper B must compare its conditional-credit mechanism against this configuration-evolution family. The object differs (MAS configuration vs current single-Agent policy), so a fair direct comparison may require matching the operator/credit component rather than comparing whole systems. Official code is CC BY-NC 4.0; see research/EVOMAS_CONFIG_EVOLUTION_METHOD_AUDIT_R1.md.
