@@ -104,6 +104,8 @@ The literature-scouting milestone is complete only when there is:
 - a recommended provisional direction with a falsifiable research question;
 - no unsupported claims that the direction is novel.
 
+- Latest substantive research commit verified on remote main: 9ae4440184369a8db56402b483c6d7a5f7429edf (trajectory-search second-pass prior-art audit; candidate I0 not passed as formulated).
+
 ## Update protocol
 
 At the end of every meaningful research session, update this file with what was verified, files and sources added, decisions made and why, unresolved questions, the next concrete action, and the relevant commit SHA when available.

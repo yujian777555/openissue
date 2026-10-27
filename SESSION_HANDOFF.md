@@ -42,6 +42,8 @@ Candidate E (transaction-aware recovery-controller evolution) has been downgrade
 
 The most recent candidate screened was **G: task-conditioned, lineage-aware parent-pair selection for EvoMAS**, documented in `research/EVOMAS_CODE_AUDIT_AND_PARENT_SELECTION_CANDIDATE.md`. After adding the direct 2026 prior-art overlap GPDPS⁽ᵒ⁾—which combines diverse partner selection, brood recombination, surrogate offspring-performance estimation, and offspring selection—the current formulation **did not pass Gate G0**. Do not implement it as written; see `research/CANDIDATE_G_G0_REASSESSMENT.md`. The code-level fallback observations remain useful for baseline auditing, but the exact impact on the published executability metric is unresolved. No existing lineage-linked dataset is present in `openissue`, and the current EvoMAS operation trace omits parent-pair IDs, so the proposed offline analysis of existing logs cannot currently be run.
 
+- Last substantive research commit reviewed: 9ae4440184369a8db56402b483c6d7a5f7429edf.
+
 ### Next concrete action
 
 1. Respect the user's explicit constraint: communication evolution is excluded from the thesis candidate pool. Do not reopen it unless the user asks.
