@@ -434,3 +434,13 @@ Record consequential project decisions here so future sessions do not reopen set
 - **Method consequence:** test operator/strength response heterogeneity first; equalize descendant evaluation counts for lineage-value comparisons; compare against tuned static EA, EvoTool, classical AOS, ELMER-style scale control, LVPG-style lineage control, and naive joint controls.
 - **Boundary:** This does not certify OSLVC-R1 novelty or approve a final benchmark. The exact τ²/τ³ manifest overlap and final EvoMAS HIL method remain open. No full experiment or paid API call has been run.
 - **Record:** `research/BENCHMARK_AND_BASELINE_DECISION_R2.md`.
+
+
+## D-040 — Do not use the full τ²-bench text-v1 manifest as held-out test after evolution on source train tasks
+
+- **Date:** 2026-10-27
+- **Status:** Accepted methodological constraint
+- **Evidence:** Direct ID comparison against the official `sierra-research/tau2-bench` source shows `airline_50` contains 30 train/20 test IDs, `retail_50` contains 28 train/22 test IDs, and `telecom_50` contains 27 train/23 test IDs. The frozen subset artifacts are drawn from the `base` frame and therefore span both source partitions.
+- **Decision:** If evolution uses source train tasks, evaluate held-out performance on locked test groups only. Do not present the full frozen `text-v1` score as a held-out result. Create task-family groups from redacted scenario text, issue/template metadata, and tool/action signatures; split groups rather than individual task IDs.
+- **Implication:** τ²/τ³-bench remains a strong candidate, but the split must be custom and transparently labelled unless it exactly follows an untouched official test set. No agent experiment was run.
+- **Record:** `research/BENCHMARK_AND_BASELINE_DECISION_R2.md`.
