@@ -61,14 +61,15 @@ Paper B's candidate is no longer described as merely combining operator choice, 
 Detailed specification and rejection criteria: `research/OSLVC_R1_SCALE_CONDITIONED_LINEAGE_CREDIT.md`.
 
 
-## 6. Benchmark and baseline gate update (2026-10-27)
+## 6. Benchmark and baseline gate update (2026-10-27, revised after exact split audit)
 
-- EvoTool (ACL 2026, MIT code) is a strong direct baseline and an efficient local/offline feasibility harness. Its targeted mutation and diversity-aware selection must be reproduced or fairly compared, not counted as innovations.
-- The bundled τ-bench demo split must not be used as final official evaluation: its builder selects canonical test tasks before train/dev and the runner randomly partitions the resulting demo pool. Use it only for smoke testing unless a corrected task-family split is built from clean source partitions.
-- Paper A/B readiness now requires a predeclared task-template or tool/API-family-held-out split, independent upstream data/license verification, and a locked external evaluation set. BFCL v4 is a candidate controlled benchmark; updated τ³-bench is a candidate external validation set after adapter verification.
-- Detailed method and split audit: research/EVOMAS_HIL_METHOD_AUDIT_R1.md and research/PROPOSAL_GAP_MATRIX_R1.md.
-
-
+- EvoTool (ACL 2026, MIT code) is the strongest direct implementation baseline; targeted mutation, blame attribution, and diversity selection are prior art.
+- Its bundled τ-bench demo pool is not a valid final test because the builder selects from upstream test tasks before train/dev and the runner then partitions that pool.
+- The official `sierra-research/tau2-bench` repository is the leading realistic validation candidate, but the version must be pinned and task families must be grouped before tuning.
+- Exact source-level overlap: `airline_50` has 30 source-train / 20 source-test IDs; `retail_50` has 28 / 22; `telecom_50` has 27 / 23. Therefore, the complete frozen `text-v1` manifest cannot be called held-out if evolution uses the source-train partition.
+- Use locked test groups or a clearly labelled custom family-held-out split; do not report custom-split scores as official leaderboard results.
+- BFCL v4 is secondary only unless the selected task subset is audited. ToolMaze remains blocked pending rights/split review.
+- Full protocol: `research/BENCHMARK_AND_BASELINE_DECISION_R2.md`.
 ## 7. Additional nearest prior art: Hu et al. EvoMAS (2026)
 
 Hu et al.'s *EvoMAS: Evolutionary Generation of Multi-Agent Systems* already combines execution-feedback-conditioned mutation/crossover, task-relevance-based parent selection, reward-based pool updates, and cross-query experience memory. Paper A cannot claim feedback-guided mutation or memory alone, and Paper B must compare its conditional-credit mechanism against this configuration-evolution family. The object differs (MAS configuration vs current single-Agent policy), so a fair direct comparison may require matching the operator/credit component rather than comparing whole systems. Official code is CC BY-NC 4.0; see research/EVOMAS_CONFIG_EVOLUTION_METHOD_AUDIT_R1.md.
