@@ -76,6 +76,9 @@ Prepare a defensible graduate thesis proposal on evolutionary computation applie
 - User clarification (2026-10-27): evolutionary-computation parameter tuning/control must be explicitly investigated. Do not reject a direction merely because prior work exists; use those papers as baselines and identify what can be improved or fused. New active exploratory plan: research/EC_PARAMETER_CONTROL_FUSION_CANDIDATE.md, combining a literature-grounded study of ELMER, The Time Value of Evolution/LVPG, adaptive operator selection, and EvoMAS strategy control. No innovation claim is approved yet.
 - Added P136–P140 on ELMER, The Time Value of Evolution, EvoMAS: Heuristics in the Loop, AdaptEvolve, and population-based LLM evolution. Initial synthesis: ELMER calibrates semantic mutation strength but samples it uniformly; TVE/LVPG controls mutation radius with lineage returns but freezes the variation model and uses a trading-policy setting; EvoMAS: Heuristics in the Loop already adapts a repertoire of strategies. The promising question is whether a precise joint operator–strength controller with lineage-aware credit adds value for structured Agent evolution and transfers to held-out task families. This is a hypothesis requiring a close-work audit, not a novelty claim.
 
+- Completed a primary-source mechanism audit of ELMER (arXiv:2608.10196) and The Time Value of Evolution/LVPG (arXiv:2608.13297). ELMER calibrates behavior-space mutation strength but its outer loop samples strength uniformly; LVPG learns state/horizon-dependent radius selection with lineage return but freezes its mutator; EvoMAS: Heuristics in the Loop already covers adaptive strategy portfolios and a reflective meta-controller. See research/EC_PARAMETER_CONTROL_FUSION_AUDIT.md.
+- Refined the candidate from a vague three-way fusion to **OSLVC (Operator-Specific Lineage-Value Control)**: calibrate realized behavior scale per operator, jointly select operator and scale, and credit the pair by downstream lineage improvement. This remains a hypothesis. It must be compared with static HPO, classical AOS, ELMER-style strength-only control, LVPG-style lineage-only control, and EvoMAS strategy selection; task-family transfer is required.
+
 ## Evidence state and caveats
 
 This is a **multi-pass preliminary map**, not a completed systematic review or novelty assessment. Some papers have been read at abstract/method/results level; not every paper, supplement, or codebase has been fully audited. Candidate research questions remain hypotheses. No innovation point is approved.
@@ -90,13 +93,13 @@ The user considers finite-budget evaluation efficiency insufficiently compelling
 
 ## Next actions (ordered)
 
-1. Treat the user's requirement as binding: explicitly investigate how to tune and adapt evolutionary-computation parameters. Separate Agent genotype/phenotype, static EA hyperparameters, online EA control, variation-model settings, and task/evaluation settings.
-2. Continue from research/EC_PARAMETER_CONTROL_FUSION_CANDIDATE.md. Deep-read ELMER and The Time Value of Evolution/LVPG; compare their limitations with classical AOS/self-adaptation, CWM parameter control, LLaMEA-HPO, and EvoMAS: Heuristics in the Loop.
-3. Audit the exact operator-control and reward/credit mechanisms in the closest official implementations where available. Verify the code availability and license status for ELMER, TVE/LVPG, and the second EvoMAS paper; do not claim a reproduction when only the paper is available.
-4. Tune a strong *static* EA baseline before testing dynamic control. Prespecify a compact parameter search space, use train/validation only, and compare random search or SMAC. Do not make evaluation cost the main thesis objective.
-5. Test whether joint operator-family and semantic mutation-strength control with lineage-aware credit is genuinely different from existing methods. Compare static HPO, classical AOS, self-adaptation, ELMER-style strength-only control, LVPG-style lineage-value control, and EvoMAS strategy selection.
-6. Use overlap to identify baselines and the exact improvement required, not as an automatic reason to abandon a field. Revise or abandon only a specific formulation that is already covered or empirically falsified.
-7. Keep communication evolution excluded. Do not start implementation, paid API calls, or formal benchmark runs before the mechanism, benchmark, and license gates pass.
+1. Read research/EC_PARAMETER_CONTROL_FUSION_AUDIT.md. The concrete open question is operator-specific behavior-scale calibration plus joint operator–scale lineage-value control for Agent evolution; do not treat this as a proven novelty claim.
+2. Retrieve and inspect the full ICML 2026 paper *EvoMAS: Heuristics in the Loop* and locate its official implementation, if available. Record its exact controller state, action/strategy space, credit assignment, and update schedule. If this overlaps OSLVC, refine the mechanism instead of abandoning the whole line.
+3. Verify official code availability, license and reproduction steps for ELMER/LVPG; separately audit the official EvoMAS generation code and EVOTOOL as candidate baselines.
+4. Choose an executable Agent task suite and representation only after code/data rights and leakage checks. Define behavior displacement from structured action/tool traces on training probes; validate it separately for each operator.
+5. Pre-register a compact static-HPO search space, task-family split, primary capability metric, and comparisons: static HPO, classical AOS, self-adaptation, ELMER-style strength-only, LVPG-style lineage-only, EvoMAS strategy selection, and OSLVC.
+6. Main outcomes are task success and held-out task-family generalization. Evaluation counts are matched for fairness; cost is secondary. No paid API experiment until baseline and benchmark gates pass.
+7. Prior-art overlap is a reason to sharpen the mechanism and strengthen baselines, not an automatic reason to abandon a research direction.
 
 ## Definition of done for the next milestone
 

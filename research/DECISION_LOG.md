@@ -342,3 +342,16 @@ Record consequential project decisions here so future sessions do not reopen set
 - **Potential method difference to test:** joint operator-by-strength control with realized behavior displacement and lineage-level credit in structured Agent policy/configuration evolution, with evaluation on held-out task families. This is not yet established as novel.
 - **Next:** Deep-read the exact methods/limitations; verify official code availability; define a reproducible Agent baseline; tune a static EA before testing adaptive control; compare the joint controller with strong static and adaptive baselines.
 - **Stop/revise rule:** Do not abandon because the field is crowded. Revise if the exact mechanism is already covered; abandon only the formulation if the claimed added value is absent under controlled experiments or the evaluation cannot be made reliable.
+
+
+## D-033 — Primary-source audit refines the parameter-control candidate
+
+- **Date:** 2026-10-27
+- **Status:** Candidate refined; no novelty claim approved
+- **Evidence:** ELMER (arXiv:2608.10196) uses executable behavior-grounded strength labels and common-parent oDPO; its outer loop samples strengths uniformly, and the paper identifies adaptive mutation scheduling as future work. LVPG / The Time Value of Evolution (arXiv:2608.13297) selects among Refine/Interpolate/Explore based on state and remaining horizon and uses lineage-level returns, but freezes its ELM and three radii. EvoMAS: Heuristics in the Loop (ICML 2026) already has seven evolutionary strategies, adaptive strategy selection, curriculum, role-level evolution, and a reflective meta-controller. EvoMAS: Evolutionary Generation already evolves structured MAS configurations with feedback-conditioned mutation/crossover and experience memory.
+- **Decision:** Refine the candidate to Operator-Specific Lineage-Value Control (OSLVC): (1) calibrate realized behavioral displacement separately for each operator family; (2) jointly select operator and requested behavior scale; (3) assign value using downstream lineage improvement; (4) evaluate on held-out task families.
+- **Rationale:** A generic combination of operator selection, mutation strength, and lineage reward is too vague and risks incrementalism. The narrower testable question is whether operator-specific behavior-scale calibration and lineage-value credit interact in a useful way for Agent evolution, where operator semantics and task-conditioned tool traces differ.
+- **Required baselines:** tuned static EA (random search/SMAC), classical AOS, self-adaptation, ELMER-style strength-only, LVPG-style lineage-only, and EvoMAS strategy selection after its full mechanism audit.
+- **Falsifiers:** equivalent mechanism already in EvoMAS: Heuristics in the Loop; no improvement over tuned static/AOS; no benefit from per-operator calibration; no held-out task-family transfer; or unreliable behavior-distance measurement.
+- **Next:** complete the full EvoMAS: Heuristics in the Loop method/code audit, verify ELMER/LVPG code and license availability, and lock the benchmark/representation before implementation.
+- **Record:** research/EC_PARAMETER_CONTROL_FUSION_AUDIT.md.

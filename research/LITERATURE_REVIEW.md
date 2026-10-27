@@ -72,6 +72,8 @@ Do not infer publication acceptance from an arXiv page. Do not infer a limitatio
 
 | 2026-10-27 | Parameter-control synthesis: ELMER, The Time Value of Evolution/LVPG, EvoMAS: Heuristics in the Loop, AdaptEvolve, and population-based LLM evolution | Make EA tuning/control a mandatory axis and identify an improvement path that combines prior methods rather than abandoning crowded areas | Added P136–P140 and research/EC_PARAMETER_CONTROL_FUSION_CANDIDATE.md. ELMER calibrates mutation strength but samples uniformly; LVPG uses lineage returns for radius selection but freezes the mutator; EvoMAS already adapts an operator repertoire. Joint operator–strength control with lineage credit is a hypothesis only; official code status and exact mechanism overlap need further audit. |
 
+| 2026-10-27 | Primary-source mechanism audit: ELMER (arXiv:2608.10196), The Time Value of Evolution/LVPG (arXiv:2608.13297), and ICML 2026 EvoMAS papers | Identify exact method overlap and refine an actionable Agent+EC parameter-control hypothesis | Added research/EC_PARAMETER_CONTROL_FUSION_AUDIT.md. ELMER's strength calibration and LVPG's lineage-value control are verified; EvoMAS: Heuristics in the Loop already covers adaptive strategy portfolios/meta-control. Candidate refined to operator-specific behavioral-scale calibration plus joint operator–scale lineage-value control (OSLVC), still provisional pending full EvoMAS method/code audit and baseline/benchmark gates. |
+
 ## Preliminary registry
 
 The detailed paper list and comparison are maintained in [RELATED_WORK_MATRIX.md](RELATED_WORK_MATRIX.md). It contains indexed entries P01–P140, including repeated papers in candidate-specific audit sections; the unique-paper count has not yet been reconciled, so this is not yet a completed systematic-review corpus. See [CAPABILITY_GAP_REVIEW.md](CAPABILITY_GAP_REVIEW.md) for second-pass synthesis and provisional candidate triage.
@@ -126,3 +128,6 @@ A gap is not validated until the closest prior work and competing explanations a
 ## Active research requirement (2026-10-27)
 
 The user explicitly requires that the thesis investigate how evolutionary-computation parameters are tuned and controlled. This must be addressed separately from Agent phenotype evolution and task/evaluation design. Prior work is not an automatic reason to abandon a direction; use it as a baseline and identify a precise improvement/fusion hypothesis. The current active screen is [EC_PARAMETER_CONTROL_FUSION_CANDIDATE.md](EC_PARAMETER_CONTROL_FUSION_CANDIDATE.md), not an approved thesis topic.
+
+
+The current method-level audit and revised falsifiable candidate are in [EC_PARAMETER_CONTROL_FUSION_AUDIT.md](EC_PARAMETER_CONTROL_FUSION_AUDIT.md). Prior-art overlap is used to refine the candidate and baselines, not as an automatic stop rule.

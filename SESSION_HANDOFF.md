@@ -48,13 +48,13 @@ The most recent candidate screened was **G: task-conditioned, lineage-aware pare
 
 ### Next concrete action
 
-1. Respect the user's explicit constraint: communication evolution is excluded from the thesis candidate pool.
-2. The user requires explicit study of how evolutionary computation is tuned/adapted and wants to improve/fuse existing papers rather than abandon a direction solely because it is crowded. Read research/EC_PARAMETER_CONTROL_FUSION_CANDIDATE.md first.
-3. Deep-read ELMER (arXiv:2608.10196) and The Time Value of Evolution/LVPG (arXiv:2608.13297). Compare their exact control state, action space, reward/credit assignment, mutation representation, and stated limitations.
-4. Audit EvoMAS: Heuristics in the Loop (ICML 2026), the official amazon-science/EvoMAS implementation, classical AOS/self-adaptation, CWM parameter control, and LLaMEA-HPO. Verify official code and license status; do not assume paper access implies code reproducibility.
-5. Static-tune a strong EA on training/validation before evaluating online control. Compare static HPO, deterministic schedules, classical AOS, self-adaptation, ELMER-style strength-only control, LVPG-style lineage-value control, and a proposed joint operator–strength controller with lineage credit.
-6. Use prior-art overlap to define the method gap and baselines, not as an automatic stop rule. Reject only a formulation already covered or empirically falsified. Primary outcomes are Agent task success and held-out generalization; cost remains secondary.
-7. No implementation or paid API experiment until the method-level audit and benchmark/license gates pass.
+1. Read `research/EC_PARAMETER_CONTROL_FUSION_AUDIT.md`, the primary-source audit of ELMER and LVPG plus the verified scope of EvoMAS: Heuristics in the Loop.
+2. Current candidate: **OSLVC (Operator-Specific Lineage-Value Control)**. Test whether calibration of realized behavior scale per operator, joint operator–scale selection, and downstream lineage credit improve Agent task success and held-out task-family generalization. This is not yet a novelty claim.
+3. Fully audit EvoMAS: Heuristics in the Loop: full PDF, exact controller state/action/credit/update equations, and official code availability. If its method covers OSLVC, refine the mechanism rather than abandoning the whole direction.
+4. Verify code/licensing/reproduction status for ELMER and LVPG. Audit EVOTOOL and official EvoMAS generation as candidate baselines.
+5. Choose a reproducible Agent benchmark and structured representation after leakage/license checks. Define behavior displacement on training-only action/tool traces, then validate separate calibrations per operator.
+6. Compare tuned static EA, classical AOS, self-adaptation, ELMER-style strength-only, LVPG-style lineage-only, EvoMAS strategy selection, and OSLVC. Main outcomes are task success and held-out task-family generalization; cost is secondary.
+7. Do not start paid API experiments until method and benchmark gates pass. Use overlap to strengthen the method, not as an automatic reason to stop.
 
 ### Expected workflow
 

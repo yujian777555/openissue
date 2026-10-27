@@ -19,44 +19,20 @@ This is deliberately a *research question*, not a novelty claim. The candidate b
 - **LLaMEA-HPO** separates structural algorithm evolution from numerical hyperparameter optimization; official code: https://github.com/XAI-liacs/LLaMEA.
 - **Classical adaptive operator selection (AOS) and self-adaptation** are mandatory baselines, not optional related work.
 
-## 2. Proposed fusion hypothesis
+## 2. Revised fusion hypothesis after primary-source audit
 
-The promising mechanism to test is a **joint operator–strength controller with lineage-aware credit**. It is not enough to bolt a controller onto an EA or to change a few numeric values.
+The first formulation—joint operator selection, mutation strength, and lineage credit—was too broad. The detailed evidence and falsifiable mechanism gap are now recorded in [EC_PARAMETER_CONTROL_FUSION_AUDIT.md](EC_PARAMETER_CONTROL_FUSION_AUDIT.md).
 
-### Search action
+The candidate is provisionally **Operator-Specific Lineage-Value Control (OSLVC)**:
 
-For a candidate Agent configuration/policy at generation (t), choose an action
-[
-a_t=(o_t,z_t),
-]
-where (o_t) is a typed variation family (e.g. local semantic refinement, module/role edit, structural configuration edit, or compatible recombination) and (z_t) is a requested semantic/behavioral displacement level for operators that support it.
+1. Calibrate realized behavioral displacement separately for each operator family; a shared “low/medium/high” label may not mean the same thing for local refinement, structural edits, and recombination.
+2. Treat the control action as a joint pair `(operator, behavioral scale)`, rather than two independent choices.
+3. Estimate the pair's value from downstream lineage improvement, while directly comparing against immediate-child reward and a strong static-HPO configuration.
+4. Test task-family transfer, with the final test split sealed from calibration and controller tuning.
 
-The action space should start small and be justified by the chosen baseline's actual operators. Do not add every possible operator at once.
+The hypothesis is not that the ingredients are individually novel. ELMER establishes behavior-grounded scale calibration; LVPG establishes state/horizon-dependent scale selection and lineage credit; EvoMAS: Heuristics in the Loop establishes adaptive operator portfolios and reflective meta-control. The unverified question is whether operator-specific behavioral calibration and lineage-value credit interact beneficially in Agent evolution and transfer to unseen task families.
 
-### Observable search state
-
-Potential state features, all computed from training-time observations only:
-
-- parent fitness/rank and recent improvement;
-- stagnation and recent regression/recovery;
-- current population/behavior-archive diversity;
-- operator and strength history;
-- realized parent–child behavioral displacement on a fixed probe set;
-- candidate validity and execution success;
-- task descriptors available without gold labels;
-- remaining generations.
-
-Do not expose held-out labels or evaluator internals to the controller.
-
-### Credit assignment
-
-Compare immediate-child reward with a **lineage return**: whether the child, its children, or a later descendant produces best-so-far improvement over a declared horizon. Credit must be attached to the selected ((operator, strength)) action and conditioned on the search state. A weak child is not automatically useful; it receives positive delayed credit only when a descendant provides evidence of productive continuation.
-
-This extends the *question* beyond ELMER's behavior calibration and LVPG's mutation-radius control, but it is not yet established as distinct from all adaptive-operator and lineage-credit literature. That comparison remains a gate.
-
-### Why Agent evolution is nontrivial
-
-In an LLM Agent, requested mutation strength may not correspond to actual behavioral displacement. A small prompt/configuration diff can change tool-use decisions substantially, while a large diff may have little effect. Unlike deterministic trading-program replay, tool environments and LLM outputs may be stochastic. Behavioral distance therefore needs paired task instances/seeds and a reproducible trace representation (e.g. normalized action/tool-call/decision traces), with stochastic uncertainty recorded rather than hidden.
+**Current status:** promising enough for the next primary-source audit, not yet approved as a thesis topic. Do not implement until the exact EvoMAS control mechanism, official code/rights, and a reproducible Agent benchmark are checked.
 
 ## 3. Parameter-control plan: what exactly must be tuned
 
