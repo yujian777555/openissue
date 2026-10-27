@@ -228,3 +228,12 @@ a_t=(o_t,s_t)
 3. **G2：可行性基线。** 在实现新控制器前，确认基础 Agent 与现有演化基线能够稳定运行，并能可靠测量行为变化。
 
 只有 G0–G2 通过，才将拟创新点写成更强的开题承诺。开题阶段可以提出清晰的研究假设，但不应把尚未验证的假设写成已经得到证明的结果。
+
+
+## 12. 2026-10-27 refinement: the main candidate must improve credit assignment, not merely combine controls
+
+The first OSLVC sketch—operator-specific behavior scale + joint control + lineage return—is too broad as a novelty claim. ELMER already controls behaviorally measured mutation scale, LVPG already controls mutation radius using search state/horizon and lineage returns, and classical AOS already studies operator selection with fitness- and diversity-based credit. The official ICML 2026 record for EvoMAS: Heuristics in the Loop also confirms a dynamic seven-strategy portfolio and reflective meta-controller; its exact credit equations remain to be checked from the full paper.
+
+The refined candidate is **scale-conditioned lineage-value credit**: estimate the continuation value of an operator conditional on the actual behavior displacement it generates, using matched parent/task/state comparisons. The central hypothesis is that raw operator reward may confound operator quality with perturbation magnitude. The candidate must beat (i) tuned static HPO, (ii) classical AOS including diversity/parent-distance credit, (iii) ELMER-style strength-only control, (iv) LVPG-style lineage-only control, and (v) a naive joint operator–strength controller using raw lineage return. See `research/OSLVC_R1_SCALE_CONDITIONED_LINEAGE_CREDIT.md`.
+
+This is a more precise hypothesis, not a confirmed innovation. If the conditional credit adds no value, drop it; do not retain it merely because it sounds novel. Communication-protocol evolution remains excluded.

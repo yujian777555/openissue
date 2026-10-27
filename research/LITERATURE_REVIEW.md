@@ -131,3 +131,17 @@ The user explicitly requires that the thesis investigate how evolutionary-comput
 
 
 The current method-level audit and revised falsifiable candidate are in [EC_PARAMETER_CONTROL_FUSION_AUDIT.md](EC_PARAMETER_CONTROL_FUSION_AUDIT.md). Prior-art overlap is used to refine the candidate and baselines, not as an automatic stop rule.
+
+
+## Update — scale-conditioned lineage-value hypothesis (2026-10-27)
+
+Primary sources revisited:
+- ELMER: https://arxiv.org/abs/2608.10196 — executed action-sequence displacement, low/medium/high conditional semantic mutation, behavior-grounded SFT + common-parent offset-DPO; uniform outer-loop strength sampling is identified as motivation for adaptive scheduling.
+- The Time Value of Evolution / LVPG: https://arxiv.org/abs/2608.13297 — state/horizon-dependent choice among three fixed radii, mutation-tree critic and path-level return; limitations include frozen mutation generator/radii and one trading-policy domain.
+- EvoMAS: Heuristics in the Loop (official ICML 2026 PMLR record): https://proceedings.mlr.press/v306/wei26m.html — confirms seven evolutionary strategies, adaptive strategy selection, curriculum, role-level evolution and reflective meta-control. Full exact credit/state mechanism and official code were not verified in this pass.
+- Pei et al., AOS survey: https://doi.org/10.1109/TAI.2025.3545792.
+- AOS with online learning/fitness-landscape metrics and diversity/parent-distance reward: https://doi.org/10.1007/s00500-016-2126-x.
+- RL-based mutation operator selection in program repair: https://doi.org/10.1007/s10515-025-00501-z.
+- DRL-AEOSF, 2026: https://doi.org/10.1016/j.swevo.2026.102453.
+
+**Synthesis:** the original operator + strength + lineage combination is too generic. The active hypothesis is scale-conditioned lineage-value credit: test whether downstream operator value should be estimated conditional on realized behavioral displacement under matched parent/task/state comparisons. This remains a candidate, not a novelty claim. Required comparisons include diversity/parent-distance AOS and a naive joint operator–strength controller with raw lineage return. No formal experiment or implementation has begun.

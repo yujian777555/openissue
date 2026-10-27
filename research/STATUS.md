@@ -129,3 +129,12 @@ The user clarified that the current task is preparation for the **master's thesi
 - Current working title: 《面向复杂工具任务的大语言模型智能体策略自适应演化优化方法研究》. This is provisional and must not be treated as final until the closest-work audit, benchmark/license gate, and feasibility baseline are complete.
 - Confirmed prior-art constraints: EVOTOOL covers modular tool-use policy, blame-aware targeted mutation, and diversity selection; EvoMAS covers structured MAS configuration evolution and feedback-conditioned variation; EvoMAS: Heuristics in the Loop covers adaptive strategy portfolios and reflective meta-control; ELMER covers behavior-grounded mutation scale; LVPG covers state/horizon-dependent scale control and lineage credit. A generic combination is not enough.
 - No implementation or paid API experiment authorized yet. Next action is to finish mechanism-level comparison and benchmark/license feasibility, then produce a proposal-ready literature-gap matrix—not to prematurely lock three innovation claims.
+
+
+## Parameter-control mechanism refinement (2026-10-27)
+
+- A second-pass source check sharpened the candidate: a plain combination of ELMER-style behavior-scale control, LVPG-style lineage return, and AOS-style operator selection is not enough as an innovation claim.
+- Added `research/OSLVC_R1_SCALE_CONDITIONED_LINEAGE_CREDIT.md`, which reframes the testable mechanism as operator-specific continuation value conditioned on realized behavioral displacement, with matched parent/task/state comparisons.
+- Added stronger baselines: classical AOS with diversity/parent-distance reward and a naive joint operator–strength controller with raw lineage return. The new decomposition must beat these baselines or be removed.
+- Primary-source verification: ELMER's outer loop samples strength uniformly and explicitly identifies adaptive scheduling as future work; LVPG uses state/horizon-conditioned radius selection and lineage return with frozen ELM/radii; the official PMLR record confirms EvoMAS: Heuristics in the Loop's seven-strategy portfolio and reflective meta-controller. The exact EvoMAS HIL credit/state mechanism and official code remain unverified, so G0 remains OPEN.
+- No implementation, API calls, or formal experiment has been started. Next step: finish full-paper/code/benchmark feasibility audit, then prepare the proposal-ready literature-gap table.

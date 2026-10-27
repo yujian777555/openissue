@@ -95,3 +95,12 @@ These conditions apply to the *specific formulation*, not to the whole research 
 3. Extend the literature matrix with the above works and compare them against classical AOS, self-adaptation, CWM, and LLaMEA-HPO.
 4. Define a small Agent evolution benchmark and trace-based behavior-distance metric only after confirming task/data licenses and a strong executable baseline.
 5. No implementation or paid API experiment until this mechanism-level audit is complete.
+
+
+## 8. Revision R1 — sharpen the method beyond a generic fusion (2026-10-27)
+
+The initial `(operator, strength) + lineage credit` formulation is not sufficiently distinct by itself. ELMER already calibrates mutation strength against executed behavior; LVPG already learns state-/horizon-dependent radius control and lineage-level returns; classical AOS already covers adaptive operator selection and includes diversity/parent-distance credit variants; EvoMAS: Heuristics in the Loop already has a dynamic operator portfolio and reflective meta-control.
+
+The revised hypothesis is **scale-conditioned lineage-value credit**: estimate an operator's lineage continuation value conditional on the behavior displacement it actually produces, using matched parent/task/state comparisons. This tests whether apparent operator quality is confounded by how far the operator moves behavior. It is not a causal claim without randomized/matched support, and it is not approved as novel until the complete EvoMAS HIL method and additional nearest prior art are checked.
+
+See `research/OSLVC_R1_SCALE_CONDITIONED_LINEAGE_CREDIT.md` for the formal candidate, equations, baselines, parameter tuning plan, and stop conditions. Static HPO must still precede online control. The extra decomposition must beat a naive joint controller with raw lineage return or be removed.

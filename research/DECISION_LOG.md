@@ -377,3 +377,15 @@ Record consequential project decisions here so future sessions do not reopen set
 - **Rationale:** The thesis must connect multiple method contributions under a common Agent policy representation and evaluation protocol. Do not force three papers or count one mechanism three times.
 - **Required next steps:** Finish the EvoMAS: Heuristics in the Loop final-paper mechanism audit; confirm direct-baseline code/data licenses; select a reproducible task suite; draft proposal literature-gap matrix and experiment feasibility plan. Static EA tuning must precede adaptive control experiments.
 - **Record:** `research/THESIS_PROPOSAL_FRAMEWORK.md` and updated `research/THESIS_PAPER_MAP.md`.
+
+
+## D-036 — Require scale-conditioned lineage credit to distinguish the parameter-control fusion
+
+- **Date:** 2026-10-27
+- **Status:** Provisional research decision
+- **Decision:** Do not present the original OSLVC combination of behavior-scale calibration, adaptive operator selection, and lineage return as sufficient novelty. Refine the candidate to scale-conditioned lineage-value credit: estimate continuation value conditional on realized behavior displacement using matched parent/task/state comparisons.
+- **Evidence:** ELMER directly studies executed behavior displacement and strength conditioning; LVPG directly studies state-/horizon-conditioned mutation-radius selection and lineage-level return; the 2025 AOS survey and earlier AOS work cover adaptive operator selection and diversity/parent-distance credit; EvoMAS: Heuristics in the Loop confirms a diverse adaptive operator portfolio and reflective meta-control in its official ICML 2026 record.
+- **Method requirement:** Compare against a tuned static EA, classical AOS including diversity/parent-distance reward, strength-only control, lineage-only control, and a naive joint operator–strength controller with raw lineage return. Use matched or randomized operator/strength probes to address displacement confounding; do not call the residual causal without adequate design.
+- **Stop rule:** If the conditional credit does not beat the naive joint controller and strong AOS baselines, remove it. If the full EvoMAS HIL method already implements equivalent credit, revise the method rather than merely rename it.
+- **Scope:** This decision refines a candidate; it does not approve the thesis topic or innovation points. No implementation or paid experiment is authorized yet.
+- **Record:** `research/OSLVC_R1_SCALE_CONDITIONED_LINEAGE_CREDIT.md`.

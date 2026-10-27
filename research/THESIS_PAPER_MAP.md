@@ -52,3 +52,10 @@ A candidate paper is ready only when:
 4. direct strong baselines and predeclared ablations are completed;
 5. task success/generalization gains are reproducible across seeds;
 6. the paper's claim is distinct from the other thesis contributions.
+
+
+## 5. Candidate-method refinement (2026-10-27)
+
+Paper B's candidate is no longer described as merely combining operator choice, mutation scale, and lineage credit. Its testable core is **scale-conditioned lineage-value credit**: estimate operator-specific continuation value conditional on realized behavior displacement under matched parent/task/state comparisons. Paper A remains the possible operator-specific behavior-response calibration study, but it is independently publishable only if it improves downstream search beyond ELMER. Paper C remains optional; held-out task evaluation alone is not an innovation.
+
+Detailed specification and rejection criteria: `research/OSLVC_R1_SCALE_CONDITIONED_LINEAGE_CREDIT.md`.

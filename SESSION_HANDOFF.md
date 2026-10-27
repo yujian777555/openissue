@@ -82,3 +82,8 @@ The most recent candidate screened was **G: task-conditioned, lineage-aware pare
 - If a requested repository operation is unavailable, say so explicitly; never pretend that a push or edit succeeded.
 
 Start by reading the current repository state and then continue the next incomplete action in research/STATUS.md. Do not ask me to repeat information already documented there.
+
+
+## Latest method-level research update (2026-10-27)
+
+Read `research/OSLVC_R1_SCALE_CONDITIONED_LINEAGE_CREDIT.md` before continuing. The original OSLVC fusion (behavior scale + adaptive operator choice + lineage credit) is not enough as a novelty statement because ELMER, LVPG, classical AOS, and EvoMAS: Heuristics in the Loop cover substantial parts. The revised candidate tests whether operator continuation value should be conditioned on **realized behavior displacement**, estimated with matched parent/task/state comparisons. Required baselines now include AOS with diversity/parent-distance reward and a naive joint operator–strength controller with raw lineage return. The exact EvoMAS HIL credit/state mechanism and official code remain unverified; G0 is open. Do not implement yet; next close the full-paper/code/benchmark feasibility audit and prepare the opening-report gap matrix. Communication evolution remains excluded.

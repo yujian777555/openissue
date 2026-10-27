@@ -209,3 +209,16 @@ If any condition occurs, revise or reject OSLVC as formulated. Do **not** conclu
 - EvoMAS official implementation and license: https://github.com/amazon-science/EvoMAS
 - EVOTOOL, ACL 2026: https://aclanthology.org/2026.acl-long.2016/
 - AdaptEvolve, ACL 2026 Findings: https://aclanthology.org/2026.findings-acl.2019/
+
+
+## 7. Second-pass revision — why joint control alone is insufficient (2026-10-27)
+
+A fresh primary-source check confirms that the broad OSLVC fusion is not enough as a novelty statement:
+- ELMER directly measures executed parent–child behavior displacement and trains low/medium/high mutation-strength conditioning; its paper explicitly notes uniform outer-loop strength sampling as motivation for future adaptive scheduling.
+- LVPG directly learns state-/horizon-conditioned mutation-radius choices and path-level return, while freezing its ELM/radii during controller learning. It also acknowledges optimistic tree-max targets and a single trading-policy language/domain.
+- The 2025 AOS survey and existing AOS literature cover state-based operator choice and several credit signals, including fitness improvement and diversity/parent-distance rewards.
+- EvoMAS: Heuristics in the Loop is confirmed as an ICML 2026 PMLR paper with seven strategies, adaptive strategy selection, curriculum, role-level evolution, and a reflective meta-controller. The public PMLR page exposed only the abstract in this pass; exact reward/state equations and official code remain unverified, so no detailed gap claim is made against it.
+
+The revised candidate is **scale-conditioned lineage-value credit**: test whether an operator's continuation value can be estimated more reliably by conditioning on the *realized behavior displacement* and comparing matched parent/task/state moves, rather than assigning raw immediate or lineage reward to an operator–strength pair. This is a hypothesis, not a novelty verdict. See `research/OSLVC_R1_SCALE_CONDITIONED_LINEAGE_CREDIT.md`.
+
+Required new baseline: classical AOS using diversity/parent-distance reward, plus a naive joint operator–strength controller with raw lineage return. If OSLVC-R1 cannot beat these controls, remove the residualized credit mechanism. The full EvoMAS: Heuristics in the Loop method audit remains open; do not mark Gate G0 closed.
