@@ -1,0 +1,130 @@
+# Benchmark and Baseline Decision R2 — Agent × Evolutionary Computation
+
+**Date:** 2026-10-27  
+**Status:** Provisional research decision; benchmark and thesis topic are not finally approved.  
+**Scope:** `yujian777555/openissue` only. No experiment or paid API call was started in this audit.
+
+## 1. What this audit establishes
+
+The immediate task is the master's thesis opening report. We need a reproducible setting that can test a specific EC mechanism, not just a benchmark where an Agent happens to run.
+
+The current hypothesis is still OSLVC-R1: test whether the continuation value of an Agent-policy variation operator can be predicted more accurately when conditioned on the **realized behavior displacement** of the offspring, rather than assigning raw immediate or lineage reward to an operator–strength pair. This is not yet a novelty claim.
+
+## 2. Direct baseline: EvoTool
+
+Primary sources:
+
+- Paper: https://aclanthology.org/2026.acl-long.2016/
+- Official implementation: https://github.com/SYang2000/ACL_2026_EvoTool
+- Implementation contract: https://github.com/SYang2000/ACL_2026_EvoTool/blob/main/SPEC.md
+- Evolution loop: https://github.com/SYang2000/ACL_2026_EvoTool/blob/main/src/evolve/loop.py
+- Selection: https://github.com/SYang2000/ACL_2026_EvoTool/blob/main/src/evolve/select.py
+
+### Verified implementation facts
+
+- The policy genotype contains four evolvable modules: Planner, Selector, Caller, and Synthesizer.
+- The standard mutator changes exactly one selected module, using an execution episode and feedback as guidance.
+- A child is admitted when it beats its parent on the current mini-batch; population selection then uses validation-set instance-wise wins to retain complementary policies and weight parent sampling.
+- The default deployment artifact is one selected policy, not an ensemble.
+- The repository declares an MIT license.
+
+### Consequence for the thesis
+
+EvoTool is a strong direct baseline and a useful implementation reference. We cannot claim modular policy evolution, blame-guided targeted mutation, or diversity-aware selection as new. The proposed method must improve a clearly specified EC control mechanism beyond EvoTool and strong tuned baselines.
+
+### Demo split is not suitable as the final test protocol
+
+The current `scripts/data/build_taubench.py` source list orders upstream tasks as `tasks_test.py`, then `tasks_train.py`, then `tasks_dev.py`, while its introductory docstring describes a different order. The demo builder then selects the first valid tasks in source order, and the demo runner partitions the resulting pool. Consequently, the bundled 150-instance demo must not be treated as an untouched official test set. Use it only for smoke tests. Rebuild from pinned upstream source splits and audit overlap before producing paper results.
+
+The BFCL converter similarly builds a selected subset rather than preserving an untouched official leaderboard split. An independent September 2026 review of BFCL v4 reported defects affecting 24 of 50 sampled tasks. This does not invalidate the entire benchmark, but it is a reason not to rely on BFCL v4 alone without auditing the exact subset.
+
+## 3. Updated real-task benchmark candidate: official τ²/τ³-bench repository
+
+Primary source: https://github.com/sierra-research/tau2-bench
+
+### Verified facts from the official repository
+
+- The repository declares an MIT license.
+- The current release line is `v2.0.0`, released in October 2026.
+- The release provides frozen benchmark manifests and updated tasks across airline, retail, and telecom domains.
+- The README explicitly warns that v2.0 results are not directly comparable with 1.x because task content, prompts, and grading behavior changed. All methods in our study must use one pinned version.
+- The source tree contains explicit task split files. In the current tree, the airline split contains 30 train / 20 test tasks; retail contains 74 / 40; telecom contains 74 / 40. The separate `text-v1` leaderboard manifest freezes 50 tasks per domain, so we must not assume that the manifest and source `train/test` lists are interchangeable.
+
+### Provisional recommendation
+
+Use a pinned τ²/τ³-bench release as the **realistic Agent validation environment**, subject to a split-overlap audit and a feasibility check for the selected Agent-policy representation. For evolutionary optimization, use only a declared training partition; split validation data from training groups; keep the test groups locked. Do not label a custom split as an official leaderboard score.
+
+The test split must be grouped by task family, not merely randomly split by task ID. Candidate grouping signals include task-template/purpose, tool/action signatures, shared scenario factors, and generated-variant IDs. Before adopting any split, compare its task IDs against the frozen benchmark manifest and document all overlaps.
+
+Because a user-simulated interaction can add variance, fix the agent and user-simulator model/version, decoding settings, environment version, and seeds. Repeat evaluations where necessary; use paired comparisons. Local inference is preferred for the first feasibility work, so the core method is not dependent on paid API availability.
+
+## 4. Recommended two-level evaluation design
+
+### A. Controlled mechanism test
+
+Create a small, independently authored deterministic tool-task environment with explicit tool schemas, state transitions, and exact success oracles. This is not a replacement for a real benchmark; it isolates the mechanism and avoids unclear third-party data rights.
+
+Use a fixed probe set and compare parent/offspring tool-call traces after canonicalization. A candidate behavior-distance metric can combine normalized tool-call sequence edit distance, tool-name disagreement, and argument-field/value changes. Keep task success, executability, and displacement as separate variables. Do not use raw prompt-token edit distance as the behavior metric.
+
+### B. Realistic validation
+
+Port or adapt the policy/evaluator to the pinned τ²/τ³-bench release and report the exact release, task split, model, seeds, and evaluator. The EvoTool demo is not the official split. BFCL v4 can be an additional audited robustness check, not the sole source of evidence.
+
+ToolMaze remains blocked as a primary benchmark until its code/data rights and split design are resolved.
+
+## 5. Falsification-first experiment protocol
+
+### Gate 1 — Is operator-specific scale calibration necessary?
+
+Use three clearly specified variation operators, for example:
+
+1. local rule/constraint edit within one module;
+2. whole-module rewrite (EvoTool-like targeted mutation);
+3. coordinated edit of a linked module pair, with interface validation.
+
+For each operator, test low/medium/high requested strengths on matched parents and probe tasks, with randomized assignment where feasible. Record realized displacement, validity, immediate task reward, and failure mode separately.
+
+**Reject operator-specific calibration** if the operators do not show material differences in realized displacement/validity, or if the differences do not alter downstream search decisions.
+
+### Gate 2 — Does displacement-conditioned credit add information?
+
+Compare:
+- immediate-reward credit;
+- raw lineage-return credit;
+- displacement-only prediction;
+- operator + displacement prediction;
+- scale-conditioned lineage-value credit.
+
+For lineage outcomes, equalize the number of descendant evaluations allocated to each sampled action. Report best-so-far improvement and best-so-far AUC over a fixed evaluation horizon. Do not use a raw maximum over unequal-sized branches as the only outcome: it is vulnerable to unequal search opportunities and optimistic selection bias.
+
+The conditional operator term is a **predictive residual**, not automatically a causal effect. Any operator-specific interpretation requires matched/randomized comparisons and overlap in realized displacement; do not describe conditioning on displacement alone as causal identification.
+
+### Gate 3 — Does the method improve Agent performance?
+
+Minimum baseline ladder:
+
+1. no evolution;
+2. static EA with its parameters tuned on train/validation tasks;
+3. EvoTool;
+4. classical adaptive operator selection using immediate reward;
+5. adaptive operator selection with diversity/parent-distance credit;
+6. behavior-scale-only control (ELMER-style comparison);
+7. lineage-only scale control (LVPG-style comparison);
+8. naive joint operator–scale control with immediate reward;
+9. naive joint operator–scale control with raw lineage return;
+10. OSLVC-R1.
+
+Match policy representation, base model, tasks, evaluation calls, seeds, stopping rule, and tuning data wherever possible. Tune static EA settings first (e.g., population size, offspring count, mutation probability, selection pressure, and fixed operator mixture), then freeze the selected configuration before testing online control.
+
+Primary metrics: task success and held-out task-family success. Mechanism diagnostics: offspring validity, realized displacement, conditional-value prediction/ranking, diversity, and lineage best-so-far AUC. Cost is secondary.
+
+## 6. Current decisions and unresolved gates
+
+- **EvoTool:** accepted as a direct baseline/reference implementation; its demo split is not accepted as final evaluation.
+- **τ²/τ³-bench:** strongest current realistic benchmark candidate, but exact split/manifest overlap and adapter feasibility remain to be verified.
+- **BFCL v4:** secondary only after auditing the selected examples.
+- **ToolMaze:** not adopted until rights/split issues are resolved.
+- **OSLVC-R1:** remains a hypothesis, not an approved innovation.
+- **EvoMAS: Heuristics in the Loop:** final ICML PDF's detailed method audit remains open because the PDF could not be retrieved as readable text in this session. The earlier indexed manuscript is useful evidence about an earlier version, not a substitute for the final version.
+
+No full experiment and no paid API call was performed. The next useful work is to close the τ²/τ³ task-split overlap audit and obtain a readable final EvoMAS HIL method section. Only then should a local, no-paid-call feasibility pilot be authorized.
