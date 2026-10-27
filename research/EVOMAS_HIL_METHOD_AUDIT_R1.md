@@ -62,3 +62,12 @@ This distinction is provisional. The full paper's exact reward and strategy-sele
 ## 6. Primary citation
 
 Wei, Y., Huang, Z., Xu, R., Wang, H., & Xing, W. W. (2026). *EvoMAS: Heuristics in the Loop—Evolving Smarter Agentic Workflows*. Proceedings of the 43rd International Conference on Machine Learning, Proceedings of Machine Learning Research, 306, 133736–133763. https://proceedings.mlr.press/v306/wei26m.html
+
+
+## 7. Retrieval attempt log (2026-10-27, follow-up)
+
+- Opened the official PMLR final record and followed its official PDF link (`raw.githubusercontent.com/mlresearch/v306/main/assets/wei26m/wei26m.pdf`). The web reader rejected the PDF as `application/octet-stream`; the direct container download also failed.
+- Queried the older OpenReview PDF URL for the anonymous submission. The endpoint now redirects to an OpenReview verification challenge, so it was not independently readable.
+- Search indexing returned the earlier manuscript abstract, but this does not substitute for the final paper's method section, equations, appendix, or ablations.
+- **Updated conclusion:** G0 is still OPEN. This is an access/retrieval blocker, not evidence that the paper lacks the proposed mechanism. Do not infer absence of scale-conditioned lineage credit.
+- Next acceptable routes: obtain the PDF from a user-provided local copy, an author-provided mirror/source, or a browser session with legitimate access; then inspect the algorithm, equations, and ablations. Do not use the older anonymous code artifact as if it were verified final-version code.

@@ -108,3 +108,8 @@ Do not conflate:
 - Hu et al., *EvoMAS: Evolutionary Generation of Multi-Agent Systems*, ICML 2026: full HTML and official code audited; execution-feedback-conditioned mutation/crossover, task-relevance/performance-history selection, parent-relative reward acceptance, structured MAS configuration search, and cross-query experience memory. Official code is CC BY-NC 4.0.
 
 Read research/EVOMAS_CONFIG_EVOLUTION_METHOD_AUDIT_R1.md and research/PROPOSAL_GAP_MATRIX_R1.md. Generic feedback-guided mutation/crossover, memory, and adaptive operator portfolios are not new. The current candidate remains conditional lineage-value credit based on realized behavioral displacement. Do not implement until the remaining Wei HIL mechanism audit, benchmark data/split gate, and local baseline smoke gate are resolved.
+
+
+## Latest action — EvoMAS HIL PDF access attempt (2026-10-27)
+
+The official PMLR page verifies the ICML 2026 publication and abstract, but the linked PDF could not be parsed by the web reader and the direct download failed. The earlier anonymous OpenReview PDF now triggers a verification challenge. Therefore the full method audit is **still blocked**, not completed. G0 remains OPEN; do not claim the paper lacks displacement-conditioned lineage credit. Next step is to obtain a readable final PDF or verified author source, then compare the exact state/action/reward and ablations against OSLVC-R1, ELMER, LVPG, CWM, and classical AOS.

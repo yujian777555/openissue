@@ -413,3 +413,13 @@ Record consequential project decisions here so future sessions do not reopen set
 - **Scope:** Hu et al. evolves multi-agent configurations; the current candidate testbed is a single-Agent modular tool-use policy. It is a strong adjacent prior-art constraint; align optimization objects for any direct quantitative comparison.
 - **Open item:** Wei et al.'s exact HIL reward/state equations remain unverified; G0 stays open.
 - **Record:** research/EVOMAS_CONFIG_EVOLUTION_METHOD_AUDIT_R1.md.
+
+
+## D-038 — Keep novelty gate open after unsuccessful full-text retrieval
+
+- **Date:** 2026-10-27
+- **Decision:** Do not close G0 for *EvoMAS: Heuristics in the Loop* based on abstract-only evidence.
+- **Evidence:** Official PMLR record and abstract are accessible; its linked PDF was rejected by the web reader as binary content and direct download failed; the older anonymous OpenReview PDF redirects to a verification challenge.
+- **Implication:** Exact strategy-selection state, reward/credit equation, lineage use, behavior-displacement conditioning, final code/license, and detailed split/seed protocol remain unverified.
+- **Boundary:** Retrieval failure is not evidence of absence. Do not certify OSLVC-R1 novelty or infer a gap from the abstract.
+- **Next action:** Obtain a readable final PDF or verified author-provided source, then conduct line-by-line mechanism comparison. No implementation or paid experiment is authorized by this decision.

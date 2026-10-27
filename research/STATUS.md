@@ -158,3 +158,11 @@ The user clarified that the current task is preparation for the **master's thesi
 - **Novelty consequence:** feedback-conditioned mutation, crossover, configuration evolution, task-conditioned selection, and cross-task experience memory are already covered. Do not claim these alone as innovations. The possible narrow distinction remains operator continuation value conditioned on realized behavior displacement, subject to ELMER/LVPG/AOS and the Wei HIL audit.
 - **License/compute:** Hu et al.'s official code is CC BY-NC 4.0, not MIT/Apache. Full reproduction with the paper's large models is not the first smoke-test target.
 - **Gate status:** G0 remains OPEN for Wei et al.'s exact HIL mechanism; Hu et al. full-text/code audit is complete for the main operators, reward, pool, and memory mechanisms. G1 PARTIAL/OPEN; G2 NOT RUN.
+
+
+## EvoMAS HIL full-text retrieval follow-up (2026-10-27)
+
+- Attempted the final ICML PDF linked from the official PMLR page; the web reader rejected its binary content type and direct container download failed.
+- Attempted the earlier anonymous OpenReview PDF; it redirects to an access-verification challenge. Indexed abstract text is not a substitute for the final method/equations.
+- **G0 remains OPEN for a specific, documented access reason.** This is not evidence that the method lacks scale-conditioned lineage credit. No novelty decision should be made from absence in the abstract.
+- Next: obtain a readable final PDF or author-provided source through an accessible legitimate route, then audit state/action/reward, operator definitions, lineage horizon, ablations, split, and seeds.
