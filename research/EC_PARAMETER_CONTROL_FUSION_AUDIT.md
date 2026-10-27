@@ -231,3 +231,10 @@ EvoTool (ACL 2026) is now confirmed as a strong direct baseline with MIT-license
 A critical benchmark caveat: the EvoTool τ-bench converter selects from canonical test tasks before train/dev and takes the first 150 valid instances; the runner then shuffles/splits that demo subset into train/selection/test. This does not guarantee a clean split against the official test pool. The original τ-bench README warns its tasks are outdated. Use the bundled subset only for smoke testing; for final evidence, create task-template/tool-API-family-held-out partitions from verified source splits and test on an untouched external family. BFCL is a candidate offline controlled benchmark, but data terms and the custom split must be documented.
 
 The official PMLR abstract confirms the broad EvoMAS mechanisms, but the exact credit/state equations and final code still remain unverified. Do not close G0 or make a claim that EvoMAS lacks displacement-conditioned lineage credit. See research/EVOMAS_HIL_METHOD_AUDIT_R1.md and research/PROPOSAL_GAP_MATRIX_R1.md.
+
+
+## 9. Additional prior-art collision: Hu et al. EvoMAS (2026)
+
+The full text of Hu et al., *EvoMAS: Evolutionary Generation of Multi-Agent Systems* (ICML 2026, https://arxiv.org/html/2602.06511), and its official code were audited separately from Wei et al.'s *EvoMAS: Heuristics in the Loop*. Hu et al. already uses execution-trace-conditioned single-component mutation, topology-inheriting crossover, task-relevance/performance-history selection, reward-based pool updates, and trace-summary experience memory retrieved across tasks. Its code is CC BY-NC 4.0.
+
+Generic feedback-guided mutation/crossover and cross-task memory are not candidate innovations. Hu et al. evolves structured MAS configurations, while OSLVC-R1 currently targets a single-Agent modular tool-use policy; if used as a baseline, compare matched credit/variation components or clearly label the difference in optimization object. The narrow hypothesis remains scale-conditioned lineage-value credit, not a new mutation/crossover loop. See research/EVOMAS_CONFIG_EVOLUTION_METHOD_AUDIT_R1.md.

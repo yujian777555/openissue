@@ -149,3 +149,12 @@ The user clarified that the current task is preparation for the **master's thesi
 - New proposal artifact: research/PROPOSAL_GAP_MATRIX_R1.md maps closest work, hypotheses, baselines, ablations, stop rules, and benchmark risks.
 - **Gate status:** G0 (EvoMAS exact mechanism audit) OPEN; G1 (data rights + family-held-out split) PARTIAL/OPEN; G2 (local baseline execution) NOT RUN. No implementation, formal experiment, or paid API call has started.
 - Next: obtain readable final EvoMAS PDF, finish exact method comparison; lock benchmark data/license/split; then run only a local, no-paid-call smoke test before preregistering the falsification experiment.
+
+
+## Second EvoMAS paper audit (2026-10-27)
+
+- **Disambiguation:** two separate ICML 2026 papers use the name EvoMAS. The Wei et al. HIL paper is covered by research/EVOMAS_HIL_METHOD_AUDIT_R1.md; exact reward/state equations remain unverified. The Hu et al. configuration-evolution paper has a readable full text and official code; audit: research/EVOMAS_CONFIG_EVOLUTION_METHOD_AUDIT_R1.md.
+- **Hu et al. findings:** structured MAS configuration search; execution-trace-conditioned mutation of exactly one component type per step; crossover inherits one parent's topology and recombines agent attributes; task-relevance/performance-history parent selection; reward = task metrics minus token/latency cost; parent-relative pool updates; experience-trace consolidation and retrieval of up to three similar prior experiences.
+- **Novelty consequence:** feedback-conditioned mutation, crossover, configuration evolution, task-conditioned selection, and cross-task experience memory are already covered. Do not claim these alone as innovations. The possible narrow distinction remains operator continuation value conditioned on realized behavior displacement, subject to ELMER/LVPG/AOS and the Wei HIL audit.
+- **License/compute:** Hu et al.'s official code is CC BY-NC 4.0, not MIT/Apache. Full reproduction with the paper's large models is not the first smoke-test target.
+- **Gate status:** G0 remains OPEN for Wei et al.'s exact HIL mechanism; Hu et al. full-text/code audit is complete for the main operators, reward, pool, and memory mechanisms. G1 PARTIAL/OPEN; G2 NOT RUN.

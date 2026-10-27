@@ -401,3 +401,15 @@ Record consequential project decisions here so future sessions do not reopen set
 - **Method implication:** EvoTool's blame-aware targeted mutation and diversity-aware selection are established baselines. They are not candidate innovations. The candidate remains scale-conditioned lineage-value credit and must beat strong AOS and naive joint-control baselines.
 - **Gate:** G1 remains open pending data terms and split verification. No experiment or paid API call authorized.
 - **Records:** research/EVOMAS_HIL_METHOD_AUDIT_R1.md, research/PROPOSAL_GAP_MATRIX_R1.md.
+
+
+## D-038 — Disambiguate two ICML 2026 EvoMAS papers; narrow the innovation claim
+
+- **Date:** 2026-10-27
+- **Status:** Research decision based on primary full text and official code
+- **Decision:** Record Wei et al., *EvoMAS: Heuristics in the Loop—Evolving Smarter Agentic Workflows*, and Hu et al., *EvoMAS: Evolutionary Generation of Multi-Agent Systems*, as separate papers.
+- **Evidence (Hu et al.):** Full arXiv HTML and official repository show task-relevance/performance-history selection; execution-trace-conditioned mutation of one component type per step; topology-inheriting crossover; reward combining task metrics and execution cost; parent-relative pool updates; and trace consolidation with task-similarity retrieval. Official repository license is CC BY-NC 4.0.
+- **Implication:** generic feedback-conditioned mutation/crossover, structured configuration evolution, task-conditioned selection, and cross-query experience memory are not new contributions. The candidate is narrowed to scale-conditioned lineage-value credit based on realized behavioral displacement, still unvalidated.
+- **Scope:** Hu et al. evolves multi-agent configurations; the current candidate testbed is a single-Agent modular tool-use policy. It is a strong adjacent prior-art constraint; align optimization objects for any direct quantitative comparison.
+- **Open item:** Wei et al.'s exact HIL reward/state equations remain unverified; G0 stays open.
+- **Record:** research/EVOMAS_CONFIG_EVOLUTION_METHOD_AUDIT_R1.md.

@@ -112,3 +112,10 @@ Not allowed yet:
 3. Fix family-held-out split and metric protocol before any model-based evolution.
 4. Run a no-paid-call smoke test using a local model and offline executor.
 5. Only after these gates, preregister the small falsification experiment.
+
+
+## 9. Added nearest work — Hu et al. EvoMAS (2026)
+
+The full-text audit of *EvoMAS: Evolutionary Generation of Multi-Agent Systems* (Hu et al., ICML 2026; https://arxiv.org/html/2602.06511) confirms a structured MAS configuration space, execution-trace-conditioned mutation of one component type per step, topology-inheriting crossover, task-relevance/performance-history-based parent selection, reward combining task metrics and token/latency cost, reward-based pool updates, and cross-query experience memory.
+
+Do not claim generic feedback-conditioned mutation/crossover, experience memory, or reward-based parent acceptance as novel. The official code uses CC BY-NC 4.0, so preserve attribution and non-commercial terms. Detailed audit: research/EVOMAS_CONFIG_EVOLUTION_METHOD_AUDIT_R1.md.

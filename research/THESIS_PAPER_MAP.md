@@ -67,3 +67,8 @@ Detailed specification and rejection criteria: `research/OSLVC_R1_SCALE_CONDITIO
 - The bundled τ-bench demo split must not be used as final official evaluation: its builder selects canonical test tasks before train/dev and the runner randomly partitions the resulting demo pool. Use it only for smoke testing unless a corrected task-family split is built from clean source partitions.
 - Paper A/B readiness now requires a predeclared task-template or tool/API-family-held-out split, independent upstream data/license verification, and a locked external evaluation set. BFCL v4 is a candidate controlled benchmark; updated τ³-bench is a candidate external validation set after adapter verification.
 - Detailed method and split audit: research/EVOMAS_HIL_METHOD_AUDIT_R1.md and research/PROPOSAL_GAP_MATRIX_R1.md.
+
+
+## 7. Additional nearest prior art: Hu et al. EvoMAS (2026)
+
+Hu et al.'s *EvoMAS: Evolutionary Generation of Multi-Agent Systems* already combines execution-feedback-conditioned mutation/crossover, task-relevance-based parent selection, reward-based pool updates, and cross-query experience memory. Paper A cannot claim feedback-guided mutation or memory alone, and Paper B must compare its conditional-credit mechanism against this configuration-evolution family. The object differs (MAS configuration vs current single-Agent policy), so a fair direct comparison may require matching the operator/credit component rather than comparing whole systems. Official code is CC BY-NC 4.0; see research/EVOMAS_CONFIG_EVOLUTION_METHOD_AUDIT_R1.md.

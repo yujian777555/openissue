@@ -99,3 +99,12 @@ Read these first:
 Key new finding: EvoTool is a strong MIT-licensed direct baseline with local offline evaluation, but its τ-bench demo builder chooses canonical test tasks before train/dev and then the runner randomly splits the selected pool. Do not use that demo split for final official test claims. The original τ-bench tasks are marked outdated; updated τ³-bench requires adapter work. BFCL is a possible controlled offline benchmark, but data terms and a family-held-out split remain open.
 
 Do not implement the controller yet. Next: obtain a readable final EvoMAS PDF, audit exact strategy-selection/reward/lineage equations; verify selected data terms; lock family-held-out splits; then run a no-paid-call local smoke test. Current gate state: G0 OPEN, G1 PARTIAL/OPEN, G2 NOT RUN.
+
+
+## New literature finding — two EvoMAS papers (2026-10-27)
+
+Do not conflate:
+- Wei et al., *EvoMAS: Heuristics in the Loop—Evolving Smarter Agentic Workflows*, ICML 2026: seven-strategy portfolio, adaptive selection, role-level evolution, curriculum, reflective Cyber Creator. Exact reward/state equations remain unverified.
+- Hu et al., *EvoMAS: Evolutionary Generation of Multi-Agent Systems*, ICML 2026: full HTML and official code audited; execution-feedback-conditioned mutation/crossover, task-relevance/performance-history selection, parent-relative reward acceptance, structured MAS configuration search, and cross-query experience memory. Official code is CC BY-NC 4.0.
+
+Read research/EVOMAS_CONFIG_EVOLUTION_METHOD_AUDIT_R1.md and research/PROPOSAL_GAP_MATRIX_R1.md. Generic feedback-guided mutation/crossover, memory, and adaptive operator portfolios are not new. The current candidate remains conditional lineage-value credit based on realized behavioral displacement. Do not implement until the remaining Wei HIL mechanism audit, benchmark data/split gate, and local baseline smoke gate are resolved.

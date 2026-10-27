@@ -96,3 +96,10 @@ The first and second-pass literature maps are recorded, including a provisional 
 - [Proposal-ready gap matrix R1](research/PROPOSAL_GAP_MATRIX_R1.md): closest-work matrix, falsifiable research questions, baseline ladder, parameter-tuning protocol, and benchmark/split risks.
 - **Important benchmark caution:** the EvoTool reference code is MIT-licensed and offers offline execution, but its τ-bench demo builder selects canonical test tasks before train/dev and the runner then randomly partitions the demo subset. Do not treat that subset as an untouched official test set. The original τ-bench repository itself warns that its tasks are outdated.
 - No experiment or paid API call has been started. The next gate is readable full-text EvoMAS audit plus a verified family-held-out benchmark split.
+
+
+## Research update — disambiguate the two EvoMAS papers (2026-10-27)
+
+Two distinct ICML 2026 papers share the name EvoMAS. Wei et al.'s *Heuristics in the Loop* covers seven strategies, adaptive selection, role evolution, curriculum, and Cyber Creator. Hu et al.'s *Evolutionary Generation of Multi-Agent Systems* covers structured MAS configuration evolution, execution-trace-conditioned single-component mutation, topology-inheriting crossover, reward-based pool updates, and cross-query experience memory.
+
+New audit: research/EVOMAS_CONFIG_EVOLUTION_METHOD_AUDIT_R1.md. Generic feedback-conditioned mutation/crossover, configuration evolution, and experience memory are not standalone innovation claims. The narrowed candidate remains realized-displacement-conditioned lineage-value credit.

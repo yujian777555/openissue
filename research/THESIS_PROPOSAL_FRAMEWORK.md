@@ -246,3 +246,10 @@ The latest audit adds a strong direct Agent+EC baseline: EvoTool (ACL 2026), who
 A benchmark-integrity issue was also identified: the EvoTool τ-bench converter selects from canonical test tasks before train/dev, after which the reference runner randomly splits the 150-instance demo subset. The resulting demo test split is not guaranteed to be independent of the official benchmark test pool. Use this subset for smoke testing only. Final evaluation must split by task template or tool/API family, freeze test tasks, and verify upstream data terms. The original τ-bench repository warns that its tasks are outdated; the updated τ³-bench line is a possible external-validation target after adapter work.
 
 The official ICML/PMLR EvoMAS record confirms a seven-strategy portfolio, adaptive strategy selection, role-level evolution, curriculum, and reflective meta-controller, but exact reward/credit equations remain unverified in this pass. G0 is still open. See research/EVOMAS_HIL_METHOD_AUDIT_R1.md and research/PROPOSAL_GAP_MATRIX_R1.md.
+
+
+## 14. Second EvoMAS method audit and claim boundaries (2026-10-27)
+
+Distinguish two ICML 2026 papers with the same name. Hu et al., *EvoMAS: Evolutionary Generation of Multi-Agent Systems*, covers execution-trace-conditioned mutation of one component type per step, topology-inheriting crossover, task-relevance/performance-history selection, reward-based pool updates, and cross-query experience memory. Wei et al., *EvoMAS: Heuristics in the Loop*, covers a seven-strategy portfolio, adaptive strategy selection, role-level evolution, curriculum, and reflective meta-control. Cite them separately.
+
+Feedback-guided mutation, crossover, configuration evolution, experience memory, and adaptive operator portfolios cannot be standalone innovations. The only current narrow hypothesis is whether operator continuation value should be estimated conditional on realized behavior displacement under matched parent/task/state comparisons. This remains provisional until the Wei HIL mechanism is verified and strong baselines reject simpler explanations. See research/EVOMAS_CONFIG_EVOLUTION_METHOD_AUDIT_R1.md.

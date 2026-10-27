@@ -157,3 +157,13 @@ Primary sources revisited:
 **Benchmark-integrity finding:** EvoTool's τ-bench builder iterates canonical test tasks before train/dev and selects the first 150 valid instances; the reference runner subsequently shuffles that loaded set before assigning 90/30/30 train/selection/test. Thus the demo's internal held-out split is disjoint by instance ID but is not guaranteed to be disjoint from the benchmark's canonical test pool. It is appropriate for smoke testing only, not for claims of official held-out τ-bench performance. The BFCL demo subset is also a custom subset; if used during evolution, its reported held-out score must be labelled as a custom split.
 
 See research/PROPOSAL_GAP_MATRIX_R1.md for the locked family-split protocol and baseline ladder.
+
+
+## Update — second EvoMAS full-text audit (2026-10-27)
+
+A critical name collision is resolved: there are two distinct ICML 2026 EvoMAS papers.
+
+1. Hu, Y. et al. (2026). *EvoMAS: Evolutionary Generation of Multi-Agent Systems*. ICML 2026, PMLR 306:45989–46021. Full text: https://arxiv.org/html/2602.06511 ; official code: https://github.com/amazon-science/EvoMAS . The method performs task-relevance/performance-history-based selection; execution-trace-conditioned mutation of exactly one component type per step; topology-inheriting crossover; reward = task metric − β·(token/latency cost); reward-based pool updates; and consolidation/retrieval of experience summaries across tasks. The code license is CC BY-NC 4.0.
+2. Wei, Y. et al. (2026). *EvoMAS: Heuristics in the Loop—Evolving Smarter Agentic Workflows*. ICML 2026, PMLR 306:133736–133763. Official record: https://proceedings.mlr.press/v306/wei26m.html . The abstract confirms a seven-strategy portfolio, adaptive selection, role-level evolution, curriculum, and Cyber Creator reflective meta-control. Exact reward/state equations remain unverified in this pass.
+
+**Synthesis:** Hu et al. establishes feedback-conditioned mutation/crossover, structured configuration evolution, parent-relative reward selection, and cross-task experience memory as prior art. These cannot be standalone innovation claims. The possible distinction remains realized-displacement-conditioned lineage-value credit in a controlled Agent-policy evolutionary setting. See research/EVOMAS_CONFIG_EVOLUTION_METHOD_AUDIT_R1.md.
