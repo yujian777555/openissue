@@ -4,6 +4,8 @@ Copy the prompt below into a new ChatGPT conversation. The repository is the sou
 
 ---
 
+**Parameter tuning/control is mandatory:** explicitly separate Agent genotype, static EA hyperparameters, online control, variation-model settings, and task/evaluation settings. Use static HPO as a strong baseline before testing adaptive control. Do not reject a research line solely because it is crowded; use prior work as a basis for method improvement and fusion.
+
 ## Reusable continuation prompt
 
 You are my research partner for a graduate thesis on **evolutionary computation applied to AI agents**. The repository is:
@@ -46,11 +48,13 @@ The most recent candidate screened was **G: task-conditioned, lineage-aware pare
 
 ### Next concrete action
 
-1. Respect the user's explicit constraint: communication evolution is excluded from the thesis candidate pool. Do not reopen it unless the user asks.
-2. Keep Candidates E, F, G, H0, the broad skill/generalization lane, and Candidate I0 downgraded/not passed in their current formulations.
-3. Read research/BLACK_BOX_AGENT_TEST_TIME_SEARCH_LANE_SCREEN.md: the second pass found direct overlap from SE-Agent (trajectory recombination), ToolTree (tool-trajectory MCTS), TTHE (test-time harness evolution), and TBETS/classical plan optimization (validity-aware recombination). Do not implement state-validated crossover as currently described.
-4. Keep research/AMC_CODE_AUDIT.md as a baseline-integrity warning only; verify the clone/client aliasing with a minimal local test before relying on AMC, and do not infer that the published paper results are invalid.
-5. Broaden the search to a different inspectable Agent+EC baseline. Require a mechanism-level difference, primary-source prior-art comparison, code audit, and falsifiable stop condition before naming a new candidate. No API experiments or implementation are approved yet.
+1. Respect the user's explicit constraint: communication evolution is excluded from the thesis candidate pool.
+2. The user requires explicit study of how evolutionary computation is tuned/adapted and wants to improve/fuse existing papers rather than abandon a direction solely because it is crowded. Read research/EC_PARAMETER_CONTROL_FUSION_CANDIDATE.md first.
+3. Deep-read ELMER (arXiv:2608.10196) and The Time Value of Evolution/LVPG (arXiv:2608.13297). Compare their exact control state, action space, reward/credit assignment, mutation representation, and stated limitations.
+4. Audit EvoMAS: Heuristics in the Loop (ICML 2026), the official amazon-science/EvoMAS implementation, classical AOS/self-adaptation, CWM parameter control, and LLaMEA-HPO. Verify official code and license status; do not assume paper access implies code reproducibility.
+5. Static-tune a strong EA on training/validation before evaluating online control. Compare static HPO, deterministic schedules, classical AOS, self-adaptation, ELMER-style strength-only control, LVPG-style lineage-value control, and a proposed joint operator–strength controller with lineage credit.
+6. Use prior-art overlap to define the method gap and baselines, not as an automatic stop rule. Reject only a formulation already covered or empirically falsified. Primary outcomes are Agent task success and held-out generalization; cost remains secondary.
+7. No implementation or paid API experiment until the method-level audit and benchmark/license gates pass.
 
 ### Expected workflow
 

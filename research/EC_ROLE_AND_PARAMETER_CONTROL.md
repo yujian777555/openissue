@@ -2,6 +2,8 @@
 
 **Status note (2026-10-26):** This document records the earlier recovery-policy/parameter-control research line. That line is not the active candidate: broad recovery directions were downgraded after prior-art and benchmark audits. Do not execute the ToolMaze/recovery experiment plan unless the current `research/STATUS.md` explicitly reopens it; see `research/CAPABILITY_GAP_REVIEW.md` and `research/TOOLMAZE_BENCHMARK_AUDIT.md`.
 
+**Updated research requirement (2026-10-27):** EA parameter tuning/control is an active mandatory axis again; the earlier recovery-policy pilot is not automatically reopened. The user explicitly wants existing papers used as bases for improvement/fusion, not abandoned solely because the area is crowded. See [EC_PARAMETER_CONTROL_FUSION_CANDIDATE.md](EC_PARAMETER_CONTROL_FUSION_CANDIDATE.md). The required comparison now includes ELMER and The Time Value of Evolution/LVPG as direct 2026 prior art; a generic mutation-strength controller or lineage-return controller is not a novelty claim.
+
 **Date:** 2026-10-23  
 **Status:** Methodological research note; no final thesis topic or algorithm approved  
 **Purpose:** Make evolutionary computation a substantive research method, not a generic wrapper for LLM prompt tweaking or a few numerical hyperparameters.

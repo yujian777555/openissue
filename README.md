@@ -68,3 +68,10 @@ The first and second-pass literature maps are recorded, including a provisional 
 - User constraint: communication evolution is excluded from the thesis candidate pool unless the user explicitly reopens it.
 
 - [Trajectory-search second-pass audit](research/BLACK_BOX_AGENT_TEST_TIME_SEARCH_LANE_SCREEN.md): Candidate I0 did not pass as stated after SE-Agent, ToolTree, TTHE, TBETS, and classical plan-optimization overlap was added.
+
+
+## Latest parameter-control direction (2026-10-27)
+
+- [Joint operator–mutation-scale control candidate](research/EC_PARAMETER_CONTROL_FUSION_CANDIDATE.md): active exploratory plan for tuning the EA explicitly and improving/fusing ELMER, LVPG, adaptive operator selection, and EvoMAS strategy control. This is a hypothesis, not an approved novelty claim.
+- [EC role and parameter control](research/EC_ROLE_AND_PARAMETER_CONTROL.md): separates Agent phenotype, static EA hyperparameters, online control, and evaluation settings.
+- Research rule: prior-art overlap is not an automatic reason to abandon a direction; use it to define the exact mechanism improvement, baselines, and falsifiable tests.

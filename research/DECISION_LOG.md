@@ -313,3 +313,32 @@ Record consequential project decisions here so future sessions do not reopen set
 - **Rationale:** State-validated action-sequence crossover differs from SE-Agent's strategy-level synthesis, but legality-aware plan recombination is established in evolutionary planning. That difference is not yet enough to support a thesis claim.
 - **Implication:** Keep AMC code audit as a reproducibility note, not as a reason to pursue the lane. Broaden candidate search instead of forcing this mechanism.
 - **Reopen only if:** A distinct operator or formal search property is identified that cannot be reduced to existing trajectory recombination plus known plan-validity checks, and it has a credible comparison against mutation-only EA and strong non-EA planning baselines.
+
+
+## D-030 — Literature overlap is not an automatic reason to abandon a research direction
+
+- **Date:** 2026-10-27
+- **Status:** Accepted user clarification
+- **Decision:** A candidate must not be rejected merely because related papers exist or its area is crowded. Existing papers should be treated as strong baselines and sources of mechanisms to improve, combine, and test.
+- **Rationale:** The user explicitly said that the thesis should build on other papers, find shortcomings, combine ideas where justified, and improve them.
+- **Method:** A negative novelty audit rejects only the *current formulation* when it is already covered; it does not prohibit returning with a more precise mechanism. Empirical failure can also reject a formulation. Prior art is an input to method design, not a blanket stop rule.
+- **Guardrails:** Do not relabel an existing method as new; show exact mechanism-level differences, strong baselines, ablations, and falsifiable claims.
+
+## D-031 — Evolutionary-computation parameter tuning/control is a mandatory research axis
+
+- **Date:** 2026-10-27
+- **Status:** Accepted user requirement
+- **Decision:** Every serious candidate must explicitly document how the EA is tuned and which online control rules are compared. It is not sufficient to state that an evolutionary algorithm is used.
+- **Required distinctions:** (A) Agent genotype/phenotype; (B) static EA hyperparameters such as population size, offspring count, mutation/crossover rates, selection pressure, replacement and operator mixture; (C) dynamic EA control such as operator choice, mutation strength, exploration pressure and diversity/restart decisions; (D) variation-model settings; (E) task/environment/evaluation settings.
+- **Required sequence:** Validate representation and evaluation; perform compact static sensitivity/HPO on train/validation; freeze the strongest static configuration; then compare deterministic schedules, classical AOS, self-adaptation, and the candidate adaptive controller. Never tune against held-out test outcomes.
+- **Primary objective:** Improve Agent capability and held-out generalization. Match evaluation counts for fairness, but do not center the thesis on cost or finite-budget efficiency.
+
+## D-032 — Open a joint operator–mutation-scale control hypothesis
+
+- **Date:** 2026-10-27
+- **Status:** Active exploratory hypothesis; not an approved innovation
+- **Decision:** Investigate whether a controller that jointly chooses the evolutionary operator family and semantic mutation strength, while assigning credit using downstream lineage outcomes, improves structured Agent evolution.
+- **Prior-art synthesis:** ELMER (arXiv:2608.10196) calibrates semantic mutation strength but samples strengths uniformly; The Time Value of Evolution/LVPG (arXiv:2608.13297) uses state-/horizon-dependent mutation-radius control and lineage returns but freezes the mutation model in a trading-policy setting; EvoMAS: Heuristics in the Loop (ICML 2026) already uses a diverse operator repertoire and adaptive strategy selection; CWM, classical AOS/self-adaptation, and LLaMEA-HPO are additional baselines.
+- **Potential method difference to test:** joint operator-by-strength control with realized behavior displacement and lineage-level credit in structured Agent policy/configuration evolution, with evaluation on held-out task families. This is not yet established as novel.
+- **Next:** Deep-read the exact methods/limitations; verify official code availability; define a reproducible Agent baseline; tune a static EA before testing adaptive control; compare the joint controller with strong static and adaptive baselines.
+- **Stop/revise rule:** Do not abandon because the field is crowded. Revise if the exact mechanism is already covered; abandon only the formulation if the claimed added value is absent under controlled experiments or the evaluation cannot be made reliable.

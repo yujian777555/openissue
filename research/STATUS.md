@@ -1,6 +1,6 @@
 # Current Project Status
 
-**Last updated:** 2026-10-26  
+**Last updated:** 2026-10-27  
 **Stage:** 2 — second-pass literature triage and mechanism-level audit in progress  
 **Overall status:** OPEN; topic not selected  
 **Source of truth:** this repository
@@ -73,6 +73,9 @@ Prepare a defensible graduate thesis proposal on evolutionary computation applie
 
 - Completed a second-pass prior-art audit for the black-box trajectory-search lane. SE-Agent already recombines prior trajectories, ToolTree searches tool-call trajectories with MCTS, TTHE evolves harnesses at test time, and TBETS/classical plan optimization cover legality-aware plan recombination. Candidate I0 does not pass as formulated; see research/BLACK_BOX_AGENT_TEST_TIME_SEARCH_LANE_SCREEN.md. Do not implement state-validated crossover as currently described.
 
+- User clarification (2026-10-27): evolutionary-computation parameter tuning/control must be explicitly investigated. Do not reject a direction merely because prior work exists; use those papers as baselines and identify what can be improved or fused. New active exploratory plan: research/EC_PARAMETER_CONTROL_FUSION_CANDIDATE.md, combining a literature-grounded study of ELMER, The Time Value of Evolution/LVPG, adaptive operator selection, and EvoMAS strategy control. No innovation claim is approved yet.
+- Added P136–P140 on ELMER, The Time Value of Evolution, EvoMAS: Heuristics in the Loop, AdaptEvolve, and population-based LLM evolution. Initial synthesis: ELMER calibrates semantic mutation strength but samples it uniformly; TVE/LVPG controls mutation radius with lineage returns but freezes the variation model and uses a trading-policy setting; EvoMAS: Heuristics in the Loop already adapts a repertoire of strategies. The promising question is whether a precise joint operator–strength controller with lineage-aware credit adds value for structured Agent evolution and transfers to held-out task families. This is a hypothesis requiring a close-work audit, not a novelty claim.
+
 ## Evidence state and caveats
 
 This is a **multi-pass preliminary map**, not a completed systematic review or novelty assessment. Some papers have been read at abstract/method/results level; not every paper, supplement, or codebase has been fully audited. Candidate research questions remain hypotheses. No innovation point is approved.
@@ -87,12 +90,13 @@ The user considers finite-budget evaluation efficiency insufficiently compelling
 
 ## Next actions (ordered)
 
-1. Keep Candidates E, F, G, H0, the broad skill/experience lane, and Candidate I0 in their current downgraded/not-passed states. Communication evolution is excluded by the user and must not be reopened.
-2. Broaden the candidate search outside the crowded skill, trajectory-recombination, tool-policy evolution, recovery, counterfactual-credit, communication, and generic meta-evolution formulations.
-3. For each new direction, start from one inspectable strong Agent+EC baseline and audit its actual genotype/phenotype, operators, selection/replacement, evaluation protocol, and code-paper correspondence.
-4. Require a mechanism-level difference supported by primary sources and a falsifiable hypothesis. A new benchmark, objective weight, simple application port, or “GA instead of SMC” is insufficient.
-5. Check benchmark/code/data rights and evaluation leakage before implementation. Do not start API experiments or formal benchmark runs until the novelty and reproducibility gates pass.
-6. Do not force three thesis innovations before one defensible central algorithmic contribution is identified.
+1. Treat the user's requirement as binding: explicitly investigate how to tune and adapt evolutionary-computation parameters. Separate Agent genotype/phenotype, static EA hyperparameters, online EA control, variation-model settings, and task/evaluation settings.
+2. Continue from research/EC_PARAMETER_CONTROL_FUSION_CANDIDATE.md. Deep-read ELMER and The Time Value of Evolution/LVPG; compare their limitations with classical AOS/self-adaptation, CWM parameter control, LLaMEA-HPO, and EvoMAS: Heuristics in the Loop.
+3. Audit the exact operator-control and reward/credit mechanisms in the closest official implementations where available. Verify the code availability and license status for ELMER, TVE/LVPG, and the second EvoMAS paper; do not claim a reproduction when only the paper is available.
+4. Tune a strong *static* EA baseline before testing dynamic control. Prespecify a compact parameter search space, use train/validation only, and compare random search or SMAC. Do not make evaluation cost the main thesis objective.
+5. Test whether joint operator-family and semantic mutation-strength control with lineage-aware credit is genuinely different from existing methods. Compare static HPO, classical AOS, self-adaptation, ELMER-style strength-only control, LVPG-style lineage-value control, and EvoMAS strategy selection.
+6. Use overlap to identify baselines and the exact improvement required, not as an automatic reason to abandon a field. Revise or abandon only a specific formulation that is already covered or empirically falsified.
+7. Keep communication evolution excluded. Do not start implementation, paid API calls, or formal benchmark runs before the mechanism, benchmark, and license gates pass.
 
 ## Definition of done for the next milestone
 
@@ -104,7 +108,7 @@ The literature-scouting milestone is complete only when there is:
 - a recommended provisional direction with a falsifiable research question;
 - no unsupported claims that the direction is novel.
 
-- Latest substantive research commit verified on remote main: 9ae4440184369a8db56402b483c6d7a5f7429edf (trajectory-search second-pass prior-art audit; candidate I0 not passed as formulated).
+- Latest substantive research commit verified before this update: 3814bb4ed569eaaaf879baeb65191249a9134455. The next update records the user's correction that parameter control must remain an active research axis and that overlap is not an automatic stop condition.
 
 ## Update protocol
 

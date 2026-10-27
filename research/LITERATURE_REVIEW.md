@@ -70,9 +70,11 @@ Do not infer publication acceptance from an arXiv page. Do not infer a limitatio
 
 | 2026-10-27 | Second-pass black-box trajectory-search audit: SE-Agent, ToolTree, TTHE, TBETS, and plan-optimization survey | Test whether state-validated evolutionary crossover is a distinct mechanism beyond trajectory recombination and known planning validity checks | Added P131–P135 to research/RELATED_WORK_MATRIX.md. Candidate I0 did not pass as written; SE-Agent covers trajectory revision/recombination/refinement, ToolTree covers tool-trajectory MCTS, and TBETS/plan-optimization literature cover legality-aware plan recombination. No implementation or API experiment started. |
 
+| 2026-10-27 | Parameter-control synthesis: ELMER, The Time Value of Evolution/LVPG, EvoMAS: Heuristics in the Loop, AdaptEvolve, and population-based LLM evolution | Make EA tuning/control a mandatory axis and identify an improvement path that combines prior methods rather than abandoning crowded areas | Added P136–P140 and research/EC_PARAMETER_CONTROL_FUSION_CANDIDATE.md. ELMER calibrates mutation strength but samples uniformly; LVPG uses lineage returns for radius selection but freezes the mutator; EvoMAS already adapts an operator repertoire. Joint operator–strength control with lineage credit is a hypothesis only; official code status and exact mechanism overlap need further audit. |
+
 ## Preliminary registry
 
-The detailed paper list and comparison are maintained in [RELATED_WORK_MATRIX.md](RELATED_WORK_MATRIX.md). It contains indexed entries P01–P135, including repeated papers in candidate-specific audit sections; the unique-paper count has not yet been reconciled, so this is not yet a completed systematic-review corpus. See [CAPABILITY_GAP_REVIEW.md](CAPABILITY_GAP_REVIEW.md) for second-pass synthesis and provisional candidate triage.
+The detailed paper list and comparison are maintained in [RELATED_WORK_MATRIX.md](RELATED_WORK_MATRIX.md). It contains indexed entries P01–P140, including repeated papers in candidate-specific audit sections; the unique-paper count has not yet been reconciled, so this is not yet a completed systematic-review corpus. See [CAPABILITY_GAP_REVIEW.md](CAPABILITY_GAP_REVIEW.md) for second-pass synthesis and provisional candidate triage.
 
 ### Initial core reading order
 
@@ -119,3 +121,8 @@ A proposed gap must be supported by at least one of:
 - a meaningful setting not covered by close prior work, with a clear reason it matters.
 
 A gap is not validated until the closest prior work and competing explanations are checked. Any proposed innovation should include a falsifiable hypothesis and an experiment that could show it does **not** help.
+
+
+## Active research requirement (2026-10-27)
+
+The user explicitly requires that the thesis investigate how evolutionary-computation parameters are tuned and controlled. This must be addressed separately from Agent phenotype evolution and task/evaluation design. Prior work is not an automatic reason to abandon a direction; use it as a baseline and identify a precise improvement/fusion hypothesis. The current active screen is [EC_PARAMETER_CONTROL_FUSION_CANDIDATE.md](EC_PARAMETER_CONTROL_FUSION_CANDIDATE.md), not an approved thesis topic.
