@@ -183,3 +183,11 @@ The user clarified that the current task is preparation for the **master's thesi
 - Therefore the full `text-v1` frozen subset is **not** an untouched test set if policy evolution uses the source train partition. Do not report its full score as held-out generalization.
 - The source train/test lists also do not by themselves guarantee task-family separation. Group near-duplicate tasks using redacted scenario instructions, issue/template metadata, and tool/action signatures before freezing train/validation/test.
 - Details and protocol: `research/BENCHMARK_AND_BASELINE_DECISION_R2.md`. No model experiment was run.
+
+
+## Evaluator-validity audit and Tool-Veritas substrate (2026-10-27)
+
+- New source audit: Bhat et al., `Benchmarking the Benchmarks` (arXiv:2607.02577), reports 92 evaluator–human disagreements across 496 tool-calling benchmark executions (18.5%); its τ²-Bench Retail sample was 11/112 (9.8%). Epoch AI separately reported defects affecting 24/50 sampled BFCL v4 tasks.
+- This does not invalidate every public benchmark item, but it means we must inspect the exact selected tasks and evaluator rules rather than treat official scores as ground truth.
+- Tool-Veritas is a potentially useful Apache-2.0 local execution substrate: deterministic state gates, multi-turn traces, and 70 bundled cases across 16 domains. Its bundled cases are not a ready-made train/validation/test split, and its reported human agreement has not been independently reproduced here.
+- Revised plan: use Tool-Veritas as a controlled execution substrate with an independently verified, family-held-out task set; use pinned τ²/τ³-bench only for audited external validation. Keep BFCL v4 secondary. Details: `research/BENCHMARK_AND_BASELINE_DECISION_R2.md`.
