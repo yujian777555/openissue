@@ -147,3 +147,25 @@ All frozen-subset IDs fall into the source train or test lists; the frozen `text
 There is a second issue: the default source train/test split is not automatically a task-family split. For example, telecom train and test both contain the same high-level issue families. Airline has only one exact `description.purpose` overlap, but that does not prove that near-duplicate scenario patterns are absent; retail's purpose field is null for many records. Before locking a split, construct family fingerprints from scenario instructions after entity redaction, issue/template metadata where available, and tool/action signatures. Assign whole groups—not individual task IDs—to train, validation, and test.
 
 This is a source-level split audit; it did not execute any agent or call a model.
+
+
+## 8. Follow-up: evaluator validity audit and a better controlled substrate
+
+A second independent audit materially changes how benchmark scores should be interpreted. *Benchmarking the Benchmarks: A Validity Audit of Tool-Calling Evaluation* (Bhat et al., 2026; https://arxiv.org/abs/2607.02577) reviewed 496 executions across BFCL v4, τ²-Bench, LiveMCPBench, and MCP-Atlas, reporting 92 evaluator–human disagreements (18.5%). Its reported per-benchmark sample included 11/112 disagreements for τ²-Bench Retail (9.8%), 40/200 for BFCL v4 (20%), 29/95 for LiveMCPBench (30.5%), and 12/89 for MCP-Atlas (13.5%). Epoch AI separately found defects affecting 24/50 sampled BFCL v4 tasks. These are audits of sampled tasks, not proof that every item is wrong; they do show that official scores should not be treated as ground truth without inspecting the exact cases and evaluator behavior.
+
+### Tool-Veritas as a reusable execution substrate, not a pre-approved benchmark
+
+- Repository: https://github.com/CoreThink-AI/benchmarking-the-benchmarks
+- Tool-Veritas subproject license: Apache-2.0 (https://github.com/CoreThink-AI/benchmarking-the-benchmarks/blob/main/Tool-Veritas/LICENSE)
+- The code provides a local in-memory tool sandbox, multi-turn ReAct harness, deterministic state gates, per-turn traces, and an optional qualitative judge that runs only after deterministic gates pass.
+- The checked-in `examples/cases/all.jsonl` contains 70 cases across 16 domains (mostly medium/hard), not a ready-made train/validation/test suite. The README's reported human-agreement result is author-reported; we have not independently reproduced it.
+- The gate schema can require specific tools as well as check resulting state. To avoid trajectory lock-in, our own primary success oracle should check goal-relevant state invariants; require a specific tool only when using that tool is itself part of the task objective. Communication quality should be secondary, not allowed to override a failed goal-state check.
+
+### Revised benchmark recommendation
+
+1. Use Tool-Veritas as a **local controlled execution substrate** and independently create/verify a larger task-family set. The 70 bundled cases are seeds/examples, not sufficient by themselves for the thesis's complete split.
+2. Use a pinned τ²/τ³-bench release as **external realistic validation**, but manually audit the exact selected tasks and reward checks. Prefer a locked test partition; report both the official evaluator result and an independently adjudicated subset result when feasible.
+3. Do not use full `text-v1` as held-out evidence after training on its source-train IDs. Do not rely on BFCL v4 as the only benchmark.
+4. Record raw traces and the exact goal-state checks for every evaluated task. Separate tool-call validity, task-state completion, and conversational quality into different metrics.
+
+This supersedes the earlier tentative wording that treated τ²/τ³-bench as a sufficient external validator on its own. It remains a useful candidate, but its exact task/evaluator subset must be audited.
