@@ -51,24 +51,26 @@ This is a method-improvement thesis candidate, not pure MetaBBO. The optimizatio
 
 ## 4. Experiment design: avoid split leakage
 
-### Recommended two-level protocol
+### 4.1 Baseline and benchmark audit
 
-1. **Feasibility stage:** use the public EvoTool implementation and a small offline benchmark subset to verify the local model, environment, trace capture, deterministic evaluator, and cache. This is a smoke test only, not paper evidence.
-2. **Method stage:** construct explicit train/validation/test partitions by task template or tool/API family. Fit the scale/credit model only on train; tune static EA parameters and select checkpoints on validation; freeze everything before test.
-3. **External validation:** test transfer on a second benchmark/task family that was not used for mutation calibration. The split and evaluator must be fixed before comparing methods.
-4. **Matched budget:** same backbone, generation/evaluation budget, seeds, cache policy, stop rule, and evaluation calls for all methods. Report extra probe cost separately.
+| Candidate | Source-level finding | Decision |
+|---|---|---|
+| EvoTool (ACL 2026) | Official implementation is MIT and provides a modular four-part policy, targeted mutation, diversity-aware selection, and offline execution. | Strong direct baseline and smoke-test harness; do not claim its mechanisms as new. |
+| EvoTool bundled τ-bench demo | Its builder's actual source order is test → train → dev, then it takes the first valid tasks; the runner later partitions that pool. The docstring and code order also disagree. | Smoke tests only. Do not treat the bundled 90/30/30 split as an untouched official test. |
+| Official τ²/τ³-bench, current candidate v2.0.0 | MIT repository; frozen benchmark manifests; explicit source train/test lists. v2.0 differs from 1.x and must be pinned. | Leading realistic validation candidate, pending task-family and manifest-overlap audit. |
+| Frozen `text-v1` manifest | Direct ID comparison: airline_50 = 30 source-train + 20 source-test IDs; retail_50 = 28 + 22; telecom_50 = 27 + 23. The subset artifacts are drawn from the `base` frame. | The full `text-v1` score is not held out if evolution used the source-train tasks. Report only locked test groups or a clearly labelled research split. |
+| BFCL v4 | An independent 2026 review reported defects affecting 24 of 50 sampled tasks. | Secondary robustness check only after auditing the exact selected examples; do not use as the only evidence source. |
+| ToolMaze | Current public code/data rights and official split remain unresolved. | Not a primary benchmark until the rights gate is closed. |
 
-### Benchmark audit
+### 4.2 Recommended two-level protocol
 
-| Candidate | Verified feasibility evidence | Risk | Recommendation |
-|---|---|---|---|
-| EvoTool repository | Official ACL 2026 implementation; MIT code; local OpenAI-compatible model endpoint; deterministic offline executor; demo subsets; one A100-class GPU stated as sufficient for Qwen3-8B | Its demo subset is not equivalent to an untouched official leaderboard test set; split is random within the bundled 150 examples | Best harness for a low-cost feasibility pilot and strong direct baseline |
-| BFCL v4 via EvoTool | Upstream Gorilla repository identifies Apache-2.0 license; EvoTool converter selects hard multi-call categories; offline execution is supported | A repository-level code license does not automatically settle every upstream data/annotation term; custom evolution splits must not be reported as official BFCL leaderboard scores | Candidate primary controlled benchmark after task/API-family split and license review |
-| Original τ-bench | Upstream repository license is MIT | Its own README says the tasks are outdated; EvoTool's converter iterates canonical test tasks before train/dev and takes the first 150 valid tasks, then the runner randomly partitions those 150 into train/selection/test. This can place official test tasks into evolution data | Do not use this demo builder for final test claims |
-| τ³-bench / updated τ-bench line | Official successor repository provides updated/fixed tasks and MIT code license | EvoTool's existing vendored adapter targets the older interface; port and verify the adapter and evaluator | Candidate external validation after adapter audit |
-| RestBench / RestGPT | RestGPT code repository is MIT; EvoTool uses an offline executor | The original task set is a test set; data redistribution terms and any API-schema rights need explicit review; random partition is not a family-held-out split | Secondary benchmark only after rights and split review |
-| ToolBench | Upstream repository uses Apache-2.0 code license | Processed answer sets are large and derived from external/API-related sources; confirm data-specific terms and source availability before redistributing or using them as a thesis artifact | Not first choice for the initial pilot |
+1. **Mechanism isolation:** build an independently authored deterministic tool-task suite with exact state transitions and an exact success oracle. Use it to compare operator/strength response distributions under matched parents and fixed probe tasks.
+2. **Realistic validation:** port/adapt the selected policy representation to a pinned τ²/τ³-bench release. Do not use the complete frozen `text-v1` manifest as held-out evidence after training on source-train IDs.
+3. **Task-family holdout:** derive family fingerprints from redacted scenario instructions, issue/template metadata, and tool/action signatures. Assign whole groups to train/validation/test; do not randomly split near-duplicate task variants.
+4. **External check:** optionally use a manually audited BFCL v4 subset, with exact version and task IDs recorded.
+5. **Fairness:** match policy representation, model/version, decoding settings, evaluator, seed set, candidate-evaluation count, and stop rules. Report custom research splits as custom splits, not official leaderboard scores.
 
+The exact overlap computation and source links are recorded in `research/BENCHMARK_AND_BASELINE_DECISION_R2.md`.
 ## 5. Proposed baseline ladder
 
 1. Static starting Agent / no evolution.
