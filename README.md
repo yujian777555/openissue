@@ -82,3 +82,9 @@ The first and second-pass literature maps are recorded, including a provisional 
 - [硕士毕业论文开题框架（候选版）](research/THESIS_PROPOSAL_FRAMEWORK.md): thesis-level umbrella problem, provisional title, connected research contents, parameter-tuning plan, experiment design, and opening-report outline.
 - [Thesis–Paper Contribution Map](research/THESIS_PAPER_MAP.md): maps candidate Paper A/B and optional Paper C; no innovation claim is pre-approved.
 - Project framing: the immediate deliverable is the thesis opening report, not a standalone OSLVC paper. OSLVC remains a candidate core method; two strong connected contributions are preferable to three weak or duplicated claims.
+
+
+## Latest method-level candidate refinement (2026-10-27)
+
+- [OSLVC-R1: Scale-Conditioned Lineage-Value Credit](research/OSLVC_R1_SCALE_CONDITIONED_LINEAGE_CREDIT.md): revised, falsifiable candidate that tests whether operator credit should be conditioned on realized Agent behavior displacement when estimating lineage continuation value. This is a hypothesis, not an approved novelty claim.
+- The next step is to finish the published EvoMAS: Heuristics in the Loop method audit and benchmark/license feasibility check. No implementation or paid experiment has started.
