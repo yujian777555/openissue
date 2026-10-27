@@ -166,3 +166,12 @@ The user clarified that the current task is preparation for the **master's thesi
 - Attempted the earlier anonymous OpenReview PDF; it redirects to an access-verification challenge. Indexed abstract text is not a substitute for the final method/equations.
 - **G0 remains OPEN for a specific, documented access reason.** This is not evidence that the method lacks scale-conditioned lineage credit. No novelty decision should be made from absence in the abstract.
 - Next: obtain a readable final PDF or author-provided source through an accessible legitimate route, then audit state/action/reward, operator definitions, lineage horizon, ablations, split, and seeds.
+
+
+## Benchmark and baseline audit R2 (2026-10-27)
+
+- Added `research/BENCHMARK_AND_BASELINE_DECISION_R2.md` with source-verified EvoTool baseline mechanics, the demo-split contamination risk, the current τ²/τ³-bench candidate, and a falsification-first experiment protocol.
+- EvoTool is accepted as a strong direct baseline/reference implementation (MIT), but its bundled τ-bench demo split is not accepted as final test evidence because its builder selects from the upstream test split before train/dev.
+- The current official `sierra-research/tau2-bench` release line is the leading realistic benchmark candidate. Pin one version; verify overlap between the source train/test lists and the frozen `text-v1` manifest before choosing the final split.
+- BFCL v4 is secondary only unless the exact selected task subset is audited; an independent review reported defects in 24/50 sampled tasks.
+- No benchmark, thesis topic, or innovation point is approved. OSLVC-R1 remains a falsifiable hypothesis. No full experiment or paid API call was performed.
