@@ -103,3 +103,9 @@ The first and second-pass literature maps are recorded, including a provisional 
 Two distinct ICML 2026 papers share the name EvoMAS. Wei et al.'s *Heuristics in the Loop* covers seven strategies, adaptive selection, role evolution, curriculum, and Cyber Creator. Hu et al.'s *Evolutionary Generation of Multi-Agent Systems* covers structured MAS configuration evolution, execution-trace-conditioned single-component mutation, topology-inheriting crossover, reward-based pool updates, and cross-query experience memory.
 
 New audit: research/EVOMAS_CONFIG_EVOLUTION_METHOD_AUDIT_R1.md. Generic feedback-conditioned mutation/crossover, configuration evolution, and experience memory are not standalone innovation claims. The narrowed candidate remains realized-displacement-conditioned lineage-value credit.
+
+
+## Latest benchmark and baseline audit (2026-10-27)
+
+- [Benchmark and Baseline Decision R2](research/BENCHMARK_AND_BASELINE_DECISION_R2.md): source-level EvoTool audit, demo-split leakage risk, τ²/τ³-bench version/split considerations, BFCL quality caveat, and the falsification-first experiment protocol.
+- Current decision: EvoTool is a direct baseline, not a novelty claim; τ²/τ³-bench is the leading realistic validation candidate pending split-overlap and adapter checks; OSLVC-R1 remains unapproved.
