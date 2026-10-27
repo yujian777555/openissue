@@ -444,3 +444,13 @@ Record consequential project decisions here so future sessions do not reopen set
 - **Decision:** If evolution uses source train tasks, evaluate held-out performance on locked test groups only. Do not present the full frozen `text-v1` score as a held-out result. Create task-family groups from redacted scenario text, issue/template metadata, and tool/action signatures; split groups rather than individual task IDs.
 - **Implication:** τ²/τ³-bench remains a strong candidate, but the split must be custom and transparently labelled unless it exactly follows an untouched official test set. No agent experiment was run.
 - **Record:** `research/BENCHMARK_AND_BASELINE_DECISION_R2.md`.
+
+
+## D-041 — Audit evaluator validity; use Tool-Veritas only as a substrate
+
+- **Date:** 2026-10-27
+- **Status:** Provisional methodological constraint
+- **Evidence:** Bhat et al. (2026), *Benchmarking the Benchmarks: A Validity Audit of Tool-Calling Evaluation* (https://arxiv.org/abs/2607.02577), reports 92 evaluator–human disagreements across 496 executions (18.5%), including 11/112 in τ²-Bench Retail; Epoch AI's separate BFCL v4 review reports defects affecting 24/50 sampled tasks. The Apache-2.0 Tool-Veritas subproject provides deterministic state gates and traceable local tool execution, but its bundled `all.jsonl` contains only 70 cases across 16 domains and does not provide a ready-made thesis split.
+- **Decision:** Build an independently verified, task-family-held-out controlled suite on a local deterministic tool substrate. Use τ²/τ³-bench as audited external validation rather than sole ground truth; inspect the exact tasks and scoring rules. Report goal-state completion separately from tool-call validity and conversational quality.
+- **Boundary:** Tool-Veritas's author-reported human agreement has not been independently reproduced; no claim that it is a flawless benchmark. No experiment was run.
+- **Record:** `research/BENCHMARK_AND_BASELINE_DECISION_R2.md`.
