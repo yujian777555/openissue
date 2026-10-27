@@ -75,12 +75,19 @@ Verified from the official proceedings record and abstract:
 - Role-level evolution and curriculum-guided progression from simpler to more complex tasks.
 - A Cyber Creator meta-controller that formulates and reflectively updates evolutionary rules and strategies.
 
+Additional mechanism evidence from an accessible earlier manuscript appendix (OpenReview PDF indexed by search; not yet reconciled line-by-line with the final PMLR version):
+
+- The population is initialized using RAG retrieval; each generation samples a strategy from a strategy distribution, generates offspring, and applies an LLM-based selection that considers performance, structure, and rule compliance.
+- Every (K) generations, the system appends historical records to a log and calls Cyber Creator to update the evolutionary rule set and strategy distribution.
+- The curriculum objective averages performance over the current and all previous difficulty stages to reduce forgetting.
+- The linked anonymous code mirror (https://anonymous.4open.science/r/EvoMAS-DEF4) was not accessible during this audit, so the implementation is not yet independently reproducible from that link.
+
 Interpretation:
 
-- **Established:** an adaptive portfolio of evolutionary strategies and a meta-controller for improving those strategies have direct Agent+EC prior art.
-- **Not yet verified:** the exact controller state, credit-assignment equation, update schedule, and how operator choice interacts with realized behavioral displacement. The full method/code audit is still required.
-- **Do not claim:** dynamic operator portfolios or reflective meta-control alone as new.
-- **Next audit:** inspect the full PDF and locate an official code release. Do not infer missing details from the abstract.
+- **Established:** adaptive strategy portfolios, periodic history-conditioned strategy-distribution updates, reflective rule revision, role evolution, and curriculum are direct Agent+EC prior art. A generic operator controller or generic meta-controller is not novel.
+- **Not evidenced in the accessible description:** per-operator calibration against realized behavioral displacement and lineage-return credit assigned to a joint ((operator, scale)) action. This is a candidate distinction to verify, not proof that the final paper omits those mechanisms.
+- **Do not claim:** dynamic operator portfolios, reflective meta-control, or curriculum alone as new.
+- **Next audit:** reconcile the earlier appendix with the final PMLR version and check whether an official code release is accessible. Keep the method gap provisional until this is done.
 
 ### 2.4 EvoMAS: Evolutionary Generation of Multi-Agent Systems
 

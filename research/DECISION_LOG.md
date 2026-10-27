@@ -355,3 +355,12 @@ Record consequential project decisions here so future sessions do not reopen set
 - **Falsifiers:** equivalent mechanism already in EvoMAS: Heuristics in the Loop; no improvement over tuned static/AOS; no benefit from per-operator calibration; no held-out task-family transfer; or unreliable behavior-distance measurement.
 - **Next:** complete the full EvoMAS: Heuristics in the Loop method/code audit, verify ELMER/LVPG code and license availability, and lock the benchmark/representation before implementation.
 - **Record:** research/EC_PARAMETER_CONTROL_FUSION_AUDIT.md.
+
+
+## D-034 — EvoMAS: Heuristics in the Loop controller details partially recovered
+
+- **Date:** 2026-10-27
+- **Status:** Partial primary-source mechanism evidence; final-version reconciliation open
+- **Evidence:** The official PMLR abstract establishes seven strategies, adaptive strategy selection, role evolution, curriculum, and Cyber Creator. An accessible earlier manuscript appendix describes sampling operators from a strategy distribution; LLM-based selection using performance, structure, and rule compliance; and periodic updates to the rule set and strategy distribution from a historical log every K generations. Curriculum scoring averages performance over previous difficulty stages. The linked anonymous code mirror was not accessible in this audit.
+- **Interpretation:** Generic adaptive strategy portfolios and reflective evolutionary meta-control are directly covered. The currently evidenced distinction for OSLVC is the *operator-conditioned behavioral-scale calibration plus lineage-value credit for the joint operator–scale action*, but the final PMLR version must be checked before treating this as a gap.
+- **Next:** reconcile the earlier manuscript appendix against the final PMLR paper; verify whether an accessible official implementation exists; then freeze or revise the novelty matrix.
