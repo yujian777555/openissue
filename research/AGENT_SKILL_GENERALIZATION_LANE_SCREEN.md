@@ -1,7 +1,7 @@
 # Agent Skill/Workflow Generalization and Experience Faithfulness — Initial Screen
 
 **Screen date:** 2026-10-26  
-**Status:** Exploratory lane only. **No candidate or thesis innovation is approved.**  
+**Status:** Reassessed on 2026-10-27; this broad lane did not pass as a thesis candidate. See research/AGENT_SKILL_LANE_REASSESSMENT.md. **No candidate or thesis innovation is approved.**  
 **Project boundary:** This screen belongs only to yujian777555/openissue.
 
 ## 1. Why screen this lane?
@@ -77,3 +77,10 @@ A direct read of the official repository adds implementation-level cautions; det
 - The official repository is accessible, but a root LICENSE file was not found. Do not reuse code/data until terms are confirmed.
 
 This makes Faithful Self-Evolvers a valuable source of evaluation interventions, but not yet an EC candidate. The novelty gate remains unchanged.
+
+
+## 7. Second-pass decision (2026-10-27)
+
+The first screen missed direct 2026 overlap from SkillComposer (create/improve/merge), Rep2Skill (representation-guided targeted revision), MetaMem (evolving meta-memory), Live-Evo (online feedback and forgetting), SelSkill (invoke/skip), and Skill Following (matched actual-use effect). Together with GSO, EvoSkill, H-EPM, and AgentEvo, these papers occupy the obvious variants of skill generalization, experience use, memory evolution, and skill invocation. See research/AGENT_SKILL_LANE_REASSESSMENT.md.
+
+**Decision:** keep this area as related work, but do not implement the broad formulation as a thesis candidate. Move to a different algorithmic problem. The next exploratory lane is black-box agent test-time trajectory search, not communication evolution.

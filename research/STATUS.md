@@ -20,6 +20,8 @@ Prepare a defensible graduate thesis proposal on evolutionary computation applie
 - This project must be resumable across new ChatGPT conversations using repository records.
 - Do not import candidate directions or conclusions from unrelated projects or previous conversations.
 
+- The user explicitly excludes communication-evolution topics from the thesis candidate pool; do not reopen that lane unless the user asks.
+
 ## Not yet decided
 
 - Exact research question and title.
@@ -66,6 +68,9 @@ Prepare a defensible graduate thesis proposal on evolutionary computation applie
 
 - Completed a first-pass source-code audit of Faithful Self-Evolvers: ExpeL's irrelevant/filler interventions are stochastic partial replacements; ReasoningBank is explicitly condensed-only; secondary FR/IG plotting helpers contain possible aggregation issues requiring comparison with the paper equations. These observations are not evidence that the paper's primary behavioral results are invalid. See research/FAITHFUL_SELF_EVOLVERS_CODE_AUDIT.md; code/data reuse is blocked pending license clarification.
 
+- Reassessed the skill/workflow generalization and experience-faithfulness lane after checking SkillComposer, Rep2Skill, MetaMem, Live-Evo, SelSkill, and Skill Following. The broad formulation is too close to direct 2026 prior art and is downgraded; see research/AGENT_SKILL_LANE_REASSESSMENT.md.
+- Opened a new exploratory lane for evolutionary test-time search over black-box agent trajectories. AMC (ICML 2026) is a direct baseline, but a current-main code audit found a potential resampling clone/client aliasing defect that must be verified before reproduction. See research/BLACK_BOX_AGENT_TEST_TIME_SEARCH_LANE_SCREEN.md and research/AMC_CODE_AUDIT.md. This is not an approved candidate; no API or benchmark experiment has started.
+
 ## Evidence state and caveats
 
 This is a **multi-pass preliminary map**, not a completed systematic review or novelty assessment. Some papers have been read at abstract/method/results level; not every paper, supplement, or codebase has been fully audited. Candidate research questions remain hypotheses. No innovation point is approved.
@@ -80,12 +85,12 @@ The user considers finite-budget evaluation efficiency insufficiently compelling
 
 ## Next actions (ordered)
 
-1. Keep Candidates E, F, G, and H0 downgraded in their current formulations. Reopen only if new primary-source evidence or a materially different algorithmic mechanism emerges.
-2. **Deep-audit the skill/workflow generalization and experience-faithfulness lane** in research/AGENT_SKILL_GENERALIZATION_LANE_SCREEN.md. Read GSO in depth and verify code availability; compare its method against H-EPM and AgentEvo. Faithful Self-Evolvers code has received a first-pass audit, recorded in research/FAITHFUL_SELF_EVOLVERS_CODE_AUDIT.md.
-3. Require a concrete evolutionary mechanism—not just a generalization metric, faithfulness score, skill format, or memory graph. Compare the proposed representation/operators/selection with classical GP/EC and the closest current methods.
-4. Verify code/data rights and whether the necessary benchmarks permit a leakage-safe held-out test. The Faithfulness and DIVE repositories are accessible but their inspected roots did not expose LICENSE files; resolve this before reuse.
-5. If this lane collapses to weighted objectives or a rediscovery of existing memory/workflow methods, stop and screen another strong, inspectable Agent+EC baseline.
-6. Do not start expensive API experiments or implementation until the novelty, method, benchmark, and license gates pass. Do not force three thesis contributions prematurely.
+1. Keep Candidates E, F, G, H0, and the broad skill/experience lane downgraded in their current formulations. Communication evolution is excluded by the user and must not be reopened.
+2. Deep-audit the black-box agent test-time search lane in research/BLACK_BOX_AGENT_TEST_TIME_SEARCH_LANE_SCREEN.md. Compare state-validated trajectory recombination against AMC/SMC, ASMC, LP-SMC, EVOTOOL, DUPO, T-MAP, and classical plan-space GA/GP, MCTS, beam search, and best-of-N.
+3. Resolve the potential AMC particle-independence defect recorded in research/AMC_CODE_AUDIT.md with a minimal local test. Do not infer that the paper's results are invalid; distinguish the public branch from the exact experimental snapshot.
+4. Define a non-leaking observable-state equivalence rule and check whether trajectory crossover is already covered by classical evolutionary planning. If it is not distinct, stop this lane before implementation.
+5. Verify the licenses and execution contracts of any selected benchmark and dependencies; the AMC root is Apache-2.0 but vendored environments/data need separate checks.
+6. Only after the novelty and baseline-integrity gates pass, design a deterministic pilot. Do not start expensive API experiments or force three thesis contributions prematurely.
 
 ## Definition of done for the next milestone
 

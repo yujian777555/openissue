@@ -14,7 +14,7 @@ The immediate priority is the thesis proposal/opening report. The target is a co
 
 ### Mandatory first steps
 
-1. Read README.md, research/PROJECT_CHARTER.md, research/STATUS.md, research/LITERATURE_REVIEW.md, research/RELATED_WORK_MATRIX.md, research/CAPABILITY_GAP_REVIEW.md, research/EC_ROLE_AND_PARAMETER_CONTROL.md, research/EC_PARAMETER_CONTROL_EXPERIMENT_PROTOCOL.md, research/TOOLMAZE_BENCHMARK_AUDIT.md, research/COEVOLUTION_CANDIDATE_AUDIT.md, research/META_EVOLUTION_CANDIDATE_AUDIT.md, research/TRANSACTIONAL_AGENT_ROBUSTNESS_CANDIDATE_AUDIT.md, research/COUNTERFACTUAL_EVOLUTION_CANDIDATE_AUDIT.md, research/EVOMAS_CODE_AUDIT_AND_PARENT_SELECTION_CANDIDATE.md, research/CANDIDATE_G_G0_REASSESSMENT.md, research/COMMUNICATION_EVOLUTION_LANE_SCREEN.md, research/COMMUNICATION_EVOLUTION_CANDIDATE_H_REASSESSMENT.md, research/AGENT_SKILL_GENERALIZATION_LANE_SCREEN.md, research/FAITHFUL_SELF_EVOLVERS_CODE_AUDIT.md, research/INITIAL_RESEARCH_MEMO.md, research/THESIS_PAPER_MAP.md, and research/DECISION_LOG.md.
+1. Read README.md, research/PROJECT_CHARTER.md, research/STATUS.md, research/LITERATURE_REVIEW.md, research/RELATED_WORK_MATRIX.md, research/CAPABILITY_GAP_REVIEW.md, research/EC_ROLE_AND_PARAMETER_CONTROL.md, research/EC_PARAMETER_CONTROL_EXPERIMENT_PROTOCOL.md, research/TOOLMAZE_BENCHMARK_AUDIT.md, research/COEVOLUTION_CANDIDATE_AUDIT.md, research/META_EVOLUTION_CANDIDATE_AUDIT.md, research/TRANSACTIONAL_AGENT_ROBUSTNESS_CANDIDATE_AUDIT.md, research/COUNTERFACTUAL_EVOLUTION_CANDIDATE_AUDIT.md, research/EVOMAS_CODE_AUDIT_AND_PARENT_SELECTION_CANDIDATE.md, research/CANDIDATE_G_G0_REASSESSMENT.md, research/COMMUNICATION_EVOLUTION_LANE_SCREEN.md, research/COMMUNICATION_EVOLUTION_CANDIDATE_H_REASSESSMENT.md, research/AGENT_SKILL_GENERALIZATION_LANE_SCREEN.md, research/AGENT_SKILL_LANE_REASSESSMENT.md, research/FAITHFUL_SELF_EVOLVERS_CODE_AUDIT.md, research/BLACK_BOX_AGENT_TEST_TIME_SEARCH_LANE_SCREEN.md, research/AMC_CODE_AUDIT.md, research/INITIAL_RESEARCH_MEMO.md, research/THESIS_PAPER_MAP.md, and research/DECISION_LOG.md.
 2. Check recent commits and any new issues/files before acting.
 3. Treat repository contents as the current project state. Do not import ideas, results, assumptions, or conclusions from unrelated projects or previous conversations.
 4. Report the exact current stage, verified decisions, open questions, and next concrete action before making major recommendations.
@@ -44,12 +44,11 @@ The most recent candidate screened was **G: task-conditioned, lineage-aware pare
 
 ### Next concrete action
 
-1. Keep Candidates E, F, G, and H0 downgraded in their current formulations. The communication-evolution formulation did not pass its novelty gate.
-2. Continue the skill/workflow generalization and experience-faithfulness screen. Read GSO in depth and compare it against H-EPM and AgentEvo; first-pass Faithful Self-Evolvers code findings are in research/FAITHFUL_SELF_EVOLVERS_CODE_AUDIT.md.
-3. The Faithfulness repository is inspectable, but its root LICENSE file was not found; DIVE's inspected root also lacks a LICENSE file. Do not reuse code/data until rights are confirmed. GSO, H-EPM, AgentEvo, and CATArena code availability still needs verification.
-4. The Faithfulness code audit found stochastic partial replacements and possible secondary plotting aggregation defects. Compare the code with paper equations and saved artifacts before treating these as substantive result errors.
-5. Identify a concrete EC mechanism absent from the closest methods and classical GP/EC baselines. A weighted generalization/faithfulness score, new skill format, or memory graph alone does not pass.
-6. If this lane is also crowded, stop and choose a different inspectable Agent+EC baseline. Do not start expensive API experiments or implementation before novelty, method, benchmark, and license gates pass.
+1. Respect the user's explicit constraint: communication evolution is excluded from the thesis candidate pool. Do not reopen it unless the user asks.
+2. Keep Candidates E, F, G, H0, and the broad skill/generalization/experience-faithfulness lane downgraded in their current formulations. See research/AGENT_SKILL_LANE_REASSESSMENT.md.
+3. Continue the new exploratory lane in research/BLACK_BOX_AGENT_TEST_TIME_SEARCH_LANE_SCREEN.md: compare state-validated trajectory recombination with AMC/SMC, ASMC, LP-SMC, EVOTOOL, DUPO, T-MAP, and classical plan-space GA/GP, MCTS, beam search, and best-of-N.
+4. Resolve the potential AMC clone/client aliasing issue from research/AMC_CODE_AUDIT.md using a minimal local test before treating the public implementation as a valid baseline. Do not claim that the published paper results are invalid.
+5. Verify whether state-compatible crossover is already covered in evolutionary planning. If the method-level difference is not clear, stop before implementation. No API experiments or formal benchmark runs are approved yet.
 
 ### Expected workflow
 

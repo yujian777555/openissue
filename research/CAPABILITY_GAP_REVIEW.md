@@ -174,3 +174,10 @@ The only acceptable continuation is a mechanism-level evolutionary improvement t
 ## Update — Faithful Self-Evolvers source-code audit (2026-10-26)
 
 The official Faithfulness repository was inspected. ExpeL's irrelevant/filler perturbations preserve the original insight in 20% of cases; ReasoningBank is explicitly a condensed-only setting. The secondary FR-score plotting helper appears order-dependent, and the IG-score averaging helper may count an excluded row. These are potential intervention/plot interpretation issues, not proof that primary task-success or experience-faithfulness results are invalid. See research/FAITHFUL_SELF_EVOLVERS_CODE_AUDIT.md. Code/data reuse remains blocked because a root LICENSE file was not found.
+
+
+## Update — candidate pool and new search lane (2026-10-27)
+
+The user explicitly excluded communication evolution from the thesis candidate pool. The broad skill/generalization/experience-faithfulness lane is also downgraded after checking SkillComposer, Rep2Skill, MetaMem, Live-Evo, SelSkill, and Skill Following; see research/AGENT_SKILL_LANE_REASSESSMENT.md.
+
+A different exploratory question is now queued: state-validated evolutionary search over per-instance black-box agent trajectories, compared with AMC/SMC and classical plan-space search. This is not approved. The AMC current-main implementation has a potential clone/client aliasing defect that must be verified before baseline use; see research/AMC_CODE_AUDIT.md. A plain GA-for-SMC substitution, generic diversity objective, or trajectory-aware EA claim is not sufficient because adjacent methods already cover much of this space.

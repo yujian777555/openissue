@@ -273,3 +273,32 @@ Record consequential project decisions here so future sessions do not reopen set
 - **Scope caution:** These observations concern intervention strength and secondary plotting/aggregation. They do not by themselves invalidate the paper's primary behavioral results. Compare the helpers with the paper equations and saved per-sample artifacts before making stronger claims.
 - **Rights:** The public repository is retrievable, but a root LICENSE file was not found; no code/data reuse is approved.
 - **Next:** Deep-read GSO and compare its task-specific skill generation with H-EPM and AgentEvo. Reject any proposal that merely adds faithfulness/generalization terms to fitness.
+
+
+## D-026 — Exclude communication evolution from the thesis candidate pool
+
+- **Date:** 2026-10-27
+- **Status:** Accepted user constraint
+- **Decision:** Do not propose or continue communication-protocol evolution, communication interpretability, or newcomer-agent communication transfer as a thesis direction unless the user explicitly reopens it.
+- **Rationale:** The user stated: “通信方向我不想做”.
+- **Implication:** Keep the existing communication papers only as relevant-work records where needed; do not spend further candidate-selection effort on that lane.
+
+## D-027 — Downgrade the broad skill/generalization/experience-faithfulness lane
+
+- **Date:** 2026-10-27
+- **Status:** Accepted negative finding for the current formulation
+- **Decision:** Do not implement the current broad lane as a thesis candidate.
+- **Evidence:** GSO, SkillComposer, Rep2Skill, EvoSkill, MetaMem, Live-Evo, SelSkill, Skill Following, H-EPM, and AgentEvo collectively cover held-out skill generalization, task-specific skill generation, create/improve/merge, representation-guided revision, meta-memory evolution, online forgetting, skill invocation, actual-use evaluation, hybrid episodic/procedural memory, and workflow evolution. See research/AGENT_SKILL_LANE_REASSESSMENT.md and P113–P124 in research/RELATED_WORK_MATRIX.md; newer entries P119–P124 add direct overlap.
+- **Rationale:** A new weighted generalization/faithfulness score, skill format, memory graph, or invoke/skip controller is not a distinct EC mechanism.
+- **Implication:** Keep this lane as related work and broaden to a different algorithmic problem.
+
+## D-028 — Open an exploratory lane for black-box agent trajectory search
+
+- **Date:** 2026-10-27
+- **Status:** Exploratory only; Gate I0 not passed
+- **Decision:** Screen whether state-validated evolutionary recombination of per-instance tool-action trajectories can improve test-time black-box agent search.
+- **Closest baseline:** Agentic Monte Carlo (ICML 2026), which uses a learned value function and SMC to steer a frozen black-box agent over trajectories. Adjacent work includes ASMC, LP-SMC, EVOTOOL, DUPO, and T-MAP.
+- **Potential mechanism:** Recombine trajectory suffixes only at equivalent observable states within the same task instance, then replay/validate offspring. This is not approved as novel; classical plan-space GA/GP and evolutionary planning must be checked.
+- **Baseline-integrity warning:** Current public AMC main appears to reuse the same mutable client object in AgentGymAgent.clone(); because SMC resamples with replacement, sibling clones may share one environment ID. See research/AMC_CODE_AUDIT.md. Reproduce this in a minimal local test before relying on AMC.
+- **Stop condition:** If state-compatible plan crossover is already established or fails to beat mutation-only EA and the strongest feasible non-EA search under matched conditions, abandon the lane.
+- **Guardrail:** No API experiment, formal benchmark run, or implementation is approved before the novelty, baseline-integrity, and benchmark/license gates pass.

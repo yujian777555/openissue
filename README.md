@@ -58,3 +58,11 @@ The first and second-pass literature maps are recorded, including a provisional 
 
 20. Read [Agent Skill/Workflow Generalization Lane Screen](research/AGENT_SKILL_GENERALIZATION_LANE_SCREEN.md) for the next exploratory lane; it is not an approved candidate.
 21. Read [Faithful Self-Evolvers Code Audit](research/FAITHFUL_SELF_EVOLVERS_CODE_AUDIT.md) for the source-code findings and limitations before using this work as a baseline.
+
+
+## Latest research updates (2026-10-27)
+
+- [Skill/generalization lane reassessment](research/AGENT_SKILL_LANE_REASSESSMENT.md): broad formulation downgraded after checking SkillComposer, Rep2Skill, MetaMem, Live-Evo, SelSkill, and Skill Following.
+- [AMC direct code audit](research/AMC_CODE_AUDIT.md): records a potential particle/client aliasing issue in the current public main snapshot; verify before reproducing, and do not infer paper-result invalidity from code inspection alone.
+- [Black-box agent test-time search lane](research/BLACK_BOX_AGENT_TEST_TIME_SEARCH_LANE_SCREEN.md): an exploratory candidate for state-validated trajectory recombination; no method or thesis innovation is approved.
+- User constraint: communication evolution is excluded from the thesis candidate pool unless the user explicitly reopens it.
