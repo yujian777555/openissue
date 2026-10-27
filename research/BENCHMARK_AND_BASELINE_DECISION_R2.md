@@ -128,3 +128,22 @@ Primary metrics: task success and held-out task-family success. Mechanism diagno
 - **EvoMAS: Heuristics in the Loop:** final ICML PDF's detailed method audit remains open because the PDF could not be retrieved as readable text in this session. The earlier indexed manuscript is useful evidence about an earlier version, not a substitute for the final version.
 
 No full experiment and no paid API call was performed. The next useful work is to close the τ²/τ³ task-split overlap audit and obtain a readable final EvoMAS HIL method section. Only then should a local, no-paid-call feasibility pilot be authorized.
+
+
+## 7. Follow-up: exact overlap between the frozen text-v1 manifest and source splits
+
+I compared the checked-in `airline_50`, `retail_50`, and `telecom_50` subset IDs with each domain's `split_tasks.json` in the official `sierra-research/tau2-bench` repository.
+
+| Domain | Frozen text-v1 subset size | IDs also in source train | IDs also in source test |
+|---|---:|---:|---:|
+| Airline | 50 | 30 | 20 |
+| Retail | 50 | 28 | 22 |
+| Telecom | 50 | 27 | 23 |
+
+All frozen-subset IDs fall into the source train or test lists; the frozen `text-v1` manifest is not an untouched external test set if the evolutionary search trains on the source train partition. The official subset artifacts record `task_split = base`, which explains why they span both partitions.
+
+**Decision:** do not evolve on source train tasks and then report the full `text-v1` frozen-subset score as held-out performance. Use the source test split only for a within-domain held-out result, or create a separately declared group-held-out split and clearly label it as a research split, not an official leaderboard score.
+
+There is a second issue: the default source train/test split is not automatically a task-family split. For example, telecom train and test both contain the same high-level issue families. Airline has only one exact `description.purpose` overlap, but that does not prove that near-duplicate scenario patterns are absent; retail's purpose field is null for many records. Before locking a split, construct family fingerprints from scenario instructions after entity redaction, issue/template metadata where available, and tool/action signatures. Assign whole groups—not individual task IDs—to train, validation, and test.
+
+This is a source-level split audit; it did not execute any agent or call a model.
