@@ -468,3 +468,16 @@ Record consequential project decisions here so future sessions do not reopen set
 - **Next:** close G0/G1; run only a small controlled pilot if those gates pass; reject or revise OSLVC if conditional credit does not add predictive/search value. Static EA tuning must precede adaptive-control claims.
 - **Guardrails:** Do not force three innovations by splitting one method. Prefer two strong connected contributions over three weak/duplicated claims. Communication evolution remains excluded. Keep all work in `openissue` and do not mix other projects.
 - **Record:** `research/FEASIBILITY_AND_NEXT_GATE_2026-10-29.md`.
+
+
+
+
+## D-043 — Every substantive session must update the repository and handoff prompt
+
+- **Date:** 2026-10-29
+- **Status:** Accepted user instruction
+- **Decision:** At every substantive session on this thesis project, maintain `yujian777555/openissue` as the durable source of truth and refresh a copyable next-session handoff prompt.
+- **Required files/process:** Follow `CONTINUITY_PROTOCOL.md`; keep `research/STATUS.md` accurate; update `research/DECISION_LOG.md` for consequential decisions; refresh `SESSION_HANDOFF.md` and `NEXT_SESSION_PROMPT.md`; update relevant research artifacts; update README links when needed; commit and verify the remote writes before reporting success.
+- **Rationale:** The project spans multiple conversations, and continuity must not depend on implicit chat memory. The user explicitly asked for both a repository notice and a handoff prompt.
+- **No-fabrication rule:** If no new research evidence or decision emerged, do not manufacture progress or create meaningless edits; preserve/verify the accurate handoff and state that no substantive result changed. If a repository operation fails, report the failure.
+- **Record:** `CONTINUITY_PROTOCOL.md`, `NEXT_SESSION_PROMPT.md`, and `SESSION_HANDOFF.md`.
