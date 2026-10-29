@@ -168,3 +168,20 @@ The latest check reconfirmed that the official PMLR final record for *EvoMAS: He
 4. Do not start G2 experiments or paid API calls before the method and benchmark gates are sufficiently closed.
 
 Current gates remain G0 OPEN, G1 PARTIAL/OPEN, G2 NOT RUN. No formal experiment or paid API call was run in this session.
+
+
+
+## Latest research result — 2026-10-29 (supersedes the prior retrieval-only handoff)
+
+A provisional mechanism audit has now been completed from search-indexed sections of the earlier anonymous EvoMAS manuscript. This is a real literature-review result, but **not** a final-version audit. See research/EVOMAS_HIL_PROVISIONAL_MECHANISM_AUDIT_2026-10-29.md.
+
+**What changed:** EvoMAS already covers adaptive strategy selection, historical strategy-performance credit, LLM-guided selection, reflective rule updates, graph edit distance for structural diversity, role evolution, and curriculum in the accessible earlier manuscript. Those broad mechanisms must not be claimed as novel. The narrower candidate remains whether *realized execution-trace behavior displacement* improves operator/strength continuation credit beyond raw lineage reward, immediate reward, structural distance, ELMER/LVPG, and classical AOS. The final ICML version could still contain an equivalent mechanism; G0 therefore remains OPEN.
+
+**Current gates:** G0 OPEN; G1 PARTIAL/OPEN; G2 NOT RUN. No experiments, code reproduction, or paid API calls were started.
+
+**Next session:**
+1. Make one bounded attempt to obtain the final ICML PDF or a verified author copy; if still blocked, do not stall the thesis project.
+2. Advance G1: freeze the controlled task-family split, exact task IDs, version/license manifest, goal-state oracle, scorer checks, and audited external validation subset.
+3. Once G0/G1 are sufficiently closed, run only a small no-paid-call local pilot with matched parent/task/state probes and equal descendant-evaluation counts.
+4. Reject or redesign OSLVC if displacement-conditioned credit does not add stable predictive and search value.
+5. Keep the opening-report structure as the deliverable; do not turn this into a standalone implementation project prematurely.
