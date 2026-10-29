@@ -146,3 +146,7 @@ Latest mechanism-level finding: the accessible earlier EvoMAS manuscript already
 - [Proposal gap matrix](research/PROPOSAL_GAP_MATRIX_R1.md)
 - [Session handoff](SESSION_HANDOFF.md)
 - [Next-session prompt](NEXT_SESSION_PROMPT.md)
+
+## G1 benchmark protocol
+
+See `research/G1_TASK_FAMILY_SPLIT_PROTOCOL_R1.md` for the current 120-task family-held-out design, pinned external task IDs, oracle/metrics, and open validation gates. The design is documented; the task suite and oracle tests are not yet implemented, so G1 remains PARTIAL/OPEN.
