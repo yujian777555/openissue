@@ -650,3 +650,16 @@ Record consequential project decisions here so future sessions do not reopen set
 - **Leakage correction:** adjusted F07/F08/F11/F12 task wording, changed F11's SKU labels to reduce template overlap, and made F03 use an explicit event ID so its oracle tests read-back rather than duplicating F06's result-handoff mechanism. F07 now requires listing the intended prefix; F10 context-only reference resolution is explicitly asserted.
 - **Boundary:** automated reference/near-miss checks do not replace independent human review. Residual pairs F06-D5-V1/F12-D5-V1 and F06-D3-V1/F09-D3-V1 remain flagged for semantic review. G1b remains open.
 - **Next:** author batch 02 under the same protocol and keep all family assignments fixed; update the full lexical/semantic audit after each batch.
+
+
+## D-057 — Add controlled-suite authoring batch 02 and revise high-overlap cases
+
+- **Date:** 2026-10-29
+- **Status:** Programmatic validation passed; independent review pending.
+- **Decision:** Keep the cumulative authored task file and separate evaluator fixtures. The 24 authored cases remain distinct from the 12 pilot cases; none of the 36 total task records is marked final/frozen.
+- **Batch 02:** 12 additional cases are recorded under the frozen manifest. Eleven are V1/standard; F04-D1-V2 is a hard threshold-above-boundary case. Reference trajectories pass and one intended-mechanism near-miss per case is rejected.
+- **Evidence:** latest code/test commit `5ce4028cb01ba5b8ded02148270cc28b4a059982`; GitHub Actions [40891768273](https://github.com/yujian777555/openissue/actions/runs/40891768273) passed 36/36 tests.
+- **Corrections:** moved F01 from D3 to D5 to avoid a high cross-split lexical overlap with F09-D3; changed F01-D5 to a read-before-write display-name update and F03-D5 to address read-back; moved F04 from D3-V1 to D1-V2 so the threshold case tests a distinct over-limit branch; moved F12 from D3 to D2 to reduce order-task overlap; changed F10-D2 to a prior-context appointment lookup rather than another event cancellation.
+- **Counts:** 36/120 cases exist (12 pilot + 24 authored), 84 planned IDs remain unauthored. Whole-family splits are unchanged. Residual overlap pairs are documented in the leakage audit and must receive mechanism-level review.
+- **Boundary:** green CI is not independent review, does not certify family independence, and does not close G1b. G0/G1/G2 boundaries remain unchanged.
+- **Next:** author another bounded batch using the frozen protocol, with an explicit per-case rationale for mechanism, oracle, reference trajectory, and near-miss.
