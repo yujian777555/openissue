@@ -297,6 +297,6 @@ The family-held-out evaluation design now has a first executable software protot
 - 22 deterministic in-memory tools across five isolated domains;
 - 12 original representative cases covering F01–F12;
 - state-invariant and trace-constraint scoring;
-- 14 local unit/smoke tests passed.
+- 16 unit/smoke tests passed in GitHub Actions on Python 3.11.
 
 This milestone validates the feasibility of deterministic task execution and scoring only. It does not establish that evolutionary search improves Agent capability or that OSLVC is novel/effective. The other 108 planned cases, independent oracle review, family leakage audit, final data hashes, and external adapter/scorer are still pending. G1 remains PARTIAL/OPEN; G2 has not started.
