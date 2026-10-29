@@ -123,3 +123,11 @@ Read `research/G1_TASK_FAMILY_SPLIT_PROTOCOL_R1.md` before continuing.
 **Gate states:** G0 OPEN; G1a design provisionally specified; G1b task artifacts/oracle tests/hash NOT DONE; G1c external adapter/scorer and Delta tau decision NOT DONE; G1 overall PARTIAL/OPEN; G2 NOT RUN. No tasks were generated/executed, no adapter smoke test, and no model/API experiment was run in the latest design round.
 
 **Next concrete action:** (1) inspect Delta tau dataset license/revision/checksum and train/test family-overlap evidence; (2) explicitly select or defer it; (3) implement the original task schema and deterministic oracle tests, then generate the 120-case manifest. Do not start formal OSLVC experiments or paid API calls before gates pass. At session end, update all continuity files and verify remote commits per `CONTINUITY_PROTOCOL.md`.
+
+
+
+## Latest τ² task-family leakage warning (2026-10-29)
+
+A heuristic word-level TF-IDF screen over pinned tau2-bench v2.0.0 source tasks found nearest-train cosine ≥0.45 for 4/20 airline test tasks and 17/40 retail test tasks. Examples: retail 94↔93 (1.000), 32↔31 (0.968), 62↔63 (0.963), airline 16↔15 (0.695). These are screening signals, not ground-truth duplicate labels; manual semantic/schema review is needed. Do not describe the τ² source train/test split as family-held-out. The primary family-held-out evidence must come from the custom 120-task suite. See `research/G1_TASK_FAMILY_SPLIT_PROTOCOL_R1.md`.
+
+Next: (1) boundedly verify Δτ dataset license/revision/checksums and split structure, then explicitly select or defer it; (2) create the original task schema and deterministic oracle unit tests; (3) author/hash the planned family manifest and case suite. G1 remains PARTIAL/OPEN; no task suite or experiment has run.
