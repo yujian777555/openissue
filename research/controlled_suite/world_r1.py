@@ -71,7 +71,26 @@ def tool_profile(domain: str) -> list[dict[str, Any]]:
         properties: dict[str, Any] = {}
         for name, kind in spec.arg_types.items():
             schema_type = {"str": "string", "int": "integer", "bool": "boolean", "list": "array"}[kind]
-            properties[name] = {"type": schema_type}
+            prop: dict[str, Any] = {"type": schema_type}
+            if name == "idempotency_key":
+                prop["minLength"] = 1
+            if name == "amount" or name == "quantity":
+                prop["minimum"] = 1
+            if spec.name == "inventory.create_order" and name == "items":
+                prop = {
+                    "type": "array",
+                    "minItems": 1,
+                    "items": {
+                        "type": "object",
+                        "additionalProperties": False,
+                        "required": ["sku", "quantity"],
+                        "properties": {
+                            "sku": {"type": "string", "minLength": 1},
+                            "quantity": {"type": "integer", "minimum": 1},
+                        },
+                    },
+                }
+            properties[name] = prop
         result.append({
             "name": spec.name,
             "description": _tool_description(spec.name),
