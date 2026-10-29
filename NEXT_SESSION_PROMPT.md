@@ -92,3 +92,18 @@ The latest substantive result is recorded in research/EVOMAS_HIL_PROVISIONAL_MEC
 5. At the end of every substantive session, update the relevant audit, research/STATUS.md, research/DECISION_LOG.md when decisions change, SESSION_HANDOFF.md, this prompt, and README if workflow/status changed; commit and re-fetch changed files to verify remote content.
 
 The immediate deliverable remains the master's thesis opening report, not a standalone implementation project. Keep all work in yujian777555/openissue; do not mix unrelated repositories. Communication evolution remains excluded. Prefer two defensible connected contributions over three weak or duplicated claims.
+
+
+
+## EvoMAS public-record audit update — 2026-10-29
+
+The official PMLR ICML 2026 abstract explicitly covers a seven-strategy evolutionary portfolio, adaptive strategy selection, role-level evolution, curriculum-guided evolution, and the reflective Cyber Creator meta-controller. Do not claim those broad mechanisms as novel. The official PDF is still not extractable by the current reader; OpenReview redirects to a browser-verification challenge. Exact state/action/reward/credit/update equations and displacement-conditioned lineage value remain unverified, so G0 is still OPEN. Abstract silence is not proof of absence.
+
+**Next session:**
+1. Make one bounded attempt to obtain a readable final/verified author copy.
+2. If still blocked, do not spend unlimited time on retrieval: label any older manuscript analysis preprint-only, keep G0 OPEN, and proceed with G1 in parallel.
+3. Advance the controlled task-family split, pinned benchmark/version/license manifest, exact task IDs, goal-state oracle, scorer checks, and audited external validation subset.
+4. No formal experiment or paid API call before G0/G1 are sufficiently closed.
+5. End with repository updates and remote verification under `CONTINUITY_PROTOCOL.md`.
+
+Detailed audit: `research/EVOMAS_HIL_METHOD_AUDIT_R1.md`; decision D-044 in `research/DECISION_LOG.md`.
