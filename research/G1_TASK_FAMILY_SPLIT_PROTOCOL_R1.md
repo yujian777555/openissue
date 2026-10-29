@@ -199,11 +199,11 @@ The following artifacts now exist:
 - `research/controlled_suite/task_case_schema_r1.json`: strict task-case JSON Schema with state-invariant oracle fields and trace constraints.
 - `research/controlled_suite/pilot_cases_r1.jsonl`: 12 independently authored representative cases, one per family. Pilot subset split: 6 train, 3 validation, 3 test.
 - `research/controlled_suite/world_r1.py`: 22 deterministic tool definitions across five isolated in-memory domains; schema/type validation; staged state transitions; idempotency protection; structured event traces; JSON-Pointer state oracle; and trace-constraint evaluator.
-- `research/controlled_suite/test_world_r1.py`: 14 standard-library unit/smoke tests.
+- `research/controlled_suite/test_world_r1.py`: 16 standard-library unit/smoke tests.
 - `research/controlled_suite/README.md`: run instructions and scope/safety notes.
 - `.github/workflows/controlled-suite-smoke.yml`: CI workflow definition for changes to the controlled suite. GitHub Actions run `40865732953` on commit `8a9c1403ac60ba45933f6489e3b7410afda65bf9` completed successfully; its job log confirms `Ran 14 tests` and `OK. This verifies the committed prototype on Python 3.11, not the full 120-task benchmark.
 
-Local verification performed against the implementation and representative case fixture: `python -m unittest -v test_world_r1` — **14 tests passed**. The tests include all 12 reference smoke trajectories and negative probes for wrong final state and wrong argument propagation.
+GitHub Actions run `40866638479` on commit `8e4d8f721ba4a8232e7090d6d9493b3d6c7d5f3f` completed successfully on Python 3.11; its log confirms `Ran 16 tests` and `OK`. The tests include all 12 reference smoke trajectories, schema-contract validation, nested tool-schema checks, and negative probes for wrong final state and wrong argument propagation.
 
 Safety boundary: all tools operate on in-memory synthetic state; no network calls, host filesystem writes, real email, real calendar, or real payments occur. Tool-profile prompts must expose only the user request, allowed context, and selected tool schema—not the oracle, split, family labels, initial-state metadata beyond what the environment provides, reference actions, or evaluation constraints.
 
