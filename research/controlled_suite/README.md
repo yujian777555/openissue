@@ -8,13 +8,13 @@ This directory contains the deterministic, in-memory pilot implementation for G1
 - `task_case_schema_r1.json`: task-case JSON Schema, including state-oracle and trace constraints.
 - `pilot_cases_r1.jsonl`: 12 independently authored representative cases, one per family. The split is 6 train / 3 validation / 3 test because these are mechanism smoke cases, not the final 120-task dataset.
 - `world_r1.py`: five isolated deterministic mock domains and their tool schemas, state transitions, error behavior, idempotency guard, event trace, and oracle evaluator.
-- `test_world_r1.py`: 16 standard-library unit and smoke tests.
+- `test_world_r1.py`: 17 standard-library unit and smoke tests.
 
 ## Safety and determinism
 
 No tool makes network calls, touches the host filesystem, sends real email, changes a real calendar, or moves real money. Calendar times are integer units. Ledger values are synthetic integers. Email operations only enqueue records in memory.
 
-Tool calls validate exact argument names and primitive types. State-changing operations run against a staged copy; a failed precondition does not partially commit. Mutating operations require idempotency keys. Reusing a key with the same operation returns a replay; reusing it with a different operation/payload is rejected.
+Tool calls validate exact argument names and primitive types. Tool schemas include nested order-item fields and positive amount/quantity bounds. State-changing operations run against a staged copy; a failed precondition does not partially commit. Mutating operations require idempotency keys. Reusing a key with the same operation returns a replay; reusing it with a different operation/payload is rejected. `World(max_tool_calls=...)` and `run_case_actions(case, actions)` enforce the per-episode tool-call budget; `max_turns` remains the responsibility of a future dialogue/agent wrapper because this module executes tool calls, not dialogue turns.
 
 ## Run tests
 
