@@ -178,3 +178,13 @@ Interpretation boundary:
 - They provide strong warning that the source train/test split should **not** be called task-family-held-out. Use it only as a standard source-split evaluation and report its limitations.
 - The controlled suite's whole-family split remains the primary evidence for family-held-out generalization. Do not use the external source-test score as a substitute for that claim.
 - If using τ² train tasks to evolve policies, do not claim that τ² source-test performance establishes unseen-family generalization. If using only the custom suite for evolution, describe τ² as external cross-benchmark transfer instead.
+
+
+
+## 8. Bounded Δτ dataset-access check and current decision (2026-10-29)
+
+- Inspected the official code repository README and license. The code repository states MIT; it explicitly says the executable dataset is distributed separately from the code repository.
+- Attempted to inspect the Hugging Face dataset page and its metadata/card through the available web reader; both the dataset page and API/raw-card URLs returned an access/internal error. This is a retrieval limitation, not evidence that the dataset is unlicensed.
+- The paper and code README provide the 1,191/397 split counts and checksummed data bundle layout, but the actual dataset revision, license metadata, checksum file, and task-family overlap could not be independently verified from the accessible sources in this round.
+- **Decision:** defer Δτ-Bench as a selected evaluation benchmark for now. Do not spend repeated sessions retrying the same inaccessible URL. Reopen only if a readable dataset card/revision and checksum manifest become available. It remains related work to discuss, but it is not needed to complete the current G1 protocol because pinned τ²/τ³-bench is a viable external candidate and the custom suite is the primary family-held-out evaluation.
+- Next concrete implementation action: create the original task schema, 12-family manifest, deterministic state-transition/oracle tests, and then generate task cases. G1 stays PARTIAL/OPEN until these artifacts are created and validated.
