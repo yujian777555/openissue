@@ -541,3 +541,14 @@ Record consequential project decisions here so future sessions do not reopen set
 - Decision: do not select Δτ-Bench as the external evaluation benchmark yet and do not repeatedly retry the same inaccessible endpoint. Keep it in related work. Reopen only when a readable dataset card/revision/checksum is available.
 - Next: proceed with the controlled suite schema and deterministic oracle tests; τ²/τ³-bench v2.0.0 remains the external candidate.
 - Record: `research/G1_TASK_FAMILY_SPLIT_PROTOCOL_R1.md`.
+
+
+
+## D-048 — Materialize the family split as a machine-readable manifest
+
+- Date: 2026-10-29
+- Status: Accepted design artifact; task implementation pending.
+- Decision: Keep a machine-readable planned manifest at `research/controlled_suite/family_manifest_r1.json` with 120 unique planned IDs and a strict task record schema at `research/controlled_suite/task_case_schema_r1.json`.
+- Verification: fetched manifest parsed as valid JSON; 120 IDs were unique and split counts were exactly 60 train / 30 validation / 30 test. Every entry remains `planned_not_authored`.
+- Boundary: this verifies only the manifest structure, not task content, tool profiles, executor behavior, or oracle correctness. G1 remains PARTIAL/OPEN.
+- Next: define five domain tool profiles and deterministic state transitions; author representative cases and run oracle regression tests before generating all cases.
