@@ -454,3 +454,17 @@ Record consequential project decisions here so future sessions do not reopen set
 - **Decision:** Build an independently verified, task-family-held-out controlled suite on a local deterministic tool substrate. Use τ²/τ³-bench as audited external validation rather than sole ground truth; inspect the exact tasks and scoring rules. Report goal-state completion separately from tool-call validity and conversational quality.
 - **Boundary:** Tool-Veritas's author-reported human agreement has not been independently reproduced; no claim that it is a flawless benchmark. No experiment was run.
 - **Record:** `research/BENCHMARK_AND_BASELINE_DECISION_R2.md`.
+
+
+## D-042 — Keep thesis viable without overcommitting to OSLVC
+
+- **Date:** 2026-10-29
+- **Status:** Accepted project-management decision; method remains provisional
+- **Decision:** Continue preparing the thesis opening report around a coherent Agent-policy evolution problem, but treat OSLVC-R1 only as the leading falsifiable method candidate. Do not present it as an approved innovation or commit the thesis to it before the prior-art and mechanism gates close.
+- **User goal:** A master's thesis with 2–3 connected substantive contributions and a target of 2–3 small-paper submissions; evolutionary computation must be central, and explicit EA parameter tuning/control must be addressed. The immediate work is the opening report.
+- **Feasibility estimate discussed:** whole-thesis completion 75–85%; OSLVC as final effective algorithm 35–50%; 2–3 independent defensible innovations 50–65%; 2–3 small-paper submissions 40–60%. These are subjective judgment ranges only—not calibrated probabilities, measured results, or publication forecasts.
+- **Rationale:** The thesis can remain feasible if OSLVC is revised or removed, provided a distinct replacement mechanism is found before expensive experiments. The method's key hypothesis is that raw operator reward/lineage return may confound realized behavioral displacement with operator-specific continuation value.
+- **Gates:** G0 (final EvoMAS HIL mechanism and closest-prior-art audit) OPEN; G1 (benchmark, license, family split, scorer validity) PARTIAL/OPEN; G2 (local no-paid-call mechanism pilot) NOT RUN.
+- **Next:** close G0/G1; run only a small controlled pilot if those gates pass; reject or revise OSLVC if conditional credit does not add predictive/search value. Static EA tuning must precede adaptive-control claims.
+- **Guardrails:** Do not force three innovations by splitting one method. Prefer two strong connected contributions over three weak/duplicated claims. Communication evolution remains excluded. Keep all work in `openissue` and do not mix other projects.
+- **Record:** `research/FEASIBILITY_AND_NEXT_GATE_2026-10-29.md`.
