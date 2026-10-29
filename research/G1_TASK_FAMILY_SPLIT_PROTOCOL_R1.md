@@ -161,3 +161,20 @@ Gate logic:
 - **G2 (mechanism pilot):** only after G0 is sufficiently closed and G1b/G1c are passed. No paid API call before these gates.
 
 No tasks have been authored, no adapter has been run, and no experiment was performed in writing this protocol. Current state is a concrete pre-registration/design proposal, not a completed benchmark implementation.
+
+
+
+## 7. Cross-split lexical similarity audit of τ²-bench v2.0.0 (2026-10-29)
+
+A source-level heuristic audit compared each source-test task against every source-train task in airline (50 tasks total; 30 train / 20 test) and retail (114 tasks total; 74 train / 40 test). Text combined task purpose, user reason-for-call, and task instructions. Long alphanumeric entity IDs and numeric identifiers were normalized; word-level TF-IDF cosine similarity was then computed. Threshold `0.45` is a **screening threshold only**, not a validated duplicate detector or a ground-truth task-family label.
+
+Results:
+- Airline: 4/20 test tasks had a nearest train-task similarity ≥0.45.
+- Retail: 17/40 test tasks had a nearest train-task similarity ≥0.45.
+- High-scoring examples: airline test 16 ↔ train 15 (0.695), test 2 ↔ train 38 (0.611), test 22 ↔ train 17 (0.533); retail test 94 ↔ train 93 (1.000), test 32 ↔ train 31 (0.968), test 62 ↔ train 63 (0.963), test 68 ↔ train 67 (0.954), test 5 ↔ train 6 (0.938), test 9 ↔ train 8 (0.919), test 71 ↔ train 72 (0.913), test 33 ↔ train 34 (0.909), test 12 ↔ train 13 (0.879), test 97 ↔ train 96 (0.841), test 56 ↔ train 57 (0.841), test 26 ↔ train 25 (0.819), test 86 ↔ train 85 (0.732), test 36 ↔ train 37 (0.717), test 38 ↔ train 37 (0.717).
+
+Interpretation boundary:
+- These values are automated lexical similarity, not confirmed duplicate labels. Manual semantic review and inspection of task schemas/initial states are required before declaring family overlap.
+- They provide strong warning that the source train/test split should **not** be called task-family-held-out. Use it only as a standard source-split evaluation and report its limitations.
+- The controlled suite's whole-family split remains the primary evidence for family-held-out generalization. Do not use the external source-test score as a substitute for that claim.
+- If using τ² train tasks to evolve policies, do not claim that τ² source-test performance establishes unseen-family generalization. If using only the custom suite for evolution, describe τ² as external cross-benchmark transfer instead.
