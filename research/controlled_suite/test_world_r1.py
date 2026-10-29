@@ -8,6 +8,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent
 sys.path.insert(0, str(ROOT))
 from world_r1 import World, evaluate_case, run_case_actions, tool_profile, _json_equal  # noqa: E402
+from agent_payload_r1 import build_agent_task_payload  # noqa: E402
 
 CASES = [json.loads(line) for line in (ROOT / "pilot_cases_r1.jsonl").read_text(encoding="utf-8").splitlines() if line.strip()]
 BY_ID = {case["case_id"]: case for case in CASES}
@@ -537,6 +538,35 @@ class PilotCaseTests(unittest.TestCase):
             self.assertEqual(case["domain_id"], planned["domain_id"])
             self.assertEqual(case["variant_id"], planned["variant_id"])
             self.assertEqual(case["split"], expected_split[case["family_id"]])
+
+    def test_agent_payload_allowlist_excludes_evaluator_only_fields(self):
+        case = dict(BY_ID["F10-D3-V1"])
+        case.update({
+            "reference_actions": [{"tool": "inventory.cancel_order"}],
+            "provenance": {"author_note": "private evaluator note"},
+            "family_id": "F10",
+            "split": "test",
+            "initial_state": {"secret_fixture": True},
+            "oracle": {"required_invariants": []},
+            "trace_constraints": {"ordered_calls": []},
+            "max_tool_calls": 1,
+        })
+        payload = build_agent_task_payload(case)
+        self.assertEqual(set(payload), {"user_request", "context"})
+        self.assertEqual(payload["user_request"], case["task"]["user_request"])
+        self.assertEqual(payload["context"], case["task"]["context"])
+        serialized = json.dumps(payload)
+        for forbidden in (
+            "reference_actions", "provenance", "family_id", "split", "initial_state",
+            "oracle", "trace_constraints", "max_tool_calls", "secret_fixture",
+        ):
+            self.assertNotIn(forbidden, serialized)
+
+    def test_agent_payload_rejects_unknown_task_fields(self):
+        with self.assertRaisesRegex(ValueError, "non-allowlisted"):
+            build_agent_task_payload({"task": {"user_request": "Do the task", "oracle": {"pass": True}}})
+        with self.assertRaisesRegex(ValueError, "non-empty"):
+            build_agent_task_payload({"task": {"user_request": "   "}})
 
 if __name__ == "__main__":
     unittest.main(verbosity=2)

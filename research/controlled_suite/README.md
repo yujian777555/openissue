@@ -8,7 +8,8 @@ This directory contains the deterministic, in-memory pilot implementation for G1
 - `task_case_schema_r1.json`: task-case JSON Schema, including state-oracle and trace constraints.
 - `pilot_cases_r1.jsonl`: 12 independently authored representative cases, one per family. The split is 6 train / 3 validation / 3 test because these are mechanism smoke cases, not the final 120-task dataset.
 - `world_r1.py`: five isolated deterministic mock domains and their tool schemas, state transitions, error behavior, idempotency guard, event trace, and oracle evaluator.
-- `test_world_r1.py`: **31 standard-library unit and smoke tests** covering budget accounting, per-tool idempotency scope, dynamic-ID oracle checks, one near-miss trajectory per pilot case, and manifest split integrity. CI run [40878796822](https://github.com/yujian777555/openissue/actions/runs/40878796822) passed 31/31.
+- `agent_payload_r1.py`: allowlist helper that emits only `task.user_request` and optional `task.context`; a live Agent wrapper still needs to integrate and test this boundary.
+- `test_world_r1.py`: **31 standard-library unit and smoke tests** covering budget accounting, per-tool idempotency scope, dynamic-ID oracle checks, one near-miss trajectory per pilot case, manifest split integrity, and the task-payload allowlist contract. CI run [40880155311](https://github.com/yujian777555/openissue/actions/runs/40880155311) passed 31/31 before the payload-helper tests were added; the new tests require fresh CI verification.
 
 ## Safety and determinism
 

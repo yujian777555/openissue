@@ -2,7 +2,7 @@
 
 **Date:** 2026-10-29  
 **Scope:** The 12 current pilot cases in `pilot_cases_r1.jsonl`; request/context wording, task mechanisms, tool overlap, reference trajectories, and whole-family split.  
-**Status:** Initial screen and manual semantic review complete; full 120-case leakage audit is not possible until the remaining cases exist.  
+**Status:** F08/F09 revisions committed in `3c8e58fc69f09534a5e36ef68c0bf16a4f81e83a`; that commit's CI run [40880155311](https://github.com/yujian777555/openissue/actions/runs/40880155311) passed 31/31. Follow-up task-payload allowlist helper/tests are in progress; full 120-case leakage audit remains open.  
 **Boundary:** Lexical similarity is a screening signal, not ground-truth duplicate detection.
 
 ## Method
@@ -43,13 +43,31 @@ Changed F09's reference trajectory to a successful `calendar.check_availability(
 
 The task wording was also revised to reduce the repeated “Book room-A...” phrase shared with F04.
 
+## Re-screen after the F08/F09 revisions
+
+Using the same tokenization and stop-word rules as the initial screen, the highest observed overlaps after revision are:
+
+| Pair | Split | Jaccard after revision | Interpretation |
+|---|---|---:|---|
+| F06 ↔ F12 | train ↔ test | 0.267 | Shared CRM/email vocabulary remains; the behavior contrast is required handoff vs minimal side effects. Keep flagged. |
+| F05 ↔ F08 | train ↔ validation | 0.200 | Shared amount/account vocabulary remains, but F08 now tests `ledger.pay_bill` amount mismatch rather than another transfer. Keep flagged for semantic review. |
+| F06 ↔ F07 | train ↔ validation | 0.200 | Shared customer/tier vocabulary remains; F07 is ambiguity-safe no-op, F06 is update-plus-email. |
+| F04 ↔ F09 | train ↔ validation | 0.176 | Reduced from 0.357 after changing F09 wording and its reference trajectory to availability-check-only. |
+| F01 ↔ F03 | train ↔ train | 0.167 | Same-split filesystem tasks, distinct read-before-write and read-back mechanisms. |
+
+These scores are not directly comparable with arbitrary other tokenizers; the value here is the before/after comparison under the same normalization. The highest residual overlap is now F06/F12, which remains a known review item rather than being declared clean.
+
+## Agent payload boundary
+
+A new `agent_payload_r1.py` helper is being added as a strict allowlist contract: it returns only `task.user_request` and optional `task.context`, rejects unexpected keys inside `task`, and does not copy evaluator-only top-level fields. This helper is not yet integrated into a live Agent wrapper. The production prompt path therefore remains an open gate until integration tests exercise the actual serialized prompt and tool schemas.
+
 ## Interpretation and limits
 
 - The whole-family split remains F01–F06 train, F07–F09 validation, F10–F12 test. The two revisions do not change family assignments.
 - Shared tools across splits are not automatically leakage: the intended evaluation is transfer across task mechanisms with familiar tool schemas. The critical risk is near-identical task templates or an oracle/reward shortcut that makes the held-out mechanism predictable from surface wording.
 - F06/F12 and F06/F07 remain flagged for review as the suite grows. Future variants must vary context and wording without changing the intended mechanism, and should include cross-domain realizations that are not just paraphrases.
 - The 12-case pilot is too small to certify family-level independence. A full audit must compare all 120 tasks pairwise using normalized lexical similarity plus manual semantic/action-schema review, inspect shared initial-state templates and oracle structure, and freeze a hash after revisions.
-- The production Agent prompt builder does not exist yet. The schema restricts task fields, but an integration allowlist test is still required to prove evaluator-only state/oracle/split/trace/provenance/reference actions are not serialized to the Agent.
+- The production Agent prompt builder does not exist yet. The allowlist helper contract can be unit-tested, but an integration test is still required to prove evaluator-only state/oracle/split/trace/provenance/reference actions are not serialized on the actual Agent prompt path.
 
 ## Next action
 

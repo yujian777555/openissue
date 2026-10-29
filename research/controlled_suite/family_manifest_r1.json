@@ -1439,7 +1439,8 @@
     "Do not report G1 as passed until all 120 cases, tool profiles, deterministic state transitions, independent oracle review, leakage checks, and hashes exist.",
     "If any family-domain combination proves unnatural, revise the full family design before authoring final test cases; do not move individual cases across split boundaries.",
     "The 12 pilot cases were revised after adversarial oracle review, but remain non-final; independent human review, family-template leakage review, the remaining 108 cases, and final hashes are still outstanding.",
-    "Pilot family-leakage screen flagged F04/F09 (calendar booking language), F05/F08 (ledger transfer language before F08 revision), and F06/F12 (CRM/email vocabulary) for semantic review. F08 was revised to an amount-mismatch bill precondition; F09 was revised to a check-and-safe-no-op reference trajectory. These changes reduce but do not eliminate the need for full cross-family leakage review."
+    "Pilot family-leakage screen flagged F04/F09 (calendar booking language), F05/F08 (ledger transfer language before F08 revision), and F06/F12 (CRM/email vocabulary) for semantic review. F08 was revised to an amount-mismatch bill precondition; F09 was revised to a check-and-safe-no-op reference trajectory. These changes reduce but do not eliminate the need for full cross-family leakage review.",
+    "The allowlisted task-payload helper returns only user_request and optional context, but no live Agent wrapper currently integrates it; production prompt non-leakage remains unverified until integration tests exercise the real prompt path."
   ],
   "pilot_case_file": "research/controlled_suite/pilot_cases_r1.jsonl"
 }
