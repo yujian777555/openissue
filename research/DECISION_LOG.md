@@ -578,3 +578,13 @@ Record consequential project decisions here so future sessions do not reopen set
 - CI: implementation patch passed run 40872596867. Test-patch run 40872647713 was queued at the time this record was prepared; do not call the final patch verified until it completes.
 - Decision: prioritize evaluator validity over expanding from 12 to 120 cases. The pilot can support implementation smoke testing only; it is not a final benchmark.
 - Next: confirm CI; audit idempotency scope and over-budget call accounting with counterexamples; then independently review pilot oracle/reference-action independence.
+
+
+## D-050 — Accept the two oracle fixes after regression CI
+
+- Date: 2026-10-29
+- Status: Verified by CI.
+- The test-patch workflow [40872647713](https://github.com/yujian777555/openissue/actions/runs/40872647713) completed successfully on commit `25ecb59298e7ea12983ab70b5bc569e5b3f4fc2e`; its job log confirms 19 tests ran, including the repeated-consumer and boolean/integer equality regressions.
+- The subsequent suite-doc workflow [40872785959](https://github.com/yujian777555/openissue/actions/runs/40872785959) also passed.
+- Decision: accept the two focused evaluator fixes as CI-verified. This does not constitute full benchmark validation or a G1 PASS.
+- Next: continue focused audit with demonstrated counterexamples for budget accounting and case/oracle independence before expanding the suite.
