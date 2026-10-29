@@ -191,3 +191,14 @@ The user clarified that the current task is preparation for the **master's thesi
 - This does not invalidate every public benchmark item, but it means we must inspect the exact selected tasks and evaluator rules rather than treat official scores as ground truth.
 - Tool-Veritas is a potentially useful Apache-2.0 local execution substrate: deterministic state gates, multi-turn traces, and 70 bundled cases across 16 domains. Its bundled cases are not a ready-made train/validation/test split, and its reported human agreement has not been independently reproduced here.
 - Revised plan: use Tool-Veritas as a controlled execution substrate with an independently verified, family-held-out task set; use pinned τ²/τ³-bench only for audited external validation. Keep BFCL v4 secondary. Details: `research/BENCHMARK_AND_BASELINE_DECISION_R2.md`.
+
+
+## Thesis feasibility and next validation gates (2026-10-29)
+
+- Added `research/FEASIBILITY_AND_NEXT_GATE_2026-10-29.md` as the current continuation anchor for thesis feasibility, OSLVC-R1 boundaries, benchmark decisions, gate states, and next actions.
+- The immediate deliverable remains the master's thesis opening report—not implementation of a standalone paper. Working title remains provisional: 《面向复杂工具任务的大语言模型智能体策略自适应演化优化方法研究》.
+- Latest conversational feasibility estimates (explicitly subjective, not calibrated probabilities or experimental results): whole-thesis completion 75–85%; OSLVC as the final effective algorithmic contribution 35–50%; 2–3 independent defensible innovation points 50–65%; 2–3 small-paper submissions 40–60%. Revise these only when G0/G1/G2 evidence arrives; do not present them as measured facts.
+- OSLVC-R1 remains a hypothesis, not an approved innovation. The narrow question is whether operator continuation value conditional on realized behavior displacement adds value beyond immediate reward, raw lineage return, displacement-only prediction, and naive joint operator–strength control.
+- **G0 OPEN:** final EvoMAS: Heuristics in the Loop state/action/reward/credit mechanism not fully verified. **G1 PARTIAL/OPEN:** benchmark/split/scorer protocol still needs locking. **G2 NOT RUN:** no local mechanism pilot has run.
+- Next: finish the closest-paper method audit; finalize a family-held-out controlled suite and audited external subset; then, and only then, run a small no-paid-call mechanism pilot. No paid API experiment is authorized.
+- Keep this project separate from all other repositories; communication evolution remains excluded. Two strong contributions are preferable to three duplicated ones.
