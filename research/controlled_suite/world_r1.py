@@ -484,6 +484,25 @@ def _pointer_get(root: Any, pointer: str) -> tuple[bool, Any]:
     return True, current
 
 
+def _json_equal(actual: Any, expected: Any) -> bool:
+    """JSON-style equality: booleans must not compare equal to numeric 0/1."""
+    if isinstance(actual, bool) or isinstance(expected, bool):
+        return type(actual) is type(expected) and actual == expected
+    if isinstance(actual, (int, float)) and isinstance(expected, (int, float)):
+        return actual == expected
+    if type(actual) is not type(expected):
+        return False
+    if isinstance(actual, dict):
+        return actual.keys() == expected.keys() and all(
+            _json_equal(actual[key], expected[key]) for key in actual
+        )
+    if isinstance(actual, list):
+        return len(actual) == len(expected) and all(
+            _json_equal(left, right) for left, right in zip(actual, expected)
+        )
+    return actual == expected
+
+
 def _invariant_value(state: dict[str, Any], inv: dict[str, Any]) -> bool:
     exists, actual = _pointer_get(state, inv["state_path"])
     op = inv["operator"]
@@ -496,7 +515,7 @@ def _invariant_value(state: dict[str, Any], inv: dict[str, Any]) -> bool:
         return False
     try:
         if op == "eq":
-            return actual == expected
+            return _json_equal(actual, expected)
         if op == "ne":
             return actual != expected
         if op == "gte":
@@ -564,17 +583,40 @@ def evaluate_case(case: dict[str, Any], state: dict[str, Any], events: list[dict
         if count < minimum:
             trace_failures.append({"kind": "min_replayed_calls", "tool": tool_name, "count": count, "minimum": minimum})
     for rule in constraints.get("required_arg_match", []):
-        producer = next((e for e in events if e.get("tool") == rule["producer_tool"] and _successful(e)), None)
-        consumer = next((e for e in events if e.get("tool") == rule["consumer_tool"] and _successful(e)), None)
-        if producer is None or consumer is None:
-            trace_failures.append({"kind": "required_arg_match", "rule": rule, "reason": "producer or consumer call missing"})
+        consumers = [
+            (index, event) for index, event in enumerate(events)
+            if event.get("tool") == rule["consumer_tool"] and _successful(event)
+        ]
+        if not consumers:
+            trace_failures.append({
+                "kind": "required_arg_match", "rule": rule,
+                "reason": "consumer call missing",
+            })
             continue
-        source = producer.get(rule.get("source", "result"), {})
-        exists, value = _pointer_get(source, rule["source_pointer"])
-        if not exists or consumer.get("args", {}).get(rule["consumer_arg"]) != value:
-            trace_failures.append({"kind": "required_arg_match", "rule": rule,
-                                   "expected_value": value if exists else None,
-                                   "actual_value": consumer.get("args", {}).get(rule["consumer_arg"])})
+        for consumer_index, consumer in consumers:
+            producers = [
+                (index, event) for index, event in enumerate(events[:consumer_index])
+                if event.get("tool") == rule["producer_tool"] and _successful(event)
+            ]
+            if not producers:
+                trace_failures.append({
+                    "kind": "required_arg_match", "rule": rule,
+                    "reason": "no successful producer before consumer",
+                    "consumer_index": consumer_index,
+                })
+                continue
+            producer_index, producer = producers[-1]
+            source = producer.get(rule.get("source", "result"), {})
+            exists, value = _pointer_get(source, rule["source_pointer"])
+            actual_value = consumer.get("args", {}).get(rule["consumer_arg"])
+            if not exists or not _json_equal(actual_value, value):
+                trace_failures.append({
+                    "kind": "required_arg_match", "rule": rule,
+                    "producer_index": producer_index,
+                    "consumer_index": consumer_index,
+                    "expected_value": value if exists else None,
+                    "actual_value": actual_value,
+                })
     passed = not (required_failures or forbidden_violations or forbidden_events or trace_failures)
     return {
         "passed": passed,
