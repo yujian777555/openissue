@@ -165,7 +165,7 @@
       "domain_name": "Inventory and order management",
       "variant_id": "V1",
       "difficulty": "standard",
-      "status": "authored_batch_02_pending_review"
+      "status": "planned_not_authored"
     },
     {
       "case_id": "F01-D3-V2",
@@ -209,7 +209,7 @@
       "domain_name": "Customer records and email",
       "variant_id": "V1",
       "difficulty": "standard",
-      "status": "planned_not_authored"
+      "status": "authored_batch_02_pending_review"
     },
     {
       "case_id": "F01-D5-V2",
