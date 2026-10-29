@@ -288,3 +288,15 @@ The current thesis route is considered feasible enough to continue proposal prep
 The current evaluation design is recorded in `research/G1_TASK_FAMILY_SPLIT_PROTOCOL_R1.md`: a proposed 120-task original deterministic suite, five mock domains, twelve global task families, two variants each, and whole-family split of 60 train / 30 validation / 30 test. Task files, oracle tests, and manifest hashes are not yet created, so this is not a completed benchmark.
 
 The current external candidate is tau2-bench v2.0.0 source test (20 airline + 40 retail IDs, pinned in the protocol); it must not be reported as the frozen `text-v1` leaderboard. Δτ-Bench has been newly identified as a candidate for cross-version tool adaptation, but its separately hosted dataset license/revision/checksum and family overlap remain open. G1 remains PARTIAL/OPEN; no experiment has run.
+
+
+
+## 17. Controlled-suite implementation milestone (2026-10-29)
+
+The family-held-out evaluation design now has a first executable software prototype in `research/controlled_suite/`:
+- 22 deterministic in-memory tools across five isolated domains;
+- 12 original representative cases covering F01–F12;
+- state-invariant and trace-constraint scoring;
+- 14 local unit/smoke tests passed.
+
+This milestone validates the feasibility of deterministic task execution and scoring only. It does not establish that evolutionary search improves Agent capability or that OSLVC is novel/effective. The other 108 planned cases, independent oracle review, family leakage audit, final data hashes, and external adapter/scorer are still pending. G1 remains PARTIAL/OPEN; G2 has not started.
