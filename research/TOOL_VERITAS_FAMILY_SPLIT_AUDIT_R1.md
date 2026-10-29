@@ -76,7 +76,6 @@ This is a **candidate split, not a frozen manifest**. The exact task IDs below a
 - Database CRUD/notification workflows: `database_mt_001`, `database_mt_002`, `database_mt_003`
 - Email search/send/verify: `email_mt_001`, `email_mt_002`
 - Filesystem backup/rename: `filesystem_mt_001`, `filesystem_mt_002`
-- Git repo/commit/branch: `git_mt_001`, `git_mt_002`, `git_mt_003`
 - Routine healthcare record/appointment workflows: `healthcare_mt_001`, `healthcare_mt_002`, `healthcare_mt_003`, `healthcare_mt_004`
 - Basic inventory operations: `inventory_mt_001`, `inventory_mt_002`, `inventory_mt_003`
 - Knowledge-graph construction: `memory_mt_001`, `memory_mt_002`, `memory_mt_003`
@@ -89,7 +88,7 @@ This is a **candidate split, not a frozen manifest**. The exact task IDs below a
 
 - Compound-interest/funding family: `banking_hard_001`, `banking_hard_003`
 - Docker lifecycle family: `docker_mt_001`, `docker_mt_002`, `docker_mt_003`
-- Price/budget/cart family: `shopping_hard_001`, `shopping_hard_002`, `shopping_hard_003`
+- Git repo/commit/branch family: `git_mt_001`, `git_mt_002`, `git_mt_003`
 
 ### Candidate test set — 16 cases across 5 held-out families
 
@@ -99,7 +98,7 @@ This is a **candidate split, not a frozen manifest**. The exact task IDs below a
 - Shopping price-constrained/distractor family: `shopping_mt_004_distractor_skus`, `shopping_mt_005`, `shopping_hard_001`, `shopping_hard_002`, `shopping_hard_003`
 - Budget-constrained multi-city travel: `travel_hard_001`, `travel_hard_002`
 
-**Important leakage correction:** The provisional split above places the shopping budget family in both validation and test, which violates the conservative family rule in Section 3. Therefore, the 38/8/16 allocation is **not admissible as currently written**. Before freezing, move the entire price-constrained shopping family into exactly one split and replace its former slot with a distinct, reviewed family. Do not run an experiment on the provisional split as written.
+**Validation caveat:** This corrected candidate keeps the entire price-constrained shopping family in the test split. The validation set contains the full Docker and Git families, which are not represented in training; this deliberately probes domain shift but may be too strong for routine hyperparameter selection. Before freeze, either (a) accept and label this as cross-domain validation, or (b) create additional reviewed variants so validation can contain held-out task families within domains represented in training. Do not split any current family merely to balance counts.
 
 ### Excluded from the primary split pending family expansion or oracle work — 8 cases
 
@@ -110,7 +109,7 @@ These eight cases may later be used as secondary stress probes after their oracl
 
 ## 5. Split issue found before freeze
 
-The first proposed split draft has a real leakage issue: shopping price/budget tasks appear in both validation and test. This was caught before any experiment. The fix must be made by reassigning whole families, not by moving individual cases. A second independent review must then verify:
+The first split draft had a shopping-family leakage issue (price/budget tasks in validation and test). This was caught and corrected before any experiment by moving the whole shopping price-constrained family to test and replacing validation with the Git family. A second independent review must verify the corrected candidate and:
 1. every source case is assigned exactly once to train, validation, test, or a named exclusion;
 2. no family/near-duplicate group crosses partitions;
 3. all state-changing goals have deterministic state assertions;
