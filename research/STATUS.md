@@ -263,3 +263,11 @@ The user clarified that the current task is preparation for the **master's thesi
 - At screening threshold cosine ≥0.45, nearest-train similarity was above threshold for 4/20 airline test tasks and 17/40 retail test tasks. Examples include retail test 94 ↔ train 93 (1.000), 32 ↔ 31 (0.968), 62 ↔ 63 (0.963), and airline test 16 ↔ train 15 (0.695).
 - This is a heuristic screen, not a validated duplicate detector; manual task/schema review is still needed. It is sufficient to prohibit describing τ² source train/test as task-family-held-out. Use it only as a standard source-split or external-transfer evaluation; family-held-out evidence must come from the original controlled suite.
 - Details: `research/G1_TASK_FAMILY_SPLIT_PROTOCOL_R1.md`. G1 remains PARTIAL/OPEN; no experiment or API call was run.
+
+
+
+## Δτ-Bench bounded access decision (2026-10-29)
+
+- The official code repo README/license were inspected and state MIT for code, with the dataset hosted separately. Attempts to read the official Hugging Face dataset page, metadata, and raw card failed through the available reader; this does not prove the dataset lacks a license.
+- Dataset license, exact revision, checksum manifest, and task-family overlap are unverified. Δτ-Bench is therefore **deferred as a selected benchmark**, retained as related work, and should not trigger repeated retries of the same URL.
+- Next concrete action is now implementation-focused: define the original task schema and machine-readable 12-family manifest, implement deterministic state-transition/oracle tests, then generate the controlled-suite task cases. τ²/τ³-bench v2.0.0 remains the external candidate, but its source split is not family-held-out.
