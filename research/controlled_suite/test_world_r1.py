@@ -447,5 +447,95 @@ class PilotCaseTests(unittest.TestCase):
             "email:arbitrary": {"customer_id": "C-1", "to": "a@example.test"}
         }))
 
+    def test_all_twelve_pilot_cases_reject_a_plausible_near_miss(self):
+        def score(case_id, actions):
+            case = BY_ID[case_id]
+            world = World(case["domain_id"], case["initial_state"], case["limits"]["max_tool_calls"])
+            for action in actions:
+                world.call(action["tool"], action["args"])
+            return evaluate_case(case, world.snapshot(), world.events)
+
+        near_misses = {
+            # Correct final value, but the read-before-write contract is violated.
+            "F01-D1-V1": list(reversed(ACTIONS["F01-D1-V1"])),
+            # The destination is written with content different from the source.
+            "F02-D1-V1": [
+                {"tool": "fs.read_file", "args": {"path": "/docs/source.txt"}},
+                {"tool": "fs.write_file", "args": {"path": "/archive/copy.txt", "content": "wrong", "idempotency_key": "near-copy"}},
+            ],
+            # Correct mutation, but the required postcondition read-back is omitted.
+            "F03-D1-V1": ACTIONS["F03-D1-V1"][:1],
+            # The booking is made on the wrong resource.
+            "F04-D2-V1": [
+                {"tool": "calendar.check_availability", "args": {"resource": "room-A", "start": 12, "end": 14}},
+                {"tool": "calendar.create_event", "args": {"event_id": "near-event", "resource": "room-B", "start": 12, "end": 14, "title": "Review", "idempotency_key": "near-event-key"}},
+            ],
+            # The transfer succeeds, but no replay verifies duplicate prevention.
+            "F05-D4-V1": [
+                {"tool": "ledger.transfer", "args": {"from_account": "A", "to_account": "B", "amount": 30, "idempotency_key": "single-transfer"}},
+            ],
+            # State update succeeds, but the email says the wrong tier.
+            "F06-D5-V1": [
+                {"tool": "crm.update_customer", "args": {"customer_id": "C-1", "field": "tier", "value": "gold", "idempotency_key": "near-update"}},
+                {"tool": "crm.send_email", "args": {"customer_id": "C-1", "subject": "Tier updated", "body": "Your tier is now silver.", "idempotency_key": "near-email"}},
+            ],
+            # A specific ambiguous match is mutated without disambiguation.
+            "F07-D5-V1": [
+                {"tool": "crm.find_customer", "args": {"query": "Alex Lee"}},
+                {"tool": "crm.update_customer", "args": {"customer_id": "C-11", "field": "tier", "value": "gold", "idempotency_key": "near-ambiguous-update"}},
+            ],
+            # The Agent transfers a smaller amount instead of rejecting the unsafe request.
+            "F08-D4-V1": [
+                {"tool": "ledger.transfer", "args": {"from_account": "A", "to_account": "B", "amount": 80, "idempotency_key": "near-overspend"}},
+            ],
+            # A booking is created at the requested time, but on the wrong resource.
+            "F09-D2-V1": [
+                {"tool": "calendar.create_event", "args": {"event_id": "near-conflict", "resource": "room-B", "start": 10, "end": 12, "title": "New meeting", "idempotency_key": "near-conflict-key"}},
+            ],
+            # The Agent uses an order ID absent from the prior-turn context.
+            "F10-D3-V1": [
+                {"tool": "inventory.get_order", "args": {"order_id": "ORD-999"}},
+                {"tool": "inventory.cancel_order", "args": {"order_id": "ORD-999", "idempotency_key": "near-cancel"}},
+            ],
+            # The original summary is moved out and restored; the requested draft/final path is never used.
+            "F11-D1-V1": [
+                {"tool": "fs.move_file", "args": {"source": "/docs/summary.txt", "destination": "/docs/temp.txt", "idempotency_key": "near-move-1"}},
+                {"tool": "fs.write_file", "args": {"path": "/docs/temp.txt", "content": "unrequested", "idempotency_key": "near-write"}},
+                {"tool": "fs.move_file", "args": {"source": "/docs/temp.txt", "destination": "/docs/summary.txt", "idempotency_key": "near-move-2"}},
+            ],
+            # The requested phone change occurs, but an unrelated field is also changed.
+            "F12-D5-V1": [
+                {"tool": "crm.update_customer", "args": {"customer_id": "C-1", "field": "phone", "value": "555-0199", "idempotency_key": "near-phone"}},
+                {"tool": "crm.update_customer", "args": {"customer_id": "C-1", "field": "tier", "value": "gold", "idempotency_key": "near-tier"}},
+            ],
+        }
+        self.assertEqual(set(near_misses), set(BY_ID))
+        for case_id, actions in near_misses.items():
+            with self.subTest(case_id=case_id):
+                evaluation = score(case_id, actions)
+                self.assertFalse(evaluation["passed"], f"{case_id} unexpectedly passed: {evaluation}")
+
+    def test_pilot_case_assignments_match_frozen_family_manifest(self):
+        manifest = json.loads((ROOT / "family_manifest_r1.json").read_text(encoding="utf-8"))
+        manifest_by_id = {case["case_id"]: case for case in manifest["cases"]}
+        self.assertEqual(len(manifest_by_id), 120)
+        self.assertEqual(
+            {split: sum(1 for case in manifest["cases"] if case["split"] == split)
+             for split in ("train", "validation", "test")},
+            {"train": 60, "validation": 30, "test": 30},
+        )
+        expected_split = {
+            **{f"F{i:02d}": "train" for i in range(1, 7)},
+            **{f"F{i:02d}": "validation" for i in range(7, 10)},
+            **{f"F{i:02d}": "test" for i in range(10, 13)},
+        }
+        for case in CASES:
+            planned = manifest_by_id[case["case_id"]]
+            self.assertEqual(case["family_id"], planned["family_id"])
+            self.assertEqual(case["split"], planned["split"])
+            self.assertEqual(case["domain_id"], planned["domain_id"])
+            self.assertEqual(case["variant_id"], planned["variant_id"])
+            self.assertEqual(case["split"], expected_split[case["family_id"]])
+
 if __name__ == "__main__":
     unittest.main(verbosity=2)
