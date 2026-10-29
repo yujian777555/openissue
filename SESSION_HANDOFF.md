@@ -266,3 +266,10 @@ Audit note: `research/controlled_suite/EXECUTOR_ORACLE_AUDIT_R1.md`. Code commit
 **Gate state:** G1a design specified; G1b PARTIAL (12 pilot cases, not 120; independent review and final hashes pending); G1c external adapter/scorer NOT DONE; G1 PARTIAL/OPEN; G2 NOT RUN. No LLM/API experiment or paid call occurred.
 
 **Next action:** verify latest CI; then continue focused executor audit with counterexamples for (1) idempotency-key scope across tools, (2) repeated over-budget call accounting, and (3) oracle/reference-action independence. Only patch demonstrated defects and add regression tests. After these pass, expand pilot cases cautiously toward the 120-task family-held-out suite.
+
+
+### Oracle audit final verification — 2026-10-29
+
+The test-patch CI run [40872647713](https://github.com/yujian777555/openissue/actions/runs/40872647713) is now complete and successful. Its log confirms both added regressions passed and **19 tests ran / 0 failed**. A subsequent controlled-suite documentation workflow [40872785959](https://github.com/yujian777555/openissue/actions/runs/40872785959) also passed. The two fixes (validate every successful consumer in `required_arg_match`; type-sensitive JSON equality for `eq`) are CI-verified. See `research/controlled_suite/EXECUTOR_ORACLE_AUDIT_R1.md`.
+
+Next: audit tool-call budget semantics and reference-action/oracle independence with explicit counterexamples. G1 remains PARTIAL/OPEN; do not claim the 120-task suite is finished.
