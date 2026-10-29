@@ -147,8 +147,14 @@ Latest mechanism-level finding: the accessible earlier EvoMAS manuscript already
 - [Session handoff](SESSION_HANDOFF.md)
 - [Next-session prompt](NEXT_SESSION_PROMPT.md)
 
-## G1 benchmark protocol
+## G1 benchmark and implementation status
 
-See `research/G1_TASK_FAMILY_SPLIT_PROTOCOL_R1.md` for the current 120-task family-held-out design, pinned external task IDs, oracle/metrics, and open validation gates. The design is documented; the task suite and oracle tests are not yet implemented, so G1 remains PARTIAL/OPEN.
+See [G1 Task-Family Split Protocol R1](research/G1_TASK_FAMILY_SPLIT_PROTOCOL_R1.md) for the split design, benchmark caveats, and gate logic.
 
-The machine-readable suite design is also available at `research/controlled_suite/family_manifest_r1.json` (120 planned IDs; cases not yet authored) and `research/controlled_suite/task_case_schema_r1.json` (initial case schema). These files are design artifacts, not an executable benchmark.
+The first deterministic executor prototype is now present in [research/controlled_suite](research/controlled_suite/README.md):
+- 22 in-memory mock tools across five isolated domains.
+- 12 independently authored representative task cases, one per family.
+- State-invariant and trace-constraint evaluator.
+- 14 local unit/smoke tests passed.
+
+The manifest still contains 120 planned IDs: 12 pilot cases are authored but not final, and 108 cases remain un-authored. This is not a completed benchmark or Agent experiment. G1 remains PARTIAL/OPEN; G2 has not started. The CI workflow definition exists, but no GitHub Actions run was visible at the last check.
