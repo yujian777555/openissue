@@ -143,3 +143,14 @@ OSLVC-R1 remains a **hypothesis**, not an approved innovation. Its narrow test i
 5. Draft the proposal's linked sections: related work → concrete gap → research questions → contents/candidate innovations → technical route → experiment feasibility → risks/alternatives.
 
 Do not start large or paid experiments before the gates pass. Prefer two strong contributions over three weak/duplicated ones. Record only evidence-backed completion.
+
+
+
+
+## Mandatory continuity rule — added 2026-10-29
+
+Before doing research in a new conversation, read `CONTINUITY_PROTOCOL.md` and `NEXT_SESSION_PROMPT.md`, then verify the latest commits and read `research/STATUS.md`, `research/DECISION_LOG.md`, and the current research notes.
+
+**At the end of every substantive session, the repository must be updated.** Update the relevant research artifact(s), status, decision log when a decision changes, this `SESSION_HANDOFF.md`, and `NEXT_SESSION_PROMPT.md`. Refresh the README link if the stage or workflow changes. Commit to the intended branch, fetch changed files, and verify the final commit and contents before telling the user the update succeeded. If no substantive research changed, keep the handoff accurate and say so; never fabricate an update, experiment, or test.
+
+The reusable prompt in `NEXT_SESSION_PROMPT.md` is the copy/paste entry point for a new chat and must always reflect the latest confirmed stage, gate states, scope constraints, and next unfinished action. Do not require the user to remind you of this rule.
