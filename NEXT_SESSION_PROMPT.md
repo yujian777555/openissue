@@ -138,10 +138,25 @@ The code repo for Δτ-Bench states MIT, but the executable dataset is hosted se
 
 **Next concrete action:** implement the original task schema and machine-readable 12-family manifest, add deterministic state-transition/oracle tests, then generate original task cases. G1 remains PARTIAL/OPEN; no tasks have been authored or run and no model/API experiment occurred.
 
-## Machine-readable suite manifest and schema created (2026-10-29)
+## Latest state: deterministic suite prototype exists (2026-10-29)
 
-Files created:
-- `research/controlled_suite/family_manifest_r1.json`: JSON parse/integrity check passed; 120 unique planned IDs; 60 train / 30 validation / 30 test. Every case is marked `planned_not_authored`.
-- `research/controlled_suite/task_case_schema_r1.json`: initial strict case schema with state-invariant oracle fields.
+Continue only in `yujian777555/openissue`. Read `CONTINUITY_PROTOCOL.md`, `research/STATUS.md`, `research/DECISION_LOG.md`, `SESSION_HANDOFF.md`, and `research/G1_TASK_FAMILY_SPLIT_PROTOCOL_R1.md` first.
 
-These are not executable cases. No tool profiles, state-transition executor, oracle regression tests, or 120 task contents exist yet. Next: define five deterministic domain tool profiles and the state-transition/oracle layer; author representative cases per family, run tests, then generate all cases and hash the data. Keep G1 PARTIAL/OPEN and do not start G2 or paid API runs.
+### Implemented
+- `research/controlled_suite/world_r1.py`: 22 in-memory tools in five isolated domains, argument validation, atomic state transitions, idempotency replay/conflict protection, structured event trace, state oracle, trace constraints.
+- `research/controlled_suite/pilot_cases_r1.jsonl`: 12 independently authored representative cases (one per family; 6 train / 3 validation / 3 test).
+- `research/controlled_suite/test_world_r1.py`: 14 local unit/smoke tests passed.
+- `research/controlled_suite/task_case_schema_r1.json`: now includes trace-constraint schema.
+- `research/controlled_suite/family_manifest_r1.json`: 120 unique planned IDs, 12 marked `pilot_case_authored_not_final`, 108 remain `planned_not_authored`.
+- `research/controlled_suite/README.md` and `.github/workflows/controlled-suite-smoke.yml`.
+
+### Do not overclaim
+The 14/14 result is a local software smoke test, not an Agent capability result or evidence for OSLVC. All tools are synthetic/in-memory. No real API or paid call occurred. The GitHub Actions workflow file exists, but no remote workflow run was visible at last check. G1 remains PARTIAL/OPEN; G2 NOT RUN.
+
+### Next tasks, in order
+1. Independently review the 12 pilot cases, expected state invariants, trace constraints, and the tool implementation for correctness.
+2. Add adversarial tests for atomicity, idempotency key conflicts/replay, invalid tool schemas, and trace-evaluator edge cases.
+3. Author the remaining 108 task cases without changing family-to-split assignment; test every case against the schema and deterministic oracle.
+4. Conduct family-template leakage review, pin final data hashes, and only then close G1b.
+5. Complete external benchmark adapter/scorer verification (tau2-bench v2.0.0 remains the external candidate; do not call its source split family-held-out). Δτ-Bench stays deferred until dataset license/revision/checksum and family overlap are verifiable.
+6. Do not start G2 or any paid API experiment until the gates are explicitly passed.
