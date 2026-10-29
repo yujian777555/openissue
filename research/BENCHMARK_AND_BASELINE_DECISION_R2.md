@@ -204,3 +204,7 @@ Detailed protocol: `research/G1_TASK_FAMILY_SPLIT_PROTOCOL_R1.md`.
 A word-level TF-IDF screen over normalized task purpose + user reason + task instructions compared each source-test task with all source-train tasks at the pinned v2.0.0 release. At the screening threshold cosine ≥0.45, 4/20 airline test tasks and 17/40 retail test tasks had a nearest training task above threshold. Examples include retail test 94 ↔ train 93 (1.000), 32 ↔ 31 (0.968), 62 ↔ 63 (0.963), and airline test 16 ↔ train 15 (0.695).
 
 This is a heuristic warning, not a validated duplicate detector; manually inspect the highest-scoring pairs before making any family claims. Decision: τ² source test remains usable as a standard source-split evaluation, but **not** as evidence of task-family-held-out generalization. Primary family-held-out evidence must come from the custom suite. The exact screening method and examples are in `research/G1_TASK_FAMILY_SPLIT_PROTOCOL_R1.md`.
+
+## 12. Machine-readable suite artifacts (2026-10-29)
+
+The proposed family split is now materialized in `research/controlled_suite/family_manifest_r1.json` and `research/controlled_suite/task_case_schema_r1.json`. The manifest passes JSON/integrity checks: 120 unique planned IDs, split counts 60/30/30; all records are marked `planned_not_authored`. This does not validate task behavior or scoring. Tool profiles, executor, oracle tests, and case contents remain to be implemented; G1 is still PARTIAL/OPEN.
