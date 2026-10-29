@@ -584,7 +584,7 @@ class AuthoredCaseTests(unittest.TestCase):
         manifest_by_id = {item["case_id"]: item for item in manifest["cases"]}
         case_ids = [case["case_id"] for case in AUTHORED_CASES]
         self.assertEqual(len(AUTHORED_CASES), 24)
-        self.assertEqual(len(set(case_ids)), 12)
+        self.assertEqual(len(set(case_ids)), len(AUTHORED_CASES))
         self.assertTrue(set(case_ids).isdisjoint(BY_ID))
         self.assertEqual(set(AUTHORED_FIXTURES), set(case_ids))
         errors = []
