@@ -81,3 +81,21 @@ Wei, Y., Huang, Z., Xu, R., Wang, H., & Xing, W. W. (2026). *EvoMAS: Heuristics 
 - The accessible earlier anonymous manuscript is not a substitute for the final ICML/PMLR version. Any use of it must be explicitly labelled **preprint-only / final-version unverified**; do not use it to conclude that the final version lacks an equivalent mechanism.
 - **G0 remains OPEN.** Immediate action: make a bounded attempt to obtain the final PDF or a verified author-hosted copy. If it remains inaccessible, perform a clearly labelled provisional equation/algorithm audit of the accessible manuscript while keeping the final-version gap explicit, and advance G1 (task-family split/scorer protocol) in parallel rather than stalling all proposal work.
 - No experiment, code reproduction, or paid API call was started in this retrieval check.
+
+
+
+## Provisional mechanism audit completed (2026-10-29)
+
+A bounded final-version retrieval attempt was made again: the official PMLR record and abstract are readable, but its PDF is not extractable in the current reader; the OpenReview links redirect to a browser-verification challenge. The search index did expose substantial sections of the earlier anonymous manuscript. This permits a **provisional preprint-only** mechanism audit, not a final-version audit.
+
+The earlier manuscript explicitly describes:
+- state s_t=(P_t,R_t,A_t) plus a historical log of candidate, fitness, and applied strategy;
+- six exploration/exploitation operators plus a Cyber-Creator-generated custom strategy;
+- LLM-based selection using performance, workflow structure, and rule compliance;
+- periodic rule induction/pruning and strategy-weight updates, with A_{t+1}(a) proportional to A_t(a) exp(eta Reward(a));
+- curriculum evolution with cumulative cross-stage performance;
+- graph edit distance for structural diversity and ablations of major components.
+
+**Implication:** adaptive operator selection, historical strategy credit, reflective meta-control, graph-distance diversity, role-level evolution, and curriculum are not defensible as standalone thesis innovations. The only OSLVC hypothesis still worth testing is whether *realized execution-trace behavior displacement* adds incremental value to continuation-credit estimates beyond immediate reward, raw lineage return, structural distance, and existing adaptive control.
+
+Do not infer that the final ICML version lacks this mechanism: its full method equations and ablations remain unverified. Detailed findings, evidence links, baselines, and falsification criteria are recorded in [EVOMAS_HIL_PROVISIONAL_MECHANISM_AUDIT_2026-10-29.md](EVOMAS_HIL_PROVISIONAL_MECHANISM_AUDIT_2026-10-29.md). G0 remains OPEN; G1 remains PARTIAL/OPEN; G2 remains NOT RUN. No experiment, code reproduction, or paid API call was run.
