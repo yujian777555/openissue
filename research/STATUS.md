@@ -271,3 +271,13 @@ The user clarified that the current task is preparation for the **master's thesi
 - The official code repo README/license were inspected and state MIT for code, with the dataset hosted separately. Attempts to read the official Hugging Face dataset page, metadata, and raw card failed through the available reader; this does not prove the dataset lacks a license.
 - Dataset license, exact revision, checksum manifest, and task-family overlap are unverified. Δτ-Bench is therefore **deferred as a selected benchmark**, retained as related work, and should not trigger repeated retries of the same URL.
 - Next concrete action is now implementation-focused: define the original task schema and machine-readable 12-family manifest, implement deterministic state-transition/oracle tests, then generate the controlled-suite task cases. τ²/τ³-bench v2.0.0 remains the external candidate, but its source split is not family-held-out.
+
+
+
+## Machine-readable controlled-suite artifacts (2026-10-29)
+
+- Created `research/controlled_suite/family_manifest_r1.json`: validated JSON with 120 unique planned case IDs; split counts are train=60, validation=30, test=30. Every case is marked `planned_not_authored`; this is not an executable dataset.
+- Created `research/controlled_suite/task_case_schema_r1.json`: initial strict JSON Schema for task-case records and deterministic state-invariant oracle metadata. The prompt builder must pass only agent-visible fields.
+- JSON parse/integrity checks on the fetched manifest passed. No task case content, domain tool profiles, state-transition executor, or oracle regression tests exist yet.
+- **Next:** define/test the five deterministic domain tool profiles and state-transition/oracle layer, author representative cases per family, run oracle tests, then complete the 120 case records and hash the manifest/data.
+- G1 remains PARTIAL/OPEN; G2 NOT RUN; no LLM/API experiment has run.
