@@ -77,10 +77,6 @@
         },
         "context": {
           "type": "string"
-        },
-        "family_contract_hidden": {
-          "type": "string",
-          "description": "Evaluator-only annotation; never include in the agent prompt."
         }
       }
     },
@@ -217,5 +213,6 @@
         }
       }
     }
-  }
+  },
+  "description": "Task records contain evaluator-side metadata as well as the user request. The prompt builder must explicitly pass only task.user_request, permitted task.context, and the selected tool profile; it must not serialize the full task record into the agent prompt."
 }
