@@ -185,3 +185,13 @@ A provisional mechanism audit has now been completed from search-indexed section
 3. Once G0/G1 are sufficiently closed, run only a small no-paid-call local pilot with matched parent/task/state probes and equal descendant-evaluation counts.
 4. Reject or redesign OSLVC if displacement-conditioned credit does not add stable predictive and search value.
 5. Keep the opening-report structure as the deliverable; do not turn this into a standalone implementation project prematurely.
+
+
+
+## Latest substantive research note — 2026-10-29
+
+The official PMLR abstract for *EvoMAS: Heuristics in the Loop* has now been rechecked. It explicitly covers a seven-strategy evolutionary portfolio, adaptive strategy selection, role-level evolution, curriculum-guided evolution, and a reflective Cyber Creator meta-controller. Therefore, do not claim these broad mechanisms as novel. The official PDF remains unextractable by the current reader, and OpenReview redirects to browser verification; exact reward/credit/update equations and displacement-conditioned lineage value remain unverified.
+
+**Next action:** make one bounded attempt to obtain a readable final/author copy. If blocked, stop spending unlimited time on retrieval and proceed with G1 in parallel: define the controlled task-family split, pinned benchmark/version/license manifest, exact task IDs, goal-state oracle, scorer checks, and external validation subset. Keep G0 OPEN until final-version method equivalence is checked. G2 remains NOT RUN; no formal experiment or paid API call was started.
+
+Details: `research/EVOMAS_HIL_METHOD_AUDIT_R1.md`; decision boundary: D-044 in `research/DECISION_LOG.md`.
