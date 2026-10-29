@@ -76,15 +76,19 @@ Research state has not substantively changed during this continuity-only update:
 
 
 
-## Latest verified research handoff — 2026-10-29
+## Latest verified research handoff — 2026-10-29 (supersedes prior retrieval-only state)
 
-Current repo HEAD at the time of this refresh: `ffd93fc729d5cf4411f298dc9d1b5bc663cef4e7` before the handoff update commits. The official PMLR final record for EvoMAS: Heuristics in the Loop is public, but the official PDF still cannot be extracted by the current reader; the linked OpenReview page triggers a browser-verification challenge. This is a retrieval blocker, not evidence that the final method lacks the proposed mechanism.
+The latest substantive result is recorded in research/EVOMAS_HIL_PROVISIONAL_MECHANISM_AUDIT_2026-10-29.md. A bounded attempt to retrieve the final ICML/PMLR PDF still failed: the official publication record and abstract are accessible, but the final PDF is not extractable through the current reader and OpenReview redirects to a browser-verification challenge. The search index exposed substantial sections of the earlier anonymous manuscript, which have been audited **provisionally only**. Do not present those details as verified final-version claims.
 
-**Exact next action:**
-1. Make a bounded attempt to obtain the final ICML/PMLR PDF or a verified author-hosted copy.
-2. If still inaccessible, audit the accessible earlier manuscript as **provisional preprint-only**; explicitly mark every method claim that has not been checked against the final version, and keep G0 OPEN.
-3. In parallel, advance G1 by drafting/finalizing the controlled task-family split, version/license manifest, exact task IDs, goal-state oracle, scorer audit, and external-validation subset.
-4. Do not start the full controller, formal G2 pilot, or paid API calls until G0/G1 are sufficiently closed.
-5. Update this prompt, `SESSION_HANDOFF.md`, `research/STATUS.md`, and the relevant audit file at the end of the next substantive session; verify the resulting remote commit(s).
+**Provisional prior-art findings from the earlier manuscript:** EvoMAS already covers a multi-operator portfolio, adaptive strategy selection, history-based strategy credit, LLM-guided multi-criteria candidate selection, reflective rule induction/pruning, structural graph edit distance, role evolution, and curriculum. Do not claim these broad mechanisms as new. The only OSLVC-R1 hypothesis worth testing is whether realized behavior displacement measured from executed Agent/tool traces adds incremental continuation-credit value beyond immediate reward, raw lineage return, structural distance, ELMER/LVPG-style controls, classical AOS, and an EvoMAS-like reflective controller. This remains a falsifiable hypothesis, not a novelty certification.
 
-No formal experiment, code reproduction, or paid API call was run in the latest check. No substantive research conclusion changed; only the retrieval blocker and next action were re-confirmed.
+**Current gates:** G0 OPEN (final ICML equations/ablations unverified); G1 PARTIAL/OPEN (family-held-out split, exact task IDs, license/version manifest, oracle/scorer audit not locked); G2 NOT RUN (no formal experiment, code reproduction, or paid API call).
+
+**MANDATORY NEXT ACTIONS:**
+1. Make one bounded attempt to obtain the final ICML PDF or a verified author-hosted copy; if still blocked, do not stall the thesis project or infer absence of a mechanism.
+2. Advance G1: lock the controlled local task-family split, exact task IDs, version/license manifest, goal-state oracle, scorer checks, and an audited external validation subset. Use the current benchmark decision file as the starting point.
+3. Do not start the formal G2 pilot or paid API calls until G0/G1 are sufficiently closed.
+4. Once gates permit, run a small no-paid-call pilot with matched parent/task/state probes and equal descendant-evaluation counts. Drop/revise OSLVC if displacement-conditioned credit adds no stable prediction or search value.
+5. At the end of every substantive session, update the relevant audit, research/STATUS.md, research/DECISION_LOG.md when decisions change, SESSION_HANDOFF.md, this prompt, and README if workflow/status changed; commit and re-fetch changed files to verify remote content.
+
+The immediate deliverable remains the master's thesis opening report, not a standalone implementation project. Keep all work in yujian777555/openissue; do not mix unrelated repositories. Communication evolution remains excluded. Prefer two defensible connected contributions over three weak or duplicated claims.
