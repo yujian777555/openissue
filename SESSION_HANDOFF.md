@@ -217,3 +217,9 @@ G1 remains PARTIAL/OPEN; G2 NOT RUN; no experiment, adapter smoke test, or paid 
 A heuristic word-level TF-IDF screen on the pinned tau2-bench v2.0.0 source split compared test tasks against every train task using normalized purpose/reason/instructions. At cosine ≥0.45, 4/20 airline and 17/40 retail test tasks had a high-similarity train counterpart. Examples: retail 94↔93 (1.000), 32↔31 (0.968), 62↔63 (0.963), airline 16↔15 (0.695). This is a warning screen, not a validated duplicate detector; manual semantic/schema review remains necessary.
 
 Decision boundary: do not call the tau2 source split family-held-out. Use it only as standard source-split or external-transfer evaluation, and make the custom 120-task whole-family split the primary family-generalization evidence. Full method and caveat: `research/G1_TASK_FAMILY_SPLIT_PROTOCOL_R1.md`. No model execution or API call was made.
+
+## Δτ-Bench decision (2026-10-29)
+
+The code repo states MIT, but the executable dataset is hosted separately. Attempts to read the Hugging Face dataset page/metadata/card failed; this is a retrieval limitation, not proof of missing license. Dataset license, revision, checksum, and family overlap remain unverified. Decision D-047: defer Δτ-Bench as a selected benchmark and do not repeatedly retry the same endpoint. tau2-bench v2.0.0 remains the external candidate, but its source split must not be called family-held-out due to the heuristic similarity warning.
+
+**Next concrete action:** implement the original task schema and machine-readable 12-family manifest, add deterministic oracle tests, then generate original cases. G1 remains PARTIAL/OPEN; no tasks or experiments have run.
