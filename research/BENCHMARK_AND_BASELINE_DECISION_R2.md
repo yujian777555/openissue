@@ -196,3 +196,11 @@ Detailed protocol: `research/G1_TASK_FAMILY_SPLIT_PROTOCOL_R1.md`.
 - Scorer audit: report database/state reward separately from full official reward. Airline test tasks use DB+COMMUNICATE; retail uses DB+NL_ASSERTION for 39 tasks and DB-only for one. Verify actual scorer behavior, pin any judge model/version, and cluster related task IDs for uncertainty analysis.
 - **New candidate:** Δτ-Bench (arXiv:2610.34238, 2026-10-25) reports 1,588 tasks across 42 domains and six tool-ecosystem versions (1,191 train / 397 test); its code repo states MIT, but dataset license/revision/checksums and family leakage still require verification. It is not selected yet; audit boundedly before deciding whether its evolving-tool setting is relevant enough to replace/augment τ².
 - **Gate state:** G1a (design) provisionally specified; G1b (original tasks/oracle tests/hash) NOT DONE; G1c (external adapter/scorer and Δτ decision) NOT DONE. G1 remains PARTIAL/OPEN; G2 NOT RUN; no model/API experiment was run.
+
+
+
+## 11. τ²-bench cross-split similarity screen (2026-10-29)
+
+A word-level TF-IDF screen over normalized task purpose + user reason + task instructions compared each source-test task with all source-train tasks at the pinned v2.0.0 release. At the screening threshold cosine ≥0.45, 4/20 airline test tasks and 17/40 retail test tasks had a nearest training task above threshold. Examples include retail test 94 ↔ train 93 (1.000), 32 ↔ 31 (0.968), 62 ↔ 63 (0.963), and airline test 16 ↔ train 15 (0.695).
+
+This is a heuristic warning, not a validated duplicate detector; manually inspect the highest-scoring pairs before making any family claims. Decision: τ² source test remains usable as a standard source-split evaluation, but **not** as evidence of task-family-held-out generalization. Primary family-held-out evidence must come from the custom suite. The exact screening method and examples are in `research/G1_TASK_FAMILY_SPLIT_PROTOCOL_R1.md`.
