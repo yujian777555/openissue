@@ -72,3 +72,17 @@ Detailed specification and rejection criteria: `research/OSLVC_R1_SCALE_CONDITIO
 ## 7. Additional nearest prior art: Hu et al. EvoMAS (2026)
 
 Hu et al.'s *EvoMAS: Evolutionary Generation of Multi-Agent Systems* already combines execution-feedback-conditioned mutation/crossover, task-relevance-based parent selection, reward-based pool updates, and cross-query experience memory. Paper A cannot claim feedback-guided mutation or memory alone, and Paper B must compare its conditional-credit mechanism against this configuration-evolution family. The object differs (MAS configuration vs current single-Agent policy), so a fair direct comparison may require matching the operator/credit component rather than comparing whole systems. Official code is CC BY-NC 4.0; see research/EVOMAS_CONFIG_EVOLUTION_METHOD_AUDIT_R1.md.
+
+
+
+
+## 8. Feasibility and contribution independence update (2026-10-29)
+
+The thesis-level route remains worth pursuing, but OSLVC-R1 is not yet an approved core contribution. Current subjective planning ranges (not calibrated probabilities or empirical findings): thesis completion 75–85%; OSLVC as final effective method 35–50%; 2–3 independent defensible innovation points 50–65%; 2–3 small-paper submissions 40–60%.
+
+The thesis should target two strong connected contributions first:
+- **A (conditional):** operator-specific behavior-scale calibration, only if it improves downstream search beyond ELMER.
+- **B (core candidate):** realized-displacement-conditioned lineage-value credit, only if it beats static HPO, classical AOS (including diversity/parent-distance credit), ELMER-style scale-only control, LVPG-style lineage-only control, and a naive joint operator–strength controller.
+- **C (optional):** a separate transfer/control mechanism only if a distinct prior-art gap is identified. Held-out evaluation alone is not a third innovation.
+
+G0 remains OPEN, G1 PARTIAL/OPEN, and G2 has NOT RUN. No paid API experiment is authorized. See `research/FEASIBILITY_AND_NEXT_GATE_2026-10-29.md`.
