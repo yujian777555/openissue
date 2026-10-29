@@ -255,6 +255,39 @@
               }
             }
           }
+        },
+        "ordered_calls": {
+          "type": "array",
+          "description": "Ordered subsequence of required tool-call events. Each pattern checks the tool, status, optional schema_valid flag, and a partial set of arguments.",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "tool",
+              "status",
+              "args"
+            ],
+            "properties": {
+              "tool": {
+                "type": "string",
+                "minLength": 1
+              },
+              "status": {
+                "enum": [
+                  "success",
+                  "replayed",
+                  "error",
+                  "blocked"
+                ]
+              },
+              "schema_valid": {
+                "type": "boolean"
+              },
+              "args": {
+                "type": "object"
+              }
+            }
+          }
         }
       }
     }
@@ -283,7 +316,8 @@
             "contains",
             "not_contains",
             "subset_of"
-          ]
+          ],
+          "description": "eq/ne use JSON type-sensitive equality; gte/lte are numeric-only and reject booleans; contains supports string substrings, array items, dictionary keys, or partial object matching against dictionary values; subset_of checks type-sensitive array membership or object key/value subsets."
         },
         "expected": {
           "type": [
@@ -302,5 +336,5 @@
       }
     }
   },
-  "description": "The evaluator and prompt builder must explicitly pass only task.user_request, permitted task.context, and the selected tool profile to the agent. Do not serialize evaluator-side initial_state, oracle, split, family metadata, trace_constraints, or provenance into the agent prompt. state_path and source_pointer use RFC 6901-style JSON Pointers."
+  "description": "The evaluator and prompt builder must explicitly pass only task.user_request, permitted task.context, and the selected tool profile to the agent. Do not serialize evaluator-side initial_state, oracle, split, family metadata, trace_constraints, or provenance into the agent prompt. state_path and source_pointer use RFC 6901-style JSON Pointers. ordered_calls can pin the order and arguments of critical trace events without fixing implementation-generated IDs or idempotency keys. The evaluator must not expose reference actions to the Agent."
 }

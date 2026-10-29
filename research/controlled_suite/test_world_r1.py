@@ -7,7 +7,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent
 sys.path.insert(0, str(ROOT))
-from world_r1 import World, evaluate_case, run_case_actions, tool_profile  # noqa: E402
+from world_r1 import World, evaluate_case, run_case_actions, tool_profile, _json_equal  # noqa: E402
 
 CASES = [json.loads(line) for line in (ROOT / "pilot_cases_r1.jsonl").read_text(encoding="utf-8").splitlines() if line.strip()]
 BY_ID = {case["case_id"]: case for case in CASES}
@@ -25,9 +25,9 @@ def _validate_schema_subset(value, spec, path, root, errors):
     if "$ref" in spec:
         _validate_schema_subset(value, _resolve_ref(root, spec["$ref"]), path, root, errors)
         return
-    if "const" in spec and value != spec["const"]:
+    if "const" in spec and not _json_equal(value, spec["const"]):
         errors.append(f"{path}: const mismatch")
-    if "enum" in spec and value not in spec["enum"]:
+    if "enum" in spec and not any(_json_equal(value, option) for option in spec["enum"]):
         errors.append(f"{path}: enum mismatch")
     expected_types = spec.get("type")
     if expected_types:
@@ -174,11 +174,30 @@ class ToolProfileTests(unittest.TestCase):
         first = world.call("fs.read_file", {"path": "/a.txt"})
         before = world.snapshot()
         blocked = world.call("fs.write_file", {"path": "/a.txt", "content": "changed", "overwrite": True, "idempotency_key": "over-budget"})
+        blocked_again = world.call("fs.write_file", {"path": 4, "content": "changed", "idempotency_key": "over-budget-2"})
         self.assertTrue(first["ok"])
         self.assertEqual(blocked["error"]["code"], "CALL_LIMIT_REACHED")
+        self.assertEqual(blocked_again["error"]["code"], "CALL_LIMIT_REACHED")
         self.assertEqual(world.snapshot(), before)
-        self.assertEqual(world.call_count, 1)
-        self.assertEqual(world.events[-1]["status"], "blocked")
+        self.assertEqual(world.call_count, 1)  # only the budget-admitted attempt consumes budget
+        self.assertEqual(world.attempt_count, 3)
+        self.assertEqual(len(world.events), world.attempt_count)
+        self.assertEqual([e["index"] for e in world.events], [0, 1, 2])
+        self.assertEqual([e["status"] for e in world.events], ["success", "blocked", "blocked"])
+        self.assertIsNone(world.events[-1]["schema_valid"])  # validation was skipped after budget rejection
+        result = evaluate_case({
+            "oracle": {"required_invariants": [{"state_path": "/files/~1a.txt", "operator": "eq", "expected": "keep"}]}
+        }, world.snapshot(), world.events)
+        self.assertTrue(result["passed"])
+        self.assertEqual(result["call_attempt_count"], 3)
+        self.assertEqual(result["budgeted_call_count"], 1)
+        self.assertEqual(result["blocked_call_count"], 2)
+
+    def test_budget_rejects_non_integer_limits(self):
+        for invalid in (True, 1.5, 0):
+            with self.subTest(invalid=invalid):
+                with self.assertRaises(ValueError):
+                    World("D1", {}, max_tool_calls=invalid)
 
     def test_failed_move_is_atomic(self):
         world = World("D1", {"files": {"/src": "x", "/dst": "y"}})
@@ -230,6 +249,18 @@ class ToolProfileTests(unittest.TestCase):
         self.assertEqual(world.state["customers"]["items"]["C-11"]["tier"], "silver")
         self.assertEqual(world.state["customers"]["items"]["C-12"]["tier"], "silver")
 
+
+    def test_idempotency_key_is_scoped_per_tool(self):
+        world = World("D1", {"files": {"/source.txt": "v1"}})
+        first = world.call("fs.write_file", {
+            "path": "/new.txt", "content": "new", "idempotency_key": "shared-key"
+        })
+        second = world.call("fs.move_file", {
+            "source": "/source.txt", "destination": "/moved.txt", "idempotency_key": "shared-key"
+        })
+        self.assertTrue(first["ok"])
+        self.assertTrue(second["ok"])
+        self.assertEqual(world.snapshot()["files"], {"/new.txt": "new", "/moved.txt": "v1"})
 
 class PilotCaseTests(unittest.TestCase):
     def test_pilot_records_validate_against_case_schema(self):
@@ -316,6 +347,105 @@ class PilotCaseTests(unittest.TestCase):
         result = evaluate_case(case, world.snapshot(), [])
         self.assertFalse(result["passed"])
 
+
+    def test_booking_oracle_accepts_agent_chosen_event_id(self):
+        case = BY_ID["F04-D2-V1"]
+        world = World(case["domain_id"], case["initial_state"], case["limits"]["max_tool_calls"])
+        world.call("calendar.check_availability", {"resource": "room-A", "start": 12, "end": 14})
+        world.call("calendar.create_event", {
+            "event_id": "agent-chosen-event-42", "resource": "room-A", "start": 12, "end": 14,
+            "title": "Review", "idempotency_key": "agent-event-key"
+        })
+        evaluation = evaluate_case(case, world.snapshot(), world.events)
+        self.assertTrue(evaluation["passed"], evaluation)
+
+    def test_booking_oracle_rejects_wrong_resource_time_or_title(self):
+        case = BY_ID["F04-D2-V1"]
+        variants = [
+            {"resource": "room-B", "start": 12, "end": 14, "title": "Review"},
+            {"resource": "room-A", "start": 11, "end": 13, "title": "Review"},
+            {"resource": "room-A", "start": 12, "end": 14, "title": "Wrong title"},
+        ]
+        for index, values in enumerate(variants):
+            with self.subTest(values=values):
+                world = World(case["domain_id"], case["initial_state"], case["limits"]["max_tool_calls"])
+                world.call("calendar.check_availability", {"resource": "room-A", "start": 12, "end": 14})
+                world.call("calendar.create_event", {
+                    "event_id": f"agent-event-{index}", **values, "idempotency_key": f"agent-key-{index}"
+                })
+                self.assertFalse(evaluate_case(case, world.snapshot(), world.events)["passed"])
+
+    def test_transfer_oracle_accepts_agent_chosen_idempotency_key(self):
+        case = BY_ID["F05-D4-V1"]
+        world = World(case["domain_id"], case["initial_state"], case["limits"]["max_tool_calls"])
+        args = {"from_account": "A", "to_account": "B", "amount": 30, "idempotency_key": "agent-transfer-key"}
+        world.call("ledger.transfer", args)
+        world.call("ledger.transfer", args)
+        evaluation = evaluate_case(case, world.snapshot(), world.events)
+        self.assertTrue(evaluation["passed"], evaluation)
+
+    def test_email_oracle_accepts_agent_chosen_idempotency_key(self):
+        case = BY_ID["F06-D5-V1"]
+        world = World(case["domain_id"], case["initial_state"], case["limits"]["max_tool_calls"])
+        world.call("crm.update_customer", {
+            "customer_id": "C-1", "field": "tier", "value": "gold", "idempotency_key": "agent-update-key"
+        })
+        world.call("crm.send_email", {
+            "customer_id": "C-1", "subject": "Tier updated", "body": "Your tier is now gold.",
+            "idempotency_key": "agent-email-key"
+        })
+        evaluation = evaluate_case(case, world.snapshot(), world.events)
+        self.assertTrue(evaluation["passed"], evaluation)
+
+    def test_compensation_oracle_rejects_unrelated_move_round_trip(self):
+        case = BY_ID["F11-D1-V1"]
+        world = World(case["domain_id"], case["initial_state"], case["limits"]["max_tool_calls"])
+        world.call("fs.move_file", {
+            "source": "/docs/summary.txt", "destination": "/docs/temp.txt", "idempotency_key": "wrong-move-1"
+        })
+        failed_write = world.call("fs.write_file", {
+            "path": "/docs/temp.txt", "content": "unrequested", "idempotency_key": "wrong-write"
+        })
+        world.call("fs.move_file", {
+            "source": "/docs/temp.txt", "destination": "/docs/summary.txt", "idempotency_key": "wrong-move-2"
+        })
+        self.assertEqual(failed_write["error"]["code"], "ALREADY_EXISTS")
+        evaluation = evaluate_case(case, world.snapshot(), world.events)
+        self.assertEqual(evaluation["required_failures"], [])
+        self.assertEqual(evaluation["forbidden_violations"], [])
+        self.assertFalse(evaluation["passed"])
+        self.assertTrue(any(f["kind"] == "ordered_calls" for f in evaluation["trace_failures"]))
+
+    def test_oracle_rejects_unrequested_side_effects(self):
+        case = BY_ID["F03-D1-V1"]
+        world, _ = run_case_actions(case, ACTIONS[case["case_id"]])
+        world.call("fs.write_file", {
+            "path": "/docs/unrequested.txt", "content": "extra", "idempotency_key": "extra-side-effect"
+        })
+        evaluation = evaluate_case(case, world.snapshot(), world.events)
+        self.assertFalse(evaluation["passed"])
+        self.assertTrue(any(
+            failure.get("state_path") == "/files" for failure in evaluation["required_failures"]
+        ))
+
+    def test_cross_turn_reference_is_in_context_not_user_request(self):
+        case = BY_ID["F10-D3-V1"]
+        self.assertNotIn("ORD-200", case["task"]["user_request"])
+        self.assertIn("ORD-200", case["task"]["context"])
+
+    def test_invariant_operators_are_type_safe(self):
+        def passed(operator, expected, actual=True):
+            case = {"oracle": {"required_invariants": [{
+                "state_path": "/flag", "operator": operator, "expected": expected
+            }]}}
+            return evaluate_case(case, {"flag": actual}, [])["passed"]
+        self.assertTrue(passed("ne", 1, True))  # JSON true is not numeric 1
+        self.assertFalse(passed("lte", 10, True))  # booleans are not numeric
+        self.assertFalse(passed("contains", 1, [True]))
+        self.assertTrue(passed("not_contains", 1, [True]))
+        self.assertTrue(passed("contains", {"customer_id": "C-1"}, {
+            "email:arbitrary": {"customer_id": "C-1", "to": "a@example.test"}
+        }))
 
 if __name__ == "__main__":
     unittest.main(verbosity=2)

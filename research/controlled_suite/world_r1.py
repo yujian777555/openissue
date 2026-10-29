@@ -179,13 +179,20 @@ class World:
     def __init__(self, domain: str, initial_state: dict[str, Any] | None = None, max_tool_calls: int | None = None):
         if domain not in {"D1", "D2", "D3", "D4", "D5"}:
             raise ValueError(f"Unknown domain: {domain}")
-        if max_tool_calls is not None and max_tool_calls < 1:
-            raise ValueError("max_tool_calls must be a positive integer when set.")
+        if max_tool_calls is not None and (type(max_tool_calls) is not int or max_tool_calls < 1):
+            raise ValueError("max_tool_calls must be a positive plain integer when set.")
         self.domain = domain
         self.state = _deep_merge(_default_state(), initial_state or {})
         self.max_tool_calls = max_tool_calls
+        # Number of attempts admitted under the budget, including schema/business errors.
+        # Attempts blocked after the budget is exhausted are recorded but do not consume budget.
         self.call_count = 0
         self.events: list[dict[str, Any]] = []
+
+    @property
+    def attempt_count(self) -> int:
+        """Number of recorded tool-call attempts, including budget-blocked attempts."""
+        return len(self.events)
 
     def snapshot(self) -> dict[str, Any]:
         """Return business state only; internal idempotency bookkeeping is excluded."""
@@ -195,7 +202,8 @@ class World:
         event_base = {"index": len(self.events), "tool": tool_name, "args": deepcopy(args) if isinstance(args, dict) else args}
         if self.max_tool_calls is not None and self.call_count >= self.max_tool_calls:
             error = {"code": "CALL_LIMIT_REACHED", "message": "Episode tool-call limit has been reached."}
-            self.events.append({**event_base, "status": "blocked", "schema_valid": True, "mutated": False,
+            # Schema validation was not run because the budget gate rejected the attempt.
+            self.events.append({**event_base, "status": "blocked", "schema_valid": None, "mutated": False,
                                 "event_type": "tool_call_budget_exceeded", "result": None, "error": error})
             return {"ok": False, "error": error}
         self.call_count += 1
@@ -221,10 +229,14 @@ class World:
         idem_key = args.get(spec.idempotency_arg) if spec.idempotency_arg else None
         signature_args = {k: deepcopy(v) for k, v in args.items() if k != spec.idempotency_arg}
         if idem_key:
-            prior = self.state["_meta"]["idempotency"].get(idem_key)
+            # Idempotency keys are scoped to a tool endpoint within this episode.
+            # Reuse within the same tool must match the original payload; a different tool
+            # may legitimately use the same key without colliding with the first tool.
+            tool_store = self.state["_meta"]["idempotency"].setdefault(tool_name, {})
+            prior = tool_store.get(idem_key)
             if prior:
-                if prior["tool"] != tool_name or prior["args"] != signature_args:
-                    return self._error(event_base, "IDEMPOTENCY_CONFLICT", "This idempotency key was already used for a different operation.", schema_valid=True)
+                if prior["args"] != signature_args:
+                    return self._error(event_base, "IDEMPOTENCY_CONFLICT", "This idempotency key was already used by this tool for a different payload.", schema_valid=True)
                 result = deepcopy(prior["result"])
                 event = {**event_base, "status": "replayed", "schema_valid": True, "mutated": False,
                          "event_type": f"{tool_name}:replay", "result": deepcopy(result), "error": None}
@@ -238,7 +250,9 @@ class World:
             return self._error(event_base, exc.code, exc.message, schema_valid=True)
         changed = _business_projection(staged) != _business_projection(self.state)
         if idem_key:
-            staged["_meta"]["idempotency"][idem_key] = {"tool": tool_name, "args": signature_args, "result": deepcopy(result)}
+            staged["_meta"]["idempotency"].setdefault(tool_name, {})[idem_key] = {
+                "args": signature_args, "result": deepcopy(result)
+            }
         self.state = staged
         event = {**event_base, "status": "success", "schema_valid": True, "mutated": changed,
                  "event_type": f"{tool_name}:success", "result": deepcopy(result), "error": None}
@@ -503,6 +517,37 @@ def _json_equal(actual: Any, expected: Any) -> bool:
     return actual == expected
 
 
+def _json_subset(actual: Any, expected: Any) -> bool:
+    """Return whether actual contains all fields/items specified by expected."""
+    if isinstance(expected, dict):
+        return isinstance(actual, dict) and all(
+            key in actual and _json_subset(actual[key], value)
+            for key, value in expected.items()
+        )
+    if isinstance(expected, list):
+        return isinstance(actual, list) and len(actual) == len(expected) and all(
+            _json_subset(left, right) for left, right in zip(actual, expected)
+        )
+    return _json_equal(actual, expected)
+
+
+def _contains_json(actual: Any, expected: Any) -> bool | None:
+    """JSON-aware membership; dict expectations match partial record values."""
+    if isinstance(actual, str) and isinstance(expected, str):
+        return expected in actual
+    if isinstance(actual, list):
+        return any(_json_subset(item, expected) for item in actual)
+    if isinstance(actual, dict):
+        if isinstance(expected, str):
+            return expected in actual
+        if isinstance(expected, dict):
+            return any(
+                isinstance(value, dict) and _json_subset(value, expected)
+                for value in actual.values()
+            )
+    return None
+
+
 def _invariant_value(state: dict[str, Any], inv: dict[str, Any]) -> bool:
     exists, actual = _pointer_get(state, inv["state_path"])
     op = inv["operator"]
@@ -517,17 +562,23 @@ def _invariant_value(state: dict[str, Any], inv: dict[str, Any]) -> bool:
         if op == "eq":
             return _json_equal(actual, expected)
         if op == "ne":
-            return actual != expected
-        if op == "gte":
-            return actual >= expected
-        if op == "lte":
-            return actual <= expected
-        if op == "contains":
-            return expected in actual
-        if op == "not_contains":
-            return expected not in actual
+            return not _json_equal(actual, expected)
+        if op in {"gte", "lte"}:
+            # Booleans are not numeric values for oracle comparisons.
+            if type(actual) not in (int, float) or type(expected) not in (int, float):
+                return False
+            return actual >= expected if op == "gte" else actual <= expected
+        if op in {"contains", "not_contains"}:
+            contained = _contains_json(actual, expected)
+            if contained is None:
+                return False
+            return contained if op == "contains" else not contained
         if op == "subset_of":
-            return set(actual).issubset(set(expected))
+            if isinstance(actual, list) and isinstance(expected, list):
+                return all(any(_json_equal(item, candidate) for candidate in expected) for item in actual)
+            if isinstance(actual, dict) and isinstance(expected, dict):
+                return all(key in expected and _json_equal(value, expected[key]) for key, value in actual.items())
+            return False
     except (TypeError, ValueError):
         return False
     raise ValueError(f"Unsupported invariant operator: {op}")
@@ -535,6 +586,22 @@ def _invariant_value(state: dict[str, Any], inv: dict[str, Any]) -> bool:
 
 def _successful(event: dict[str, Any]) -> bool:
     return event.get("status") in {"success", "replayed"}
+
+
+def _event_matches_pattern(event: dict[str, Any], pattern: dict[str, Any]) -> bool:
+    """Match a trace event against a partial tool/status/argument contract."""
+    if event.get("tool") != pattern.get("tool") or event.get("status") != pattern.get("status"):
+        return False
+    if "schema_valid" in pattern and event.get("schema_valid") is not pattern["schema_valid"]:
+        return False
+    actual_args = event.get("args")
+    expected_args = pattern.get("args", {})
+    if not isinstance(actual_args, dict) or not isinstance(expected_args, dict):
+        return False
+    return all(
+        key in actual_args and _json_equal(actual_args[key], value)
+        for key, value in expected_args.items()
+    )
 
 
 def evaluate_case(case: dict[str, Any], state: dict[str, Any], events: list[dict[str, Any]]) -> dict[str, Any]:
@@ -551,6 +618,22 @@ def evaluate_case(case: dict[str, Any], state: dict[str, Any], events: list[dict
     constraints = case.get("trace_constraints", {})
     successful = [e for e in events if _successful(e)]
     trace_failures: list[dict[str, Any]] = []
+    call_cursor = -1
+    for pattern in constraints.get("ordered_calls", []):
+        found = next(
+            (i for i, event in enumerate(events)
+             if i > call_cursor and _event_matches_pattern(event, pattern)),
+            None,
+        )
+        if found is None:
+            trace_failures.append({
+                "kind": "ordered_calls",
+                "missing_pattern": pattern,
+                "reason": "no matching event after the previous required pattern",
+            })
+            break
+        call_cursor = found
+
     cursor = -1
     for tool_name in constraints.get("ordered_successful_tools", []):
         found = next((i for i, e in enumerate(events) if i > cursor and e.get("tool") == tool_name and _successful(e)), None)
@@ -625,6 +708,9 @@ def evaluate_case(case: dict[str, Any], state: dict[str, Any], events: list[dict
         "forbidden_events": forbidden_events,
         "trace_failures": trace_failures,
         "event_count": len(events),
+        "call_attempt_count": len(events),
+        "budgeted_call_count": sum(1 for e in events if e.get("status") != "blocked"),
+        "blocked_call_count": sum(1 for e in events if e.get("status") == "blocked"),
         "successful_call_count": len(successful),
         "mutating_success_count": sum(1 for e in events if e.get("status") == "success" and e.get("mutated")),
     }

@@ -1,7 +1,7 @@
 {
   "manifest_version": "1.0",
   "created_date": "2026-10-29",
-  "status": "pilot_subset_authored_full_120_case_suite_not_authored",
+  "status": "pilot_subset_revised_after_adversarial_oracle_audit_not_final",
   "purpose": "Machine-readable whole-family split manifest for the proposed deterministic Agent-policy evolution suite.",
   "split_rule": "All cases from a family stay in one split; no family variant may cross split boundaries.",
   "target_counts": {
@@ -77,8 +77,8 @@
     {
       "id": "F07",
       "split": "validation",
-      "name": "Ambiguous entity resolution",
-      "goal": "Clarify or disambiguate before mutating an uncertain target."
+      "name": "Ambiguous entity / safe no-op",
+      "goal": "Detect multiple matches and avoid mutating an unresolved target; conversational clarification quality is not scored by the state-only oracle."
     },
     {
       "id": "F08",
@@ -121,7 +121,7 @@
       "domain_name": "Filesystem and repository artifacts",
       "variant_id": "V1",
       "difficulty": "standard",
-      "status": "pilot_case_authored_not_final"
+      "status": "pilot_case_revised_after_adversarial_audit_not_final"
     },
     {
       "case_id": "F01-D1-V2",
@@ -231,7 +231,7 @@
       "domain_name": "Filesystem and repository artifacts",
       "variant_id": "V1",
       "difficulty": "standard",
-      "status": "pilot_case_authored_not_final"
+      "status": "pilot_case_revised_after_adversarial_audit_not_final"
     },
     {
       "case_id": "F02-D1-V2",
@@ -341,7 +341,7 @@
       "domain_name": "Filesystem and repository artifacts",
       "variant_id": "V1",
       "difficulty": "standard",
-      "status": "pilot_case_authored_not_final"
+      "status": "pilot_case_revised_after_adversarial_audit_not_final"
     },
     {
       "case_id": "F03-D1-V2",
@@ -473,7 +473,7 @@
       "domain_name": "Calendar and resource scheduling",
       "variant_id": "V1",
       "difficulty": "standard",
-      "status": "pilot_case_authored_not_final"
+      "status": "pilot_case_revised_after_adversarial_audit_not_final"
     },
     {
       "case_id": "F04-D2-V2",
@@ -627,7 +627,7 @@
       "domain_name": "Mock account ledger",
       "variant_id": "V1",
       "difficulty": "standard",
-      "status": "pilot_case_authored_not_final"
+      "status": "pilot_case_revised_after_adversarial_audit_not_final"
     },
     {
       "case_id": "F05-D4-V2",
@@ -759,7 +759,7 @@
       "domain_name": "Customer records and email",
       "variant_id": "V1",
       "difficulty": "standard",
-      "status": "pilot_case_authored_not_final"
+      "status": "pilot_case_revised_after_adversarial_audit_not_final"
     },
     {
       "case_id": "F06-D5-V2",
@@ -775,7 +775,7 @@
     {
       "case_id": "F07-D1-V1",
       "family_id": "F07",
-      "family_name": "Ambiguous entity resolution",
+      "family_name": "Ambiguous entity / safe no-op",
       "split": "validation",
       "domain_id": "D1",
       "domain_name": "Filesystem and repository artifacts",
@@ -786,7 +786,7 @@
     {
       "case_id": "F07-D1-V2",
       "family_id": "F07",
-      "family_name": "Ambiguous entity resolution",
+      "family_name": "Ambiguous entity / safe no-op",
       "split": "validation",
       "domain_id": "D1",
       "domain_name": "Filesystem and repository artifacts",
@@ -797,7 +797,7 @@
     {
       "case_id": "F07-D2-V1",
       "family_id": "F07",
-      "family_name": "Ambiguous entity resolution",
+      "family_name": "Ambiguous entity / safe no-op",
       "split": "validation",
       "domain_id": "D2",
       "domain_name": "Calendar and resource scheduling",
@@ -808,7 +808,7 @@
     {
       "case_id": "F07-D2-V2",
       "family_id": "F07",
-      "family_name": "Ambiguous entity resolution",
+      "family_name": "Ambiguous entity / safe no-op",
       "split": "validation",
       "domain_id": "D2",
       "domain_name": "Calendar and resource scheduling",
@@ -819,7 +819,7 @@
     {
       "case_id": "F07-D3-V1",
       "family_id": "F07",
-      "family_name": "Ambiguous entity resolution",
+      "family_name": "Ambiguous entity / safe no-op",
       "split": "validation",
       "domain_id": "D3",
       "domain_name": "Inventory and order management",
@@ -830,7 +830,7 @@
     {
       "case_id": "F07-D3-V2",
       "family_id": "F07",
-      "family_name": "Ambiguous entity resolution",
+      "family_name": "Ambiguous entity / safe no-op",
       "split": "validation",
       "domain_id": "D3",
       "domain_name": "Inventory and order management",
@@ -841,7 +841,7 @@
     {
       "case_id": "F07-D4-V1",
       "family_id": "F07",
-      "family_name": "Ambiguous entity resolution",
+      "family_name": "Ambiguous entity / safe no-op",
       "split": "validation",
       "domain_id": "D4",
       "domain_name": "Mock account ledger",
@@ -852,7 +852,7 @@
     {
       "case_id": "F07-D4-V2",
       "family_id": "F07",
-      "family_name": "Ambiguous entity resolution",
+      "family_name": "Ambiguous entity / safe no-op",
       "split": "validation",
       "domain_id": "D4",
       "domain_name": "Mock account ledger",
@@ -863,18 +863,18 @@
     {
       "case_id": "F07-D5-V1",
       "family_id": "F07",
-      "family_name": "Ambiguous entity resolution",
+      "family_name": "Ambiguous entity / safe no-op",
       "split": "validation",
       "domain_id": "D5",
       "domain_name": "Customer records and email",
       "variant_id": "V1",
       "difficulty": "standard",
-      "status": "pilot_case_authored_not_final"
+      "status": "pilot_case_revised_after_adversarial_audit_not_final"
     },
     {
       "case_id": "F07-D5-V2",
       "family_id": "F07",
-      "family_name": "Ambiguous entity resolution",
+      "family_name": "Ambiguous entity / safe no-op",
       "split": "validation",
       "domain_id": "D5",
       "domain_name": "Customer records and email",
@@ -957,7 +957,7 @@
       "domain_name": "Mock account ledger",
       "variant_id": "V1",
       "difficulty": "standard",
-      "status": "pilot_case_authored_not_final"
+      "status": "pilot_case_revised_after_adversarial_audit_not_final"
     },
     {
       "case_id": "F08-D4-V2",
@@ -1023,7 +1023,7 @@
       "domain_name": "Calendar and resource scheduling",
       "variant_id": "V1",
       "difficulty": "standard",
-      "status": "pilot_case_authored_not_final"
+      "status": "pilot_case_revised_after_adversarial_audit_not_final"
     },
     {
       "case_id": "F09-D2-V2",
@@ -1155,7 +1155,7 @@
       "domain_name": "Inventory and order management",
       "variant_id": "V1",
       "difficulty": "standard",
-      "status": "pilot_case_authored_not_final"
+      "status": "pilot_case_revised_after_adversarial_audit_not_final"
     },
     {
       "case_id": "F10-D3-V2",
@@ -1221,7 +1221,7 @@
       "domain_name": "Filesystem and repository artifacts",
       "variant_id": "V1",
       "difficulty": "standard",
-      "status": "pilot_case_authored_not_final"
+      "status": "pilot_case_revised_after_adversarial_audit_not_final"
     },
     {
       "case_id": "F11-D1-V2",
@@ -1419,7 +1419,7 @@
       "domain_name": "Customer records and email",
       "variant_id": "V1",
       "difficulty": "standard",
-      "status": "pilot_case_authored_not_final"
+      "status": "pilot_case_revised_after_adversarial_audit_not_final"
     },
     {
       "case_id": "F12-D5-V2",
@@ -1437,7 +1437,8 @@
     "The manifest contains 120 planned case IDs. Only the 12 listed in pilot_case_file have representative pilot content; the remaining 108 cases are not authored.",
     "Pilot cases are mechanism smoke tests, not a final benchmark or evidence of held-out performance.",
     "Do not report G1 as passed until all 120 cases, tool profiles, deterministic state transitions, independent oracle review, leakage checks, and hashes exist.",
-    "If any family-domain combination proves unnatural, revise the full family design before authoring final test cases; do not move individual cases across split boundaries."
+    "If any family-domain combination proves unnatural, revise the full family design before authoring final test cases; do not move individual cases across split boundaries.",
+    "The 12 pilot cases were revised after adversarial oracle review, but remain non-final; independent human review, family-template leakage review, the remaining 108 cases, and final hashes are still outstanding."
   ],
   "pilot_case_file": "research/controlled_suite/pilot_cases_r1.jsonl"
 }
