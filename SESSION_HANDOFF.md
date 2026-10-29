@@ -223,3 +223,9 @@ Decision boundary: do not call the tau2 source split family-held-out. Use it onl
 The code repo states MIT, but the executable dataset is hosted separately. Attempts to read the Hugging Face dataset page/metadata/card failed; this is a retrieval limitation, not proof of missing license. Dataset license, revision, checksum, and family overlap remain unverified. Decision D-047: defer Δτ-Bench as a selected benchmark and do not repeatedly retry the same endpoint. tau2-bench v2.0.0 remains the external candidate, but its source split must not be called family-held-out due to the heuristic similarity warning.
 
 **Next concrete action:** implement the original task schema and machine-readable 12-family manifest, add deterministic oracle tests, then generate original cases. G1 remains PARTIAL/OPEN; no tasks or experiments have run.
+
+## Machine-readable G1 artifacts — 2026-10-29
+
+Created `research/controlled_suite/family_manifest_r1.json` and `research/controlled_suite/task_case_schema_r1.json`. The manifest was fetched and parsed; it contains 120 unique planned IDs with 60 train / 30 validation / 30 test entries, all marked `planned_not_authored`. The schema defines the case structure and state-invariant oracle. These are not executable tasks: no domain tool profiles, state-transition executor, oracle regression tests, or actual task cases exist yet.
+
+**Next concrete action:** define five deterministic domain tool profiles and the state-transition/oracle implementation; author and test representative cases for each family, then generate all 120 cases and hash the dataset. G1 remains PARTIAL/OPEN, G2 NOT RUN. Keep the τ² similarity warning and Δτ deferral as described in `research/G1_TASK_FAMILY_SPLIT_PROTOCOL_R1.md`.
