@@ -137,3 +137,11 @@ Next: (1) boundedly verify Δτ dataset license/revision/checksums and split str
 The code repo for Δτ-Bench states MIT, but the executable dataset is hosted separately. Attempts to read its Hugging Face page/metadata/card failed; exact dataset license, revision, checksum, and family overlap remain unverified. Defer it as a selected benchmark; do not repeatedly retry the same URL. Keep it in related work. τ²/τ³-bench v2.0.0 remains the external candidate, but the heuristic similarity screen means its source split is not family-held-out. See `research/G1_TASK_FAMILY_SPLIT_PROTOCOL_R1.md` and decisions D-046/D-047.
 
 **Next concrete action:** implement the original task schema and machine-readable 12-family manifest, add deterministic state-transition/oracle tests, then generate original task cases. G1 remains PARTIAL/OPEN; no tasks have been authored or run and no model/API experiment occurred.
+
+## Machine-readable suite manifest and schema created (2026-10-29)
+
+Files created:
+- `research/controlled_suite/family_manifest_r1.json`: JSON parse/integrity check passed; 120 unique planned IDs; 60 train / 30 validation / 30 test. Every case is marked `planned_not_authored`.
+- `research/controlled_suite/task_case_schema_r1.json`: initial strict case schema with state-invariant oracle fields.
+
+These are not executable cases. No tool profiles, state-transition executor, oracle regression tests, or 120 task contents exist yet. Next: define five deterministic domain tool profiles and the state-transition/oracle layer; author representative cases per family, run tests, then generate all cases and hash the data. Keep G1 PARTIAL/OPEN and do not start G2 or paid API runs.
