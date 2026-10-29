@@ -33,4 +33,5 @@ The 12 pilot cases and executor are a working prototype. They do **not** establi
 ## Oracle audit
 
 - [`EXECUTOR_ORACLE_AUDIT_R1.md`](EXECUTOR_ORACLE_AUDIT_R1.md) records the two earlier fixes: validating every successful consumer and type-sensitive JSON equality for `eq`.
-- [`EXECUTOR_ORACLE_AUDIT_R2.md`](EXECUTOR_ORACLE_AUDIT_R2.md) records the new budget/idempotency review and counterexamples showing under-specified booking, email, transaction, and compensation oracles. The revised suite is still a pilot and requires green CI plus independent review.
+- [`EXECUTOR_ORACLE_AUDIT_R2.md`](EXECUTOR_ORACLE_AUDIT_R2.md) records budget/idempotency and oracle corrections.
+- [`PILOT_FAMILY_LEAKAGE_AUDIT_R1.md`](PILOT_FAMILY_LEAKAGE_AUDIT_R1.md) records the heuristic lexical-overlap screen, manual family comparison, and revisions to F08/F09. The revised suite is still a pilot and requires green CI plus independent review.
