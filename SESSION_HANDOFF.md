@@ -113,3 +113,33 @@ Read research/EVOMAS_CONFIG_EVOLUTION_METHOD_AUDIT_R1.md and research/PROPOSAL_G
 ## Latest action — EvoMAS HIL PDF access attempt (2026-10-27)
 
 The official PMLR page verifies the ICML 2026 publication and abstract, but the linked PDF could not be parsed by the web reader and the direct download failed. The earlier anonymous OpenReview PDF now triggers a verification challenge. Therefore the full method audit is **still blocked**, not completed. G0 remains OPEN; do not claim the paper lacks displacement-conditioned lineage credit. Next step is to obtain a readable final PDF or verified author source, then compare the exact state/action/reward and ablations against OSLVC-R1, ELMER, LVPG, CWM, and classical AOS.
+
+
+
+
+## Latest continuity update — 2026-10-29
+
+**Read first:** `research/FEASIBILITY_AND_NEXT_GATE_2026-10-29.md`, `research/STATUS.md`, `research/DECISION_LOG.md`, `research/THESIS_PROPOSAL_FRAMEWORK.md`, `research/THESIS_PAPER_MAP.md`, `research/OSLVC_R1_SCALE_CONDITIONED_LINEAGE_CREDIT.md`, and `research/BENCHMARK_AND_BASELINE_DECISION_R2.md`.
+
+### Current user goal
+The user is preparing the **master's thesis opening report**, not asking to implement one paper immediately. The thesis should have 2–3 connected substantive contributions and aim for 2–3 small-paper submissions; evolutionary computation must be central and explicit EA parameter tuning/control must be considered. Communication evolution is excluded. Use this repository only; do not mix other project repositories.
+
+### Current feasibility view
+The last conversational estimates were: thesis completion 75–85%; OSLVC as the final effective algorithm 35–50%; 2–3 independent defensible innovation points 50–65%; 2–3 small-paper submissions 40–60%. These are subjective judgment ranges, not calibrated probabilities or experimental findings. Do not present them as measured results.
+
+### Candidate method
+OSLVC-R1 remains a **hypothesis**, not an approved innovation. Its narrow test is whether operator continuation value conditional on realized behavior displacement adds value beyond immediate reward, raw lineage return, displacement-only prediction, and a naive joint operator–strength controller. ELMER, LVPG, EvoMAS: Heuristics in the Loop, classical AOS, and EvoTool cover substantial adjacent mechanisms; the final EvoMAS HIL method audit is incomplete.
+
+### Gate state
+- **G0 OPEN:** verify the final EvoMAS HIL state/action/reward/credit/update mechanism from readable final paper/author source and compare closest methods.
+- **G1 PARTIAL/OPEN:** lock benchmark version, license, task-family splits, task IDs, and scorer checks. Tool-Veritas is a local execution substrate, not a ready-made complete benchmark. τ²/τ³-bench is external validation only after exact task/split/scorer audit. Do not use the full frozen `text-v1` manifest as held-out after evolution on source-train tasks.
+- **G2 NOT RUN:** no local mechanism pilot has run. No formal OSLVC experiment or paid API call has been performed.
+
+### Next action
+1. Finish the final-paper prior-art audit (G0).
+2. Freeze a controlled task-family split and audited external validation subset (G1).
+3. Only if G0/G1 are sufficiently closed, run a small no-paid-call pilot testing (a) operator/strength displacement heterogeneity and (b) whether conditional operator credit adds predictive value under matched parents/tasks/states and equal descendant-evaluation counts.
+4. If the conditional residual is negligible or unstable, revise/drop OSLVC instead of defending it by name.
+5. Draft the proposal's linked sections: related work → concrete gap → research questions → contents/candidate innovations → technical route → experiment feasibility → risks/alternatives.
+
+Do not start large or paid experiments before the gates pass. Prefer two strong contributions over three weak/duplicated ones. Record only evidence-backed completion.
