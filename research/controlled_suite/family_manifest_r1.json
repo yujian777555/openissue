@@ -1,0 +1,1441 @@
+{
+  "manifest_version": "1.0",
+  "created_date": "2026-10-29",
+  "status": "design_manifest_only_cases_not_authored",
+  "purpose": "Machine-readable whole-family split manifest for the proposed deterministic Agent-policy evolution suite.",
+  "split_rule": "All cases from a family stay in one split; no family variant may cross split boundaries.",
+  "target_counts": {
+    "total": 120,
+    "train": 60,
+    "validation": 30,
+    "test": 30
+  },
+  "domains": [
+    {
+      "id": "D1",
+      "name": "Filesystem and repository artifacts",
+      "description": "Create/read/update/move/delete artifacts and verify state; entirely in-memory."
+    },
+    {
+      "id": "D2",
+      "name": "Calendar and resource scheduling",
+      "description": "Inspect availability, create/cancel events, and detect conflicts; entirely simulated."
+    },
+    {
+      "id": "D3",
+      "name": "Inventory and order management",
+      "description": "Lookup items, reserve/update quantities, and manage orders; entirely simulated."
+    },
+    {
+      "id": "D4",
+      "name": "Mock account ledger",
+      "description": "Read balances, transfer funds, pay bills, and verify transactions in a synthetic ledger only."
+    },
+    {
+      "id": "D5",
+      "name": "Customer records and email",
+      "description": "Resolve identity, read/update records, send and verify notifications in a mock database."
+    }
+  ],
+  "families": [
+    {
+      "id": "F01",
+      "split": "train",
+      "name": "Read-before-write",
+      "goal": "Resolve the correct target record before a mutation."
+    },
+    {
+      "id": "F02",
+      "split": "train",
+      "name": "Sequential dependency",
+      "goal": "Use an earlier tool result as a later tool argument."
+    },
+    {
+      "id": "F03",
+      "split": "train",
+      "name": "Postcondition verification",
+      "goal": "Read back and verify state after a mutation."
+    },
+    {
+      "id": "F04",
+      "split": "train",
+      "name": "Numeric or threshold constraint",
+      "goal": "Choose an action that satisfies an explicit numeric/threshold constraint."
+    },
+    {
+      "id": "F05",
+      "split": "train",
+      "name": "Idempotency and duplicate prevention",
+      "goal": "Avoid repeating a side effect when the request or action is duplicated."
+    },
+    {
+      "id": "F06",
+      "split": "train",
+      "name": "Cross-tool handoff",
+      "goal": "Coordinate two related tools/services while preserving consistent state."
+    },
+    {
+      "id": "F07",
+      "split": "validation",
+      "name": "Ambiguous entity resolution",
+      "goal": "Clarify or disambiguate before mutating an uncertain target."
+    },
+    {
+      "id": "F08",
+      "split": "validation",
+      "name": "Invalid precondition or policy conflict",
+      "goal": "Detect an unmet precondition and refuse or safely no-op."
+    },
+    {
+      "id": "F09",
+      "split": "validation",
+      "name": "Resource or availability conflict",
+      "goal": "Detect a resource conflict and preserve valid state."
+    },
+    {
+      "id": "F10",
+      "split": "test",
+      "name": "Cross-turn reference resolution",
+      "goal": "Resolve a reference to an entity introduced earlier in the interaction."
+    },
+    {
+      "id": "F11",
+      "split": "test",
+      "name": "Partial failure and compensation",
+      "goal": "Recover safely after one step succeeds and a dependent step fails."
+    },
+    {
+      "id": "F12",
+      "split": "test",
+      "name": "Minimal side-effect plan",
+      "goal": "Achieve the goal while avoiding unrelated state changes."
+    }
+  ],
+  "cases": [
+    {
+      "case_id": "F01-D1-V1",
+      "family_id": "F01",
+      "family_name": "Read-before-write",
+      "split": "train",
+      "domain_id": "D1",
+      "domain_name": "Filesystem and repository artifacts",
+      "variant_id": "V1",
+      "difficulty": "standard",
+      "status": "planned_not_authored"
+    },
+    {
+      "case_id": "F01-D1-V2",
+      "family_id": "F01",
+      "family_name": "Read-before-write",
+      "split": "train",
+      "domain_id": "D1",
+      "domain_name": "Filesystem and repository artifacts",
+      "variant_id": "V2",
+      "difficulty": "hard",
+      "status": "planned_not_authored"
+    },
+    {
+      "case_id": "F01-D2-V1",
+      "family_id": "F01",
+      "family_name": "Read-before-write",
+      "split": "train",
+      "domain_id": "D2",
+      "domain_name": "Calendar and resource scheduling",
+      "variant_id": "V1",
+      "difficulty": "standard",
+      "status": "planned_not_authored"
+    },
+    {
+      "case_id": "F01-D2-V2",
+      "family_id": "F01",
+      "family_name": "Read-before-write",
+      "split": "train",
+      "domain_id": "D2",
+      "domain_name": "Calendar and resource scheduling",
+      "variant_id": "V2",
+      "difficulty": "hard",
+      "status": "planned_not_authored"
+    },
+    {
+      "case_id": "F01-D3-V1",
+      "family_id": "F01",
+      "family_name": "Read-before-write",
+      "split": "train",
+      "domain_id": "D3",
+      "domain_name": "Inventory and order management",
+      "variant_id": "V1",
+      "difficulty": "standard",
+      "status": "planned_not_authored"
+    },
+    {
+      "case_id": "F01-D3-V2",
+      "family_id": "F01",
+      "family_name": "Read-before-write",
+      "split": "train",
+      "domain_id": "D3",
+      "domain_name": "Inventory and order management",
+      "variant_id": "V2",
+      "difficulty": "hard",
+      "status": "planned_not_authored"
+    },
+    {
+      "case_id": "F01-D4-V1",
+      "family_id": "F01",
+      "family_name": "Read-before-write",
+      "split": "train",
+      "domain_id": "D4",
+      "domain_name": "Mock account ledger",
+      "variant_id": "V1",
+      "difficulty": "standard",
+      "status": "planned_not_authored"
+    },
+    {
+      "case_id": "F01-D4-V2",
+      "family_id": "F01",
+      "family_name": "Read-before-write",
+      "split": "train",
+      "domain_id": "D4",
+      "domain_name": "Mock account ledger",
+      "variant_id": "V2",
+      "difficulty": "hard",
+      "status": "planned_not_authored"
+    },
+    {
+      "case_id": "F01-D5-V1",
+      "family_id": "F01",
+      "family_name": "Read-before-write",
+      "split": "train",
+      "domain_id": "D5",
+      "domain_name": "Customer records and email",
+      "variant_id": "V1",
+      "difficulty": "standard",
+      "status": "planned_not_authored"
+    },
+    {
+      "case_id": "F01-D5-V2",
+      "family_id": "F01",
+      "family_name": "Read-before-write",
+      "split": "train",
+      "domain_id": "D5",
+      "domain_name": "Customer records and email",
+      "variant_id": "V2",
+      "difficulty": "hard",
+      "status": "planned_not_authored"
+    },
+    {
+      "case_id": "F02-D1-V1",
+      "family_id": "F02",
+      "family_name": "Sequential dependency",
+      "split": "train",
+      "domain_id": "D1",
+      "domain_name": "Filesystem and repository artifacts",
+      "variant_id": "V1",
+      "difficulty": "standard",
+      "status": "planned_not_authored"
+    },
+    {
+      "case_id": "F02-D1-V2",
+      "family_id": "F02",
+      "family_name": "Sequential dependency",
+      "split": "train",
+      "domain_id": "D1",
+      "domain_name": "Filesystem and repository artifacts",
+      "variant_id": "V2",
+      "difficulty": "hard",
+      "status": "planned_not_authored"
+    },
+    {
+      "case_id": "F02-D2-V1",
+      "family_id": "F02",
+      "family_name": "Sequential dependency",
+      "split": "train",
+      "domain_id": "D2",
+      "domain_name": "Calendar and resource scheduling",
+      "variant_id": "V1",
+      "difficulty": "standard",
+      "status": "planned_not_authored"
+    },
+    {
+      "case_id": "F02-D2-V2",
+      "family_id": "F02",
+      "family_name": "Sequential dependency",
+      "split": "train",
+      "domain_id": "D2",
+      "domain_name": "Calendar and resource scheduling",
+      "variant_id": "V2",
+      "difficulty": "hard",
+      "status": "planned_not_authored"
+    },
+    {
+      "case_id": "F02-D3-V1",
+      "family_id": "F02",
+      "family_name": "Sequential dependency",
+      "split": "train",
+      "domain_id": "D3",
+      "domain_name": "Inventory and order management",
+      "variant_id": "V1",
+      "difficulty": "standard",
+      "status": "planned_not_authored"
+    },
+    {
+      "case_id": "F02-D3-V2",
+      "family_id": "F02",
+      "family_name": "Sequential dependency",
+      "split": "train",
+      "domain_id": "D3",
+      "domain_name": "Inventory and order management",
+      "variant_id": "V2",
+      "difficulty": "hard",
+      "status": "planned_not_authored"
+    },
+    {
+      "case_id": "F02-D4-V1",
+      "family_id": "F02",
+      "family_name": "Sequential dependency",
+      "split": "train",
+      "domain_id": "D4",
+      "domain_name": "Mock account ledger",
+      "variant_id": "V1",
+      "difficulty": "standard",
+      "status": "planned_not_authored"
+    },
+    {
+      "case_id": "F02-D4-V2",
+      "family_id": "F02",
+      "family_name": "Sequential dependency",
+      "split": "train",
+      "domain_id": "D4",
+      "domain_name": "Mock account ledger",
+      "variant_id": "V2",
+      "difficulty": "hard",
+      "status": "planned_not_authored"
+    },
+    {
+      "case_id": "F02-D5-V1",
+      "family_id": "F02",
+      "family_name": "Sequential dependency",
+      "split": "train",
+      "domain_id": "D5",
+      "domain_name": "Customer records and email",
+      "variant_id": "V1",
+      "difficulty": "standard",
+      "status": "planned_not_authored"
+    },
+    {
+      "case_id": "F02-D5-V2",
+      "family_id": "F02",
+      "family_name": "Sequential dependency",
+      "split": "train",
+      "domain_id": "D5",
+      "domain_name": "Customer records and email",
+      "variant_id": "V2",
+      "difficulty": "hard",
+      "status": "planned_not_authored"
+    },
+    {
+      "case_id": "F03-D1-V1",
+      "family_id": "F03",
+      "family_name": "Postcondition verification",
+      "split": "train",
+      "domain_id": "D1",
+      "domain_name": "Filesystem and repository artifacts",
+      "variant_id": "V1",
+      "difficulty": "standard",
+      "status": "planned_not_authored"
+    },
+    {
+      "case_id": "F03-D1-V2",
+      "family_id": "F03",
+      "family_name": "Postcondition verification",
+      "split": "train",
+      "domain_id": "D1",
+      "domain_name": "Filesystem and repository artifacts",
+      "variant_id": "V2",
+      "difficulty": "hard",
+      "status": "planned_not_authored"
+    },
+    {
+      "case_id": "F03-D2-V1",
+      "family_id": "F03",
+      "family_name": "Postcondition verification",
+      "split": "train",
+      "domain_id": "D2",
+      "domain_name": "Calendar and resource scheduling",
+      "variant_id": "V1",
+      "difficulty": "standard",
+      "status": "planned_not_authored"
+    },
+    {
+      "case_id": "F03-D2-V2",
+      "family_id": "F03",
+      "family_name": "Postcondition verification",
+      "split": "train",
+      "domain_id": "D2",
+      "domain_name": "Calendar and resource scheduling",
+      "variant_id": "V2",
+      "difficulty": "hard",
+      "status": "planned_not_authored"
+    },
+    {
+      "case_id": "F03-D3-V1",
+      "family_id": "F03",
+      "family_name": "Postcondition verification",
+      "split": "train",
+      "domain_id": "D3",
+      "domain_name": "Inventory and order management",
+      "variant_id": "V1",
+      "difficulty": "standard",
+      "status": "planned_not_authored"
+    },
+    {
+      "case_id": "F03-D3-V2",
+      "family_id": "F03",
+      "family_name": "Postcondition verification",
+      "split": "train",
+      "domain_id": "D3",
+      "domain_name": "Inventory and order management",
+      "variant_id": "V2",
+      "difficulty": "hard",
+      "status": "planned_not_authored"
+    },
+    {
+      "case_id": "F03-D4-V1",
+      "family_id": "F03",
+      "family_name": "Postcondition verification",
+      "split": "train",
+      "domain_id": "D4",
+      "domain_name": "Mock account ledger",
+      "variant_id": "V1",
+      "difficulty": "standard",
+      "status": "planned_not_authored"
+    },
+    {
+      "case_id": "F03-D4-V2",
+      "family_id": "F03",
+      "family_name": "Postcondition verification",
+      "split": "train",
+      "domain_id": "D4",
+      "domain_name": "Mock account ledger",
+      "variant_id": "V2",
+      "difficulty": "hard",
+      "status": "planned_not_authored"
+    },
+    {
+      "case_id": "F03-D5-V1",
+      "family_id": "F03",
+      "family_name": "Postcondition verification",
+      "split": "train",
+      "domain_id": "D5",
+      "domain_name": "Customer records and email",
+      "variant_id": "V1",
+      "difficulty": "standard",
+      "status": "planned_not_authored"
+    },
+    {
+      "case_id": "F03-D5-V2",
+      "family_id": "F03",
+      "family_name": "Postcondition verification",
+      "split": "train",
+      "domain_id": "D5",
+      "domain_name": "Customer records and email",
+      "variant_id": "V2",
+      "difficulty": "hard",
+      "status": "planned_not_authored"
+    },
+    {
+      "case_id": "F04-D1-V1",
+      "family_id": "F04",
+      "family_name": "Numeric or threshold constraint",
+      "split": "train",
+      "domain_id": "D1",
+      "domain_name": "Filesystem and repository artifacts",
+      "variant_id": "V1",
+      "difficulty": "standard",
+      "status": "planned_not_authored"
+    },
+    {
+      "case_id": "F04-D1-V2",
+      "family_id": "F04",
+      "family_name": "Numeric or threshold constraint",
+      "split": "train",
+      "domain_id": "D1",
+      "domain_name": "Filesystem and repository artifacts",
+      "variant_id": "V2",
+      "difficulty": "hard",
+      "status": "planned_not_authored"
+    },
+    {
+      "case_id": "F04-D2-V1",
+      "family_id": "F04",
+      "family_name": "Numeric or threshold constraint",
+      "split": "train",
+      "domain_id": "D2",
+      "domain_name": "Calendar and resource scheduling",
+      "variant_id": "V1",
+      "difficulty": "standard",
+      "status": "planned_not_authored"
+    },
+    {
+      "case_id": "F04-D2-V2",
+      "family_id": "F04",
+      "family_name": "Numeric or threshold constraint",
+      "split": "train",
+      "domain_id": "D2",
+      "domain_name": "Calendar and resource scheduling",
+      "variant_id": "V2",
+      "difficulty": "hard",
+      "status": "planned_not_authored"
+    },
+    {
+      "case_id": "F04-D3-V1",
+      "family_id": "F04",
+      "family_name": "Numeric or threshold constraint",
+      "split": "train",
+      "domain_id": "D3",
+      "domain_name": "Inventory and order management",
+      "variant_id": "V1",
+      "difficulty": "standard",
+      "status": "planned_not_authored"
+    },
+    {
+      "case_id": "F04-D3-V2",
+      "family_id": "F04",
+      "family_name": "Numeric or threshold constraint",
+      "split": "train",
+      "domain_id": "D3",
+      "domain_name": "Inventory and order management",
+      "variant_id": "V2",
+      "difficulty": "hard",
+      "status": "planned_not_authored"
+    },
+    {
+      "case_id": "F04-D4-V1",
+      "family_id": "F04",
+      "family_name": "Numeric or threshold constraint",
+      "split": "train",
+      "domain_id": "D4",
+      "domain_name": "Mock account ledger",
+      "variant_id": "V1",
+      "difficulty": "standard",
+      "status": "planned_not_authored"
+    },
+    {
+      "case_id": "F04-D4-V2",
+      "family_id": "F04",
+      "family_name": "Numeric or threshold constraint",
+      "split": "train",
+      "domain_id": "D4",
+      "domain_name": "Mock account ledger",
+      "variant_id": "V2",
+      "difficulty": "hard",
+      "status": "planned_not_authored"
+    },
+    {
+      "case_id": "F04-D5-V1",
+      "family_id": "F04",
+      "family_name": "Numeric or threshold constraint",
+      "split": "train",
+      "domain_id": "D5",
+      "domain_name": "Customer records and email",
+      "variant_id": "V1",
+      "difficulty": "standard",
+      "status": "planned_not_authored"
+    },
+    {
+      "case_id": "F04-D5-V2",
+      "family_id": "F04",
+      "family_name": "Numeric or threshold constraint",
+      "split": "train",
+      "domain_id": "D5",
+      "domain_name": "Customer records and email",
+      "variant_id": "V2",
+      "difficulty": "hard",
+      "status": "planned_not_authored"
+    },
+    {
+      "case_id": "F05-D1-V1",
+      "family_id": "F05",
+      "family_name": "Idempotency and duplicate prevention",
+      "split": "train",
+      "domain_id": "D1",
+      "domain_name": "Filesystem and repository artifacts",
+      "variant_id": "V1",
+      "difficulty": "standard",
+      "status": "planned_not_authored"
+    },
+    {
+      "case_id": "F05-D1-V2",
+      "family_id": "F05",
+      "family_name": "Idempotency and duplicate prevention",
+      "split": "train",
+      "domain_id": "D1",
+      "domain_name": "Filesystem and repository artifacts",
+      "variant_id": "V2",
+      "difficulty": "hard",
+      "status": "planned_not_authored"
+    },
+    {
+      "case_id": "F05-D2-V1",
+      "family_id": "F05",
+      "family_name": "Idempotency and duplicate prevention",
+      "split": "train",
+      "domain_id": "D2",
+      "domain_name": "Calendar and resource scheduling",
+      "variant_id": "V1",
+      "difficulty": "standard",
+      "status": "planned_not_authored"
+    },
+    {
+      "case_id": "F05-D2-V2",
+      "family_id": "F05",
+      "family_name": "Idempotency and duplicate prevention",
+      "split": "train",
+      "domain_id": "D2",
+      "domain_name": "Calendar and resource scheduling",
+      "variant_id": "V2",
+      "difficulty": "hard",
+      "status": "planned_not_authored"
+    },
+    {
+      "case_id": "F05-D3-V1",
+      "family_id": "F05",
+      "family_name": "Idempotency and duplicate prevention",
+      "split": "train",
+      "domain_id": "D3",
+      "domain_name": "Inventory and order management",
+      "variant_id": "V1",
+      "difficulty": "standard",
+      "status": "planned_not_authored"
+    },
+    {
+      "case_id": "F05-D3-V2",
+      "family_id": "F05",
+      "family_name": "Idempotency and duplicate prevention",
+      "split": "train",
+      "domain_id": "D3",
+      "domain_name": "Inventory and order management",
+      "variant_id": "V2",
+      "difficulty": "hard",
+      "status": "planned_not_authored"
+    },
+    {
+      "case_id": "F05-D4-V1",
+      "family_id": "F05",
+      "family_name": "Idempotency and duplicate prevention",
+      "split": "train",
+      "domain_id": "D4",
+      "domain_name": "Mock account ledger",
+      "variant_id": "V1",
+      "difficulty": "standard",
+      "status": "planned_not_authored"
+    },
+    {
+      "case_id": "F05-D4-V2",
+      "family_id": "F05",
+      "family_name": "Idempotency and duplicate prevention",
+      "split": "train",
+      "domain_id": "D4",
+      "domain_name": "Mock account ledger",
+      "variant_id": "V2",
+      "difficulty": "hard",
+      "status": "planned_not_authored"
+    },
+    {
+      "case_id": "F05-D5-V1",
+      "family_id": "F05",
+      "family_name": "Idempotency and duplicate prevention",
+      "split": "train",
+      "domain_id": "D5",
+      "domain_name": "Customer records and email",
+      "variant_id": "V1",
+      "difficulty": "standard",
+      "status": "planned_not_authored"
+    },
+    {
+      "case_id": "F05-D5-V2",
+      "family_id": "F05",
+      "family_name": "Idempotency and duplicate prevention",
+      "split": "train",
+      "domain_id": "D5",
+      "domain_name": "Customer records and email",
+      "variant_id": "V2",
+      "difficulty": "hard",
+      "status": "planned_not_authored"
+    },
+    {
+      "case_id": "F06-D1-V1",
+      "family_id": "F06",
+      "family_name": "Cross-tool handoff",
+      "split": "train",
+      "domain_id": "D1",
+      "domain_name": "Filesystem and repository artifacts",
+      "variant_id": "V1",
+      "difficulty": "standard",
+      "status": "planned_not_authored"
+    },
+    {
+      "case_id": "F06-D1-V2",
+      "family_id": "F06",
+      "family_name": "Cross-tool handoff",
+      "split": "train",
+      "domain_id": "D1",
+      "domain_name": "Filesystem and repository artifacts",
+      "variant_id": "V2",
+      "difficulty": "hard",
+      "status": "planned_not_authored"
+    },
+    {
+      "case_id": "F06-D2-V1",
+      "family_id": "F06",
+      "family_name": "Cross-tool handoff",
+      "split": "train",
+      "domain_id": "D2",
+      "domain_name": "Calendar and resource scheduling",
+      "variant_id": "V1",
+      "difficulty": "standard",
+      "status": "planned_not_authored"
+    },
+    {
+      "case_id": "F06-D2-V2",
+      "family_id": "F06",
+      "family_name": "Cross-tool handoff",
+      "split": "train",
+      "domain_id": "D2",
+      "domain_name": "Calendar and resource scheduling",
+      "variant_id": "V2",
+      "difficulty": "hard",
+      "status": "planned_not_authored"
+    },
+    {
+      "case_id": "F06-D3-V1",
+      "family_id": "F06",
+      "family_name": "Cross-tool handoff",
+      "split": "train",
+      "domain_id": "D3",
+      "domain_name": "Inventory and order management",
+      "variant_id": "V1",
+      "difficulty": "standard",
+      "status": "planned_not_authored"
+    },
+    {
+      "case_id": "F06-D3-V2",
+      "family_id": "F06",
+      "family_name": "Cross-tool handoff",
+      "split": "train",
+      "domain_id": "D3",
+      "domain_name": "Inventory and order management",
+      "variant_id": "V2",
+      "difficulty": "hard",
+      "status": "planned_not_authored"
+    },
+    {
+      "case_id": "F06-D4-V1",
+      "family_id": "F06",
+      "family_name": "Cross-tool handoff",
+      "split": "train",
+      "domain_id": "D4",
+      "domain_name": "Mock account ledger",
+      "variant_id": "V1",
+      "difficulty": "standard",
+      "status": "planned_not_authored"
+    },
+    {
+      "case_id": "F06-D4-V2",
+      "family_id": "F06",
+      "family_name": "Cross-tool handoff",
+      "split": "train",
+      "domain_id": "D4",
+      "domain_name": "Mock account ledger",
+      "variant_id": "V2",
+      "difficulty": "hard",
+      "status": "planned_not_authored"
+    },
+    {
+      "case_id": "F06-D5-V1",
+      "family_id": "F06",
+      "family_name": "Cross-tool handoff",
+      "split": "train",
+      "domain_id": "D5",
+      "domain_name": "Customer records and email",
+      "variant_id": "V1",
+      "difficulty": "standard",
+      "status": "planned_not_authored"
+    },
+    {
+      "case_id": "F06-D5-V2",
+      "family_id": "F06",
+      "family_name": "Cross-tool handoff",
+      "split": "train",
+      "domain_id": "D5",
+      "domain_name": "Customer records and email",
+      "variant_id": "V2",
+      "difficulty": "hard",
+      "status": "planned_not_authored"
+    },
+    {
+      "case_id": "F07-D1-V1",
+      "family_id": "F07",
+      "family_name": "Ambiguous entity resolution",
+      "split": "validation",
+      "domain_id": "D1",
+      "domain_name": "Filesystem and repository artifacts",
+      "variant_id": "V1",
+      "difficulty": "standard",
+      "status": "planned_not_authored"
+    },
+    {
+      "case_id": "F07-D1-V2",
+      "family_id": "F07",
+      "family_name": "Ambiguous entity resolution",
+      "split": "validation",
+      "domain_id": "D1",
+      "domain_name": "Filesystem and repository artifacts",
+      "variant_id": "V2",
+      "difficulty": "hard",
+      "status": "planned_not_authored"
+    },
+    {
+      "case_id": "F07-D2-V1",
+      "family_id": "F07",
+      "family_name": "Ambiguous entity resolution",
+      "split": "validation",
+      "domain_id": "D2",
+      "domain_name": "Calendar and resource scheduling",
+      "variant_id": "V1",
+      "difficulty": "standard",
+      "status": "planned_not_authored"
+    },
+    {
+      "case_id": "F07-D2-V2",
+      "family_id": "F07",
+      "family_name": "Ambiguous entity resolution",
+      "split": "validation",
+      "domain_id": "D2",
+      "domain_name": "Calendar and resource scheduling",
+      "variant_id": "V2",
+      "difficulty": "hard",
+      "status": "planned_not_authored"
+    },
+    {
+      "case_id": "F07-D3-V1",
+      "family_id": "F07",
+      "family_name": "Ambiguous entity resolution",
+      "split": "validation",
+      "domain_id": "D3",
+      "domain_name": "Inventory and order management",
+      "variant_id": "V1",
+      "difficulty": "standard",
+      "status": "planned_not_authored"
+    },
+    {
+      "case_id": "F07-D3-V2",
+      "family_id": "F07",
+      "family_name": "Ambiguous entity resolution",
+      "split": "validation",
+      "domain_id": "D3",
+      "domain_name": "Inventory and order management",
+      "variant_id": "V2",
+      "difficulty": "hard",
+      "status": "planned_not_authored"
+    },
+    {
+      "case_id": "F07-D4-V1",
+      "family_id": "F07",
+      "family_name": "Ambiguous entity resolution",
+      "split": "validation",
+      "domain_id": "D4",
+      "domain_name": "Mock account ledger",
+      "variant_id": "V1",
+      "difficulty": "standard",
+      "status": "planned_not_authored"
+    },
+    {
+      "case_id": "F07-D4-V2",
+      "family_id": "F07",
+      "family_name": "Ambiguous entity resolution",
+      "split": "validation",
+      "domain_id": "D4",
+      "domain_name": "Mock account ledger",
+      "variant_id": "V2",
+      "difficulty": "hard",
+      "status": "planned_not_authored"
+    },
+    {
+      "case_id": "F07-D5-V1",
+      "family_id": "F07",
+      "family_name": "Ambiguous entity resolution",
+      "split": "validation",
+      "domain_id": "D5",
+      "domain_name": "Customer records and email",
+      "variant_id": "V1",
+      "difficulty": "standard",
+      "status": "planned_not_authored"
+    },
+    {
+      "case_id": "F07-D5-V2",
+      "family_id": "F07",
+      "family_name": "Ambiguous entity resolution",
+      "split": "validation",
+      "domain_id": "D5",
+      "domain_name": "Customer records and email",
+      "variant_id": "V2",
+      "difficulty": "hard",
+      "status": "planned_not_authored"
+    },
+    {
+      "case_id": "F08-D1-V1",
+      "family_id": "F08",
+      "family_name": "Invalid precondition or policy conflict",
+      "split": "validation",
+      "domain_id": "D1",
+      "domain_name": "Filesystem and repository artifacts",
+      "variant_id": "V1",
+      "difficulty": "standard",
+      "status": "planned_not_authored"
+    },
+    {
+      "case_id": "F08-D1-V2",
+      "family_id": "F08",
+      "family_name": "Invalid precondition or policy conflict",
+      "split": "validation",
+      "domain_id": "D1",
+      "domain_name": "Filesystem and repository artifacts",
+      "variant_id": "V2",
+      "difficulty": "hard",
+      "status": "planned_not_authored"
+    },
+    {
+      "case_id": "F08-D2-V1",
+      "family_id": "F08",
+      "family_name": "Invalid precondition or policy conflict",
+      "split": "validation",
+      "domain_id": "D2",
+      "domain_name": "Calendar and resource scheduling",
+      "variant_id": "V1",
+      "difficulty": "standard",
+      "status": "planned_not_authored"
+    },
+    {
+      "case_id": "F08-D2-V2",
+      "family_id": "F08",
+      "family_name": "Invalid precondition or policy conflict",
+      "split": "validation",
+      "domain_id": "D2",
+      "domain_name": "Calendar and resource scheduling",
+      "variant_id": "V2",
+      "difficulty": "hard",
+      "status": "planned_not_authored"
+    },
+    {
+      "case_id": "F08-D3-V1",
+      "family_id": "F08",
+      "family_name": "Invalid precondition or policy conflict",
+      "split": "validation",
+      "domain_id": "D3",
+      "domain_name": "Inventory and order management",
+      "variant_id": "V1",
+      "difficulty": "standard",
+      "status": "planned_not_authored"
+    },
+    {
+      "case_id": "F08-D3-V2",
+      "family_id": "F08",
+      "family_name": "Invalid precondition or policy conflict",
+      "split": "validation",
+      "domain_id": "D3",
+      "domain_name": "Inventory and order management",
+      "variant_id": "V2",
+      "difficulty": "hard",
+      "status": "planned_not_authored"
+    },
+    {
+      "case_id": "F08-D4-V1",
+      "family_id": "F08",
+      "family_name": "Invalid precondition or policy conflict",
+      "split": "validation",
+      "domain_id": "D4",
+      "domain_name": "Mock account ledger",
+      "variant_id": "V1",
+      "difficulty": "standard",
+      "status": "planned_not_authored"
+    },
+    {
+      "case_id": "F08-D4-V2",
+      "family_id": "F08",
+      "family_name": "Invalid precondition or policy conflict",
+      "split": "validation",
+      "domain_id": "D4",
+      "domain_name": "Mock account ledger",
+      "variant_id": "V2",
+      "difficulty": "hard",
+      "status": "planned_not_authored"
+    },
+    {
+      "case_id": "F08-D5-V1",
+      "family_id": "F08",
+      "family_name": "Invalid precondition or policy conflict",
+      "split": "validation",
+      "domain_id": "D5",
+      "domain_name": "Customer records and email",
+      "variant_id": "V1",
+      "difficulty": "standard",
+      "status": "planned_not_authored"
+    },
+    {
+      "case_id": "F08-D5-V2",
+      "family_id": "F08",
+      "family_name": "Invalid precondition or policy conflict",
+      "split": "validation",
+      "domain_id": "D5",
+      "domain_name": "Customer records and email",
+      "variant_id": "V2",
+      "difficulty": "hard",
+      "status": "planned_not_authored"
+    },
+    {
+      "case_id": "F09-D1-V1",
+      "family_id": "F09",
+      "family_name": "Resource or availability conflict",
+      "split": "validation",
+      "domain_id": "D1",
+      "domain_name": "Filesystem and repository artifacts",
+      "variant_id": "V1",
+      "difficulty": "standard",
+      "status": "planned_not_authored"
+    },
+    {
+      "case_id": "F09-D1-V2",
+      "family_id": "F09",
+      "family_name": "Resource or availability conflict",
+      "split": "validation",
+      "domain_id": "D1",
+      "domain_name": "Filesystem and repository artifacts",
+      "variant_id": "V2",
+      "difficulty": "hard",
+      "status": "planned_not_authored"
+    },
+    {
+      "case_id": "F09-D2-V1",
+      "family_id": "F09",
+      "family_name": "Resource or availability conflict",
+      "split": "validation",
+      "domain_id": "D2",
+      "domain_name": "Calendar and resource scheduling",
+      "variant_id": "V1",
+      "difficulty": "standard",
+      "status": "planned_not_authored"
+    },
+    {
+      "case_id": "F09-D2-V2",
+      "family_id": "F09",
+      "family_name": "Resource or availability conflict",
+      "split": "validation",
+      "domain_id": "D2",
+      "domain_name": "Calendar and resource scheduling",
+      "variant_id": "V2",
+      "difficulty": "hard",
+      "status": "planned_not_authored"
+    },
+    {
+      "case_id": "F09-D3-V1",
+      "family_id": "F09",
+      "family_name": "Resource or availability conflict",
+      "split": "validation",
+      "domain_id": "D3",
+      "domain_name": "Inventory and order management",
+      "variant_id": "V1",
+      "difficulty": "standard",
+      "status": "planned_not_authored"
+    },
+    {
+      "case_id": "F09-D3-V2",
+      "family_id": "F09",
+      "family_name": "Resource or availability conflict",
+      "split": "validation",
+      "domain_id": "D3",
+      "domain_name": "Inventory and order management",
+      "variant_id": "V2",
+      "difficulty": "hard",
+      "status": "planned_not_authored"
+    },
+    {
+      "case_id": "F09-D4-V1",
+      "family_id": "F09",
+      "family_name": "Resource or availability conflict",
+      "split": "validation",
+      "domain_id": "D4",
+      "domain_name": "Mock account ledger",
+      "variant_id": "V1",
+      "difficulty": "standard",
+      "status": "planned_not_authored"
+    },
+    {
+      "case_id": "F09-D4-V2",
+      "family_id": "F09",
+      "family_name": "Resource or availability conflict",
+      "split": "validation",
+      "domain_id": "D4",
+      "domain_name": "Mock account ledger",
+      "variant_id": "V2",
+      "difficulty": "hard",
+      "status": "planned_not_authored"
+    },
+    {
+      "case_id": "F09-D5-V1",
+      "family_id": "F09",
+      "family_name": "Resource or availability conflict",
+      "split": "validation",
+      "domain_id": "D5",
+      "domain_name": "Customer records and email",
+      "variant_id": "V1",
+      "difficulty": "standard",
+      "status": "planned_not_authored"
+    },
+    {
+      "case_id": "F09-D5-V2",
+      "family_id": "F09",
+      "family_name": "Resource or availability conflict",
+      "split": "validation",
+      "domain_id": "D5",
+      "domain_name": "Customer records and email",
+      "variant_id": "V2",
+      "difficulty": "hard",
+      "status": "planned_not_authored"
+    },
+    {
+      "case_id": "F10-D1-V1",
+      "family_id": "F10",
+      "family_name": "Cross-turn reference resolution",
+      "split": "test",
+      "domain_id": "D1",
+      "domain_name": "Filesystem and repository artifacts",
+      "variant_id": "V1",
+      "difficulty": "standard",
+      "status": "planned_not_authored"
+    },
+    {
+      "case_id": "F10-D1-V2",
+      "family_id": "F10",
+      "family_name": "Cross-turn reference resolution",
+      "split": "test",
+      "domain_id": "D1",
+      "domain_name": "Filesystem and repository artifacts",
+      "variant_id": "V2",
+      "difficulty": "hard",
+      "status": "planned_not_authored"
+    },
+    {
+      "case_id": "F10-D2-V1",
+      "family_id": "F10",
+      "family_name": "Cross-turn reference resolution",
+      "split": "test",
+      "domain_id": "D2",
+      "domain_name": "Calendar and resource scheduling",
+      "variant_id": "V1",
+      "difficulty": "standard",
+      "status": "planned_not_authored"
+    },
+    {
+      "case_id": "F10-D2-V2",
+      "family_id": "F10",
+      "family_name": "Cross-turn reference resolution",
+      "split": "test",
+      "domain_id": "D2",
+      "domain_name": "Calendar and resource scheduling",
+      "variant_id": "V2",
+      "difficulty": "hard",
+      "status": "planned_not_authored"
+    },
+    {
+      "case_id": "F10-D3-V1",
+      "family_id": "F10",
+      "family_name": "Cross-turn reference resolution",
+      "split": "test",
+      "domain_id": "D3",
+      "domain_name": "Inventory and order management",
+      "variant_id": "V1",
+      "difficulty": "standard",
+      "status": "planned_not_authored"
+    },
+    {
+      "case_id": "F10-D3-V2",
+      "family_id": "F10",
+      "family_name": "Cross-turn reference resolution",
+      "split": "test",
+      "domain_id": "D3",
+      "domain_name": "Inventory and order management",
+      "variant_id": "V2",
+      "difficulty": "hard",
+      "status": "planned_not_authored"
+    },
+    {
+      "case_id": "F10-D4-V1",
+      "family_id": "F10",
+      "family_name": "Cross-turn reference resolution",
+      "split": "test",
+      "domain_id": "D4",
+      "domain_name": "Mock account ledger",
+      "variant_id": "V1",
+      "difficulty": "standard",
+      "status": "planned_not_authored"
+    },
+    {
+      "case_id": "F10-D4-V2",
+      "family_id": "F10",
+      "family_name": "Cross-turn reference resolution",
+      "split": "test",
+      "domain_id": "D4",
+      "domain_name": "Mock account ledger",
+      "variant_id": "V2",
+      "difficulty": "hard",
+      "status": "planned_not_authored"
+    },
+    {
+      "case_id": "F10-D5-V1",
+      "family_id": "F10",
+      "family_name": "Cross-turn reference resolution",
+      "split": "test",
+      "domain_id": "D5",
+      "domain_name": "Customer records and email",
+      "variant_id": "V1",
+      "difficulty": "standard",
+      "status": "planned_not_authored"
+    },
+    {
+      "case_id": "F10-D5-V2",
+      "family_id": "F10",
+      "family_name": "Cross-turn reference resolution",
+      "split": "test",
+      "domain_id": "D5",
+      "domain_name": "Customer records and email",
+      "variant_id": "V2",
+      "difficulty": "hard",
+      "status": "planned_not_authored"
+    },
+    {
+      "case_id": "F11-D1-V1",
+      "family_id": "F11",
+      "family_name": "Partial failure and compensation",
+      "split": "test",
+      "domain_id": "D1",
+      "domain_name": "Filesystem and repository artifacts",
+      "variant_id": "V1",
+      "difficulty": "standard",
+      "status": "planned_not_authored"
+    },
+    {
+      "case_id": "F11-D1-V2",
+      "family_id": "F11",
+      "family_name": "Partial failure and compensation",
+      "split": "test",
+      "domain_id": "D1",
+      "domain_name": "Filesystem and repository artifacts",
+      "variant_id": "V2",
+      "difficulty": "hard",
+      "status": "planned_not_authored"
+    },
+    {
+      "case_id": "F11-D2-V1",
+      "family_id": "F11",
+      "family_name": "Partial failure and compensation",
+      "split": "test",
+      "domain_id": "D2",
+      "domain_name": "Calendar and resource scheduling",
+      "variant_id": "V1",
+      "difficulty": "standard",
+      "status": "planned_not_authored"
+    },
+    {
+      "case_id": "F11-D2-V2",
+      "family_id": "F11",
+      "family_name": "Partial failure and compensation",
+      "split": "test",
+      "domain_id": "D2",
+      "domain_name": "Calendar and resource scheduling",
+      "variant_id": "V2",
+      "difficulty": "hard",
+      "status": "planned_not_authored"
+    },
+    {
+      "case_id": "F11-D3-V1",
+      "family_id": "F11",
+      "family_name": "Partial failure and compensation",
+      "split": "test",
+      "domain_id": "D3",
+      "domain_name": "Inventory and order management",
+      "variant_id": "V1",
+      "difficulty": "standard",
+      "status": "planned_not_authored"
+    },
+    {
+      "case_id": "F11-D3-V2",
+      "family_id": "F11",
+      "family_name": "Partial failure and compensation",
+      "split": "test",
+      "domain_id": "D3",
+      "domain_name": "Inventory and order management",
+      "variant_id": "V2",
+      "difficulty": "hard",
+      "status": "planned_not_authored"
+    },
+    {
+      "case_id": "F11-D4-V1",
+      "family_id": "F11",
+      "family_name": "Partial failure and compensation",
+      "split": "test",
+      "domain_id": "D4",
+      "domain_name": "Mock account ledger",
+      "variant_id": "V1",
+      "difficulty": "standard",
+      "status": "planned_not_authored"
+    },
+    {
+      "case_id": "F11-D4-V2",
+      "family_id": "F11",
+      "family_name": "Partial failure and compensation",
+      "split": "test",
+      "domain_id": "D4",
+      "domain_name": "Mock account ledger",
+      "variant_id": "V2",
+      "difficulty": "hard",
+      "status": "planned_not_authored"
+    },
+    {
+      "case_id": "F11-D5-V1",
+      "family_id": "F11",
+      "family_name": "Partial failure and compensation",
+      "split": "test",
+      "domain_id": "D5",
+      "domain_name": "Customer records and email",
+      "variant_id": "V1",
+      "difficulty": "standard",
+      "status": "planned_not_authored"
+    },
+    {
+      "case_id": "F11-D5-V2",
+      "family_id": "F11",
+      "family_name": "Partial failure and compensation",
+      "split": "test",
+      "domain_id": "D5",
+      "domain_name": "Customer records and email",
+      "variant_id": "V2",
+      "difficulty": "hard",
+      "status": "planned_not_authored"
+    },
+    {
+      "case_id": "F12-D1-V1",
+      "family_id": "F12",
+      "family_name": "Minimal side-effect plan",
+      "split": "test",
+      "domain_id": "D1",
+      "domain_name": "Filesystem and repository artifacts",
+      "variant_id": "V1",
+      "difficulty": "standard",
+      "status": "planned_not_authored"
+    },
+    {
+      "case_id": "F12-D1-V2",
+      "family_id": "F12",
+      "family_name": "Minimal side-effect plan",
+      "split": "test",
+      "domain_id": "D1",
+      "domain_name": "Filesystem and repository artifacts",
+      "variant_id": "V2",
+      "difficulty": "hard",
+      "status": "planned_not_authored"
+    },
+    {
+      "case_id": "F12-D2-V1",
+      "family_id": "F12",
+      "family_name": "Minimal side-effect plan",
+      "split": "test",
+      "domain_id": "D2",
+      "domain_name": "Calendar and resource scheduling",
+      "variant_id": "V1",
+      "difficulty": "standard",
+      "status": "planned_not_authored"
+    },
+    {
+      "case_id": "F12-D2-V2",
+      "family_id": "F12",
+      "family_name": "Minimal side-effect plan",
+      "split": "test",
+      "domain_id": "D2",
+      "domain_name": "Calendar and resource scheduling",
+      "variant_id": "V2",
+      "difficulty": "hard",
+      "status": "planned_not_authored"
+    },
+    {
+      "case_id": "F12-D3-V1",
+      "family_id": "F12",
+      "family_name": "Minimal side-effect plan",
+      "split": "test",
+      "domain_id": "D3",
+      "domain_name": "Inventory and order management",
+      "variant_id": "V1",
+      "difficulty": "standard",
+      "status": "planned_not_authored"
+    },
+    {
+      "case_id": "F12-D3-V2",
+      "family_id": "F12",
+      "family_name": "Minimal side-effect plan",
+      "split": "test",
+      "domain_id": "D3",
+      "domain_name": "Inventory and order management",
+      "variant_id": "V2",
+      "difficulty": "hard",
+      "status": "planned_not_authored"
+    },
+    {
+      "case_id": "F12-D4-V1",
+      "family_id": "F12",
+      "family_name": "Minimal side-effect plan",
+      "split": "test",
+      "domain_id": "D4",
+      "domain_name": "Mock account ledger",
+      "variant_id": "V1",
+      "difficulty": "standard",
+      "status": "planned_not_authored"
+    },
+    {
+      "case_id": "F12-D4-V2",
+      "family_id": "F12",
+      "family_name": "Minimal side-effect plan",
+      "split": "test",
+      "domain_id": "D4",
+      "domain_name": "Mock account ledger",
+      "variant_id": "V2",
+      "difficulty": "hard",
+      "status": "planned_not_authored"
+    },
+    {
+      "case_id": "F12-D5-V1",
+      "family_id": "F12",
+      "family_name": "Minimal side-effect plan",
+      "split": "test",
+      "domain_id": "D5",
+      "domain_name": "Customer records and email",
+      "variant_id": "V1",
+      "difficulty": "standard",
+      "status": "planned_not_authored"
+    },
+    {
+      "case_id": "F12-D5-V2",
+      "family_id": "F12",
+      "family_name": "Minimal side-effect plan",
+      "split": "test",
+      "domain_id": "D5",
+      "domain_name": "Customer records and email",
+      "variant_id": "V2",
+      "difficulty": "hard",
+      "status": "planned_not_authored"
+    }
+  ],
+  "caveats": [
+    "These are planned case IDs, not executable task cases.",
+    "Do not report G1 as passed until case content, tool profiles, deterministic state transitions, oracle tests, and hashes exist.",
+    "If any family-domain combination proves unnatural, revise the full family design before authoring test cases; do not move individual cases across splits."
+  ]
+}
