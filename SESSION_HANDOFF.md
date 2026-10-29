@@ -317,3 +317,17 @@ At the next session start, read `CONTINUITY_PROTOCOL.md`, `research/STATUS.md`, 
 - The 12 cases remain pilot fixtures; 108 tasks are unauthored. G1 remains PARTIAL/OPEN; G0 OPEN; G2 NOT RUN. No Agent/evolution experiment or paid API call was run.
 
 **Next concrete action:** write a task-authoring protocol and begin generating the remaining 108 tasks in controlled batches, maintaining the 60/30/30 whole-family split and one near-miss test per case. Continue pairwise lexical plus manual semantic leakage review as each batch is added. Integrate and test the payload allowlist in the actual Agent wrapper before claiming prompt non-leakage.
+
+
+## Latest handoff — controlled-suite batch 01 (2026-10-29)
+
+- **Latest code/test commit:** `d0b998116bb79277b8243d9cf9d23de171bdb93a`.
+- **CI:** [40887208453](https://github.com/yujian777555/openissue/actions/runs/40887208453) passed **36/36 tests**.
+- Added `CASE_AUTHORING_PROTOCOL_R1.md`, 12 new task cases in `authored_cases_r1.jsonl`, and 12 separate reference/near-miss fixtures in `reference_actions_r1.jsonl`. Manifest statuses mark these as `authored_batch_01_pending_review`.
+- Total authored cases are **24/120** (12 pilot + 12 batch 01); 96 remain unauthored. Split assignments are unchanged.
+- Automated batch checks cover schema/manifest agreement, passing reference trajectories, rejected near-misses, payload allowlist behavior, and the F10 context-only reference. This is programmatic verification, not independent human review.
+- The overlap screen prompted wording/mechanism refinements. Under the same tokenizer, F01-D1/F12-D1 fell from 0.300 to 0.056; F04-D1/F08-D1 from 0.300 to 0.087; F04-D1/F07-D1 from 0.238 to 0.174; F09-D3/F11-D3 from 0.290 to 0.171; F06-D3/F11-D3 from 0.259 to 0.167. Residual review flags include F06-D5/F12-D5 (0.267), F06-D3/F09-D3 (0.241), and F09-D2/F03-D2 (0.211).
+- F03 now uses an explicit event ID and exact create/read-back trace so it tests postcondition verification rather than duplicating F06's returned-ID handoff. F07 requires the exact candidate prefix; F10's cross-turn reference is asserted to remain in context.
+- **Gate status:** G1b PARTIAL/OPEN, G1c NOT DONE, G0 OPEN, G2 NOT RUN. No Agent/evolution experiment or paid API call was run.
+
+**Next concrete action:** independently review batch 01 and the residual overlap pairs, then author batch 02 (the next V1 case per family across a new domain) with the same schema/reference/near-miss checks. Do not close G1b based on CI alone.

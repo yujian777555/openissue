@@ -157,23 +157,23 @@ Continue only in `yujian777555/openissue`. Read `CONTINUITY_PROTOCOL.md`, `resea
 The 16/16 result is a software smoke test, not an Agent capability result or evidence for OSLVC. All tools are synthetic/in-memory. No real API or paid call occurred. Latest GitHub Actions run `40866638479` on commit `8e4d8f721ba4a8232e7090d6d9493b3d6c7d5f3f` passed; the job log confirms 16 tests ran and `OK` on Python 3.11. G1 remains PARTIAL/OPEN; G2 NOT RUN.
 
 ### Next tasks, in order
-1. Independently review the 12 pilot cases, expected state invariants, trace constraints, and the tool implementation for correctness.
-2. Add adversarial tests for atomicity, idempotency key conflicts/replay, invalid tool schemas, and trace-evaluator edge cases.
-3. Author the remaining 108 task cases without changing family-to-split assignment; test every case against the schema and deterministic oracle.
-4. Conduct family-template leakage review, pin final data hashes, and only then close G1b.
+1. Independently review all 24 authored cases (12 pilot + batch 01), their state/trace oracles, and the tool implementation. Explicitly adjudicate the residual lexical-overlap pairs recorded in `research/controlled_suite/PILOT_FAMILY_LEAKAGE_AUDIT_R1.md`; similarity alone is not proof of leakage.
+2. Author batch 02 as the next V1/standard case for each family, preserving manifest assignments: F01-D3-V1, F02-D4-V1, F03-D3-V1, F04-D3-V1, F05-D5-V1, F06-D4-V1, F07-D2-V1, F08-D5-V1, F09-D4-V1, F10-D2-V1, F11-D4-V1, F12-D3-V1. Add separate reference and near-miss fixtures and require CI to pass before marking the batch programmatically verified.
+3. Continue pairwise lexical screening plus manual mechanism-level review after every batch. Track planned, authored, schema-valid, oracle-verified, independently reviewed, and frozen counts separately.
+4. Integrate `agent_payload_r1.py` only when the actual Agent wrapper is introduced; then test real prompt serialization. Do not claim production prompt isolation from helper tests alone.
 5. Complete external benchmark adapter/scorer verification (tau2-bench v2.0.0 remains the external candidate; do not call its source split family-held-out). Δτ-Bench stays deferred until dataset license/revision/checksum and family overlap are verifiable.
-6. Do not start G2 or any paid API experiment until the gates are explicitly passed.
+6. Do not start G2 or any paid API experiment until G0/G1 gates are explicitly passed. Keep OSLVC/controller work separate from task-authoring and do not tune against held-out family outcomes.
 
 
 
-## Latest verified session result — family-leakage screen and payload allowlist (2026-10-29)
+## Latest verified session result — controlled-suite batch 01 (2026-10-29)
 
-Latest helper/test commit: `0a4c33a1f34f6d900c3e1d4b62821b7281736bed`. GitHub Actions run [40880783510](https://github.com/yujian777555/openissue/actions/runs/40880783510) passed **33/33 tests**.
+Latest code/test commit: `d0b998116bb79277b8243d9cf9d23de171bdb93a`. GitHub Actions run [40887208453](https://github.com/yujian777555/openissue/actions/runs/40887208453) passed **36/36 tests**.
 
-The pilot family-leakage screen found high initial lexical overlap between F04/F09 and F05/F08. F08 was revised to an amount-mismatch bill-payment precondition; F09's correct reference path now checks availability and safely stops. Under the same tokenizer, F04/F09 overlap fell from 0.357 to 0.176 and F05/F08 from 0.308 to 0.200. F06/F12 and F06/F07 remain flagged for semantic review. See `research/controlled_suite/PILOT_FAMILY_LEAKAGE_AUDIT_R1.md`.
+Batch 01 adds 12 cases (one V1/standard case per family) with deterministic initial state, state/trace oracle, one passing reference trajectory, and one rejected near-miss each. Evaluator-only fixtures are separate from task records. The manifest is unchanged except statuses for these 12 cases, now `authored_batch_01_pending_review`. Total authored = 24/120; 96 cases remain unauthored.
 
-Added `research/controlled_suite/agent_payload_r1.py`, a strict allowlist helper that emits only `user_request` and optional `context`, with unit tests. This is not yet integrated into a live Agent wrapper, so production prompt non-leakage remains unverified.
+The leakage screen triggered wording/mechanism revisions: F01-D1/F12-D1 Jaccard 0.300 → 0.056; F04-D1/F08-D1 0.300 → 0.087; F04-D1/F07-D1 0.238 → 0.174; F09-D3/F11-D3 0.290 → 0.171; F06-D3/F11-D3 0.259 → 0.167. Residual pairs are listed in the leakage audit. F03 now tests read-back using a user-specified event ID, while F06 explicitly tests returned-ID handoff. F10's reference entity remains in context and is covered by a test.
 
-G1 remains PARTIAL/OPEN: 12 revised pilot cases exist and 108 remain unauthored; full-suite leakage audit, independent human review, final hashes, and external adapter/scorer validation remain open. G0 remains OPEN; G2 remains NOT RUN. No model/evolution experiment or paid API call occurred.
+G1b remains PARTIAL/OPEN: independent human review, full-suite semantic leakage review, final hashes, and external adapter/scorer validation remain open. G1c NOT DONE; G0 OPEN; G2 NOT RUN. No Agent/evolution experiment or paid API call occurred.
 
-**Next session:** define the case-authoring protocol and begin authoring the remaining 108 tasks in controlled batches. Preserve whole-family split, require one near-miss test per case, and review cross-family similarity continuously. Integrate and test the allowlist in the actual Agent wrapper before claiming prompt isolation.
+**Next session:** independently review batch 01 and residual pairs, then author batch 02 with these IDs: F01-D3-V1, F02-D4-V1, F03-D3-V1, F04-D3-V1, F05-D5-V1, F06-D4-V1, F07-D2-V1, F08-D5-V1, F09-D4-V1, F10-D2-V1, F11-D4-V1, F12-D3-V1. Preserve the frozen split, write reference/near-miss fixtures separately, and rerun schema/oracle/leakage checks.
