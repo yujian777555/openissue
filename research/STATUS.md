@@ -274,10 +274,13 @@ The user clarified that the current task is preparation for the **master's thesi
 
 
 
-## Machine-readable controlled-suite artifacts (2026-10-29)
+## G1 implementation progress — deterministic executor and 12 pilot cases (2026-10-29)
 
-- Created `research/controlled_suite/family_manifest_r1.json`: validated JSON with 120 unique planned case IDs; split counts are train=60, validation=30, test=30. Every case is marked `planned_not_authored`; this is not an executable dataset.
-- Created `research/controlled_suite/task_case_schema_r1.json`: initial strict JSON Schema for task-case records and deterministic state-invariant oracle metadata. The prompt builder must pass only agent-visible fields.
-- JSON parse/integrity checks on the fetched manifest passed. No task case content, domain tool profiles, state-transition executor, or oracle regression tests exist yet.
-- **Next:** define/test the five deterministic domain tool profiles and state-transition/oracle layer, author representative cases per family, run oracle tests, then complete the 120 case records and hash the manifest/data.
-- G1 remains PARTIAL/OPEN; G2 NOT RUN; no LLM/API experiment has run.
+- Implemented `research/controlled_suite/world_r1.py`: 22 in-memory mock tools across D1 filesystem, D2 calendar, D3 inventory/orders, D4 synthetic ledger, and D5 CRM/email. The tool runner enforces per-domain isolation, strict argument keys/types, staged atomic state transitions, idempotency replay/conflict handling, structured call events, state-invariant scoring, and trace constraints.
+- Authored `research/controlled_suite/pilot_cases_r1.jsonl`: 12 independent synthetic representative cases, one for each family F01–F12. Pilot subset split is 6 train / 3 validation / 3 test. All 12 passed the case-schema contract validation check.
+- Added `research/controlled_suite/test_world_r1.py`: local test run `python -m unittest -v test_world_r1` passed **14/14 tests**. Tests include all 12 reference trajectories plus negative probes for incorrect final state, incorrect argument propagation, atomic failures, interval overlap, stock reservation, and idempotency.
+- Added `research/controlled_suite/README.md` and `.github/workflows/controlled-suite-smoke.yml`. A GitHub Actions workflow file exists, but the API run-list showed zero workflow runs at the time checked; remote CI is not claimed as passed.
+- Updated `research/controlled_suite/family_manifest_r1.json`: 120 unique planned IDs, 12 marked `pilot_case_authored_not_final`, and 108 still `planned_not_authored`. Split counts remain train=60, validation=30, test=30.
+- Updated `task_case_schema_r1.json` to include trace constraints (ordered successful calls, forbidden successful calls, call-count bounds, replay/error counts, and argument propagation constraints).
+
+**Gate boundary:** G1a design is specified; G1b is still PARTIAL because only 12 representative cases exist, not the full 120-task suite, and family/oracle independent review, leakage audit, and final hashes are outstanding. G1c external adapter/scorer remains NOT DONE. G1 overall PARTIAL/OPEN; G2 NOT RUN. No LLM or paid API experiment was run.
