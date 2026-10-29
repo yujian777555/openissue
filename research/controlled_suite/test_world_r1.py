@@ -577,13 +577,13 @@ class PilotCaseTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "non-empty"):
             build_agent_task_payload({"task": {"user_request": "   "}})
 
-class AuthoredBatch01Tests(unittest.TestCase):
+class AuthoredCaseTests(unittest.TestCase):
     def test_batch_cases_validate_against_schema_and_frozen_manifest(self):
         schema = json.loads((ROOT / "task_case_schema_r1.json").read_text(encoding="utf-8"))
         manifest = json.loads((ROOT / "family_manifest_r1.json").read_text(encoding="utf-8"))
         manifest_by_id = {item["case_id"]: item for item in manifest["cases"]}
         case_ids = [case["case_id"] for case in AUTHORED_CASES]
-        self.assertEqual(len(AUTHORED_CASES), 12)
+        self.assertEqual(len(AUTHORED_CASES), 24)
         self.assertEqual(len(set(case_ids)), 12)
         self.assertTrue(set(case_ids).isdisjoint(BY_ID))
         self.assertEqual(set(AUTHORED_FIXTURES), set(case_ids))
@@ -593,13 +593,20 @@ class AuthoredBatch01Tests(unittest.TestCase):
             planned = manifest_by_id[case["case_id"]]
             for field in ("family_id", "split", "domain_id", "variant_id", "difficulty"):
                 self.assertEqual(case[field], planned[field], (case["case_id"], field))
-            self.assertEqual(planned["status"], "authored_batch_01_pending_review")
+            self.assertTrue(planned["status"].startswith("authored_batch_"))
+            self.assertTrue(planned["status"].endswith("_pending_review"))
             self.assertEqual(case["tool_profile_id"], f'{case["domain_id"]}-TOOLS-R1')
             self.assertFalse(case["provenance"]["external_case_text_copied"])
             if case["family_id"] == "F10":
                 self.assertIn("context", case["task"], case["case_id"])
-                self.assertNotIn("/reports/q4-draft.md", case["task"]["user_request"])
-                self.assertIn("/reports/q4-draft.md", case["task"]["context"])
+                context_refs = [
+                    match.rstrip(".,;:")
+                    for match in re.findall(r"/[A-Za-z0-9._/-]+|\\b(?:EVT|ORD)-\\d+\\b|\\bC-\\d+\\b", case["task"]["context"])
+                ]
+                self.assertTrue(context_refs, case["case_id"])
+                for reference in context_refs:
+                    self.assertIn(reference, case["task"]["context"])
+                    self.assertNotIn(reference, case["task"]["user_request"])
         self.assertEqual(errors, [])
 
     def test_batch_reference_trajectories_pass_and_near_misses_fail(self):
