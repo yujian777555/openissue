@@ -1,0 +1,23 @@
+name: controlled-suite-smoke
+
+on:
+  push:
+    paths:
+      - "research/controlled_suite/**"
+      - ".github/workflows/controlled-suite-smoke.yml"
+  pull_request:
+    paths:
+      - "research/controlled_suite/**"
+      - ".github/workflows/controlled-suite-smoke.yml"
+
+jobs:
+  smoke:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Run deterministic tool-world tests
+        working-directory: research/controlled_suite
+        run: python -m unittest -v test_world_r1
