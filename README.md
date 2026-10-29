@@ -158,3 +158,9 @@ The first deterministic executor prototype is now present in [research/controlle
 - 16 unit/smoke tests passed in GitHub Actions on Python 3.11.
 
 The manifest still contains 120 planned IDs: 12 pilot cases are authored but not final, and 108 cases remain un-authored. This is not a completed benchmark or Agent experiment. G1 remains PARTIAL/OPEN; G2 has not started. GitHub Actions run `40866638479` passed on Python 3.11 with all 16 tests successful.
+
+
+
+## Latest executor/oracle audit (2026-10-29)
+
+The deterministic five-domain executor and 12 pilot cases already exist. The latest focused audit found and patched two evaluator correctness issues: repeated consumer argument propagation was under-checked, and Python boolean/integer equality could create false-positive invariants. See [Executor and Oracle Audit R1](research/controlled_suite/EXECUTOR_ORACLE_AUDIT_R1.md). The final test-patch CI run must be checked before treating the audit as verified. G1 remains PARTIAL/OPEN; the full 120-case suite and independent review are outstanding.
