@@ -564,3 +564,17 @@ Record consequential project decisions here so future sessions do not reopen set
 - Verification: GitHub Actions run `40866638479` on commit `8e4d8f721ba4a8232e7090d6d9493b3d6c7d5f3f` passed on Python 3.11; the job log confirms 16 tests ran and `OK`. A schema-contract validation test accepted all 12 pilot records.
 - Boundary: this verifies prototype consistency on the reference smoke trajectories, not Agent capability, evolutionary search, task-family generalization, or a thesis innovation. The remaining 108 cases, independent family/oracle review, leakage checks, final hashes, and external adapter/scorer remain outstanding.
 - Next: independently review the 12 oracle/trace contracts, add property-based or adversarial regression cases for atomicity and idempotency, then author the remaining 108 cases without changing split assignments. Do not start G2 or paid APIs yet.
+
+
+
+## D-049 — Strengthen deterministic oracle before generating more benchmark cases
+
+- Date: 2026-10-29
+- Status: Code/test patch committed; latest test CI verification pending.
+- Audit scope: `research/controlled_suite/world_r1.py` and `test_world_r1.py`.
+- Finding A: `required_arg_match` only compared the first successful consumer call. This could miss later incorrect consumer arguments. Fixed to validate every successful consumer against its nearest preceding successful producer; added adversarial regression test.
+- Finding B: Python native equality lets `True == 1`, risking false-positive state invariants. Fixed `eq` with recursive JSON-style type-sensitive equality; added regression test.
+- Commits: implementation `668fa46da501ce07005acdb994b2e51d854ca9b5`; tests `25ecb59298e7ea12983ab70b5bc569e5b3f4fc2e`.
+- CI: implementation patch passed run 40872596867. Test-patch run 40872647713 was queued at the time this record was prepared; do not call the final patch verified until it completes.
+- Decision: prioritize evaluator validity over expanding from 12 to 120 cases. The pilot can support implementation smoke testing only; it is not a final benchmark.
+- Next: confirm CI; audit idempotency scope and over-budget call accounting with counterexamples; then independently review pilot oracle/reference-action independence.
