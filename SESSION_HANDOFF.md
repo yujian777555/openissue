@@ -231,7 +231,7 @@ The design has advanced to a tested deterministic prototype. Work is confined to
 ### New files
 - `research/controlled_suite/world_r1.py`: 22 in-memory tools across five isolated domains (filesystem, calendar, inventory/orders, synthetic ledger, CRM/email). No external side effects. Implements strict argument checks, staged atomic transitions, idempotency, event traces, state invariants, and trace constraints.
 - `research/controlled_suite/pilot_cases_r1.jsonl`: 12 independently authored representative cases, one for each family F01–F12; 6 train / 3 validation / 3 test.
-- `research/controlled_suite/test_world_r1.py`: 14 standard-library tests.
+- `research/controlled_suite/test_world_r1.py`: 16 standard-library tests.
 - `research/controlled_suite/task_case_schema_r1.json`: updated with trace-constraint fields.
 - `research/controlled_suite/family_manifest_r1.json`: 120 planned IDs; 12 marked `pilot_case_authored_not_final`, 108 remain `planned_not_authored`.
 - `research/controlled_suite/README.md`: instructions/scope.
