@@ -151,7 +151,7 @@ Continue only in `yujian777555/openissue`. Read `CONTINUITY_PROTOCOL.md`, `resea
 - `research/controlled_suite/README.md` and `.github/workflows/controlled-suite-smoke.yml`.
 
 ### Do not overclaim
-The 14/14 result is a local software smoke test, not an Agent capability result or evidence for OSLVC. All tools are synthetic/in-memory. No real API or paid call occurred. GitHub Actions run `40865732953` on commit `8a9c1403ac60ba45933f6489e3b7410afda65bf9` passed; the job log confirms 14 tests ran and `OK` on Python 3.11. G1 remains PARTIAL/OPEN; G2 NOT RUN.
+The 14/14 result is a local software smoke test, not an Agent capability result or evidence for OSLVC. All tools are synthetic/in-memory. No real API or paid call occurred. Latest GitHub Actions run `40866638479` on commit `8e4d8f721ba4a8232e7090d6d9493b3d6c7d5f3f` passed; the job log confirms 16 tests ran and `OK` on Python 3.11. G1 remains PARTIAL/OPEN; G2 NOT RUN.
 
 ### Next tasks, in order
 1. Independently review the 12 pilot cases, expected state invariants, trace constraints, and the tool implementation for correctness.
