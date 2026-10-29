@@ -12,6 +12,76 @@ from world_r1 import World, evaluate_case, run_actions, tool_profile  # noqa: E4
 CASES = [json.loads(line) for line in (ROOT / "pilot_cases_r1.jsonl").read_text(encoding="utf-8").splitlines() if line.strip()]
 BY_ID = {case["case_id"]: case for case in CASES}
 
+def _resolve_ref(root, ref):
+    current = root
+    for token in ref.removeprefix("#/").split("/"):
+        token = token.replace("~1", "/").replace("~0", "~")
+        current = current[token]
+    return current
+
+
+def _validate_schema_subset(value, spec, path, root, errors):
+    """Validate the JSON Schema keywords used by our pinned case schema."""
+    if "$ref" in spec:
+        _validate_schema_subset(value, _resolve_ref(root, spec["$ref"]), path, root, errors)
+        return
+    if "const" in spec and value != spec["const"]:
+        errors.append(f"{path}: const mismatch")
+    if "enum" in spec and value not in spec["enum"]:
+        errors.append(f"{path}: enum mismatch")
+    expected_types = spec.get("type")
+    if expected_types:
+        if not isinstance(expected_types, list):
+            expected_types = [expected_types]
+        def matches(kind):
+            if kind == "object":
+                return isinstance(value, dict)
+            if kind == "array":
+                return isinstance(value, list)
+            if kind == "string":
+                return isinstance(value, str)
+            if kind == "integer":
+                return type(value) is int
+            if kind == "number":
+                return type(value) in (int, float)
+            if kind == "boolean":
+                return type(value) is bool
+            if kind == "null":
+                return value is None
+            return False
+        if not any(matches(kind) for kind in expected_types):
+            errors.append(f"{path}: type mismatch, expected {expected_types}")
+            return
+    if isinstance(value, str):
+        if len(value) < spec.get("minLength", 0):
+            errors.append(f"{path}: below minLength")
+        if "pattern" in spec and not re.search(spec["pattern"], value):
+            errors.append(f"{path}: pattern mismatch")
+    if type(value) in (int, float):
+        if value < spec.get("minimum", float("-inf")):
+            errors.append(f"{path}: below minimum")
+        if value > spec.get("maximum", float("inf")):
+            errors.append(f"{path}: above maximum")
+    if isinstance(value, list):
+        if len(value) < spec.get("minItems", 0):
+            errors.append(f"{path}: below minItems")
+        if "items" in spec:
+            for index, item in enumerate(value):
+                _validate_schema_subset(item, spec["items"], f"{path}[{index}]", root, errors)
+    if isinstance(value, dict):
+        for key in spec.get("required", []):
+            if key not in value:
+                errors.append(f"{path}: missing required key {key}")
+        properties = spec.get("properties", {})
+        for key, item in value.items():
+            if key in properties:
+                _validate_schema_subset(item, properties[key], f"{path}.{key}", root, errors)
+            elif spec.get("additionalProperties") is False:
+                errors.append(f"{path}: unexpected key {key}")
+            elif isinstance(spec.get("additionalProperties"), dict):
+                _validate_schema_subset(item, spec["additionalProperties"], f"{path}.{key}", root, errors)
+
+
 ACTIONS = {
     "F01-D1-V1": [
         {"tool": "fs.read_file", "args": {"path": "/docs/report.txt"}},
@@ -151,6 +221,13 @@ class ToolProfileTests(unittest.TestCase):
 
 
 class PilotCaseTests(unittest.TestCase):
+    def test_pilot_records_validate_against_case_schema(self):
+        schema = json.loads((ROOT / "task_case_schema_r1.json").read_text(encoding="utf-8"))
+        errors = []
+        for case in CASES:
+            _validate_schema_subset(case, schema, case["case_id"], schema, errors)
+        self.assertEqual(errors, [])
+
     def test_manifest_of_pilot_cases_has_all_twelve_families_and_unique_ids(self):
         self.assertEqual(len(CASES), 12)
         self.assertEqual(len(BY_ID), 12)
