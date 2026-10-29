@@ -201,7 +201,7 @@ The following artifacts now exist:
 - `research/controlled_suite/world_r1.py`: 22 deterministic tool definitions across five isolated in-memory domains; schema/type validation; staged state transitions; idempotency protection; structured event traces; JSON-Pointer state oracle; and trace-constraint evaluator.
 - `research/controlled_suite/test_world_r1.py`: 14 standard-library unit/smoke tests.
 - `research/controlled_suite/README.md`: run instructions and scope/safety notes.
-- `.github/workflows/controlled-suite-smoke.yml`: CI workflow definition for changes to the controlled suite. No GitHub Actions run was visible in the run-list check at the time of this update, so remote CI is **not** claimed as passed.
+- `.github/workflows/controlled-suite-smoke.yml`: CI workflow definition for changes to the controlled suite. GitHub Actions run `40865732953` on commit `8a9c1403ac60ba45933f6489e3b7410afda65bf9` completed successfully; its job log confirms `Ran 14 tests` and `OK. This verifies the committed prototype on Python 3.11, not the full 120-task benchmark.
 
 Local verification performed against the implementation and representative case fixture: `python -m unittest -v test_world_r1` — **14 tests passed**. The tests include all 12 reference smoke trajectories and negative probes for wrong final state and wrong argument propagation.
 
