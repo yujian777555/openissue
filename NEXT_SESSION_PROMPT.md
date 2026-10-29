@@ -107,3 +107,19 @@ The official PMLR ICML 2026 abstract explicitly covers a seven-strategy evolutio
 5. End with repository updates and remote verification under `CONTINUITY_PROTOCOL.md`.
 
 Detailed audit: `research/EVOMAS_HIL_METHOD_AUDIT_R1.md`; decision D-044 in `research/DECISION_LOG.md`.
+
+
+
+## Latest G1 protocol update — 2026-10-29
+
+Read `research/G1_TASK_FAMILY_SPLIT_PROTOCOL_R1.md` before continuing.
+
+**Primary controlled suite design:** 120 original deterministic tasks across five mock domains and twelve global task families, two variants each. Whole-family split: train F01–F06 = 60 tasks; validation F07–F09 = 30; test F10–F12 = 30. These task artifacts are not authored yet; do not claim the benchmark is complete. Tool-Veritas's bundled 70 cases lack family labels/splits and are not the thesis benchmark; original task content should be authored from scratch.
+
+**Pinned external candidate:** tau2-bench v2.0.0 commit `989d3285ae669e49503324bdb9981bf14fccedeb`; exact source test IDs for airline (20) and retail (40) are in the protocol. This is a custom source-test evaluation, not official `text-v1` leaderboard scoring. Audit DB/state and judge-based reward components separately.
+
+**New candidate to audit, not yet selected:** Delta tau benchmark (arXiv:2610.34238, posted 2026-10-25), 1,588 tasks, 42 domains, six tool ecosystem versions, 1,191 train / 397 test. Code repo says MIT, but separately hosted dataset's exact license/revision/checksum and task-family leakage are unverified. Audit these briefly; do not let it cause scope drift.
+
+**Gate states:** G0 OPEN; G1a design provisionally specified; G1b task artifacts/oracle tests/hash NOT DONE; G1c external adapter/scorer and Delta tau decision NOT DONE; G1 overall PARTIAL/OPEN; G2 NOT RUN. No tasks were generated/executed, no adapter smoke test, and no model/API experiment was run in the latest design round.
+
+**Next concrete action:** (1) inspect Delta tau dataset license/revision/checksum and train/test family-overlap evidence; (2) explicitly select or defer it; (3) implement the original task schema and deterministic oracle tests, then generate the 120-case manifest. Do not start formal OSLVC experiments or paid API calls before gates pass. At session end, update all continuity files and verify remote commits per `CONTINUITY_PROTOCOL.md`.
