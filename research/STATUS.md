@@ -284,3 +284,19 @@ The user clarified that the current task is preparation for the **master's thesi
 - Updated `task_case_schema_r1.json` to include trace constraints (ordered successful calls, forbidden successful calls, call-count bounds, replay/error counts, and argument propagation constraints).
 
 **Gate boundary:** G1a design is specified; G1b is still PARTIAL because only 12 representative cases exist, not the full 120-task suite, and family/oracle independent review, leakage audit, and final hashes are outstanding. G1c external adapter/scorer remains NOT DONE. G1 overall PARTIAL/OPEN; G2 NOT RUN. No LLM or paid API experiment was run.
+
+
+
+## Executor/oracle audit R1 — 2026-10-29
+
+The previous session state was refreshed from the current remote repository. Contrary to the older planning notes, the five in-memory tool domains, executor, 12 pilot cases, and unit-test workflow already exist.
+
+A focused static audit found and patched two evaluator correctness defects:
+1. `required_arg_match` checked only the first successful consumer call, so a later incorrect argument could go unnoticed after an earlier correct call. It now checks every successful consumer against the nearest preceding successful producer.
+2. The state-oracle `eq` operator used Python equality, under which `True == 1`; it now uses recursive JSON-style type-sensitive equality.
+
+Added two adversarial regression tests in `test_world_r1.py` and documented the findings in `research/controlled_suite/EXECUTOR_ORACLE_AUDIT_R1.md`. Code commit: `668fa46da501ce07005acdb994b2e51d854ca9b5`; test commit: `25ecb59298e7ea12983ab70b5bc569e5b3f4fc2e`. The code-patch CI passed (run 40872596867); the test-patch workflow (run 40872647713) was queued at audit-note creation and must be checked before declaring the final patch verified.
+
+**Gate boundary:** G1a design specified; G1b PARTIAL (12 pilot cases only, full 120 cases not authored; independent family/oracle review and final hashes outstanding); G1c external adapter/scorer NOT DONE; G1 PARTIAL/OPEN; G2 NOT RUN. No LLM/API experiment was run.
+
+**Next:** verify the latest CI run and test count; then continue the independent audit with (a) idempotency-key scope, (b) over-budget attempt accounting, and (c) case-oracle/reference-action independence. Fix only defects demonstrated by counterexamples, with regression tests.
