@@ -71,3 +71,13 @@ Wei, Y., Huang, Z., Xu, R., Wang, H., & Xing, W. W. (2026). *EvoMAS: Heuristics 
 - Search indexing returned the earlier manuscript abstract, but this does not substitute for the final paper's method section, equations, appendix, or ablations.
 - **Updated conclusion:** G0 is still OPEN. This is an access/retrieval blocker, not evidence that the paper lacks the proposed mechanism. Do not infer absence of scale-conditioned lineage credit.
 - Next acceptable routes: obtain the PDF from a user-provided local copy, an author-provided mirror/source, or a browser session with legitimate access; then inspect the algorithm, equations, and ablations. Do not use the older anonymous code artifact as if it were verified final-version code.
+
+
+
+## Retrieval re-check and next action (2026-10-29)
+
+- Rechecked the official PMLR final record: https://proceedings.mlr.press/v306/wei26m.html. It confirms the ICML 2026 final publication and exposes the official PDF URL: https://raw.githubusercontent.com/mlresearch/v306/main/assets/wei26m/wei26m.pdf.
+- The web reader still rejects the PDF as `application/octet-stream`; the linked OpenReview page redirects to a browser-verification challenge. These are retrieval limitations, not evidence about the final paper's method.
+- The accessible earlier anonymous manuscript is not a substitute for the final ICML/PMLR version. Any use of it must be explicitly labelled **preprint-only / final-version unverified**; do not use it to conclude that the final version lacks an equivalent mechanism.
+- **G0 remains OPEN.** Immediate action: make a bounded attempt to obtain the final PDF or a verified author-hosted copy. If it remains inaccessible, perform a clearly labelled provisional equation/algorithm audit of the accessible manuscript while keeping the final-version gap explicit, and advance G1 (task-family split/scorer protocol) in parallel rather than stalling all proposal work.
+- No experiment, code reproduction, or paid API call was started in this retrieval check.
