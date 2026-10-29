@@ -174,3 +174,8 @@ The executor and 12 pilot cases already exist. This session patched two oracle d
 Commits: implementation `668fa46da501ce07005acdb994b2e51d854ca9b5`; regression tests `25ecb59298e7ea12983ab70b5bc569e5b3f4fc2e`. Code patch CI run 40872596867 passed. **First inspect latest run 40872647713** and verify final status/test count; do not claim the final test patch passed until confirmed.
 
 Then continue the independent audit using reproducible counterexamples for idempotency-key scope, over-budget call accounting, and oracle/reference-action independence. Fix only confirmed defects and add regression tests. Do not begin paid API calls or formal OSLVC experiments. G1 remains PARTIAL/OPEN: only 12 pilot cases exist; 120-case suite, independent review, and final hashes are outstanding. End by updating status, decision log if needed, handoff, this prompt, README links as needed, and verify latest remote commit/CI.
+
+
+### Oracle audit CI is now verified (2026-10-29)
+
+The test-patch run [40872647713](https://github.com/yujian777555/openissue/actions/runs/40872647713) completed successfully; logs confirm 19/19 tests, including both new regressions. A later controlled-suite documentation run [40872785959](https://github.com/yujian777555/openissue/actions/runs/40872785959) also passed. Do not treat the final test patch as pending anymore. Continue next with budget-accounting and oracle/reference-action independence audits, adding counterexample-driven tests. G1 remains PARTIAL/OPEN.
