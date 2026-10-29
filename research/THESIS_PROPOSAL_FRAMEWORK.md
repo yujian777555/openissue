@@ -268,3 +268,17 @@ The official ICML/PMLR EvoMAS record confirms a seven-strategy portfolio, adapti
 Distinguish two ICML 2026 papers with the same name. Hu et al., *EvoMAS: Evolutionary Generation of Multi-Agent Systems*, covers execution-trace-conditioned mutation of one component type per step, topology-inheriting crossover, task-relevance/performance-history selection, reward-based pool updates, and cross-query experience memory. Wei et al., *EvoMAS: Heuristics in the Loop*, covers a seven-strategy portfolio, adaptive strategy selection, role-level evolution, curriculum, and reflective meta-control. Cite them separately.
 
 Feedback-guided mutation, crossover, configuration evolution, experience memory, and adaptive operator portfolios cannot be standalone innovations. The only current narrow hypothesis is whether operator continuation value should be estimated conditional on realized behavior displacement under matched parent/task/state comparisons. This remains provisional until the Wei HIL mechanism is verified and strong baselines reject simpler explanations. See research/EVOMAS_CONFIG_EVOLUTION_METHOD_AUDIT_R1.md.
+
+
+
+
+## 15. Thesis feasibility and conditional research gates (2026-10-29)
+
+The current thesis route is considered feasible enough to continue proposal preparation, but the specific OSLVC mechanism is not yet established. The latest discussion used these **subjective planning ranges only**: overall thesis completion 75–85%; OSLVC becoming the final effective algorithmic contribution 35–50%; 2–3 independent defensible innovation points 50–65%; 2–3 small-paper submissions 40–60%. These are not calibrated probabilities, experimental results, or publication forecasts and must be revised when the validation gates produce evidence.
+
+- **G0 (OPEN):** verify the final EvoMAS: Heuristics in the Loop mechanism and closest prior art at equation/ablation level.
+- **G1 (PARTIAL/OPEN):** finalize data/license review, task-family split, scorer checks, and benchmark version.
+- **G2 (NOT RUN):** local controlled pilot to test operator/strength displacement heterogeneity and whether displacement-conditioned lineage credit adds value.
+- Do not begin large/paid API experiments before G0/G1 are closed. Static EA HPO must precede adaptive-control claims.
+- If OSLVC fails, revise or remove the conditional-credit component; retain the broader thesis frame only if a distinct alternative EC mechanism can be supported. Do not manufacture three innovations by splitting one method.
+- Full continuity record: `research/FEASIBILITY_AND_NEXT_GATE_2026-10-29.md`.
