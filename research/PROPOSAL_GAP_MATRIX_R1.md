@@ -123,3 +123,13 @@ Not allowed yet:
 The full-text audit of *EvoMAS: Evolutionary Generation of Multi-Agent Systems* (Hu et al., ICML 2026; https://arxiv.org/html/2602.06511) confirms a structured MAS configuration space, execution-trace-conditioned mutation of one component type per step, topology-inheriting crossover, task-relevance/performance-history-based parent selection, reward combining task metrics and token/latency cost, reward-based pool updates, and cross-query experience memory.
 
 Do not claim generic feedback-conditioned mutation/crossover, experience memory, or reward-based parent acceptance as novel. The official code uses CC BY-NC 4.0, so preserve attribution and non-commercial terms. Detailed audit: research/EVOMAS_CONFIG_EVOLUTION_METHOD_AUDIT_R1.md.
+
+
+
+## Provisional EvoMAS HIL mechanism audit — 2026-10-29
+
+The official ICML 2026 abstract confirms seven strategies, adaptive strategy selection, role-level evolution, curriculum, and the Cyber Creator's reflective update of evolutionary rules/strategies. The indexed earlier anonymous manuscript additionally describes a historical log (G_i,F_i,A_i), LLM preference selection using performance/structure/rule compliance, structural graph edit distance, and exponential strategy-weight updates. Final-version equations/ablations remain unverified because the official PDF/OpenReview route is not currently readable.
+
+**Gap-matrix correction:** remove or explicitly reject any broad claim based on adaptive operator choice, multi-operator portfolios, historical strategy reward, meta-reflection, role evolution, curriculum, or graph edit distance. The narrow OSLVC question remains only a candidate: does executed-trace behavior displacement add incremental predictive/search value beyond the above mechanisms and ELMER/LVPG/classical AOS? Treat this as a falsifiable gap, not a novelty statement.
+
+Required direct controls and rejection criteria are in [EVOMAS_HIL_PROVISIONAL_MECHANISM_AUDIT_2026-10-29.md](EVOMAS_HIL_PROVISIONAL_MECHANISM_AUDIT_2026-10-29.md). G0 remains OPEN until the final ICML version is checked; G1 remains PARTIAL/OPEN; G2 has not run.
