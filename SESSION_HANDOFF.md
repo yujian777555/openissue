@@ -250,3 +250,19 @@ The design has advanced to a tested deterministic prototype. Work is confined to
 
 ### Next concrete action
 Independently review the 12 pilot oracle and trace contracts, add adversarial regression cases for atomicity/idempotency/trace evaluation, then author the remaining 108 cases while keeping family split fixed. Do not start G2 or paid API calls before G1 is closed. Preserve the τ² source-split similarity warning and Δτ-Bench deferral.
+
+
+
+## Latest session handoff — executor/oracle audit R1 (2026-10-29)
+
+Current project remains only `yujian777555/openissue`. Re-read the live repository rather than trusting the earlier chat summary: the deterministic executor and 12 pilot cases already exist in `research/controlled_suite/`.
+
+This session statically audited the evaluator and patched two concrete correctness issues:
+- `required_arg_match` previously examined only the first successful consumer. It now checks every successful consumer against the nearest prior successful producer. Added a regression where the first copy is correct and the second copy is wrong.
+- `eq` invariants previously used Python equality and could treat `True` as integer `1`. Added recursive JSON-style equality and a regression test.
+
+Audit note: `research/controlled_suite/EXECUTOR_ORACLE_AUDIT_R1.md`. Code commit `668fa46da501ce07005acdb994b2e51d854ca9b5`; test commit `25ecb59298e7ea12983ab70b5bc569e5b3f4fc2e`. Code patch CI run 40872596867 passed. Test-patch CI run 40872647713 was queued at the time the audit note was written; first check that it completed and inspect the exact test count before claiming final verification.
+
+**Gate state:** G1a design specified; G1b PARTIAL (12 pilot cases, not 120; independent review and final hashes pending); G1c external adapter/scorer NOT DONE; G1 PARTIAL/OPEN; G2 NOT RUN. No LLM/API experiment or paid call occurred.
+
+**Next action:** verify latest CI; then continue focused executor audit with counterexamples for (1) idempotency-key scope across tools, (2) repeated over-budget call accounting, and (3) oracle/reference-action independence. Only patch demonstrated defects and add regression tests. After these pass, expand pilot cases cautiously toward the 120-task family-held-out suite.
