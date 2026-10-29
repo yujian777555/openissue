@@ -241,7 +241,7 @@ The design has advanced to a tested deterministic prototype. Work is confined to
 - Local command `python -m unittest -v test_world_r1`: **14/14 passed**.
 - Schema-contract validation: all 12 pilot records passed.
 - Manifest structure: 120 unique IDs; split counts 60 / 30 / 30.
-- GitHub Actions run-list showed zero workflow runs at the last check, so remote CI is not claimed as passed.
+- GitHub Actions run `40865732953` on commit `8a9c1403ac60ba45933f6489e3b7410afda65bf9` completed successfully; the job log confirms 14 tests ran and `OK` on Python 3.11.
 
 ### Current gates
 - G1a design: specified.
