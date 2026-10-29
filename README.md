@@ -164,3 +164,14 @@ The manifest still contains 120 planned IDs: 12 pilot cases are authored but not
 ## Latest executor/oracle audit (2026-10-29)
 
 The deterministic five-domain executor and 12 pilot cases already exist. The latest focused audit found and patched two evaluator correctness issues: repeated consumer argument propagation was under-checked, and Python boolean/integer equality could create false-positive invariants. See [Executor and Oracle Audit R1](research/controlled_suite/EXECUTOR_ORACLE_AUDIT_R1.md). The final test-patch CI run must be checked before treating the audit as verified. G1 remains PARTIAL/OPEN; the full 120-case suite and independent review are outstanding.
+
+
+## G1 controlled-suite audit R2 — 2026-10-29
+
+The deterministic controlled-suite prototype is implemented and under validity audit: five isolated mock domains, 22 tools, and 12 revised pilot cases. The planned 120-case manifest is not a completed benchmark; 108 cases remain unauthored.
+
+- [Executor/oracle audit R2](research/controlled_suite/EXECUTOR_ORACLE_AUDIT_R2.md): budget/event accounting, per-tool idempotency, dynamic-ID-independent oracles, ordered call patterns, and side-effect checks.
+- [Controlled-suite README](research/controlled_suite/README.md): implementation scope, test instructions, and status boundary.
+- CI run [40877523811](https://github.com/yujian777555/openissue/actions/runs/40877523811) passed 29/29 tests on commit `14ac8634607094b720e3c96ad1bd9a786a9386f5`.
+
+**Gate boundary:** G1 remains PARTIAL/OPEN; independent human review, family-template leakage review, the remaining 108 cases, final hashes, and external scorer validation remain outstanding. G0 remains OPEN and G2 has not run. No Agent/evolution experiment or paid API call has been performed.

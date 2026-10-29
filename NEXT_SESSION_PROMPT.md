@@ -22,23 +22,26 @@ PROJECT BOUNDARIES:
 CURRENT VERIFIED PROJECT STATE (2026-10-29):
 - Working title only (not final): 《面向复杂工具任务的大语言模型智能体策略自适应演化优化方法研究》.
 - Overall stage: thesis proposal / opening-report framing; no final thesis topic, algorithm, or innovation point is approved.
-- Current candidate: OSLVC-R1, scale-conditioned lineage-value credit. It is a falsifiable hypothesis, not a confirmed novelty claim.
-- Narrow hypothesis: raw operator reward or lineage return may confound realized Agent behavior displacement with operator-specific continuation value. Test whether estimating continuation value conditional on realized displacement, using matched parent/task/state comparisons and equal descendant-evaluation opportunities, improves control decisions and downstream task success.
+- Current method candidate: OSLVC-R1, scale-conditioned lineage-value credit. It remains a falsifiable hypothesis, not a confirmed novelty claim.
 - Prior art already covers substantial ingredients: ELMER (behavior-grounded mutation scale), LVPG / The Time Value of Evolution (adaptive radius and lineage value), classical adaptive operator selection/self-adaptation, EvoTool (blame-aware targeted mutation and diversity-aware selection), and EvoMAS methods. Do not claim these ingredients alone as novel.
-- Gate G0 = OPEN: the final ICML/PMLR method of EvoMAS: Heuristics in the Loop has not been fully verified at state/action/reward/credit/update-equation level. Do not infer absence of equivalent mechanisms from the abstract or an earlier manuscript.
-- Gate G1 = PARTIAL/OPEN: benchmark version, licenses, task-family-held-out splits, task IDs, and scorer validity are not all locked.
-- Gate G2 = NOT RUN: no local mechanism pilot has been run. No formal OSLVC experiment or paid API experiment has been performed.
-- Benchmark guardrails: EvoTool is a direct baseline, but its bundled tau-bench demo split is smoke-test-only. Tool-Veritas is a local execution substrate, not a sufficient ready-made thesis benchmark. Tau2/tau3 is only external validation after exact task/split/scorer audit. Do not call the full frozen text-v1 manifest held-out after evolution on source-train tasks. Report goal-state completion separately from tool validity and conversational quality.
+- G0 = OPEN: the final ICML/PMLR method of EvoMAS: Heuristics in the Loop has not been fully verified at state/action/reward/credit/update-equation level. Retrieval failure or abstract-level silence is not evidence of absence.
+- G1a = design specified; G1b = PARTIAL/OPEN; G1c = NOT DONE; G1 overall = PARTIAL/OPEN. The local suite has five isolated mock domains, 22 deterministic tools, and 12 revised pilot cases. The 120-case manifest is planned, but 108 cases remain unauthored. Independent human review, family-template leakage audit, final hashes, and external adapter/scorer validation remain outstanding.
+- Latest implementation commit: `14ac8634607094b720e3c96ad1bd9a786a9386f5`. GitHub Actions run `40877523811` passed **29/29 tests**. Read `research/controlled_suite/EXECUTOR_ORACLE_AUDIT_R2.md` for findings.
+- R2 fixes: explicit budget-attempt/event accounting; strict integer budget validation; per-tool idempotency keys; type-safe oracle operators; ordered tool/status/argument trace constraints; dynamic-ID-independent booking/transfer/email oracles; side-effect guards; F10 prior-turn context; and explicit F07 state-only scoring limitation.
+- G2 = NOT RUN: no local OSLVC mechanism pilot, formal Agent/evolution experiment, or paid API call has been performed.
+- Benchmark guardrails: EvoTool is a direct baseline, but its bundled tau-bench demo split is smoke-test-only. Tool-Veritas is a local execution substrate, not a sufficient ready-made thesis benchmark. Tau2/tau3 is external validation only after exact task/split/scorer audit. Do not call the full frozen text-v1 manifest held-out after evolution on source-train tasks. Report goal-state completion separately from tool validity and conversational quality.
 - Static EA tuning must precede adaptive-control claims. Required comparisons include tuned static EA, EvoTool or a faithful component-level baseline, classical AOS (including diversity/parent-distance credit), ELMER-style scale-only control, LVPG-style lineage-only control, and naive joint operator-strength control with raw lineage return.
 - Subjective planning estimates recorded in the repository (not calibrated probabilities or empirical results): thesis completion 75–85%; OSLVC becoming the final effective method 35–50%; 2–3 independent defensible innovations 50–65%; 2–3 small-paper submissions 40–60%. Do not present these as measured facts.
 
 MANDATORY FIRST TASK:
-1. Read the latest versions of research/FEASIBILITY_AND_NEXT_GATE_2026-10-29.md, research/STATUS.md, research/DECISION_LOG.md, SESSION_HANDOFF.md, research/THESIS_PROPOSAL_FRAMEWORK.md, research/THESIS_PAPER_MAP.md, research/OSLVC_R1_SCALE_CONDITIONED_LINEAGE_CREDIT.md, research/EVOMAS_HIL_METHOD_AUDIT_R1.md, research/PROPOSAL_GAP_MATRIX_R1.md, and research/BENCHMARK_AND_BASELINE_DECISION_R2.md.
-2. Check recent commits and any new research files before continuing.
-3. Continue the next incomplete action in the latest STATUS.md and SESSION_HANDOFF.md. Current priority: (a) obtain/read a legitimate readable final EvoMAS: Heuristics in the Loop paper or verified author source and complete the mechanism-level prior-art comparison (G0); (b) lock a controlled task-family split, license/version manifest, and scorer checks plus an audited external subset (G1).
-4. Do not start the controller or paid API experiments until G0/G1 are sufficiently closed.
-5. If G0/G1 pass, run only a small no-paid-call local pilot to test whether operators/strength settings have materially different realized displacement distributions and whether displacement-conditioned operator credit adds predictive/search value. If the conditional residual is negligible or unstable, revise/drop OSLVC rather than defending it by name.
-6. After meaningful work, update the repository according to CONTINUITY_PROTOCOL.md, including this prompt, and verify the resulting commit(s).
+1. Read the latest `CONTINUITY_PROTOCOL.md`, `research/STATUS.md`, `research/DECISION_LOG.md`, `SESSION_HANDOFF.md`, this prompt, `research/controlled_suite/EXECUTOR_ORACLE_AUDIT_R2.md`, `research/controlled_suite/task_case_schema_r1.json`, `research/controlled_suite/pilot_cases_r1.jsonl`, and `research/controlled_suite/family_manifest_r1.json`.
+2. Inspect recent commits and confirm the latest CI result before continuing.
+3. Conduct an independent per-case audit of all 12 pilot cases. For each, construct at least one plausible near-miss trajectory and verify that the oracle rejects it; check that valid trajectories are not rejected because of arbitrary agent-generated IDs or idempotency keys. Record any remaining gaps and add regression tests.
+4. Audit family-template leakage and confirm that evaluator-only fields (`initial_state`, `oracle`, split/family metadata, trace constraints, provenance, and reference actions) are not exposed in the Agent prompt. Do not claim conversational clarification quality from state-only scoring.
+5. After the 12-case audit is accepted, author the remaining 108 original cases while preserving the fixed whole-family split: train F01–F06, validation F07–F09, test F10–F12. Validate all cases against the schema and deterministic oracle, then freeze hashes.
+6. Make at most one bounded attempt to obtain a readable final EvoMAS: Heuristics in the Loop paper or verified author copy. If blocked, keep G0 OPEN and proceed with G1; do not spend unlimited time retrying the same inaccessible route.
+7. Do not start the controller, formal OSLVC experiment, or paid API experiment until G0/G1 are sufficiently closed. If the gates pass, run only a small no-paid-call local pilot with matched parent/task/state probes and equal descendant-evaluation counts. Revise/drop OSLVC if displacement-conditioned credit adds no stable predictive or search value.
+8. At the end of substantive work, update the relevant research note, `research/STATUS.md`, `research/DECISION_LOG.md` if needed, `SESSION_HANDOFF.md`, and this prompt. Commit to `main`, re-fetch changed files, verify the commit and CI, and report exact paths/SHA.
 
 Before making major recommendations, report the exact current stage, verified decisions, open gates, and next concrete action. Do not ask the user to repeat information already recorded in the repository.
 ```
@@ -163,19 +166,12 @@ The 16/16 result is a software smoke test, not an Agent capability result or evi
 
 
 
-## Latest next-session task — executor/oracle audit R1 (2026-10-29)
+## Latest verified session result — executor/oracle audit R2 (2026-10-29)
 
-Work only in `yujian777555/openissue`; do not mix in other projects. First read `CONTINUITY_PROTOCOL.md`, current `research/STATUS.md`, `research/DECISION_LOG.md`, `SESSION_HANDOFF.md`, and `research/controlled_suite/EXECUTOR_ORACLE_AUDIT_R1.md`.
+The latest implementation commit is `14ac8634607094b720e3c96ad1bd9a786a9386f5`. GitHub Actions run [40877523811](https://github.com/yujian777555/openissue/actions/runs/40877523811) passed **29/29 tests**.
 
-The executor and 12 pilot cases already exist. This session patched two oracle defects:
-1. `required_arg_match` now checks every successful consumer against the nearest preceding successful producer; previously only the first consumer was checked.
-2. The `eq` oracle now uses JSON-style type-sensitive equality so booleans cannot satisfy integer invariants (Python's `True == 1` pitfall).
+The R2 audit corrected budget/event accounting, strict budget-type validation, per-tool idempotency scope, JSON-safe invariant operators, and ordered call patterns. It also removed dependence on reference-only generated IDs in F04/F05/F06, moved F10's order ID into prior-turn context, tightened state invariants against side effects, and documented that F07 does not score natural-language clarification. See `research/controlled_suite/EXECUTOR_ORACLE_AUDIT_R2.md`.
 
-Commits: implementation `668fa46da501ce07005acdb994b2e51d854ca9b5`; regression tests `25ecb59298e7ea12983ab70b5bc569e5b3f4fc2e`. Code patch CI run 40872596867 passed. **First inspect latest run 40872647713** and verify final status/test count; do not claim the final test patch passed until confirmed.
+G1 remains PARTIAL/OPEN: only 12 revised pilot cases exist; the other 108 tasks, independent human review, family-template leakage audit, final hashes, and external adapter/scorer audit remain unfinished. G0 remains OPEN; G2 remains NOT RUN. No model/evolution experiment or paid API call occurred.
 
-Then continue the independent audit using reproducible counterexamples for idempotency-key scope, over-budget call accounting, and oracle/reference-action independence. Fix only confirmed defects and add regression tests. Do not begin paid API calls or formal OSLVC experiments. G1 remains PARTIAL/OPEN: only 12 pilot cases exist; 120-case suite, independent review, and final hashes are outstanding. End by updating status, decision log if needed, handoff, this prompt, README links as needed, and verify latest remote commit/CI.
-
-
-### Oracle audit CI is now verified (2026-10-29)
-
-The test-patch run [40872647713](https://github.com/yujian777555/openissue/actions/runs/40872647713) completed successfully; logs confirm 19/19 tests, including both new regressions. A later controlled-suite documentation run [40872785959](https://github.com/yujian777555/openissue/actions/runs/40872785959) also passed. Do not treat the final test patch as pending anymore. Continue next with budget-accounting and oracle/reference-action independence audits, adding counterexample-driven tests. G1 remains PARTIAL/OPEN.
+**Next session:** independently test all 12 cases with plausible near-miss trajectories; check for family-template leakage and evaluator-data exposure; then author the remaining 108 cases without changing the whole-family split. Keep all work in `yujian777555/openissue`; do not mix other repositories.

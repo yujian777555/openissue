@@ -3,7 +3,7 @@
 **Date:** 2026-10-29  
 **Repository:** `yujian777555/openissue`  
 **Scope:** Budget/event accounting, idempotency-key scope, task-oracle specificity, dynamic identifiers, and adversarial trace evaluation.  
-**Status at implementation commit:** Changes committed; GitHub Actions verification pending.  
+**Status:** CI-verified on commit `14ac8634607094b720e3c96ad1bd9a786a9386f5`; [run 40877523811](https://github.com/yujian777555/openissue/actions/runs/40877523811) passed 29/29 tests on Python 3.11.  
 **Boundary:** This is a code-and-fixture audit, not a final benchmark validation or Agent capability experiment.
 
 ## Finding A — Budgeted calls and recorded attempts were conflated
@@ -68,6 +68,6 @@ The schema now documents these semantics.
 ## Validation and remaining limits
 
 - New tests were added for repeated blocked attempts, strict budget types, per-tool idempotency, generated-ID independence, wrong booking details, compensation-target counterexamples, extra side effects, cross-turn context placement, and operator semantics.
-- The CI result and exact test count must be added after the workflow completes; no local Python execution is claimed because this session used the remote GitHub workflow for execution.
+- GitHub Actions run [40877523811](https://github.com/yujian777555/openissue/actions/runs/40877523811) completed successfully; the job log explicitly reports `Ran 29 tests` and `OK`. No local Python execution is claimed because this session used the remote GitHub workflow for execution.
 - The 12 cases remain pilot fixtures, not the final 120-case benchmark. Independent human review, family-template leakage review, exact final hashes, external benchmark adapter/scorer audit, and the remaining 108 tasks are outstanding.
 - G0 remains OPEN; G1 remains PARTIAL/OPEN; G2 remains NOT RUN. No LLM or paid API experiment was started.

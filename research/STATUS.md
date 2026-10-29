@@ -307,3 +307,15 @@ Added two adversarial regression tests in `test_world_r1.py` and documented the 
 - The test-patch workflow completed successfully: run [40872647713](https://github.com/yujian777555/openissue/actions/runs/40872647713), commit `25ecb59298e7ea12983ab70b5bc569e5b3f4fc2e`. The job log confirms both new regression tests passed and `Ran 19 tests in 0.006s`; conclusion: success.
 - A subsequent workflow on the controlled-suite README/audit-note commit also passed: run [40872785959](https://github.com/yujian777555/openissue/actions/runs/40872785959), commit `98861d39f3ec4056bda1f449b3b5c68b00cf7a34`.
 - Oracle audit fixes are now verified by CI. G1 remains PARTIAL/OPEN because only 12 representative cases exist; the complete 120-case suite, independent case/oracle review, external scorer adapter, and final data hashes remain outstanding.
+
+
+## Executor/oracle audit R2 — 2026-10-29
+
+- **Implementation commit:** `14ac8634607094b720e3c96ad1bd9a786a9386f5`.
+- **CI:** [run 40877523811](https://github.com/yujian777555/openissue/actions/runs/40877523811) completed successfully; the job log confirms **29 tests ran / 0 failed** on Python 3.11.
+- **Budget accounting:** `call_count` counts attempts admitted under the episode budget; `attempt_count` is derived from the event log and includes blocked attempts. Blocked calls now record `schema_valid: null` because validation was skipped. Non-integer and boolean budgets are rejected.
+- **Idempotency:** keys are scoped by tool; same-tool payload conflicts remain rejected, while distinct tools may reuse a key.
+- **Oracle hardening:** added ordered tool/status/argument patterns; booking, transfer, and email oracles no longer require agent-generated IDs; F10 now places the order ID in prior-turn context rather than the user request; F11 checks the actual compensation path; relevant state collections are checked to detect extra side effects.
+- **Scorer boundary:** F07 tests safe non-mutation when a customer name is ambiguous. The state-only evaluator cannot score whether the Agent's natural-language response actually asks for clarification.
+- **Gate status:** G1a design specified; G1b remains PARTIAL (12 revised pilot cases only; 108 not authored, independent human review, family-template leakage review, and final hashes outstanding); G1c external adapter/scorer NOT DONE; G1 overall PARTIAL/OPEN; G2 NOT RUN. No LLM or paid API experiment was run.
+- **Next action:** independently audit each of the 12 cases with plausible correct and near-miss trajectories, check family-template leakage, then author the remaining 108 original cases while preserving the frozen whole-family split. Keep G0 OPEN unless the final EvoMAS mechanism can be verified; do not start formal OSLVC experiments or paid API calls before G0/G1 gates are closed.

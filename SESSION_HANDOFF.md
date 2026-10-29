@@ -273,3 +273,24 @@ Audit note: `research/controlled_suite/EXECUTOR_ORACLE_AUDIT_R1.md`. Code commit
 The test-patch CI run [40872647713](https://github.com/yujian777555/openissue/actions/runs/40872647713) is now complete and successful. Its log confirms both added regressions passed and **19 tests ran / 0 failed**. A subsequent controlled-suite documentation workflow [40872785959](https://github.com/yujian777555/openissue/actions/runs/40872785959) also passed. The two fixes (validate every successful consumer in `required_arg_match`; type-sensitive JSON equality for `eq`) are CI-verified. See `research/controlled_suite/EXECUTOR_ORACLE_AUDIT_R1.md`.
 
 Next: audit tool-call budget semantics and reference-action/oracle independence with explicit counterexamples. G1 remains PARTIAL/OPEN; do not claim the 120-task suite is finished.
+
+
+## Latest verified session handoff — executor/oracle audit R2 (2026-10-29)
+
+**Latest verified implementation commit:** `14ac8634607094b720e3c96ad1bd9a786a9386f5`  
+**CI:** [40877523811](https://github.com/yujian777555/openissue/actions/runs/40877523811) — success, 29/29 tests.
+
+This session continued from the existing five-domain executor and 12 pilot cases; it did not recreate them. The R2 changes:
+- made budget accounting explicit: event-log attempts include blocked attempts, while the budget counter counts only attempts admitted under the limit; blocked events report schema validity as not evaluated;
+- rejected boolean/fractional tool-call limits;
+- scoped idempotency keys by tool endpoint;
+- added ordered call patterns matching tool, status, optional schema-validity, and selected arguments;
+- tightened oracles against unrequested side effects and against dependence on reference-only generated IDs;
+- moved F10's order ID from the user request into prior-turn context;
+- clarified that F07 only scores state-level safety under ambiguity, not natural-language clarification quality.
+
+The 12 pilot cases remain non-final. The planned 120-task suite still has 108 unauthored cases. G1 remains PARTIAL/OPEN, G2 remains NOT RUN, and G0 remains OPEN. No Agent/evolution experiment or paid API call was run.
+
+**Next concrete task:** independently audit all 12 pilot cases with a per-case near-miss counterexample, review family-template leakage, and confirm the case schema/manifest do not leak evaluator-only fields. Then author the remaining 108 tasks without changing family assignments (train F01–F06, validation F07–F09, test F10–F12). Keep task-state success separate from tool validity and conversational response quality. Do not start the formal OSLVC pilot or paid API calls until G0/G1 are closed.
+
+At the next session start, read `CONTINUITY_PROTOCOL.md`, `research/STATUS.md`, `research/DECISION_LOG.md`, this handoff, `NEXT_SESSION_PROMPT.md`, and `research/controlled_suite/EXECUTOR_ORACLE_AUDIT_R2.md`.
