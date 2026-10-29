@@ -241,7 +241,6 @@ The design has advanced to a tested deterministic prototype. Work is confined to
 - GitHub Actions run `40866638479` on commit `8e4d8f721ba4a8232e7090d6d9493b3d6c7d5f3f` passed; the job log confirms **16 tests ran and `OK`** on Python 3.11.
 - Schema-contract validation: all 12 pilot records passed.
 - Manifest structure: 120 unique IDs; split counts 60 / 30 / 30.
-- Latest GitHub Actions run `40866638479` on commit `8e4d8f721ba4a8232e7090d6d9493b3d6c7d5f3f` completed successfully; the job log confirms 16 tests ran and `OK` on Python 3.11.
 
 ### Current gates
 - G1a design: specified.
