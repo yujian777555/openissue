@@ -212,7 +212,7 @@ The initial controlled-suite prototype is now committed under `research/controll
 - `world_r1.py`: 22 tools across five in-memory domains; strict argument validation; staged atomic state transitions; idempotency replay/conflict detection; state and trace evaluator.
 - `pilot_cases_r1.jsonl`: 12 original representative cases, one per family (6 train / 3 validation / 3 test).
 - `task_case_schema_r1.json`: strict record schema including trace constraints.
-- `test_world_r1.py`: 14 standard-library tests; local run passed 14/14.
+- `test_world_r1.py`: 16 standard-library tests; GitHub Actions run `40866638479` passed with all 16 tests successful.
 - `family_manifest_r1.json`: 120 unique planned IDs; 12 pilot IDs marked `pilot_case_authored_not_final`, remaining 108 marked `planned_not_authored`.
 
 The pilot is a software/oracle smoke test, not an Agent benchmark result. The full 120 cases, independent oracle review, family leakage audit, final hashes, and external adapter/scorer are still incomplete. G1 remains PARTIAL/OPEN; G2 NOT RUN. No LLM or paid API experiment was run.
