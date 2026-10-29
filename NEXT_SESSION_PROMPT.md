@@ -73,3 +73,18 @@ Continuity-policy commits in this update batch:
 - Decision log: `4b70971c832e2c9e9b90c01575e356ba039d6019`
 
 Research state has not substantively changed during this continuity-only update: G0 remains OPEN, G1 remains PARTIAL/OPEN, and G2 remains NOT RUN. No experiment or paid API call was started. The next research task remains the final EvoMAS: Heuristics in the Loop mechanism audit and benchmark/split/scorer closure. The final prompt update itself must be verified from the latest repository state before reporting completion.
+
+
+
+## Latest verified research handoff — 2026-10-29
+
+Current repo HEAD at the time of this refresh: `ffd93fc729d5cf4411f298dc9d1b5bc663cef4e7` before the handoff update commits. The official PMLR final record for EvoMAS: Heuristics in the Loop is public, but the official PDF still cannot be extracted by the current reader; the linked OpenReview page triggers a browser-verification challenge. This is a retrieval blocker, not evidence that the final method lacks the proposed mechanism.
+
+**Exact next action:**
+1. Make a bounded attempt to obtain the final ICML/PMLR PDF or a verified author-hosted copy.
+2. If still inaccessible, audit the accessible earlier manuscript as **provisional preprint-only**; explicitly mark every method claim that has not been checked against the final version, and keep G0 OPEN.
+3. In parallel, advance G1 by drafting/finalizing the controlled task-family split, version/license manifest, exact task IDs, goal-state oracle, scorer audit, and external-validation subset.
+4. Do not start the full controller, formal G2 pilot, or paid API calls until G0/G1 are sufficiently closed.
+5. Update this prompt, `SESSION_HANDOFF.md`, `research/STATUS.md`, and the relevant audit file at the end of the next substantive session; verify the resulting remote commit(s).
+
+No formal experiment, code reproduction, or paid API call was run in the latest check. No substantive research conclusion changed; only the retrieval blocker and next action were re-confirmed.
