@@ -202,3 +202,13 @@ The user clarified that the current task is preparation for the **master's thesi
 - **G0 OPEN:** final EvoMAS: Heuristics in the Loop state/action/reward/credit mechanism not fully verified. **G1 PARTIAL/OPEN:** benchmark/split/scorer protocol still needs locking. **G2 NOT RUN:** no local mechanism pilot has run.
 - Next: finish the closest-paper method audit; finalize a family-held-out controlled suite and audited external subset; then, and only then, run a small no-paid-call mechanism pilot. No paid API experiment is authorized.
 - Keep this project separate from all other repositories; communication evolution remains excluded. Two strong contributions are preferable to three duplicated ones.
+
+
+
+
+## Repository continuity protocol (2026-10-29)
+
+- Permanent rule added in root `CONTINUITY_PROTOCOL.md`: every substantive session must inspect latest commits, read status/decision/handoff, update the relevant research files, refresh `SESSION_HANDOFF.md` and `NEXT_SESSION_PROMPT.md`, commit, and verify the resulting remote content.
+- Copyable next-session prompt: `NEXT_SESSION_PROMPT.md`; detailed handoff: `SESSION_HANDOFF.md`.
+- This rule applies to research, literature review, planning, negative results, and experiments. If no new evidence emerges, preserve a correct handoff and explicitly state that no substantive research result changed; do not fabricate activity.
+- This repository remains the sole source of truth for the thesis project. Do not mix unrelated repositories.
