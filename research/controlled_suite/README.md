@@ -9,7 +9,7 @@ This directory contains the deterministic, in-memory pilot implementation for G1
 - `pilot_cases_r1.jsonl`: 12 independently authored representative cases, one per family. The split is 6 train / 3 validation / 3 test because these are mechanism smoke cases, not the final 120-task dataset.
 - `world_r1.py`: five isolated deterministic mock domains and their tool schemas, state transitions, error behavior, idempotency guard, event trace, and oracle evaluator.
 - `agent_payload_r1.py`: allowlist helper that emits only `task.user_request` and optional `task.context`; a live Agent wrapper still needs to integrate and test this boundary.
-- `test_world_r1.py`: **33 standard-library unit and smoke tests** covering budget accounting, per-tool idempotency scope, dynamic-ID oracle checks, one near-miss trajectory per pilot case, manifest split integrity, and the task-payload allowlist. CI run [40880783510](https://github.com/yujian777555/openissue/actions/runs/40880783510) passed 33/33.
+- `test_world_r1.py`: **36 standard-library unit and smoke tests** covering budget accounting, per-tool idempotency scope, dynamic-ID oracle checks, one near-miss trajectory per pilot case, manifest split integrity, the task-payload allowlist, and batch 01 reference/near-miss validation. CI run [40887208453](https://github.com/yujian777555/openissue/actions/runs/40887208453) passed 36/36.
 
 ## Safety and determinism
 
@@ -29,7 +29,7 @@ The tests cover domain isolation, argument validation, atomic failures, half-ope
 
 ## Status boundary
 
-The 12 pilot cases and executor are a working prototype. They do **not** establish G1 PASS. The full 120 task contents, independent human oracle review, full family-template leakage review, live prompt-wrapper integration test, and frozen hashes are still outstanding. The test reference actions are evaluator-side fixtures; they must never be exposed to the Agent under evaluation.
+The 12 pilot cases plus 12 batch-01 cases and executor are a working prototype. They do **not** establish G1 PASS. A total of 24/120 cases are authored; 96 remain unauthored. Independent human oracle review, full family-template leakage review, live prompt-wrapper integration test, and frozen hashes are still outstanding. The test reference actions are evaluator-side fixtures; they must never be exposed to the Agent under evaluation.
 
 ## Oracle audit
 
@@ -43,4 +43,4 @@ The 12 pilot cases and executor are a working prototype. They do **not** establi
 - [`CASE_AUTHORING_PROTOCOL_R1.md`](CASE_AUTHORING_PROTOCOL_R1.md) freezes identity/split rules, family mechanism criteria, oracle/trace requirements, near-miss expectations, and batch gates.
 - `authored_cases_r1.jsonl` contains the first 12 additional cases (one per family, V1 standard difficulty) pending independent review; it does not replace the 12 original pilot fixtures.
 - `reference_actions_r1.jsonl` stores evaluator-only reference and near-miss trajectories separately from task records. These actions must never be serialized into an Agent prompt.
-- Batch 01 adds schema/manifest checks, reference-pass checks, and near-miss rejection tests. Its CI status is pending at the time of this commit.
+- Batch 01 adds schema/manifest checks, reference-pass checks, near-miss rejection tests, and an explicit cross-turn context-only assertion. CI [40887208453](https://github.com/yujian777555/openissue/actions/runs/40887208453) passed 36/36. The 12 new cases remain pending independent review.

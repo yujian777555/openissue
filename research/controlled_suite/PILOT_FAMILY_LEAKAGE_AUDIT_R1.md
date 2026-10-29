@@ -75,3 +75,41 @@ An `agent_payload_r1.py` helper is implemented and covered by unit tests as a st
 2. Recompute the lexical-overlap screen and record the revised top pairs.
 3. Author the remaining 108 tasks under fixed family assignments.
 4. Run the full pairwise/semantic family-leakage audit and prompt-data allowlist test before closing G1b.
+
+
+## Batch 01 extension — 24-case overlap screen (2026-10-29)
+
+**Scope extension:** the initial audit above covered the original 12 pilot cases. After batch 01, the same normalization/tokenizer was applied to all 24 task requests/contexts (12 pilot + 12 newly authored). This is still a heuristic screen, not a calibrated leakage detector.
+
+### Changes made after screening
+
+| Pair | Initial Jaccard | After revision | Revision |
+|---|---:|---:|---|
+| F01-D1-V1 ↔ F12-D1-V1 | 0.300 | 0.056 | Rephrased the minimal-side-effect task around setting a mode and preserving the rest of the filesystem, rather than repeating “replace/path/text” wording. |
+| F04-D1-V1 ↔ F08-D1-V1 | 0.300 | 0.087 | Rephrased the invalid-precondition case around attempting a read and stopping on a missing source, avoiding repeated delete/unchanged-file wording. |
+| F04-D1-V1 ↔ F07-D1-V1 | 0.238 | 0.174 | Rephrased the ambiguity case as identifying candidates and waiting for clarification. |
+| F09-D3-V1 ↔ F11-D3-V1 | 0.290 | 0.171 | Changed the compensation task's SKU labels to SKU-X/SKU-Y and clarified the provisional/compensation sequence. |
+| F06-D3-V1 ↔ F11-D3-V1 | 0.259 | 0.167 | Same SKU/wording revision reduced shared surface form. |
+
+### Remaining overlap flags
+
+The highest residual cross-family pairs in the 24-case screen include:
+
+| Pair | Jaccard | Review note |
+|---|---:|---|
+| F06-D5-V1 ↔ F12-D5-V1 | 0.267 | Existing pilot pair: CRM/email handoff versus phone-only minimal side effect. Distinct intended mechanisms, but preserve for independent review. |
+| F06-D3-V1 ↔ F09-D3-V1 | 0.241 | Inventory order creation/readback versus insufficient-stock safe no-op. Shared tool vocabulary is expected, but this pair needs a mechanism-level review. |
+| F09-D2-V1 ↔ F03-D2-V1 | 0.211 | Calendar conflict avoidance versus create-and-read-back. |
+| F05-D4-V1 ↔ F08-D4-V1 | 0.200 | Transfer replay versus exact bill-amount mismatch. |
+| F06-D5-V1 ↔ F07-D5-V1 | 0.200 | Customer update/email versus ambiguous same-name entity. |
+| F02-D5-V1 ↔ F06-D3-V1 | 0.200 | Search-result dependency versus order-ID handoff; shared “returned ID/retrieve” wording warrants review. |
+
+Similarity is only a review priority. It does not by itself show that task mechanisms are duplicated or that a model can exploit a shortcut. The authoring protocol requires manual semantic/action-schema review before any family is declared sufficiently independent.
+
+### Batch 01 verification and boundary
+
+- New files: `CASE_AUTHORING_PROTOCOL_R1.md`, `authored_cases_r1.jsonl`, and `reference_actions_r1.jsonl`.
+- Batch 01: 12 additional V1/standard cases, one per family. Each has one reference trajectory and one plausible near-miss fixture.
+- Code/test commit: `d0b998116bb79277b8243d9cf9d23de171bdb93a`; CI [40887208453](https://github.com/yujian777555/openissue/actions/runs/40887208453) passed **36/36 tests**.
+- F03 was revised to use a user-specified event ID and an exact ordered create/read-back trace, avoiding overlap with F06's returned-ID handoff. F07 now requires the exact candidate-list prefix. The F10 case keeps its reference entity only in task context, with a dedicated assertion.
+- Current counts: 24 authored cases (12 pilot + 12 batch 01), 96 planned cases remain unauthored. Batch 01 is still pending independent review; the full 120-case semantic leakage audit, final hashes, live prompt-wrapper integration, and external adapter/scorer validation are not complete.

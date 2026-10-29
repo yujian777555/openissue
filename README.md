@@ -168,12 +168,14 @@ The deterministic five-domain executor and 12 pilot cases already exist. The lat
 
 ## G1 controlled-suite audit R2 — 2026-10-29
 
-The deterministic controlled-suite prototype is implemented and under validity audit: five isolated mock domains, 22 tools, and 12 revised pilot cases. The planned 120-case manifest is not a completed benchmark; 108 cases remain unauthored.
+The deterministic controlled-suite prototype is implemented and under validity audit: five isolated mock domains, 22 tools, and 12 revised pilot cases. The planned 120-case manifest is not a completed benchmark; 96 cases remain unauthored.
 
 - [Executor/oracle audit R2](research/controlled_suite/EXECUTOR_ORACLE_AUDIT_R2.md): budget/event accounting, per-tool idempotency, dynamic-ID-independent oracles, ordered call patterns, and side-effect checks.
 - [Controlled-suite README](research/controlled_suite/README.md): implementation scope, test instructions, and status boundary.
-- [Pilot family-leakage audit R1](research/controlled_suite/PILOT_FAMILY_LEAKAGE_AUDIT_R1.md): lexical overlap screen and F08/F09 revisions.
+- [Pilot family-leakage audit R1](research/controlled_suite/PILOT_FAMILY_LEAKAGE_AUDIT_R1.md): pilot + batch-01 overlap screen and task revisions.
+- [Case authoring protocol R1](research/controlled_suite/CASE_AUTHORING_PROTOCOL_R1.md): frozen identity/split rules and per-batch validation requirements.
+- [Authored cases R1](research/controlled_suite/authored_cases_r1.jsonl) and [reference/near-miss fixtures](research/controlled_suite/reference_actions_r1.jsonl): batch-01 evaluator-checked tasks.
 - [Agent task payload allowlist](research/controlled_suite/agent_payload_r1.py): unit-tested task/context allowlist; live Agent-wrapper integration remains outstanding.
-- Executor implementation commit `14ac8634607094b720e3c96ad1bd9a786a9386f5` passed 29/29 tests; latest test/helper commit `0a4c33a1f34f6d900c3e1d4b62821b7281736bed` passed 33/33 tests in [CI run 40880783510](https://github.com/yujian777555/openissue/actions/runs/40880783510).
+- Executor implementation commit `14ac8634607094b720e3c96ad1bd9a786a9386f5` passed 29/29 tests; latest batch-01 test commit `d0b998116bb79277b8243d9cf9d23de171bdb93a` passed 36/36 tests in [CI run 40887208453](https://github.com/yujian777555/openissue/actions/runs/40887208453).
 
-**Gate boundary:** G1 remains PARTIAL/OPEN; independent human review, family-template leakage review, prompt-builder allowlist testing, the remaining 108 cases, final hashes, and external scorer validation remain outstanding. G0 remains OPEN and G2 has not run. No Agent/evolution experiment or paid API call has been performed.
+**Gate boundary:** G1 remains PARTIAL/OPEN; independent human review, family-template leakage review, prompt-builder allowlist testing, the remaining 96 cases, final hashes, and external scorer validation remain outstanding. G0 remains OPEN and G2 has not run. No Agent/evolution experiment or paid API call has been performed.
