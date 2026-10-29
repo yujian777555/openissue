@@ -212,3 +212,12 @@ The user clarified that the current task is preparation for the **master's thesi
 - Copyable next-session prompt: `NEXT_SESSION_PROMPT.md`; detailed handoff: `SESSION_HANDOFF.md`.
 - This rule applies to research, literature review, planning, negative results, and experiments. If no new evidence emerges, preserve a correct handoff and explicitly state that no substantive research result changed; do not fabricate activity.
 - This repository remains the sole source of truth for the thesis project. Do not mix unrelated repositories.
+
+
+
+## Immediate next action re-confirmed (2026-10-29)
+
+- Rechecked the official PMLR final record for EvoMAS: Heuristics in the Loop; the final publication page is available, but the PDF is still not extractable by the current reader and the linked OpenReview page triggers a browser-verification challenge.
+- **G0 remains OPEN.** Next: make a bounded attempt to obtain the final PDF/verified author copy. If access remains blocked, audit the accessible earlier manuscript only as a provisional preprint (clearly label all claims unverified against the final version) and continue G1 in parallel. Do not infer absence of an equivalent mechanism from missing access.
+- **G1 remains PARTIAL/OPEN; G2 remains NOT RUN.** No formal experiment or paid API call was started.
+- No substantive research conclusion changed in this check; the purpose was to verify the current blocker and make the next action explicit.
