@@ -155,6 +155,6 @@ The first deterministic executor prototype is now present in [research/controlle
 - 22 in-memory mock tools across five isolated domains.
 - 12 independently authored representative task cases, one per family.
 - State-invariant and trace-constraint evaluator.
-- 14 local unit/smoke tests passed.
+- 16 unit/smoke tests passed in GitHub Actions on Python 3.11.
 
-The manifest still contains 120 planned IDs: 12 pilot cases are authored but not final, and 108 cases remain un-authored. This is not a completed benchmark or Agent experiment. G1 remains PARTIAL/OPEN; G2 has not started. GitHub Actions run `40865732953` passed on Python 3.11 with all 14 tests successful.
+The manifest still contains 120 planned IDs: 12 pilot cases are authored but not final, and 108 cases remain un-authored. This is not a completed benchmark or Agent experiment. G1 remains PARTIAL/OPEN; G2 has not started. GitHub Actions run `40866638479` passed on Python 3.11 with all 16 tests successful.
