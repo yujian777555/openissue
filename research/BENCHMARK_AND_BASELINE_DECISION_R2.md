@@ -205,6 +205,14 @@ A word-level TF-IDF screen over normalized task purpose + user reason + task ins
 
 This is a heuristic warning, not a validated duplicate detector; manually inspect the highest-scoring pairs before making any family claims. Decision: τ² source test remains usable as a standard source-split evaluation, but **not** as evidence of task-family-held-out generalization. Primary family-held-out evidence must come from the custom suite. The exact screening method and examples are in `research/G1_TASK_FAMILY_SPLIT_PROTOCOL_R1.md`.
 
-## 12. Machine-readable suite artifacts (2026-10-29)
+## 12. Deterministic pilot implementation (2026-10-29)
 
-The proposed family split is now materialized in `research/controlled_suite/family_manifest_r1.json` and `research/controlled_suite/task_case_schema_r1.json`. The manifest passes JSON/integrity checks: 120 unique planned IDs, split counts 60/30/30; all records are marked `planned_not_authored`. This does not validate task behavior or scoring. Tool profiles, executor, oracle tests, and case contents remain to be implemented; G1 is still PARTIAL/OPEN.
+The initial controlled-suite prototype is now committed under `research/controlled_suite/`:
+
+- `world_r1.py`: 22 tools across five in-memory domains; strict argument validation; staged atomic state transitions; idempotency replay/conflict detection; state and trace evaluator.
+- `pilot_cases_r1.jsonl`: 12 original representative cases, one per family (6 train / 3 validation / 3 test).
+- `task_case_schema_r1.json`: strict record schema including trace constraints.
+- `test_world_r1.py`: 14 standard-library tests; local run passed 14/14.
+- `family_manifest_r1.json`: 120 unique planned IDs; 12 pilot IDs marked `pilot_case_authored_not_final`, remaining 108 marked `planned_not_authored`.
+
+The pilot is a software/oracle smoke test, not an Agent benchmark result. The full 120 cases, independent oracle review, family leakage audit, final hashes, and external adapter/scorer are still incomplete. G1 remains PARTIAL/OPEN; G2 NOT RUN. No LLM or paid API experiment was run.
