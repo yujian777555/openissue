@@ -481,3 +481,17 @@ Record consequential project decisions here so future sessions do not reopen set
 - **Rationale:** The project spans multiple conversations, and continuity must not depend on implicit chat memory. The user explicitly asked for both a repository notice and a handoff prompt.
 - **No-fabrication rule:** If no new research evidence or decision emerged, do not manufacture progress or create meaningless edits; preserve/verify the accurate handoff and state that no substantive result changed. If a repository operation fails, report the failure.
 - **Record:** `CONTINUITY_PROTOCOL.md`, `NEXT_SESSION_PROMPT.md`, and `SESSION_HANDOFF.md`.
+
+
+
+## D-044 — Narrow the OSLVC hypothesis after provisional EvoMAS HIL audit
+
+- **Date:** 2026-10-29
+- **Status:** Provisional; final-version prior-art gate remains open
+- **Evidence:** Official PMLR final record and abstract verified for Wei et al. (ICML 2026); full final PDF is currently unreadable through available retrieval. Substantial sections of the earlier anonymous manuscript are searchable and have been audited, but are not treated as the final camera-ready text.
+- **Finding:** The earlier manuscript already describes adaptive strategy/operator selection, a history-based strategy reward/update, LLM-guided multi-criteria selection, reflective rule induction/pruning, graph edit distance for structural diversity, role evolution, and curriculum.
+- **Decision:** Do not claim any of those broad mechanisms as thesis innovation. Keep OSLVC only as a falsifiable candidate testing whether *realized execution-trace behavior displacement* provides incremental operator/strength continuation-credit value beyond immediate reward, raw lineage return, structural distance, ELMER/LVPG, classical AOS, and an EvoMAS-like reflective controller.
+- **Caveat:** This does not prove the final ICML version lacks an equivalent displacement-conditioned credit mechanism. G0 remains OPEN until the final method/equations/ablations are verified.
+- **Gates:** G0 OPEN; G1 PARTIAL/OPEN; G2 NOT RUN. No experiment, code reproduction, or paid API call was started.
+- **Next:** Advance benchmark/split/scorer audit (G1) while making one bounded final-PDF retrieval attempt. Only then consider a small local pilot; reject/revise OSLVC if the conditional signal is negligible or fails to improve held-out search.
+- **Record:** research/EVOMAS_HIL_PROVISIONAL_MECHANISM_AUDIT_2026-10-29.md.
