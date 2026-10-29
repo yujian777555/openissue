@@ -109,3 +109,14 @@ New audit: research/EVOMAS_CONFIG_EVOLUTION_METHOD_AUDIT_R1.md. Generic feedback
 
 - [Benchmark and Baseline Decision R2](research/BENCHMARK_AND_BASELINE_DECISION_R2.md): source-level EvoTool audit, demo-split leakage risk, τ²/τ³-bench version/split considerations, BFCL quality caveat, and the falsification-first experiment protocol.
 - Current decision: EvoTool is a direct baseline, not a novelty claim; τ²/τ³-bench is the leading realistic validation candidate pending split-overlap and adapter checks; OSLVC-R1 remains unapproved.
+
+
+
+
+## Thesis feasibility and continuity update (2026-10-29)
+
+- [Feasibility and Next Research Gate](research/FEASIBILITY_AND_NEXT_GATE_2026-10-29.md): current thesis-level feasibility assessment, subjective confidence ranges, OSLVC novelty boundaries, G0/G1/G2 status, benchmark guardrails, and next steps.
+- Current stage: thesis opening report; no final topic, algorithm, or innovation point has been approved.
+- OSLVC-R1 remains a falsifiable hypothesis. G0 (final EvoMAS HIL method audit) is OPEN; G1 (benchmark/split/scorer) is PARTIAL/OPEN; G2 (local mechanism pilot) has NOT RUN.
+- The numerical feasibility ranges are subjective planning judgments, not calibrated probabilities or experimental results. No paid API experiment is authorized.
+- Long-session continuation: read the feasibility note, `research/STATUS.md`, `research/DECISION_LOG.md`, and `SESSION_HANDOFF.md` first.
