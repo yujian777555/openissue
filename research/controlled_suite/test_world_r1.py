@@ -12,6 +12,15 @@ from agent_payload_r1 import build_agent_task_payload  # noqa: E402
 
 CASES = [json.loads(line) for line in (ROOT / "pilot_cases_r1.jsonl").read_text(encoding="utf-8").splitlines() if line.strip()]
 BY_ID = {case["case_id"]: case for case in CASES}
+AUTHORED_CASES = [json.loads(line) for line in (ROOT / "authored_cases_r1.jsonl").read_text(encoding="utf-8").splitlines() if line.strip()]
+AUTHORED_FIXTURES = {
+    item["case_id"]: item
+    for item in (
+        json.loads(line)
+        for line in (ROOT / "reference_actions_r1.jsonl").read_text(encoding="utf-8").splitlines()
+        if line.strip()
+    )
+}
 
 def _resolve_ref(root, ref):
     current = root
@@ -567,6 +576,53 @@ class PilotCaseTests(unittest.TestCase):
             build_agent_task_payload({"task": {"user_request": "Do the task", "oracle": {"pass": True}}})
         with self.assertRaisesRegex(ValueError, "non-empty"):
             build_agent_task_payload({"task": {"user_request": "   "}})
+
+class AuthoredBatch01Tests(unittest.TestCase):
+    def test_batch_cases_validate_against_schema_and_frozen_manifest(self):
+        schema = json.loads((ROOT / "task_case_schema_r1.json").read_text(encoding="utf-8"))
+        manifest = json.loads((ROOT / "family_manifest_r1.json").read_text(encoding="utf-8"))
+        manifest_by_id = {item["case_id"]: item for item in manifest["cases"]}
+        case_ids = [case["case_id"] for case in AUTHORED_CASES]
+        self.assertEqual(len(AUTHORED_CASES), 12)
+        self.assertEqual(len(set(case_ids)), 12)
+        self.assertTrue(set(case_ids).isdisjoint(BY_ID))
+        self.assertEqual(set(AUTHORED_FIXTURES), set(case_ids))
+        errors = []
+        for case in AUTHORED_CASES:
+            _validate_schema_subset(case, schema, case["case_id"], schema, errors)
+            planned = manifest_by_id[case["case_id"]]
+            for field in ("family_id", "split", "domain_id", "variant_id", "difficulty"):
+                self.assertEqual(case[field], planned[field], (case["case_id"], field))
+            self.assertEqual(planned["status"], "authored_batch_01_pending_review")
+            self.assertEqual(case["tool_profile_id"], f'{case["domain_id"]}-TOOLS-R1')
+            self.assertFalse(case["provenance"]["external_case_text_copied"])
+        self.assertEqual(errors, [])
+
+    def test_batch_reference_trajectories_pass_and_near_misses_fail(self):
+        failures = []
+        for case in AUTHORED_CASES:
+            fixture = AUTHORED_FIXTURES[case["case_id"]]
+            world, results = run_case_actions(case, fixture["reference_actions"])
+            reference_score = evaluate_case(case, world.snapshot(), world.events)
+            if not reference_score["passed"]:
+                failures.append({"case_id": case["case_id"], "kind": "reference", "score": reference_score, "results": results})
+
+            near_world, near_results = run_case_actions(case, fixture["near_miss_actions"])
+            near_score = evaluate_case(case, near_world.snapshot(), near_world.events)
+            if near_score["passed"]:
+                failures.append({"case_id": case["case_id"], "kind": "near_miss_unrejected", "score": near_score, "results": near_results})
+        self.assertEqual(failures, [])
+
+    def test_batch_agent_payload_contains_only_user_request_and_context(self):
+        for case in AUTHORED_CASES:
+            with self.subTest(case_id=case["case_id"]):
+                payload = build_agent_task_payload(case)
+                self.assertEqual(set(payload), set(case["task"]))
+                self.assertTrue(set(payload).issubset({"user_request", "context"}))
+                self.assertNotIn("oracle", json.dumps(payload))
+                self.assertNotIn("initial_state", json.dumps(payload))
+                self.assertNotIn("near_miss_actions", json.dumps(payload))
+
 
 if __name__ == "__main__":
     unittest.main(verbosity=2)

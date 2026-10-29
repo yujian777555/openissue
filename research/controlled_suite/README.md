@@ -36,3 +36,11 @@ The 12 pilot cases and executor are a working prototype. They do **not** establi
 - [`EXECUTOR_ORACLE_AUDIT_R1.md`](EXECUTOR_ORACLE_AUDIT_R1.md) records the two earlier fixes: validating every successful consumer and type-sensitive JSON equality for `eq`.
 - [`EXECUTOR_ORACLE_AUDIT_R2.md`](EXECUTOR_ORACLE_AUDIT_R2.md) records budget/idempotency and oracle corrections.
 - [`PILOT_FAMILY_LEAKAGE_AUDIT_R1.md`](PILOT_FAMILY_LEAKAGE_AUDIT_R1.md) records the heuristic lexical-overlap screen, manual family comparison, and revisions to F08/F09. The revised suite is still a pilot and requires green CI plus independent review.
+
+
+## Case authoring and batch 01
+
+- [`CASE_AUTHORING_PROTOCOL_R1.md`](CASE_AUTHORING_PROTOCOL_R1.md) freezes identity/split rules, family mechanism criteria, oracle/trace requirements, near-miss expectations, and batch gates.
+- `authored_cases_r1.jsonl` contains the first 12 additional cases (one per family, V1 standard difficulty) pending independent review; it does not replace the 12 original pilot fixtures.
+- `reference_actions_r1.jsonl` stores evaluator-only reference and near-miss trajectories separately from task records. These actions must never be serialized into an Agent prompt.
+- Batch 01 adds schema/manifest checks, reference-pass checks, and near-miss rejection tests. Its CI status is pending at the time of this commit.
