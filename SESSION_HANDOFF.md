@@ -195,3 +195,17 @@ The official PMLR abstract for *EvoMAS: Heuristics in the Loop* has now been rec
 **Next action:** make one bounded attempt to obtain a readable final/author copy. If blocked, stop spending unlimited time on retrieval and proceed with G1 in parallel: define the controlled task-family split, pinned benchmark/version/license manifest, exact task IDs, goal-state oracle, scorer checks, and external validation subset. Keep G0 OPEN until final-version method equivalence is checked. G2 remains NOT RUN; no formal experiment or paid API call was started.
 
 Details: `research/EVOMAS_HIL_METHOD_AUDIT_R1.md`; decision boundary: D-044 in `research/DECISION_LOG.md`.
+
+
+
+## Latest G1 progress — 2026-10-29
+
+A concrete benchmark/split protocol is drafted in `research/G1_TASK_FAMILY_SPLIT_PROTOCOL_R1.md`. The primary mechanism suite is designed as 120 original deterministic tasks: five mock domains × twelve global task families × two variants. Whole-family split: 60 train (F01–F06), 30 validation (F07–F09), 30 test (F10–F12). The task files do not yet exist, so G1 is not complete.
+
+Tool-Veritas's `all.jsonl` was source-parsed: 70 cases, 16 domain labels, 20 domain/category combinations, 70 unique normalized goals, no family field or ready-made split. It is not accepted as a ready-made thesis benchmark. Its code can be considered as an Apache-2.0 execution substrate after adapter smoke test; author original task text and goals from scratch because a separate task-data license was not identified.
+
+External candidate tau2-bench is pinned to `v2.0.0` / commit `989d3285ae669e49503324bdb9981bf14fccedeb`. Source-test IDs are fixed provisionally: airline (20) and retail (40), all listed in the G1 protocol. Do not use the full frozen `text-v1` manifest as held-out after training on source-train IDs; do not call this custom 60-task evaluation an official `text-v1` leaderboard score. Report DB/state reward separately from judge-dependent reward.
+
+Newly surfaced Delta tau benchmark (arXiv:2610.34238, 2026-10-25) has 1,588 tasks across 42 domains and six ecosystem versions, 1,191 train / 397 test. It is a relevant possible external benchmark, but its separate dataset license/revision/checksum and family overlap remain unverified. Next session: perform a bounded dataset rights/split audit and decide whether to defer or use it; then begin authoring the original controlled-suite schema and deterministic oracle tests.
+
+G1 remains PARTIAL/OPEN; G2 NOT RUN; no experiment, adapter smoke test, or paid API call occurred.
