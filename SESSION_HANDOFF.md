@@ -224,8 +224,30 @@ The code repo states MIT, but the executable dataset is hosted separately. Attem
 
 **Next concrete action:** implement the original task schema and machine-readable 12-family manifest, add deterministic oracle tests, then generate original cases. G1 remains PARTIAL/OPEN; no tasks or experiments have run.
 
-## Machine-readable G1 artifacts — 2026-10-29
+## Latest G1 implementation handoff — 2026-10-29
 
-Created `research/controlled_suite/family_manifest_r1.json` and `research/controlled_suite/task_case_schema_r1.json`. The manifest was fetched and parsed; it contains 120 unique planned IDs with 60 train / 30 validation / 30 test entries, all marked `planned_not_authored`. The schema defines the case structure and state-invariant oracle. These are not executable tasks: no domain tool profiles, state-transition executor, oracle regression tests, or actual task cases exist yet.
+The design has advanced to a tested deterministic prototype. Work is confined to `yujian777555/openissue`.
 
-**Next concrete action:** define five deterministic domain tool profiles and the state-transition/oracle implementation; author and test representative cases for each family, then generate all 120 cases and hash the dataset. G1 remains PARTIAL/OPEN, G2 NOT RUN. Keep the τ² similarity warning and Δτ deferral as described in `research/G1_TASK_FAMILY_SPLIT_PROTOCOL_R1.md`.
+### New files
+- `research/controlled_suite/world_r1.py`: 22 in-memory tools across five isolated domains (filesystem, calendar, inventory/orders, synthetic ledger, CRM/email). No external side effects. Implements strict argument checks, staged atomic transitions, idempotency, event traces, state invariants, and trace constraints.
+- `research/controlled_suite/pilot_cases_r1.jsonl`: 12 independently authored representative cases, one for each family F01–F12; 6 train / 3 validation / 3 test.
+- `research/controlled_suite/test_world_r1.py`: 14 standard-library tests.
+- `research/controlled_suite/task_case_schema_r1.json`: updated with trace-constraint fields.
+- `research/controlled_suite/family_manifest_r1.json`: 120 planned IDs; 12 marked `pilot_case_authored_not_final`, 108 remain `planned_not_authored`.
+- `research/controlled_suite/README.md`: instructions/scope.
+- `.github/workflows/controlled-suite-smoke.yml`: CI workflow definition.
+
+### Verified
+- Local command `python -m unittest -v test_world_r1`: **14/14 passed**.
+- Schema-contract validation: all 12 pilot records passed.
+- Manifest structure: 120 unique IDs; split counts 60 / 30 / 30.
+- GitHub Actions run-list showed zero workflow runs at the last check, so remote CI is not claimed as passed.
+
+### Current gates
+- G1a design: specified.
+- G1b controlled suite: PARTIAL — 12 representative cases exist; remaining 108 cases, independent oracle/family review, leakage audit, and final hashes are not done.
+- G1c external benchmark adapter/scorer: NOT DONE.
+- G1 overall: PARTIAL/OPEN. G2 NOT RUN. No LLM or paid API experiment.
+
+### Next concrete action
+Independently review the 12 pilot oracle and trace contracts, add adversarial regression cases for atomicity/idempotency/trace evaluation, then author the remaining 108 cases while keeping family split fixed. Do not start G2 or paid API calls before G1 is closed. Preserve the τ² source-split similarity warning and Δτ-Bench deferral.
