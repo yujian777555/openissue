@@ -300,3 +300,10 @@ Added two adversarial regression tests in `test_world_r1.py` and documented the 
 **Gate boundary:** G1a design specified; G1b PARTIAL (12 pilot cases only, full 120 cases not authored; independent family/oracle review and final hashes outstanding); G1c external adapter/scorer NOT DONE; G1 PARTIAL/OPEN; G2 NOT RUN. No LLM/API experiment was run.
 
 **Next:** verify the latest CI run and test count; then continue the independent audit with (a) idempotency-key scope, (b) over-budget attempt accounting, and (c) case-oracle/reference-action independence. Fix only defects demonstrated by counterexamples, with regression tests.
+
+
+### Final verification for executor/oracle audit R1 (2026-10-29)
+
+- The test-patch workflow completed successfully: run [40872647713](https://github.com/yujian777555/openissue/actions/runs/40872647713), commit `25ecb59298e7ea12983ab70b5bc569e5b3f4fc2e`. The job log confirms both new regression tests passed and `Ran 19 tests in 0.006s`; conclusion: success.
+- A subsequent workflow on the controlled-suite README/audit-note commit also passed: run [40872785959](https://github.com/yujian777555/openissue/actions/runs/40872785959), commit `98861d39f3ec4056bda1f449b3b5c68b00cf7a34`.
+- Oracle audit fixes are now verified by CI. G1 remains PARTIAL/OPEN because only 12 representative cases exist; the complete 120-case suite, independent case/oracle review, external scorer adapter, and final data hashes remain outstanding.
