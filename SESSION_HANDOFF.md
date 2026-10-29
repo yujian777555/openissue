@@ -238,10 +238,10 @@ The design has advanced to a tested deterministic prototype. Work is confined to
 - `.github/workflows/controlled-suite-smoke.yml`: CI workflow definition.
 
 ### Verified
-- Local command `python -m unittest -v test_world_r1`: **14/14 passed**.
+- GitHub Actions run `40866638479` on commit `8e4d8f721ba4a8232e7090d6d9493b3d6c7d5f3f` passed; the job log confirms **16 tests ran and `OK`** on Python 3.11.
 - Schema-contract validation: all 12 pilot records passed.
 - Manifest structure: 120 unique IDs; split counts 60 / 30 / 30.
-- GitHub Actions run `40865732953` on commit `8a9c1403ac60ba45933f6489e3b7410afda65bf9` completed successfully; the job log confirms 14 tests ran and `OK` on Python 3.11.
+- Latest GitHub Actions run `40866638479` on commit `8e4d8f721ba4a8232e7090d6d9493b3d6c7d5f3f` completed successfully; the job log confirms 16 tests ran and `OK` on Python 3.11.
 
 ### Current gates
 - G1a design: specified.
