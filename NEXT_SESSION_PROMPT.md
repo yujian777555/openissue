@@ -131,3 +131,9 @@ Read `research/G1_TASK_FAMILY_SPLIT_PROTOCOL_R1.md` before continuing.
 A heuristic word-level TF-IDF screen over pinned tau2-bench v2.0.0 source tasks found nearest-train cosine ≥0.45 for 4/20 airline test tasks and 17/40 retail test tasks. Examples: retail 94↔93 (1.000), 32↔31 (0.968), 62↔63 (0.963), airline 16↔15 (0.695). These are screening signals, not ground-truth duplicate labels; manual semantic/schema review is needed. Do not describe the τ² source train/test split as family-held-out. The primary family-held-out evidence must come from the custom 120-task suite. See `research/G1_TASK_FAMILY_SPLIT_PROTOCOL_R1.md`.
 
 Next: (1) boundedly verify Δτ dataset license/revision/checksums and split structure, then explicitly select or defer it; (2) create the original task schema and deterministic oracle unit tests; (3) author/hash the planned family manifest and case suite. G1 remains PARTIAL/OPEN; no task suite or experiment has run.
+
+## Δτ-Bench decision and next G1 action (2026-10-29)
+
+The code repo for Δτ-Bench states MIT, but the executable dataset is hosted separately. Attempts to read its Hugging Face page/metadata/card failed; exact dataset license, revision, checksum, and family overlap remain unverified. Defer it as a selected benchmark; do not repeatedly retry the same URL. Keep it in related work. τ²/τ³-bench v2.0.0 remains the external candidate, but the heuristic similarity screen means its source split is not family-held-out. See `research/G1_TASK_FAMILY_SPLIT_PROTOCOL_R1.md` and decisions D-046/D-047.
+
+**Next concrete action:** implement the original task schema and machine-readable 12-family manifest, add deterministic state-transition/oracle tests, then generate original task cases. G1 remains PARTIAL/OPEN; no tasks have been authored or run and no model/API experiment occurred.
