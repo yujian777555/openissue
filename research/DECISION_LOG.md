@@ -521,3 +521,23 @@ Record consequential project decisions here so future sessions do not reopen set
 - Delta tau benchmark is a newly surfaced candidate; its separately hosted dataset's license/revision/checksum and task-family overlap remain unverified, so it is not selected yet.
 - G1 remains PARTIAL/OPEN because task files, oracle tests, exact custom manifest hashes, and external adapter/scorer checks do not yet exist. No formal experiment or paid API call has been run.
 - Next: finish bounded dataset-rights/split check for Delta tau; then author the controlled-suite schema and oracle tests before any formal OSLVC pilot.
+
+
+
+## D-046 — Do not describe τ² source split as family-held-out
+
+- Date: 2026-10-29
+- Status: Accepted evidence boundary
+- Evidence: On pinned tau2-bench v2.0.0, a heuristic word-level TF-IDF screen found nearest-train cosine ≥0.45 for 4/20 airline and 17/40 retail source-test tasks. Examples include retail 94↔93 (1.000), 32↔31 (0.968), and 62↔63 (0.963).
+- Caveat: the screen is a heuristic, not a verified duplicate detector; manual semantic/schema review is still required.
+- Decision: use the τ² source test split only as standard source-split/external-transfer evaluation. Do not claim task-family-held-out generalization from it. The primary family-held-out claim must be supported by the custom 120-task suite.
+- Record: `research/G1_TASK_FAMILY_SPLIT_PROTOCOL_R1.md`.
+
+## D-047 — Defer Δτ-Bench selection until dataset rights and revision are verifiable
+
+- Date: 2026-10-29
+- Status: Provisional deferral
+- Evidence: The code repository states MIT and the paper/README describe 1,588 tasks across 42 domains and six ecosystem versions (1,191 train / 397 test), but the executable dataset is hosted separately. Attempts to read the Hugging Face dataset page, metadata, and raw card failed in the current reader. Dataset license, exact revision, checksum manifest, and family overlap are therefore not verified.
+- Decision: do not select Δτ-Bench as the external evaluation benchmark yet and do not repeatedly retry the same inaccessible endpoint. Keep it in related work. Reopen only when a readable dataset card/revision/checksum is available.
+- Next: proceed with the controlled suite schema and deterministic oracle tests; τ²/τ³-bench v2.0.0 remains the external candidate.
+- Record: `research/G1_TASK_FAMILY_SPLIT_PROTOCOL_R1.md`.
