@@ -7,7 +7,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent
 sys.path.insert(0, str(ROOT))
-from world_r1 import World, evaluate_case, run_actions, tool_profile  # noqa: E402
+from world_r1 import World, evaluate_case, run_case_actions, tool_profile  # noqa: E402
 
 CASES = [json.loads(line) for line in (ROOT / "pilot_cases_r1.jsonl").read_text(encoding="utf-8").splitlines() if line.strip()]
 BY_ID = {case["case_id"]: case for case in CASES}
@@ -169,6 +169,17 @@ class ToolProfileTests(unittest.TestCase):
         self.assertEqual(world.snapshot(), before)
         self.assertFalse(world.events[0]["schema_valid"])
 
+    def test_episode_tool_call_budget_blocks_extra_calls(self):
+        world = World("D1", {"files": {"/a.txt": "keep"}}, max_tool_calls=1)
+        first = world.call("fs.read_file", {"path": "/a.txt"})
+        before = world.snapshot()
+        blocked = world.call("fs.write_file", {"path": "/a.txt", "content": "changed", "overwrite": True, "idempotency_key": "over-budget"})
+        self.assertTrue(first["ok"])
+        self.assertEqual(blocked["error"]["code"], "CALL_LIMIT_REACHED")
+        self.assertEqual(world.snapshot(), before)
+        self.assertEqual(world.call_count, 1)
+        self.assertEqual(world.events[-1]["status"], "blocked")
+
     def test_failed_move_is_atomic(self):
         world = World("D1", {"files": {"/src": "x", "/dst": "y"}})
         before = world.snapshot()
@@ -214,7 +225,7 @@ class ToolProfileTests(unittest.TestCase):
 
     def test_customer_search_can_return_multiple_matches_without_mutation(self):
         case = BY_ID["F07-D5-V1"]
-        world, _ = run_actions(case["domain_id"], case["initial_state"], ACTIONS[case["case_id"]])
+        world, _ = run_case_actions(case, ACTIONS[case["case_id"]])
         self.assertEqual(world.events[0]["result"]["count"], 2)
         self.assertEqual(world.state["customers"]["items"]["C-11"]["tier"], "silver")
         self.assertEqual(world.state["customers"]["items"]["C-12"]["tier"], "silver")
@@ -239,7 +250,7 @@ class PilotCaseTests(unittest.TestCase):
         self.assertEqual(set(ACTIONS), set(BY_ID))
         failures = []
         for case_id, case in BY_ID.items():
-            world, results = run_actions(case["domain_id"], case["initial_state"], ACTIONS[case_id])
+            world, results = run_case_actions(case, ACTIONS[case_id])
             evaluation = evaluate_case(case, world.snapshot(), world.events)
             if not evaluation["passed"]:
                 failures.append({"case_id": case_id, "evaluation": evaluation, "results": results})
