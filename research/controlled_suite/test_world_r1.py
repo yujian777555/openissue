@@ -274,6 +274,41 @@ class PilotCaseTests(unittest.TestCase):
         self.assertFalse(evaluation["passed"])
         self.assertTrue(any(x["kind"] == "required_arg_match" for x in evaluation["trace_failures"]))
 
+    def test_trace_checker_checks_every_successful_consumer_call(self):
+        case = BY_ID["F02-D1-V1"]
+        world = World(case["domain_id"], case["initial_state"])
+        world.call("fs.read_file", {"path": "/docs/source.txt"})
+        world.call("fs.write_file", {
+            "path": "/archive/copy.txt", "content": "approved-v7",
+            "idempotency_key": "good-copy",
+        })
+        world.call("fs.read_file", {"path": "/docs/source.txt"})
+        world.call("fs.write_file", {
+            "path": "/archive/second.txt", "content": "wrong",
+            "idempotency_key": "bad-second-copy",
+        })
+        evaluation = evaluate_case(case, world.snapshot(), world.events)
+        self.assertFalse(evaluation["passed"])
+        self.assertTrue(any(
+            failure["kind"] == "required_arg_match"
+            and failure.get("consumer_index") == 3
+            for failure in evaluation["trace_failures"]
+        ))
+
+    def test_json_oracle_equality_does_not_conflate_boolean_and_integer(self):
+        case = {
+            "oracle": {
+                "required_invariants": [
+                    {"state_path": "/flag", "operator": "eq", "expected": 1}
+                ],
+                "forbidden_invariants": [],
+                "forbidden_events": [],
+            }
+        }
+        evaluation = evaluate_case(case, {"flag": True}, [])
+        self.assertFalse(evaluation["passed"])
+        self.assertEqual(len(evaluation["required_failures"]), 1)
+
     def test_state_pointer_escapes_slashes(self):
         case = BY_ID["F01-D1-V1"]
         world = World("D1", case["initial_state"])
