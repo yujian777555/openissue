@@ -154,3 +154,17 @@ Before doing research in a new conversation, read `CONTINUITY_PROTOCOL.md` and `
 **At the end of every substantive session, the repository must be updated.** Update the relevant research artifact(s), status, decision log when a decision changes, this `SESSION_HANDOFF.md`, and `NEXT_SESSION_PROMPT.md`. Refresh the README link if the stage or workflow changes. Commit to the intended branch, fetch changed files, and verify the final commit and contents before telling the user the update succeeded. If no substantive research changed, keep the handoff accurate and say so; never fabricate an update, experiment, or test.
 
 The reusable prompt in `NEXT_SESSION_PROMPT.md` is the copy/paste entry point for a new chat and must always reflect the latest confirmed stage, gate states, scope constraints, and next unfinished action. Do not require the user to remind you of this rule.
+
+
+
+## Immediate next-session action — re-confirmed 2026-10-29
+
+The latest check reconfirmed that the official PMLR final record for *EvoMAS: Heuristics in the Loop—Evolving Smarter Agentic Workflows* is public, but the linked final PDF is not extractable through the current reader and the linked OpenReview page is blocked by a browser-verification challenge. This is an access limitation, not evidence that the paper lacks a mechanism.
+
+**Next session must:**
+1. Make a bounded attempt to obtain the final PDF or a verified author-hosted copy.
+2. If still blocked, conduct a clearly labelled **provisional preprint-only** audit of the accessible earlier manuscript (state/action/reward/credit/update equations/ablation), and keep G0 OPEN until final-version equivalence is verified.
+3. Advance G1 in parallel: specify the controlled local task-family split, version/license manifest, exact task IDs, and scorer/oracle audit for an external validation subset.
+4. Do not start G2 experiments or paid API calls before the method and benchmark gates are sufficiently closed.
+
+Current gates remain G0 OPEN, G1 PARTIAL/OPEN, G2 NOT RUN. No formal experiment or paid API call was run in this session.
