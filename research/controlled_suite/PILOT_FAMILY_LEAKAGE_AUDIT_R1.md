@@ -2,7 +2,7 @@
 
 **Date:** 2026-10-29  
 **Scope:** The 12 current pilot cases in `pilot_cases_r1.jsonl`; request/context wording, task mechanisms, tool overlap, reference trajectories, and whole-family split.  
-**Status:** F08/F09 revisions committed in `3c8e58fc69f09534a5e36ef68c0bf16a4f81e83a`; that commit's CI run [40880155311](https://github.com/yujian777555/openissue/actions/runs/40880155311) passed 31/31. Follow-up task-payload allowlist helper/tests are in progress; full 120-case leakage audit remains open.  
+**Status:** F08/F09 revisions committed in `3c8e58fc69f09534a5e36ef68c0bf16a4f81e83a`; allowlist helper/tests committed in `0a4c33a1f34f6d900c3e1d4b62821b7281736bed`. CI run [40880783510](https://github.com/yujian777555/openissue/actions/runs/40880783510) passed 33/33. Full 120-case leakage audit remains open.  
 **Boundary:** Lexical similarity is a screening signal, not ground-truth duplicate detection.
 
 ## Method
@@ -59,7 +59,7 @@ These scores are not directly comparable with arbitrary other tokenizers; the va
 
 ## Agent payload boundary
 
-A new `agent_payload_r1.py` helper is being added as a strict allowlist contract: it returns only `task.user_request` and optional `task.context`, rejects unexpected keys inside `task`, and does not copy evaluator-only top-level fields. This helper is not yet integrated into a live Agent wrapper. The production prompt path therefore remains an open gate until integration tests exercise the actual serialized prompt and tool schemas.
+An `agent_payload_r1.py` helper is implemented and covered by unit tests as a strict allowlist contract: it returns only `task.user_request` and optional `task.context`, rejects unexpected keys inside `task`, and does not copy evaluator-only top-level fields. It is not integrated into a live Agent wrapper. The production prompt path therefore remains an open gate until integration tests exercise the actual serialized prompt and tool schemas.
 
 ## Interpretation and limits
 

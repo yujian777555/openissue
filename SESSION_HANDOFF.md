@@ -305,3 +305,15 @@ At the next session start, read `CONTINUITY_PROTOCOL.md`, `research/STATUS.md`, 
 - No actual Agent prompt builder is implemented. The schema restricts the task object to user request/context, but prompt-data allowlisting must be verified when the integration is built; do not claim evaluator metadata cannot leak before that test exists.
 
 **Next concrete action:** audit family-template leakage across the pilot task texts and formalize the prompt-builder allowlist test. Then author the remaining 108 cases, preserve the whole-family split, validate all case/oracle/reference contracts, and freeze hashes. No formal OSLVC or paid API experiment before G0/G1 gates close.
+
+
+## Latest handoff — pilot family-leakage and prompt-payload boundary (2026-10-29)
+
+- **Latest helper/test commit:** `0a4c33a1f34f6d900c3e1d4b62821b7281736bed`.
+- **CI:** [40880783510](https://github.com/yujian777555/openissue/actions/runs/40880783510) passed **33/33 tests**.
+- Family-leakage screen found two pairs with high initial surface overlap: F04/F09 (0.357 Jaccard) and F05/F08 (0.308). F08 was revised from another ledger transfer to a bill amount-mismatch precondition; F09 now checks availability and safely no-ops rather than requiring a failed event creation. Under the same tokenizer, revised overlaps are 0.176 and 0.200.
+- F06/F12 (0.267) and F06/F07 (0.200) remain flagged because of shared CRM/email or customer-tier vocabulary, though their mechanisms differ. These are risk indicators, not proof of leakage.
+- Added `agent_payload_r1.py` with a strict task-field allowlist and unit tests. It returns only `user_request` and optional `context`; however, no live Agent wrapper integrates it yet, so production prompt-path isolation is still unverified.
+- The 12 cases remain pilot fixtures; 108 tasks are unauthored. G1 remains PARTIAL/OPEN; G0 OPEN; G2 NOT RUN. No Agent/evolution experiment or paid API call was run.
+
+**Next concrete action:** write a task-authoring protocol and begin generating the remaining 108 tasks in controlled batches, maintaining the 60/30/30 whole-family split and one near-miss test per case. Continue pairwise lexical plus manual semantic leakage review as each batch is added. Integrate and test the payload allowlist in the actual Agent wrapper before claiming prompt non-leakage.

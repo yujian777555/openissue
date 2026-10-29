@@ -625,3 +625,15 @@ Record consequential project decisions here so future sessions do not reopen set
 - **Evidence:** Test commit `67f831cd605d0e8f70f9e53ec5db85c430c86e04`; GitHub Actions [run 40878796822](https://github.com/yujian777555/openissue/actions/runs/40878796822) passed 31/31 tests. The test checks 120 unique planned IDs and split counts of 60 train / 30 validation / 30 test, and rejects one near-miss trajectory per family F01–F12.
 - **Boundary:** One near-miss per case is a discriminability check, not exhaustive soundness. It does not replace independent human review or family-template leakage analysis. The actual Agent prompt builder does not yet exist, so evaluator-only metadata exposure remains an integration gate.
 - **Next:** review cross-family template leakage and define/test the future prompt-builder allowlist before authoring the remaining 108 tasks.
+
+
+## D-055 — Reduce cross-family pilot overlap and add a strict task-payload allowlist
+
+- **Date:** 2026-10-29
+- **Status:** Pilot-level corrections verified; full leakage and live integration gates remain open.
+- **Decision:** Use pairwise normalized lexical similarity only as a screening signal, followed by manual mechanism-level review. Do not infer that different family labels alone establish task independence.
+- **Decision:** Revise F08 to an amount-mismatch `ledger.pay_bill` precondition rather than another transfer task; revise F09 to check availability and safely no-op rather than requiring a failed create call. Keep F06/F12 and F06/F07 flagged for full-suite review because their CRM vocabulary overlaps across splits.
+- **Decision:** Introduce `agent_payload_r1.build_agent_task_payload` as a strict allowlist that returns only `user_request` and optional `context`; reject unexpected fields inside `task`. The helper does not prove integration safety until the live Agent wrapper uses it.
+- **Evidence:** case/revision commit `3c8e58fc69f09534a5e36ef68c0bf16a4f81e83a`; helper/test commit `0a4c33a1f34f6d900c3e1d4b62821b7281736bed`; CI [40880783510](https://github.com/yujian777555/openissue/actions/runs/40880783510) passed 33/33 tests. Under the same tokenizer, F04/F09 Jaccard fell from 0.357 to 0.176 and F05/F08 from 0.308 to 0.200.
+- **Boundary:** 12-case screen only; no calibrated similarity threshold, independent human review, live prompt integration test, or 120-case pairwise audit yet.
+- **Next:** establish a case-authoring protocol and author the remaining 108 tasks in controlled batches, with per-case near-miss tests and continuous leakage review.
