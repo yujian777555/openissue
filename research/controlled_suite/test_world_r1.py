@@ -601,7 +601,7 @@ class AuthoredCaseTests(unittest.TestCase):
                 self.assertIn("context", case["task"], case["case_id"])
                 context_refs = [
                     match.rstrip(".,;:")
-                    for match in re.findall(r"/[A-Za-z0-9._/-]+|\\b(?:EVT|ORD)-\\d+\\b|\\bC-\\d+\\b", case["task"]["context"])
+                    for match in re.findall(r"/[A-Za-z0-9._/-]+|\b(?:EVT|ORD)-\d+\b|\bC-\d+\b", case["task"]["context"])
                 ]
                 self.assertTrue(context_refs, case["case_id"])
                 for reference in context_refs:
