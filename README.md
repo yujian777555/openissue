@@ -172,6 +172,8 @@ The deterministic controlled-suite prototype is implemented and under validity a
 
 - [Executor/oracle audit R2](research/controlled_suite/EXECUTOR_ORACLE_AUDIT_R2.md): budget/event accounting, per-tool idempotency, dynamic-ID-independent oracles, ordered call patterns, and side-effect checks.
 - [Controlled-suite README](research/controlled_suite/README.md): implementation scope, test instructions, and status boundary.
-- Executor implementation commit `14ac8634607094b720e3c96ad1bd9a786a9386f5` passed 29/29 tests; follow-up test commit `67f831cd605d0e8f70f9e53ec5db85c430c86e04` passed 31/31 tests in [CI run 40878796822](https://github.com/yujian777555/openissue/actions/runs/40878796822).
+- [Pilot family-leakage audit R1](research/controlled_suite/PILOT_FAMILY_LEAKAGE_AUDIT_R1.md): lexical overlap screen and F08/F09 revisions.
+- [Agent task payload allowlist](research/controlled_suite/agent_payload_r1.py): unit-tested task/context allowlist; live Agent-wrapper integration remains outstanding.
+- Executor implementation commit `14ac8634607094b720e3c96ad1bd9a786a9386f5` passed 29/29 tests; latest test/helper commit `0a4c33a1f34f6d900c3e1d4b62821b7281736bed` passed 33/33 tests in [CI run 40880783510](https://github.com/yujian777555/openissue/actions/runs/40880783510).
 
 **Gate boundary:** G1 remains PARTIAL/OPEN; independent human review, family-template leakage review, prompt-builder allowlist testing, the remaining 108 cases, final hashes, and external scorer validation remain outstanding. G0 remains OPEN and G2 has not run. No Agent/evolution experiment or paid API call has been performed.
