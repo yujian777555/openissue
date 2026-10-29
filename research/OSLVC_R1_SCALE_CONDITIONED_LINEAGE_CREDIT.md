@@ -191,3 +191,15 @@ Next:
 - Dynamic selection of evolutionary operators based on online learning and fitness landscape analysis: https://doi.org/10.1007/s00500-016-2126-x
 - Reinforcement learning for mutation operator selection in automated program repair: https://doi.org/10.1007/s10515-025-00501-z
 - LLaMEA-HPO: https://arxiv.org/abs/2410.16309
+
+
+
+## Reassessment after provisional EvoMAS audit (2026-10-29)
+
+The accessible earlier EvoMAS manuscript already covers broad adaptive operator/strategy selection, historical strategy-performance feedback, LLM-based meta-reflection, multi-criteria candidate selection, structural graph-distance diversity, curriculum, and role evolution. These mechanisms cannot be claimed as OSLVC novelty. The final ICML 2026 version has not yet been fully inspected, so this is a provisional boundary, not a final novelty determination.
+
+The only surviving testable distinction is whether **realized behavior displacement measured from executed Agent/tool traces** improves continuation-value credit beyond (i) immediate reward, (ii) raw lineage return, (iii) displacement-only prediction, (iv) graph-structural distance, and (v) existing adaptive operator/strategy control. The earlier manuscript's graph edit distance is a structural measure; it is not automatically equivalent to realized tool-trace behavior. That difference is a hypothesis to test, not proof of novelty.
+
+Required controls include a tuned static EA, immediate-reward AOS, raw lineage return, displacement-only control, naive joint operator-strength control, ELMER-style scale-only control, LVPG-style lineage control, classical AOS, and a method-level EvoMAS-like baseline. Equalize descendant-evaluation counts and use task-family-held-out evaluation. Drop/revise OSLVC if the conditional residual is negligible, unstable, or does not improve held-out search success.
+
+Detailed audit: [EVOMAS_HIL_PROVISIONAL_MECHANISM_AUDIT_2026-10-29.md](EVOMAS_HIL_PROVISIONAL_MECHANISM_AUDIT_2026-10-29.md). OSLVC remains a hypothesis, not an approved innovation.
