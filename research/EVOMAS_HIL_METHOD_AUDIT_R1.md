@@ -99,3 +99,36 @@ The earlier manuscript explicitly describes:
 **Implication:** adaptive operator selection, historical strategy credit, reflective meta-control, graph-distance diversity, role-level evolution, and curriculum are not defensible as standalone thesis innovations. The only OSLVC hypothesis still worth testing is whether *realized execution-trace behavior displacement* adds incremental value to continuation-credit estimates beyond immediate reward, raw lineage return, structural distance, and existing adaptive control.
 
 Do not infer that the final ICML version lacks this mechanism: its full method equations and ablations remain unverified. Detailed findings, evidence links, baselines, and falsification criteria are recorded in [EVOMAS_HIL_PROVISIONAL_MECHANISM_AUDIT_2026-10-29.md](EVOMAS_HIL_PROVISIONAL_MECHANISM_AUDIT_2026-10-29.md). G0 remains OPEN; G1 remains PARTIAL/OPEN; G2 remains NOT RUN. No experiment, code reproduction, or paid API call was run.
+
+
+
+## Public-record mechanism audit — 2026-10-29
+
+### Sources checked this round
+
+- Official PMLR final record: https://proceedings.mlr.press/v306/wei26m.html
+- Official linked PDF: https://raw.githubusercontent.com/mlresearch/v306/main/assets/wei26m/wei26m.pdf (reader rejects application/octet-stream; content not extracted)
+- OpenReview record: https://openreview.net/forum?id=cdWnpXkcQo (current web reader is redirected to a browser verification challenge)
+- Search-indexed mirror: https://papers.cool/venue/cdWnpXkcQo%40OpenReview (abstract-level content only; not a primary source for equations)
+
+### What is now verified from the official final record
+
+The PMLR record identifies this as the ICML 2026 final paper by Yangbo Wei, Zhen Huang, Ronghao Xu, Hong Wang, and Wei W. Xing, PMLR 306, pages 133736–133763. Its abstract explicitly states:
+1. a dynamic/diverse repertoire of seven evolutionary strategies: six biologically inspired exploration/exploitation operators plus a domain-specific transformation operator;
+2. adaptive strategy selection;
+3. role-level evolution for specialization and collaboration patterns;
+4. a curriculum-guided progression from simple to complex tasks;
+5. a “Cyber Creator” meta-controller that formulates and reflectively updates evolutionary rules and strategies.
+
+### Mechanism-level implication
+
+- **Already covered; do not claim as new:** using a portfolio of evolutionary strategies; adaptive selection among strategies; a reflective/meta-controller that updates evolutionary rules; role-level workflow evolution; curriculum-guided evolution.
+- **Not yet verifiable from the accessible official record:** exact controller state/features, action representation, reward/credit equation, update cadence, whether offspring behavior displacement is explicitly measured, whether long-horizon lineage return is estimated conditional on realized displacement, and the relevant ablation results.
+- **Important epistemic boundary:** an abstract's silence on displacement-conditioned lineage credit is not evidence that the full paper lacks it. The proposed OSLVC mechanism is therefore neither confirmed novel nor disproven.
+- The second OpenReview record encountered in search is not evidence of a second independent final method. Do not conflate records or use an anonymous/preprint version as a substitute for the final ICML paper without labeling it.
+
+### Decision and next action
+
+G0 remains **OPEN**. The public-record audit strengthens one negative boundary: generic adaptive strategy selection and reflective meta-control are not viable novelty claims. It does not settle the narrower OSLVC claim.
+
+Make one bounded further attempt to obtain an accessible author/final-paper copy. If unsuccessful, proceed with G1 in parallel and keep G0 explicitly open. Any analysis of an older accessible manuscript must be labeled provisional/preprint-only, and final-version claims must remain unverified. No experiment or paid API call was started in this audit.
