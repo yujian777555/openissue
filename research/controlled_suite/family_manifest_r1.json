@@ -385,7 +385,7 @@
       "domain_name": "Inventory and order management",
       "variant_id": "V1",
       "difficulty": "standard",
-      "status": "authored_batch_02_pending_review"
+      "status": "planned_not_authored"
     },
     {
       "case_id": "F03-D3-V2",
@@ -429,7 +429,7 @@
       "domain_name": "Customer records and email",
       "variant_id": "V1",
       "difficulty": "standard",
-      "status": "planned_not_authored"
+      "status": "authored_batch_02_pending_review"
     },
     {
       "case_id": "F03-D5-V2",
@@ -462,7 +462,7 @@
       "domain_name": "Filesystem and repository artifacts",
       "variant_id": "V2",
       "difficulty": "hard",
-      "status": "planned_not_authored"
+      "status": "authored_batch_02_pending_review"
     },
     {
       "case_id": "F04-D2-V1",
@@ -495,7 +495,7 @@
       "domain_name": "Inventory and order management",
       "variant_id": "V1",
       "difficulty": "standard",
-      "status": "authored_batch_02_pending_review"
+      "status": "planned_not_authored"
     },
     {
       "case_id": "F04-D3-V2",
@@ -1353,7 +1353,7 @@
       "domain_name": "Calendar and resource scheduling",
       "variant_id": "V1",
       "difficulty": "standard",
-      "status": "planned_not_authored"
+      "status": "authored_batch_02_pending_review"
     },
     {
       "case_id": "F12-D2-V2",
@@ -1375,7 +1375,7 @@
       "domain_name": "Inventory and order management",
       "variant_id": "V1",
       "difficulty": "standard",
-      "status": "authored_batch_02_pending_review"
+      "status": "planned_not_authored"
     },
     {
       "case_id": "F12-D3-V2",
