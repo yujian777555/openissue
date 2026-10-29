@@ -495,3 +495,16 @@ Record consequential project decisions here so future sessions do not reopen set
 - **Gates:** G0 OPEN; G1 PARTIAL/OPEN; G2 NOT RUN. No experiment, code reproduction, or paid API call was started.
 - **Next:** Advance benchmark/split/scorer audit (G1) while making one bounded final-PDF retrieval attempt. Only then consider a small local pilot; reject/revise OSLVC if the conditional signal is negligible or fails to improve held-out search.
 - **Record:** research/EVOMAS_HIL_PROVISIONAL_MECHANISM_AUDIT_2026-10-29.md.
+
+
+
+## D-044 — EvoMAS HIL: rule out generic adaptive strategy selection as novelty
+
+- **Date:** 2026-10-29
+- **Status:** Evidence-based boundary; final mechanism audit still open
+- **Evidence:** The official PMLR ICML 2026 record's abstract explicitly describes seven evolutionary strategies, adaptive strategy selection, role-level evolution, curriculum-guided evolution, and a reflective Cyber Creator meta-controller that updates evolutionary rules/strategies.
+- **Decision:** Do not claim the strategy portfolio, generic adaptive strategy selection, reflective meta-control, role-level workflow evolution, or curriculum-guided evolution as new contributions in this thesis.
+- **Unresolved:** Exact state/action/reward/credit/update equations and whether realized behavior displacement conditions long-horizon lineage value cannot be verified because the final PDF is not extractable and OpenReview triggers a browser challenge. Silence in the abstract is not evidence of absence.
+- **Effect on OSLVC:** Keep it provisional; neither approve nor reject the narrow displacement-conditioned continuation-credit hypothesis until full-text prior-art comparison and controlled evidence.
+- **Next:** One bounded attempt for a legitimate readable final/author copy; proceed with G1 benchmark/split/scorer work in parallel. G0 remains OPEN, G1 PARTIAL/OPEN, G2 NOT RUN. No experiment or paid API call started.
+- **Record:** `research/EVOMAS_HIL_METHOD_AUDIT_R1.md`.
