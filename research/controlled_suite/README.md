@@ -8,7 +8,7 @@ This directory contains the deterministic, in-memory pilot implementation for G1
 - `task_case_schema_r1.json`: task-case JSON Schema, including state-oracle and trace constraints.
 - `pilot_cases_r1.jsonl`: 12 independently authored representative cases, one per family. The split is 6 train / 3 validation / 3 test because these are mechanism smoke cases, not the final 120-task dataset.
 - `world_r1.py`: five isolated deterministic mock domains and their tool schemas, state transitions, error behavior, idempotency guard, event trace, and oracle evaluator.
-- `test_world_r1.py`: **29 standard-library unit and smoke tests** covering budget accounting, per-tool idempotency scope, dynamic-ID oracle checks, and adversarial trace/oracle probes. CI run [40877523811](https://github.com/yujian777555/openissue/actions/runs/40877523811) passed 29/29.
+- `test_world_r1.py`: **31 standard-library unit and smoke tests** covering budget accounting, per-tool idempotency scope, dynamic-ID oracle checks, one near-miss trajectory per pilot case, and manifest split integrity. CI run [40878796822](https://github.com/yujian777555/openissue/actions/runs/40878796822) passed 31/31.
 
 ## Safety and determinism
 
@@ -28,7 +28,7 @@ The tests cover domain isolation, argument validation, atomic failures, half-ope
 
 ## Status boundary
 
-The 12 pilot cases and executor are a working prototype. They do **not** establish G1 PASS. The full 120 task contents, final task-family review, independent oracle review, and frozen hashes are still outstanding. The test reference actions are evaluator-side fixtures; they must never be exposed to the Agent under evaluation.
+The 12 pilot cases and executor are a working prototype. They do **not** establish G1 PASS. The full 120 task contents, independent human oracle review, family-template leakage review, prompt-builder allowlist test, and frozen hashes are still outstanding. The test reference actions are evaluator-side fixtures; they must never be exposed to the Agent under evaluation.
 
 ## Oracle audit
 

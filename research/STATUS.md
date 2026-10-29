@@ -319,3 +319,13 @@ Added two adversarial regression tests in `test_world_r1.py` and documented the 
 - **Scorer boundary:** F07 tests safe non-mutation when a customer name is ambiguous. The state-only evaluator cannot score whether the Agent's natural-language response actually asks for clarification.
 - **Gate status:** G1a design specified; G1b remains PARTIAL (12 revised pilot cases only; 108 not authored, independent human review, family-template leakage review, and final hashes outstanding); G1c external adapter/scorer NOT DONE; G1 overall PARTIAL/OPEN; G2 NOT RUN. No LLM or paid API experiment was run.
 - **Next action:** independently audit each of the 12 cases with plausible correct and near-miss trajectories, check family-template leakage, then author the remaining 108 original cases while preserving the frozen whole-family split. Keep G0 OPEN unless the final EvoMAS mechanism can be verified; do not start formal OSLVC experiments or paid API calls before G0/G1 gates are closed.
+
+
+## Per-case near-miss and split-integrity check — 2026-10-29
+
+- **Test commit:** `67f831cd605d0e8f70f9e53ec5db85c430c86e04`.
+- **CI:** [run 40878796822](https://github.com/yujian777555/openissue/actions/runs/40878796822) passed **31/31 tests** on Python 3.11.
+- Added an aggregate adversarial test that constructs one plausible near-miss trajectory for each of F01–F12. All twelve were rejected by the revised scorer. This establishes one discriminating counterexample per pilot case; it is not exhaustive proof that each oracle rejects every invalid trajectory.
+- Added a manifest-integrity test that checks the 120 planned IDs, exact 60/30/30 split, and the pilot cases' family/split/domain/variant assignments against the frozen manifest.
+- **Gate boundary unchanged:** G1b PARTIAL/OPEN (12 pilot cases only; 108 unauthored; independent human review, family-template leakage review, final hashes outstanding); G1c external adapter/scorer NOT DONE; G2 NOT RUN; G0 OPEN. No Agent/evolution experiment or paid API call was run.
+- **Next:** audit cross-family template leakage and the future Agent-prompt allowlist. The schema restricts task fields, but no production prompt builder is implemented yet, so actual prompt non-leakage is not established. After this review, author the remaining 108 original tasks without changing family assignments.

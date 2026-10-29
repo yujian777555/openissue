@@ -294,3 +294,14 @@ The 12 pilot cases remain non-final. The planned 120-task suite still has 108 un
 **Next concrete task:** independently audit all 12 pilot cases with a per-case near-miss counterexample, review family-template leakage, and confirm the case schema/manifest do not leak evaluator-only fields. Then author the remaining 108 tasks without changing family assignments (train F01–F06, validation F07–F09, test F10–F12). Keep task-state success separate from tool validity and conversational response quality. Do not start the formal OSLVC pilot or paid API calls until G0/G1 are closed.
 
 At the next session start, read `CONTINUITY_PROTOCOL.md`, `research/STATUS.md`, `research/DECISION_LOG.md`, this handoff, `NEXT_SESSION_PROMPT.md`, and `research/controlled_suite/EXECUTOR_ORACLE_AUDIT_R2.md`.
+
+
+## Latest verified handoff — per-case adversarial validation (2026-10-29)
+
+- **Latest code/test commit:** `67f831cd605d0e8f70f9e53ec5db85c430c86e04`.
+- **CI:** [40878796822](https://github.com/yujian777555/openissue/actions/runs/40878796822) passed **31/31 tests**.
+- A new aggregate test builds one plausible near-miss trajectory for each pilot case F01–F12; all twelve are rejected. The test suite also verifies 120 planned IDs, split counts 60/30/30, and agreement between each pilot case and its manifest assignment.
+- This is stronger discriminability evidence, but not exhaustive oracle verification or independent human review. The suite remains 12 revised pilot cases plus 108 planned/un-authored cases. G1 remains PARTIAL/OPEN; G0 OPEN; G2 NOT RUN.
+- No actual Agent prompt builder is implemented. The schema restricts the task object to user request/context, but prompt-data allowlisting must be verified when the integration is built; do not claim evaluator metadata cannot leak before that test exists.
+
+**Next concrete action:** audit family-template leakage across the pilot task texts and formalize the prompt-builder allowlist test. Then author the remaining 108 cases, preserve the whole-family split, validate all case/oracle/reference contracts, and freeze hashes. No formal OSLVC or paid API experiment before G0/G1 gates close.

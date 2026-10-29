@@ -172,6 +172,6 @@ The deterministic controlled-suite prototype is implemented and under validity a
 
 - [Executor/oracle audit R2](research/controlled_suite/EXECUTOR_ORACLE_AUDIT_R2.md): budget/event accounting, per-tool idempotency, dynamic-ID-independent oracles, ordered call patterns, and side-effect checks.
 - [Controlled-suite README](research/controlled_suite/README.md): implementation scope, test instructions, and status boundary.
-- CI run [40877523811](https://github.com/yujian777555/openissue/actions/runs/40877523811) passed 29/29 tests on commit `14ac8634607094b720e3c96ad1bd9a786a9386f5`.
+- Executor implementation commit `14ac8634607094b720e3c96ad1bd9a786a9386f5` passed 29/29 tests; follow-up test commit `67f831cd605d0e8f70f9e53ec5db85c430c86e04` passed 31/31 tests in [CI run 40878796822](https://github.com/yujian777555/openissue/actions/runs/40878796822).
 
-**Gate boundary:** G1 remains PARTIAL/OPEN; independent human review, family-template leakage review, the remaining 108 cases, final hashes, and external scorer validation remain outstanding. G0 remains OPEN and G2 has not run. No Agent/evolution experiment or paid API call has been performed.
+**Gate boundary:** G1 remains PARTIAL/OPEN; independent human review, family-template leakage review, prompt-builder allowlist testing, the remaining 108 cases, final hashes, and external scorer validation remain outstanding. G0 remains OPEN and G2 has not run. No Agent/evolution experiment or paid API call has been performed.

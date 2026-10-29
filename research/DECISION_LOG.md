@@ -615,3 +615,13 @@ Record consequential project decisions here so future sessions do not reopen set
 - **Decision:** F07's state-only oracle can establish that ambiguous matches were inspected and no unsafe customer mutation/email occurred. It cannot establish that the Agent's natural-language response asked a clarification question. The manifest now states this limit and the task no longer includes evaluator-derived context hinting at the expected action.
 - **Evidence:** The tool result has two matching customers; the oracle requires both records and the email queue to remain unchanged. No conversational-response scorer exists in this prototype.
 - **Next:** if clarification quality is part of the final benchmark claim, add and validate a separate response-level rubric rather than infer it from state transitions.
+
+
+## D-054 — Require one explicit near-miss and manifest-integrity check per pilot case
+
+- **Date:** 2026-10-29
+- **Status:** Programmatic regression coverage verified; independent review still open.
+- **Decision:** Before treating the 12-case pilot as ready for expansion, require a plausible near-miss trajectory for each case that the oracle rejects, plus a test that case family/split/domain/variant fields match the frozen 120-ID manifest.
+- **Evidence:** Test commit `67f831cd605d0e8f70f9e53ec5db85c430c86e04`; GitHub Actions [run 40878796822](https://github.com/yujian777555/openissue/actions/runs/40878796822) passed 31/31 tests. The test checks 120 unique planned IDs and split counts of 60 train / 30 validation / 30 test, and rejects one near-miss trajectory per family F01–F12.
+- **Boundary:** One near-miss per case is a discriminability check, not exhaustive soundness. It does not replace independent human review or family-template leakage analysis. The actual Agent prompt builder does not yet exist, so evaluator-only metadata exposure remains an integration gate.
+- **Next:** review cross-family template leakage and define/test the future prompt-builder allowlist before authoring the remaining 108 tasks.

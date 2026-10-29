@@ -3,7 +3,7 @@
 **Date:** 2026-10-29  
 **Repository:** `yujian777555/openissue`  
 **Scope:** Budget/event accounting, idempotency-key scope, task-oracle specificity, dynamic identifiers, and adversarial trace evaluation.  
-**Status:** CI-verified on commit `14ac8634607094b720e3c96ad1bd9a786a9386f5`; [run 40877523811](https://github.com/yujian777555/openissue/actions/runs/40877523811) passed 29/29 tests on Python 3.11.  
+**Status:** executor changes in `14ac8634607094b720e3c96ad1bd9a786a9386f5` passed 29/29 tests; the follow-up test commit `67f831cd605d0e8f70f9e53ec5db85c430c86e04` passed 31/31 tests in [run 40878796822](https://github.com/yujian777555/openissue/actions/runs/40878796822) on Python 3.11.  
 **Boundary:** This is a code-and-fixture audit, not a final benchmark validation or Agent capability experiment.
 
 ## Finding A — Budgeted calls and recorded attempts were conflated
@@ -65,9 +65,17 @@ The earlier patch fixed `eq`, but native `ne`, numeric comparisons, and membersh
 
 The schema now documents these semantics.
 
+## Per-case near-miss and split-integrity follow-up
+
+A follow-up test commit `67f831cd605d0e8f70f9e53ec5db85c430c86e04` adds:
+- one plausible near-miss trajectory for each case F01–F12; all twelve are rejected by the revised scorer;
+- a manifest-integrity check confirming 120 unique planned IDs, split counts of 60/30/30, and agreement between the pilot cases and their planned family/split/domain/variant assignments.
+
+The CI run [40878796822](https://github.com/yujian777555/openissue/actions/runs/40878796822) passed **31/31 tests**. This checks discriminability against one selected near-miss per case; it is not exhaustive proof of oracle soundness or a substitute for independent human review.
+
 ## Validation and remaining limits
 
 - New tests were added for repeated blocked attempts, strict budget types, per-tool idempotency, generated-ID independence, wrong booking details, compensation-target counterexamples, extra side effects, cross-turn context placement, and operator semantics.
-- GitHub Actions run [40877523811](https://github.com/yujian777555/openissue/actions/runs/40877523811) completed successfully; the job log explicitly reports `Ran 29 tests` and `OK`. No local Python execution is claimed because this session used the remote GitHub workflow for execution.
-- The 12 cases remain pilot fixtures, not the final 120-case benchmark. Independent human review, family-template leakage review, exact final hashes, external benchmark adapter/scorer audit, and the remaining 108 tasks are outstanding.
+- The latest GitHub Actions run [40878796822](https://github.com/yujian777555/openissue/actions/runs/40878796822) explicitly reports `Ran 31 tests` and `OK`; the earlier implementation run [40877523811](https://github.com/yujian777555/openissue/actions/runs/40877523811) passed 29/29. No local Python execution is claimed because this session used the remote GitHub workflow for execution.
+- The 12 cases remain pilot fixtures, not the final 120-case benchmark. Independent human review, family-template leakage review, actual prompt-builder allowlist testing, exact final hashes, external benchmark adapter/scorer audit, and the remaining 108 tasks are outstanding.
 - G0 remains OPEN; G1 remains PARTIAL/OPEN; G2 remains NOT RUN. No LLM or paid API experiment was started.
