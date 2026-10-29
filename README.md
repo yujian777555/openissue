@@ -120,3 +120,17 @@ New audit: research/EVOMAS_CONFIG_EVOLUTION_METHOD_AUDIT_R1.md. Generic feedback
 - OSLVC-R1 remains a falsifiable hypothesis. G0 (final EvoMAS HIL method audit) is OPEN; G1 (benchmark/split/scorer) is PARTIAL/OPEN; G2 (local mechanism pilot) has NOT RUN.
 - The numerical feasibility ranges are subjective planning judgments, not calibrated probabilities or experimental results. No paid API experiment is authorized.
 - Long-session continuation: read the feasibility note, `research/STATUS.md`, `research/DECISION_LOG.md`, and `SESSION_HANDOFF.md` first.
+
+
+
+
+## Mandatory continuity and next-session handoff
+
+**Every substantive research session must update this repository and leave a copyable next-session prompt.** This is a project rule, not an optional reminder.
+
+- [Continuity Protocol](CONTINUITY_PROTOCOL.md): mandatory start-of-session, end-of-session, verification, and repository-update checklist.
+- [Next-Session Prompt](NEXT_SESSION_PROMPT.md): copyable handoff prompt; refresh it at the end of every substantive session.
+- [Session Handoff](SESSION_HANDOFF.md): detailed current context, decisions, gate states, and next actions.
+- [Current Thesis Feasibility and Gates](research/FEASIBILITY_AND_NEXT_GATE_2026-10-29.md): thesis feasibility, current method hypothesis, benchmark constraints, and validation gates.
+
+Every session must inspect the latest commits, read the current status and handoff, update the relevant research artifacts plus status/handoff/prompt, commit the changes, fetch the changed files, and verify the resulting commits before reporting success. If no new evidence emerged, preserve an accurate handoff and explicitly say no substantive research result changed. Never fabricate progress or claim an unverified write.
