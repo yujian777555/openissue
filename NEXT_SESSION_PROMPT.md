@@ -55,3 +55,21 @@ At the end of every substantive session, update the prompt above to reflect:
 - any new scope constraints from the user.
 
 Do not leave stale details in this file when the project state changes. If the work only confirms existing status, say that no substantive research result changed and preserve the accurate current state.
+
+
+
+## Latest handoff refresh (2026-10-29)
+
+This prompt was refreshed alongside the new permanent continuity policy. The repository now contains:
+- `CONTINUITY_PROTOCOL.md`: mandatory every-session repository maintenance and verification rules.
+- `NEXT_SESSION_PROMPT.md`: this copyable handoff prompt, which must be refreshed every substantive session.
+- Updated `README.md`, `SESSION_HANDOFF.md`, `research/STATUS.md`, and `research/DECISION_LOG.md` to make the rule visible and durable.
+
+Continuity-policy commits in this update batch:
+- Protocol: `666fe68eafcb01fe8f0f93bc53e5bf79da818953`
+- README: `2759f477ce5a16212d3289d965b3ba4bc7a1c12e`
+- Session handoff: `c5b37cd73e5e902ffeff475223568edabc487f95`
+- Status: `acff2551e7ad8a1f4b28f74aa59d6718e9994b67`
+- Decision log: `4b70971c832e2c9e9b90c01575e356ba039d6019`
+
+Research state has not substantively changed during this continuity-only update: G0 remains OPEN, G1 remains PARTIAL/OPEN, and G2 remains NOT RUN. No experiment or paid API call was started. The next research task remains the final EvoMAS: Heuristics in the Loop mechanism audit and benchmark/split/scorer closure. The final prompt update itself must be verified from the latest repository state before reporting completion.
