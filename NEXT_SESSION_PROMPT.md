@@ -160,3 +160,17 @@ The 16/16 result is a software smoke test, not an Agent capability result or evi
 4. Conduct family-template leakage review, pin final data hashes, and only then close G1b.
 5. Complete external benchmark adapter/scorer verification (tau2-bench v2.0.0 remains the external candidate; do not call its source split family-held-out). Δτ-Bench stays deferred until dataset license/revision/checksum and family overlap are verifiable.
 6. Do not start G2 or any paid API experiment until the gates are explicitly passed.
+
+
+
+## Latest next-session task — executor/oracle audit R1 (2026-10-29)
+
+Work only in `yujian777555/openissue`; do not mix in other projects. First read `CONTINUITY_PROTOCOL.md`, current `research/STATUS.md`, `research/DECISION_LOG.md`, `SESSION_HANDOFF.md`, and `research/controlled_suite/EXECUTOR_ORACLE_AUDIT_R1.md`.
+
+The executor and 12 pilot cases already exist. This session patched two oracle defects:
+1. `required_arg_match` now checks every successful consumer against the nearest preceding successful producer; previously only the first consumer was checked.
+2. The `eq` oracle now uses JSON-style type-sensitive equality so booleans cannot satisfy integer invariants (Python's `True == 1` pitfall).
+
+Commits: implementation `668fa46da501ce07005acdb994b2e51d854ca9b5`; regression tests `25ecb59298e7ea12983ab70b5bc569e5b3f4fc2e`. Code patch CI run 40872596867 passed. **First inspect latest run 40872647713** and verify final status/test count; do not claim the final test patch passed until confirmed.
+
+Then continue the independent audit using reproducible counterexamples for idempotency-key scope, over-budget call accounting, and oracle/reference-action independence. Fix only confirmed defects and add regression tests. Do not begin paid API calls or formal OSLVC experiments. G1 remains PARTIAL/OPEN: only 12 pilot cases exist; 120-case suite, independent review, and final hashes are outstanding. End by updating status, decision log if needed, handoff, this prompt, README links as needed, and verify latest remote commit/CI.
