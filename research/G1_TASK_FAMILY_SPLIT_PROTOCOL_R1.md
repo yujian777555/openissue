@@ -188,3 +188,12 @@ Interpretation boundary:
 - The paper and code README provide the 1,191/397 split counts and checksummed data bundle layout, but the actual dataset revision, license metadata, checksum file, and task-family overlap could not be independently verified from the accessible sources in this round.
 - **Decision:** defer Δτ-Bench as a selected evaluation benchmark for now. Do not spend repeated sessions retrying the same inaccessible URL. Reopen only if a readable dataset card/revision and checksum manifest become available. It remains related work to discuss, but it is not needed to complete the current G1 protocol because pinned τ²/τ³-bench is a viable external candidate and the custom suite is the primary family-held-out evaluation.
 - Next concrete implementation action: create the original task schema, 12-family manifest, deterministic state-transition/oracle tests, and then generate task cases. G1 stays PARTIAL/OPEN until these artifacts are created and validated.
+
+
+
+## 9. Machine-readable design artifacts created (2026-10-29)
+
+- `research/controlled_suite/family_manifest_r1.json`: 120 planned IDs generated deterministically; JSON parse and integrity check passed with 120 unique IDs and counts train=60, validation=30, test=30. All entries are explicitly marked `planned_not_authored`.
+- `research/controlled_suite/task_case_schema_r1.json`: initial JSON Schema for task-case records, with strict required fields, goal-state oracle structure, tool-profile reference, turn/tool-call limits, and provenance metadata. The prompt builder must explicitly project only agent-visible task fields rather than serializing evaluator metadata.
+- These artifacts are design/metadata only. They do **not** mean the 120 task cases, tool profiles, state-transition executor, or oracle tests exist. G1b remains NOT DONE.
+- Next: define and test the five domain tool profiles and deterministic state-transition/oracle implementation; author representative cases for each family, run oracle regression tests, then complete all 120 case records and pin file hashes.
