@@ -596,6 +596,10 @@ class AuthoredBatch01Tests(unittest.TestCase):
             self.assertEqual(planned["status"], "authored_batch_01_pending_review")
             self.assertEqual(case["tool_profile_id"], f'{case["domain_id"]}-TOOLS-R1')
             self.assertFalse(case["provenance"]["external_case_text_copied"])
+            if case["family_id"] == "F10":
+                self.assertIn("context", case["task"], case["case_id"])
+                self.assertNotIn("/reports/q4-draft.md", case["task"]["user_request"])
+                self.assertIn("/reports/q4-draft.md", case["task"]["context"])
         self.assertEqual(errors, [])
 
     def test_batch_reference_trajectories_pass_and_near_misses_fail(self):
