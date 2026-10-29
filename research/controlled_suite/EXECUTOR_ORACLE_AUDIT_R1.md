@@ -3,7 +3,7 @@
 **Date:** 2026-10-29  
 **Repository:** `yujian777555/openissue`  
 **Scope:** Static review of `world_r1.py` and adversarial regression tests for `test_world_r1.py`.  
-**Status:** Two evaluator correctness defects patched; post-patch CI run was queued at the time this note was drafted. Do not mark the audit accepted until the latest run completes successfully.
+**Status:** Two evaluator correctness defects patched; regression CI passed with 19/19 tests on 2026-10-29.
 
 ## Finding A — Argument propagation only checked the first consumer (fixed; regression test added)
 
@@ -33,9 +33,9 @@ Added `test_json_oracle_equality_does_not_conflate_boolean_and_integer`, requiri
 - Code patch commit: `668fa46da501ce07005acdb994b2e51d854ca9b5`.
 - Test patch commit: `25ecb59298e7ea12983ab70b5bc569e5b3f4fc2e`.
 - Workflow for the code patch: https://github.com/yujian777555/openissue/actions/runs/40872596867 (success).
-- Workflow for the test patch: https://github.com/yujian777555/openissue/actions/runs/40872647713 (was queued when this note was written; verify final status before acceptance).
-- Expected total unit tests after adding two tests: 19, assuming the pre-existing 17 tests remain unchanged.
+- Workflow for the test patch: https://github.com/yujian777555/openissue/actions/runs/40872647713 (success; job log confirms 19 tests, including both new regressions).
+- Verified total unit tests after adding two tests: **19 passed / 0 failed**.
 
 ## Remaining audit limits
 
-This is a focused evaluator audit, not a complete formal verification of all tool handlers. Further work should review tool-state schema validation, idempotency scope, budget accounting for repeated over-budget attempts, and whether every pilot case's reference action is fully independent of its oracle. The 12-case pilot remains a mechanism smoke suite, not a final 120-case benchmark; G1 stays PARTIAL/OPEN.
+The patch is CI-verified but this is a focused evaluator audit, not a complete formal verification of all tool handlers. Further work should review tool-state schema validation, idempotency scope, budget accounting for repeated over-budget attempts, and whether every pilot case's reference action is fully independent of its oracle. The 12-case pilot remains a mechanism smoke suite, not a final 120-case benchmark; G1 stays PARTIAL/OPEN.
