@@ -191,9 +191,20 @@ Interpretation boundary:
 
 
 
-## 9. Machine-readable design artifacts created (2026-10-29)
+## 9. Machine-readable suite artifacts and pilot implementation (2026-10-29)
 
-- `research/controlled_suite/family_manifest_r1.json`: 120 planned IDs generated deterministically; JSON parse and integrity check passed with 120 unique IDs and counts train=60, validation=30, test=30. All entries are explicitly marked `planned_not_authored`.
-- `research/controlled_suite/task_case_schema_r1.json`: initial JSON Schema for task-case records, with strict required fields, goal-state oracle structure, tool-profile reference, turn/tool-call limits, and provenance metadata. The prompt builder must explicitly project only agent-visible task fields rather than serializing evaluator metadata.
-- These artifacts are design/metadata only. They do **not** mean the 120 task cases, tool profiles, state-transition executor, or oracle tests exist. G1b remains NOT DONE.
-- Next: define and test the five domain tool profiles and deterministic state-transition/oracle implementation; author representative cases for each family, run oracle regression tests, then complete all 120 case records and pin file hashes.
+The following artifacts now exist:
+
+- `research/controlled_suite/family_manifest_r1.json`: 120 unique planned IDs, with exact split counts train=60, validation=30, test=30. Twelve IDs are marked `pilot_case_authored_not_final`; the remaining 108 are marked `planned_not_authored`.
+- `research/controlled_suite/task_case_schema_r1.json`: strict task-case JSON Schema with state-invariant oracle fields and trace constraints.
+- `research/controlled_suite/pilot_cases_r1.jsonl`: 12 independently authored representative cases, one per family. Pilot subset split: 6 train, 3 validation, 3 test.
+- `research/controlled_suite/world_r1.py`: 22 deterministic tool definitions across five isolated in-memory domains; schema/type validation; staged state transitions; idempotency protection; structured event traces; JSON-Pointer state oracle; and trace-constraint evaluator.
+- `research/controlled_suite/test_world_r1.py`: 14 standard-library unit/smoke tests.
+- `research/controlled_suite/README.md`: run instructions and scope/safety notes.
+- `.github/workflows/controlled-suite-smoke.yml`: CI workflow definition for changes to the controlled suite. No GitHub Actions run was visible in the run-list check at the time of this update, so remote CI is **not** claimed as passed.
+
+Local verification performed against the implementation and representative case fixture: `python -m unittest -v test_world_r1` — **14 tests passed**. The tests include all 12 reference smoke trajectories and negative probes for wrong final state and wrong argument propagation.
+
+Safety boundary: all tools operate on in-memory synthetic state; no network calls, host filesystem writes, real email, real calendar, or real payments occur. Tool-profile prompts must expose only the user request, allowed context, and selected tool schema—not the oracle, split, family labels, initial-state metadata beyond what the environment provides, reference actions, or evaluation constraints.
+
+**G1 remains PARTIAL/OPEN.** The 12 pilot cases establish only that the first executor/oracle prototype behaves consistently on representative scenarios. They do not establish task-family generalization or a research result. The remaining 108 cases, family coverage review, independent oracle review, leakage audit, final manifest/data hashes, and a verified external adapter/scorer are still outstanding.
