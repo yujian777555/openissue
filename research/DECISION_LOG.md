@@ -637,3 +637,16 @@ Record consequential project decisions here so future sessions do not reopen set
 - **Evidence:** case/revision commit `3c8e58fc69f09534a5e36ef68c0bf16a4f81e83a`; helper/test commit `0a4c33a1f34f6d900c3e1d4b62821b7281736bed`; CI [40880783510](https://github.com/yujian777555/openissue/actions/runs/40880783510) passed 33/33 tests. Under the same tokenizer, F04/F09 Jaccard fell from 0.357 to 0.176 and F05/F08 from 0.308 to 0.200.
 - **Boundary:** 12-case screen only; no calibrated similarity threshold, independent human review, live prompt integration test, or 120-case pairwise audit yet.
 - **Next:** establish a case-authoring protocol and author the remaining 108 tasks in controlled batches, with per-case near-miss tests and continuous leakage review.
+
+
+## D-056 — Add controlled-suite authoring batch 01 under a frozen case protocol
+
+- **Date:** 2026-10-29
+- **Status:** Programmatic validation passed; independent review pending.
+- **Decision:** Keep the original 12 pilot cases separate and add new task records to `authored_cases_r1.jsonl`; keep evaluator-only reference and near-miss trajectories in `reference_actions_r1.jsonl`. Do not expose either fixture list to the Agent.
+- **Decision:** Freeze the case-authoring rules in `CASE_AUTHORING_PROTOCOL_R1.md`: immutable manifest IDs/splits, mechanism-specific acceptance criteria, schema validation, reference-pass plus near-miss-rejection tests, prompt allowlist checks, and lexical plus manual leakage review.
+- **Batch 01:** 12 additional V1/standard cases (one per family) now have deterministic initial states, state/trace oracles, reference trajectories, and near-miss trajectories. The manifest marks them `authored_batch_01_pending_review`. Total authored cases = 24/120 (12 pilot + 12 batch 01); 96 remain unauthored.
+- **Evidence:** latest test commit `d0b998116bb79277b8243d9cf9d23de171bdb93a`; GitHub Actions [40887208453](https://github.com/yujian777555/openissue/actions/runs/40887208453) passed 36/36 tests.
+- **Leakage correction:** adjusted F07/F08/F11/F12 task wording, changed F11's SKU labels to reduce template overlap, and made F03 use an explicit event ID so its oracle tests read-back rather than duplicating F06's result-handoff mechanism. F07 now requires listing the intended prefix; F10 context-only reference resolution is explicitly asserted.
+- **Boundary:** automated reference/near-miss checks do not replace independent human review. Residual pairs F06-D5-V1/F12-D5-V1 and F06-D3-V1/F09-D3-V1 remain flagged for semantic review. G1b remains open.
+- **Next:** author batch 02 under the same protocol and keep all family assignments fixed; update the full lexical/semantic audit after each batch.
