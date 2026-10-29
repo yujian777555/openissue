@@ -169,6 +169,94 @@
           "type": "string"
         }
       }
+    },
+    "trace_constraints": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "ordered_successful_tools": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "forbidden_successful_tools": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "max_successful_calls": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "integer",
+            "minimum": 0
+          }
+        },
+        "min_successful_calls": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "integer",
+            "minimum": 0
+          }
+        },
+        "max_mutating_successes": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "integer",
+            "minimum": 0
+          }
+        },
+        "min_error_calls": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "integer",
+            "minimum": 0
+          }
+        },
+        "min_replayed_calls": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "integer",
+            "minimum": 0
+          }
+        },
+        "required_arg_match": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "producer_tool",
+              "source",
+              "source_pointer",
+              "consumer_tool",
+              "consumer_arg"
+            ],
+            "properties": {
+              "producer_tool": {
+                "type": "string"
+              },
+              "source": {
+                "enum": [
+                  "args",
+                  "result"
+                ]
+              },
+              "source_pointer": {
+                "type": "string",
+                "pattern": "^(/.*)?$"
+              },
+              "consumer_tool": {
+                "type": "string"
+              },
+              "consumer_arg": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      }
     }
   },
   "$defs": {
@@ -214,5 +302,5 @@
       }
     }
   },
-  "description": "Task records contain evaluator-side metadata as well as the user request. The prompt builder must explicitly pass only task.user_request, permitted task.context, and the selected tool profile; it must not serialize the full task record into the agent prompt."
+  "description": "The evaluator and prompt builder must explicitly pass only task.user_request, permitted task.context, and the selected tool profile to the agent. Do not serialize evaluator-side initial_state, oracle, split, family metadata, trace_constraints, or provenance into the agent prompt. state_path and source_pointer use RFC 6901-style JSON Pointers."
 }
