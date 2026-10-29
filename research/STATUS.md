@@ -1,6 +1,6 @@
 # Current Project Status
 
-**Last updated:** 2026-10-27  
+**Last updated:** 2026-10-29  
 **Stage:** 3 — thesis-level proposal framing and candidate-method validation  
 **Overall status:** OPEN; topic not selected  
 **Source of truth:** this repository
@@ -221,3 +221,14 @@ The user clarified that the current task is preparation for the **master's thesi
 - **G0 remains OPEN.** Next: make a bounded attempt to obtain the final PDF/verified author copy. If access remains blocked, audit the accessible earlier manuscript only as a provisional preprint (clearly label all claims unverified against the final version) and continue G1 in parallel. Do not infer absence of an equivalent mechanism from missing access.
 - **G1 remains PARTIAL/OPEN; G2 remains NOT RUN.** No formal experiment or paid API call was started.
 - No substantive research conclusion changed in this check; the purpose was to verify the current blocker and make the next action explicit.
+
+
+
+## Provisional EvoMAS mechanism audit — 2026-10-29
+
+- A bounded attempt to read the final ICML/PMLR PDF still failed: the official record/abstract are accessible, but the PDF is rejected as binary by the current reader; OpenReview redirects to a browser-verification challenge.
+- The search index exposed substantial sections of the earlier anonymous manuscript. A **provisional preprint-only mechanism audit** is now recorded in research/EVOMAS_HIL_PROVISIONAL_MECHANISM_AUDIT_2026-10-29.md.
+- Preprint-level findings: EvoMAS already covers a multi-operator portfolio, adaptive strategy selection, historical performance-based strategy credit, LLM-guided multi-criteria selection, reflective rule updates, graph edit distance for structural diversity, role evolution, and curriculum. These are not standalone novelty claims.
+- Narrow candidate to test: whether *realized execution-trace behavior displacement* adds incremental value to operator/strength continuation-credit estimation beyond immediate reward, raw lineage return, structural graph distance, and existing adaptive controls. This is a hypothesis only; final-version equivalence is unverified.
+- **G0 OPEN:** final ICML method equations/ablations not yet verified. **G1 PARTIAL/OPEN:** task-family split, version/license manifest, task IDs, and scorer/oracle checks still need locking. **G2 NOT RUN:** no experiment, code reproduction, or paid API call.
+- Next: advance G1 in parallel with one bounded attempt to obtain the final paper; freeze the controlled task-family split/scorer protocol before any formal pilot. Do not promote OSLVC to an approved innovation.
