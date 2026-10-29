@@ -508,3 +508,16 @@ Record consequential project decisions here so future sessions do not reopen set
 - **Effect on OSLVC:** Keep it provisional; neither approve nor reject the narrow displacement-conditioned continuation-credit hypothesis until full-text prior-art comparison and controlled evidence.
 - **Next:** One bounded attempt for a legitimate readable final/author copy; proceed with G1 benchmark/split/scorer work in parallel. G0 remains OPEN, G1 PARTIAL/OPEN, G2 NOT RUN. No experiment or paid API call started.
 - **Record:** `research/EVOMAS_HIL_METHOD_AUDIT_R1.md`.
+
+
+
+## D-045 — Provisional G1 family-held-out benchmark protocol
+
+- Date: 2026-10-29
+- Status: Provisional design decision; artifact generation pending.
+- Primary controlled-suite design: five mock domains × twelve global task families × two variants = 120 original deterministic tasks. Whole families split into train F01–F06 (60), validation F07–F09 (30), and test F10–F12 (30). Definitions and oracle/metric protocol: `research/G1_TASK_FAMILY_SPLIT_PROTOCOL_R1.md`.
+- Evidence: Tool-Veritas's bundled 70 cases have no explicit family field or provided split, so they cannot by themselves establish family-held-out generalization. Original task text should be authored from scratch.
+- External candidate: tau2-bench v2.0.0 pinned at commit `989d3285ae669e49503324bdb9981bf14fccedeb`; source-test IDs are in the G1 protocol. Do not use the full frozen `text-v1` manifest as held-out after training on source-train IDs.
+- Delta tau benchmark is a newly surfaced candidate; its separately hosted dataset's license/revision/checksum and task-family overlap remain unverified, so it is not selected yet.
+- G1 remains PARTIAL/OPEN because task files, oracle tests, exact custom manifest hashes, and external adapter/scorer checks do not yet exist. No formal experiment or paid API call has been run.
+- Next: finish bounded dataset-rights/split check for Delta tau; then author the controlled-suite schema and oracle tests before any formal OSLVC pilot.
