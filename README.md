@@ -150,3 +150,5 @@ Latest mechanism-level finding: the accessible earlier EvoMAS manuscript already
 ## G1 benchmark protocol
 
 See `research/G1_TASK_FAMILY_SPLIT_PROTOCOL_R1.md` for the current 120-task family-held-out design, pinned external task IDs, oracle/metrics, and open validation gates. The design is documented; the task suite and oracle tests are not yet implemented, so G1 remains PARTIAL/OPEN.
+
+The machine-readable suite design is also available at `research/controlled_suite/family_manifest_r1.json` (120 planned IDs; cases not yet authored) and `research/controlled_suite/task_case_schema_r1.json` (initial case schema). These files are design artifacts, not an executable benchmark.
