@@ -552,3 +552,15 @@ Record consequential project decisions here so future sessions do not reopen set
 - Verification: fetched manifest parsed as valid JSON; 120 IDs were unique and split counts were exactly 60 train / 30 validation / 30 test. Every entry remains `planned_not_authored`.
 - Boundary: this verifies only the manifest structure, not task content, tool profiles, executor behavior, or oracle correctness. G1 remains PARTIAL/OPEN.
 - Next: define five domain tool profiles and deterministic state transitions; author representative cases and run oracle regression tests before generating all cases.
+
+
+
+## D-049 — Implement the deterministic executor before expanding the full task set
+
+- Date: 2026-10-29
+- Status: Accepted implementation milestone; G1 remains open.
+- Implemented: `research/controlled_suite/world_r1.py` defines 22 in-memory tools across five isolated domains. State-changing calls use staged state so precondition errors do not partially commit; mutating operations require idempotency keys; duplicate keys replay the first result, while payload conflicts are rejected.
+- Added: `pilot_cases_r1.jsonl` contains 12 independently authored representative cases, one per family (6 train / 3 validation / 3 test); `test_world_r1.py` contains 14 standard-library unit/smoke tests; a suite README and CI workflow definition were added.
+- Verification: local command `python -m unittest -v test_world_r1` passed 14/14. A schema-contract validation script accepted all 12 pilot records. GitHub API run-list showed zero workflow runs at the time checked; remote CI is not claimed as passed.
+- Boundary: this verifies prototype consistency on the reference smoke trajectories, not Agent capability, evolutionary search, task-family generalization, or a thesis innovation. The remaining 108 cases, independent family/oracle review, leakage checks, final hashes, and external adapter/scorer remain outstanding.
+- Next: independently review the 12 oracle/trace contracts, add property-based or adversarial regression cases for atomicity and idempotency, then author the remaining 108 cases without changing split assignments. Do not start G2 or paid APIs yet.
