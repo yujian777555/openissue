@@ -134,3 +134,15 @@ New audit: research/EVOMAS_CONFIG_EVOLUTION_METHOD_AUDIT_R1.md. Generic feedback
 - [Current Thesis Feasibility and Gates](research/FEASIBILITY_AND_NEXT_GATE_2026-10-29.md): thesis feasibility, current method hypothesis, benchmark constraints, and validation gates.
 
 Every session must inspect the latest commits, read the current status and handoff, update the relevant research artifacts plus status/handoff/prompt, commit the changes, fetch the changed files, and verify the resulting commits before reporting success. If no new evidence emerged, preserve an accurate handoff and explicitly say no substantive research result changed. Never fabricate progress or claim an unverified write.
+
+
+
+## Current research gate — 2026-10-29
+
+Latest mechanism-level finding: the accessible earlier EvoMAS manuscript already covers broad adaptive strategy selection, history-based strategy credit, reflective meta-control, structural graph-distance diversity, role evolution, and curriculum. OSLVC is therefore narrowed to a falsifiable question about **realized execution-trace behavior displacement** and continuation-credit value; it is not yet an approved innovation. The final ICML version remains incompletely audited.
+
+- [Provisional EvoMAS mechanism audit](research/EVOMAS_HIL_PROVISIONAL_MECHANISM_AUDIT_2026-10-29.md)
+- [Current status and gates](research/STATUS.md)
+- [Proposal gap matrix](research/PROPOSAL_GAP_MATRIX_R1.md)
+- [Session handoff](SESSION_HANDOFF.md)
+- [Next-session prompt](NEXT_SESSION_PROMPT.md)
