@@ -183,3 +183,16 @@ The detailed protocol is now in `research/G1_TASK_FAMILY_SPLIT_PROTOCOL_R1.md`.
 - Scorer audit: report database/state reward separately from full official reward. Airline test tasks use DB+COMMUNICATE; retail uses DB+NL_ASSERTION for 39 tasks and DB-only for one. Check actual scorer behavior, pin any judge model/version, and cluster related task IDs for uncertainty analysis.
 - **New candidate:** Δτ-Bench (arXiv:2610.34238, 2026-10-25) reports 1,588 tasks across 42 domains and six tool-ecosystem versions (1,191 train / 397 test); its code repo states MIT, but dataset license/revision/checksums and task-family leakage still require verification. It is not selected yet; audit boundedly before deciding whether its evolving-tool setting is relevant enough to replace/augment τ².
 - **Gate state:** G1a (design) proposed/fixed for review; G1b (original tasks/oracle/tests/hash) NOT DONE; G1c (external adapter/scorer and Δτ decision) NOT DONE. G1 remains PARTIAL/OPEN; G2 NOT RUN; no model/API experiment was run.
+
+
+
+## 10. G1 protocol R1 — family split and pinned source test set (2026-10-29)
+
+Detailed protocol: `research/G1_TASK_FAMILY_SPLIT_PROTOCOL_R1.md`.
+
+- **Primary controlled suite design:** 120 independently authored deterministic tasks, five mock domains × 12 global task families × two variants. Whole families are assigned to train (F01–F06, 60 tasks), validation (F07–F09, 30), and test (F10–F12, 30). Planned IDs and oracle/metric rules are in the protocol. Tasks have **not yet been authored**, so this is a design proposal, not a finished dataset or G1 PASS.
+- Tool-Veritas `all.jsonl` was parsed at source level: 70 cases, 16 domain labels, 20 domain/category combinations, 70 unique normalized goals, no explicit family field or supplied split. Use its Apache-2.0 code as a candidate harness only after adapter smoke test; author original task content from scratch because a separate task-data license was not identified.
+- **Pinned external candidate:** τ²/τ³-bench `v2.0.0`, commit `989d3285ae669e49503324bdb9981bf14fccedeb`, MIT. Exact source-test IDs (airline 20; retail 40) are in the G1 protocol. This is a custom source-test evaluation, not the frozen `text-v1` leaderboard manifest; the full `text-v1` set mixes source train/test IDs.
+- Scorer audit: report database/state reward separately from full official reward. Airline test tasks use DB+COMMUNICATE; retail uses DB+NL_ASSERTION for 39 tasks and DB-only for one. Verify actual scorer behavior, pin any judge model/version, and cluster related task IDs for uncertainty analysis.
+- **New candidate:** Δτ-Bench (arXiv:2610.34238, 2026-10-25) reports 1,588 tasks across 42 domains and six tool-ecosystem versions (1,191 train / 397 test); its code repo states MIT, but dataset license/revision/checksums and family leakage still require verification. It is not selected yet; audit boundedly before deciding whether its evolving-tool setting is relevant enough to replace/augment τ².
+- **Gate state:** G1a (design) provisionally specified; G1b (original tasks/oracle tests/hash) NOT DONE; G1c (external adapter/scorer and Δτ decision) NOT DONE. G1 remains PARTIAL/OPEN; G2 NOT RUN; no model/API experiment was run.
