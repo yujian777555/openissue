@@ -282,3 +282,9 @@ The current thesis route is considered feasible enough to continue proposal prep
 - Do not begin large/paid API experiments before G0/G1 are closed. Static EA HPO must precede adaptive-control claims.
 - If OSLVC fails, revise or remove the conditional-credit component; retain the broader thesis frame only if a distinct alternative EC mechanism can be supported. Do not manufacture three innovations by splitting one method.
 - Full continuity record: `research/FEASIBILITY_AND_NEXT_GATE_2026-10-29.md`.
+
+## 16. G1 benchmark and family-split protocol (2026-10-29)
+
+The current evaluation design is recorded in `research/G1_TASK_FAMILY_SPLIT_PROTOCOL_R1.md`: a proposed 120-task original deterministic suite, five mock domains, twelve global task families, two variants each, and whole-family split of 60 train / 30 validation / 30 test. Task files, oracle tests, and manifest hashes are not yet created, so this is not a completed benchmark.
+
+The current external candidate is tau2-bench v2.0.0 source test (20 airline + 40 retail IDs, pinned in the protocol); it must not be reported as the frozen `text-v1` leaderboard. Δτ-Bench has been newly identified as a candidate for cross-version tool adaptation, but its separately hosted dataset license/revision/checksum and family overlap remain open. G1 remains PARTIAL/OPEN; no experiment has run.
