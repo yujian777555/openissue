@@ -176,11 +176,15 @@ def _matches_type(value: Any, kind: str) -> bool:
 class World:
     """One task episode in one isolated, deterministic mock domain."""
 
-    def __init__(self, domain: str, initial_state: dict[str, Any] | None = None):
+    def __init__(self, domain: str, initial_state: dict[str, Any] | None = None, max_tool_calls: int | None = None):
         if domain not in {"D1", "D2", "D3", "D4", "D5"}:
             raise ValueError(f"Unknown domain: {domain}")
+        if max_tool_calls is not None and max_tool_calls < 1:
+            raise ValueError("max_tool_calls must be a positive integer when set.")
         self.domain = domain
         self.state = _deep_merge(_default_state(), initial_state or {})
+        self.max_tool_calls = max_tool_calls
+        self.call_count = 0
         self.events: list[dict[str, Any]] = []
 
     def snapshot(self) -> dict[str, Any]:
@@ -189,6 +193,12 @@ class World:
 
     def call(self, tool_name: str, args: dict[str, Any]) -> dict[str, Any]:
         event_base = {"index": len(self.events), "tool": tool_name, "args": deepcopy(args) if isinstance(args, dict) else args}
+        if self.max_tool_calls is not None and self.call_count >= self.max_tool_calls:
+            error = {"code": "CALL_LIMIT_REACHED", "message": "Episode tool-call limit has been reached."}
+            self.events.append({**event_base, "status": "blocked", "schema_valid": True, "mutated": False,
+                                "event_type": "tool_call_budget_exceeded", "result": None, "error": error})
+            return {"ok": False, "error": error}
+        self.call_count += 1
         if tool_name not in TOOL_SPECS or TOOL_SPECS[tool_name].domain != self.domain:
             return self._error(event_base, "TOOL_NOT_AVAILABLE", "Tool is not available in this isolated domain.", schema_valid=False)
         if not isinstance(args, dict):
@@ -578,12 +588,18 @@ def evaluate_case(case: dict[str, Any], state: dict[str, Any], events: list[dict
     }
 
 
-def run_actions(domain: str, initial_state: dict[str, Any], actions: list[dict[str, Any]]) -> tuple[World, list[dict[str, Any]]]:
+def run_actions(domain: str, initial_state: dict[str, Any], actions: list[dict[str, Any]], max_tool_calls: int | None = None) -> tuple[World, list[dict[str, Any]]]:
     """Execute a deterministic action list. Each action has tool and args keys."""
-    world = World(domain, initial_state)
+    world = World(domain, initial_state, max_tool_calls=max_tool_calls)
     results = []
     for action in actions:
         if set(action) != {"tool", "args"}:
             raise ValueError("Each action must contain exactly 'tool' and 'args'.")
         results.append(world.call(action["tool"], action["args"]))
     return world, results
+
+
+def run_case_actions(case: dict[str, Any], actions: list[dict[str, Any]]) -> tuple[World, list[dict[str, Any]]]:
+    """Run reference actions under the task's declared tool-call budget."""
+    return run_actions(case["domain_id"], case["initial_state"], actions,
+                       max_tool_calls=case["limits"]["max_tool_calls"])
