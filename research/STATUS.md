@@ -243,3 +243,14 @@ The user clarified that the current task is preparation for the **master's thesi
 - Exact state/action/reward/credit/update equations, displacement measurement, conditional lineage value, and ablations remain **unverified**. Abstract-level silence does not prove absence.
 - G0 remains OPEN; G1 PARTIAL/OPEN; G2 NOT RUN. Next: bounded attempt at a legitimate readable final/author copy; in parallel advance the family-held-out task split and scorer audit. No formal experiment or paid API call was run.
 - Detailed evidence and boundaries: `research/EVOMAS_HIL_METHOD_AUDIT_R1.md`.
+
+
+
+## G1 progress — task-family protocol R1 (2026-10-29)
+
+- Added `research/G1_TASK_FAMILY_SPLIT_PROTOCOL_R1.md`: a 120-task original deterministic-suite design, 12 global task families, whole-family split (60 train / 30 validation / 30 test), state oracle, behavior-displacement metric, fairness controls, and exact pinned external task IDs.
+- Tool-Veritas's bundled `all.jsonl` was source-parsed: 70 cases, 16 domain labels, 20 domain/category combinations, 70 unique normalized goals, no family field or ready-made split. It is not accepted as the final benchmark. Candidate harness only; author task content from scratch unless data provenance/license is resolved.
+- Pinned τ²/τ³-bench v2.0.0 source-test candidate: commit `989d3285ae669e49503324bdb9981bf14fccedeb`; airline test IDs (20) and retail test IDs (40) are recorded in the G1 protocol. This is a custom source-test evaluation, not the `text-v1` leaderboard set. Scorer components must be reported separately.
+- Newly found Δτ-Bench (arXiv:2610.34238; 2026-10-25) has 1,588 tasks/42 domains/six ecosystem versions and a state-change evaluator; it is a candidate external benchmark, not selected yet because dataset license/revision/checksum and family-overlap need verification.
+- **Gate states:** G0 OPEN; G1a design provisionally specified; G1b original task files/oracle tests/hash NOT DONE; G1c external adapter/scorer and Δτ decision NOT DONE; G1 overall PARTIAL/OPEN; G2 NOT RUN.
+- No tasks were authored or executed, no adapter was run, and no model/API experiment occurred in this design round. Next: audit Δτ dataset license/split briefly, choose/defer it; then implement the original case schema and generate the 120-task manifest, starting with deterministic oracle unit tests.
