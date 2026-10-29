@@ -232,3 +232,14 @@ The user clarified that the current task is preparation for the **master's thesi
 - Narrow candidate to test: whether *realized execution-trace behavior displacement* adds incremental value to operator/strength continuation-credit estimation beyond immediate reward, raw lineage return, structural graph distance, and existing adaptive controls. This is a hypothesis only; final-version equivalence is unverified.
 - **G0 OPEN:** final ICML method equations/ablations not yet verified. **G1 PARTIAL/OPEN:** task-family split, version/license manifest, task IDs, and scorer/oracle checks still need locking. **G2 NOT RUN:** no experiment, code reproduction, or paid API call.
 - Next: advance G1 in parallel with one bounded attempt to obtain the final paper; freeze the controlled task-family split/scorer protocol before any formal pilot. Do not promote OSLVC to an approved innovation.
+
+
+
+## EvoMAS HIL public-record audit (2026-10-29)
+
+- Re-opened the official PMLR final record and attempted the official PDF/OpenReview links. The final paper metadata and abstract are readable; the PDF is not extractable by the current reader and OpenReview redirects to browser verification.
+- Verified from the official abstract that EvoMAS includes a seven-strategy evolutionary portfolio, adaptive strategy selection, role-level evolution, curriculum-guided evolution, and the reflective Cyber Creator meta-controller.
+- Consequence: generic adaptive operator/strategy selection and reflective evolutionary meta-control are already covered and must not be claimed as innovations.
+- Exact state/action/reward/credit/update equations, displacement measurement, conditional lineage value, and ablations remain **unverified**. Abstract-level silence does not prove absence.
+- G0 remains OPEN; G1 PARTIAL/OPEN; G2 NOT RUN. Next: bounded attempt at a legitimate readable final/author copy; in parallel advance the family-held-out task split and scorer audit. No formal experiment or paid API call was run.
+- Detailed evidence and boundaries: `research/EVOMAS_HIL_METHOD_AUDIT_R1.md`.
