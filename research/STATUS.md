@@ -254,3 +254,12 @@ The user clarified that the current task is preparation for the **master's thesi
 - Newly found Δτ-Bench (arXiv:2610.34238; 2026-10-25) has 1,588 tasks/42 domains/six ecosystem versions and a state-change evaluator; it is a candidate external benchmark, not selected yet because dataset license/revision/checksum and family-overlap need verification.
 - **Gate states:** G0 OPEN; G1a design provisionally specified; G1b original task files/oracle tests/hash NOT DONE; G1c external adapter/scorer and Δτ decision NOT DONE; G1 overall PARTIAL/OPEN; G2 NOT RUN.
 - No tasks were authored or executed, no adapter was run, and no model/API experiment occurred in this design round. Next: audit Δτ dataset license/split briefly, choose/defer it; then implement the original case schema and generate the 120-task manifest, starting with deterministic oracle unit tests.
+
+
+
+## τ² source-split similarity finding (2026-10-29)
+
+- Ran a heuristic word-level TF-IDF similarity screen on task purpose, user reason-for-call, and task instructions for every source-test task against source-train tasks in pinned tau2-bench v2.0.0.
+- At screening threshold cosine ≥0.45, nearest-train similarity was above threshold for 4/20 airline test tasks and 17/40 retail test tasks. Examples include retail test 94 ↔ train 93 (1.000), 32 ↔ 31 (0.968), 62 ↔ 63 (0.963), and airline test 16 ↔ train 15 (0.695).
+- This is a heuristic screen, not a validated duplicate detector; manual task/schema review is still needed. It is sufficient to prohibit describing τ² source train/test as task-family-held-out. Use it only as a standard source-split or external-transfer evaluation; family-held-out evidence must come from the original controlled suite.
+- Details: `research/G1_TASK_FAMILY_SPLIT_PROTOCOL_R1.md`. G1 remains PARTIAL/OPEN; no experiment or API call was run.
