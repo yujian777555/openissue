@@ -157,4 +157,4 @@ The first deterministic executor prototype is now present in [research/controlle
 - State-invariant and trace-constraint evaluator.
 - 14 local unit/smoke tests passed.
 
-The manifest still contains 120 planned IDs: 12 pilot cases are authored but not final, and 108 cases remain un-authored. This is not a completed benchmark or Agent experiment. G1 remains PARTIAL/OPEN; G2 has not started. The CI workflow definition exists, but no GitHub Actions run was visible at the last check.
+The manifest still contains 120 planned IDs: 12 pilot cases are authored but not final, and 108 cases remain un-authored. This is not a completed benchmark or Agent experiment. G1 remains PARTIAL/OPEN; G2 has not started. GitHub Actions run `40865732953` passed on Python 3.11 with all 14 tests successful.
