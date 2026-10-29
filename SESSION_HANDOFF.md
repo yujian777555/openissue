@@ -209,3 +209,11 @@ External candidate tau2-bench is pinned to `v2.0.0` / commit `989d3285ae669e4950
 Newly surfaced Delta tau benchmark (arXiv:2610.34238, 2026-10-25) has 1,588 tasks across 42 domains and six ecosystem versions, 1,191 train / 397 test. It is a relevant possible external benchmark, but its separate dataset license/revision/checksum and family overlap remain unverified. Next session: perform a bounded dataset rights/split audit and decide whether to defer or use it; then begin authoring the original controlled-suite schema and deterministic oracle tests.
 
 G1 remains PARTIAL/OPEN; G2 NOT RUN; no experiment, adapter smoke test, or paid API call occurred.
+
+
+
+## τ² source-split similarity audit — latest finding (2026-10-29)
+
+A heuristic word-level TF-IDF screen on the pinned tau2-bench v2.0.0 source split compared test tasks against every train task using normalized purpose/reason/instructions. At cosine ≥0.45, 4/20 airline and 17/40 retail test tasks had a high-similarity train counterpart. Examples: retail 94↔93 (1.000), 32↔31 (0.968), 62↔63 (0.963), airline 16↔15 (0.695). This is a warning screen, not a validated duplicate detector; manual semantic/schema review remains necessary.
+
+Decision boundary: do not call the tau2 source split family-held-out. Use it only as standard source-split or external-transfer evaluation, and make the custom 120-task whole-family split the primary family-generalization evidence. Full method and caveat: `research/G1_TASK_FAMILY_SPLIT_PROTOCOL_R1.md`. No model execution or API call was made.
