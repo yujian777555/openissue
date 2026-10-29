@@ -70,6 +70,17 @@ class ToolProfileTests(unittest.TestCase):
             self.assertTrue(all(item["name"].startswith(prefix) for item in profile))
             self.assertTrue(all(item["input_schema"]["additionalProperties"] is False for item in profile))
 
+    def test_order_item_schema_and_positive_amount_are_exposed(self):
+        d3 = {item["name"]: item["input_schema"] for item in tool_profile("D3")}
+        item_schema = d3["inventory.create_order"]["properties"]["items"]
+        self.assertEqual(item_schema["type"], "array")
+        self.assertEqual(item_schema["minItems"], 1)
+        self.assertEqual(item_schema["items"]["required"], ["sku", "quantity"])
+        self.assertEqual(item_schema["items"]["properties"]["quantity"]["minimum"], 1)
+        d4 = {item["name"]: item["input_schema"] for item in tool_profile("D4")}
+        self.assertEqual(d4["ledger.transfer"]["properties"]["amount"]["minimum"], 1)
+        self.assertEqual(d4["ledger.transfer"]["properties"]["idempotency_key"]["minLength"], 1)
+
     def test_unknown_domain_tool_is_rejected_without_mutation(self):
         world = World("D1", {"files": {"/a.txt": "keep"}})
         before = world.snapshot()
