@@ -676,3 +676,15 @@ Record consequential project decisions here so future sessions do not reopen set
 - **Novelty boundary:** Frozen API LLM plus trainable Agent-side controller/skills is not novel by itself. Any EC method must beat strong offline-RL/AW, behavior-cloning, AgentOptimizer/SkillOpt, AMC, static HPO, and classical AOS/self-adaptation baselines.
 - **Implication for compute:** A800s may train local controller/value/reward models or a small auxiliary LLM/LoRA. Ordinary hosted API calls are inference only; remote weight updates require a separately documented provider fine-tuning service.
 - **Revisit when:** The provider/model API contract is verified and a mechanism-level audit identifies a distinct EC contribution.
+
+
+## D-058 — Narrow the API-backed Agent × EC candidate to an explicit external controller
+
+- **Date:** 2026-11-03
+- **Status:** Accepted as a research-scope refinement; not a novelty or method approval.
+- **Decision:** Keep the main LLM as a hosted API inference model and frozen during ordinary Agent-side training. Narrow the evolutionary search object to a compact external state-action controller; do not claim generic harness evolution or generic controller learning as an innovation.
+- **Rationale:** The 2026 prior-art audit finds direct work on offline AW controller training, black-box value-guided trajectory search, and multiple forms of frozen-model harness evolution. The broad architecture is not novel.
+- **Evidence:** `research/API_AGENT_EC_MECHANISM_AUDIT_R1.md`; P126 (AMC), P152 (AW Harness MDP), P156–P163 (TTHE, EvoHarness-RL, Self-Harness, Meta-Harness, AutoHarness, HarnessX, Harness-1, Code Evolution for Control).
+- **Candidate retained conditionally:** OSLVC may be tested at the controller level: estimate downstream lineage value conditional on realized action-trace displacement and matched task/state context. This is a hypothesis only; it must beat AW, tuned static EA, classical AOS, ELMER-style strength-only, LVPG-style lineage-only, and naive joint operator-strength controls.
+- **Implication:** A800s may train a local value/critic or auxiliary controller, while the hosted API model remains unchanged. AMC is a feasibility reference for this split; it is not itself the proposed controller-learning method.
+- **Revisit when:** the final EvoMAS: Heuristics in the Loop mechanism audit and G0/G1 gates are closed, and a controlled feasibility experiment tests the stated falsification criteria.
