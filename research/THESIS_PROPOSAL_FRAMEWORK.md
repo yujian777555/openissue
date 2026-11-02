@@ -345,3 +345,37 @@ A800 training can be used for the sidecar controller/value model. The API LLM ge
 6. Test whole-task-family holdout and, if feasible, cross-provider transfer. Match API calls/model versions across baselines; cost remains secondary.
 
 **Status:** this architecture correction is accepted as a user requirement. It does not approve a thesis title, controller genotype, algorithm, or innovation claim.
+
+
+## 19. 2026-11-03 mechanism-level narrowing: evolve the external controller, not a generic harness
+
+The latest audit in `research/API_AGENT_EC_MECHANISM_AUDIT_R1.md` changes the novelty boundary. The broad frozen-API-LLM plus trainable controller idea is already covered by offline AW harness control; broad harness evolution is covered by TTHE, Meta-Harness, Self-Harness, AutoHarness, and HarnessX. AMC demonstrates the API-policy plus local value-model implementation path.
+
+The current candidate therefore narrows the optimized object to a **compact external state-action controller**:
+- The hosted API LLM remains the fixed reasoning executor.
+- The harness, tool set, state schema, and evaluator are held fixed during controller search.
+- The controller chooses among explicit structural actions based only on observable execution state; no hidden model activations are required.
+- The evolutionary genotype may be a typed rule/program policy. The exact representation and operator set are not yet locked.
+- A local value/critic model may be trained from API-generated rollouts on A800, but this is a supporting signal, not the novelty claim.
+
+### 19.1 Candidate mechanism hypothesis
+
+Retain OSLVC only as a falsifiable controller-level hypothesis: **estimate downstream lineage value conditional on the behavior displacement actually realized by each typed variation operator**, using matched task/state probes. The proposed decomposition is `Q(s,o,d,h)=m(s,d,h)+a(s,o,d,h)`. The conditional residual is predictive unless randomized/matched comparisons support a causal interpretation.
+
+### 19.2 Explicit prior-art boundary
+
+- AW already learns a seven-action controller from finite offline rollouts; its finite-buffer analysis motivates testing whether EC can expand useful behavior support beyond reweighting.
+- AMC already trains a local value model to steer trajectories from a frozen API model.
+- TTHE and Meta-Harness already use population/code search and historical execution traces.
+- Self-Harness and SkillOpt already use bounded edits and held-out regression gates.
+- AutoHarness already uses LLM mutation with tree search over executable code.
+- HarnessX already uses typed harness edits, multi-stage trace analysis, deterministic gates, and optional model co-evolution.
+- Code Evolution for Control already evolves interpretable state-to-action programs with LLM mutation/crossover in a classical control domain.
+
+Therefore the thesis must not claim generic harness evolution, generic controller learning, or generic evolutionary policy-program search. The only active gap is whether displacement-conditioned lineage-value credit adds measurable value to **controller evolution** beyond the closest methods.
+
+### 19.3 Falsification and baseline sequence
+
+Test in order: fixed API harness; BC; offline AW controller; AMC trajectory steering; strong static EA on the same controller representation; classical AOS/self-adaptation; ELMER-style scale-only; LVPG-style lineage-only; naive joint operator-strength/raw-lineage control; then the OSLVC candidate. If AW matches the EC method or the conditional credit does not improve offspring ranking and held-out task success, revise/drop OSLVC.
+
+The controlled suite remains 36/120 authored and G1 is still open. No formal experiment is authorized by this audit.
