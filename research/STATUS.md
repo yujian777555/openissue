@@ -379,3 +379,18 @@ Added two adversarial regression tests in `test_world_r1.py` and documented the 
 - DeepSeek's public documentation confirms an OpenAI-compatible inference endpoint and the `deepseek-flash` model name; this does not establish a model-weight fine-tuning endpoint. The design does not assume one.
 - No paid API call, fine-tuning job, or Agent experiment was started. Existing benchmark gates remain open; the controlled suite has 36 authored cases out of 120 and requires independent review/leakage checks before formal experiments.
 - **Next:** perform a mechanism-level audit of the offline-RL harness controller, AMC, AgentOptimizer, SkillOpt, and evolutionary controller/program-search literature; then specify a falsifiable EC method and baseline ladder before drafting the opening report's innovation section.
+
+
+## API-backed Agent × EC mechanism audit R1 — 2026-11-03
+
+- **Scope clarification retained:** the main LLM is called through a hosted API and remains frozen during ordinary Agent-side training. This is not a request to fine-tune or download the main model.
+- Added `research/API_AGENT_EC_MECHANISM_AUDIT_R1.md`, a primary-source and code-level comparison of offline AW controller training, AMC, TTHE, HarnessX, Self-Harness, Meta-Harness, AutoHarness, EvoHarness-RL, Harness-1, and evolutionary program-policy search.
+- Added P156–P163 to `research/RELATED_WORK_MATRIX.md`. AMC remains P126; the direct offline AW controller is P152. Corrected the API training audit's local paper IDs to align with the matrix.
+- **Verified architecture precedent:** AMC's official code has an OpenAI-compatible API model for the task-solving policy and a separate locally trained LoRA + regression-head value model. This is a concrete template for the API-LLM + A800-sidecar architecture, not evidence that the API model itself is trained.
+- **Direct controller prior art:** Yi & Song's AW Harness MDP already learns a compact seven-action controller around a frozen LLM using terminal task-rubric reward. Its finite-buffer analysis states that outcome gains depend on high-return support in the rollout buffer.
+- **Harness evolution prior art:** TTHE, Meta-Harness, Self-Harness, AutoHarness, and HarnessX cover populations/branches, code edits, trace feedback, typed harness edits, model-specific failure mining, and deterministic validation gates. Generic harness evolution is not a novelty claim.
+- **Adjacent model-training work:** EvoHarness-RL uses BPE harness state and SFT + GRPO on an open-weight Qwen3-8B model. It is not the same as a closed API executor with a locally trained controller/value sidecar.
+- **Research object narrowed:** a compact external Agent state-action controller, with the API LLM, tool set, harness semantics, and evaluator held fixed. OSLVC remains only a candidate hypothesis: estimate operator continuation value conditional on realized action-trace displacement and matched task/state context.
+- **Falsification conditions:** if AW matches the EC controller, if operator families do not differ in realized displacement, or if displacement-conditioned lineage credit does not improve offspring ranking and held-out task success, revise/drop the candidate.
+- **Current gates unchanged:** G0 OPEN; G1 PARTIAL/OPEN; G2 NOT RUN. The deterministic suite has 36 authored cases out of 120 (84 unauthored). No paid API call, model fine-tuning job, or formal Agent/EC experiment was started.
+- **Next:** finish the exact final-version EvoMAS: Heuristics in the Loop mechanism audit and controller representation design; do not implement OSLVC or start API rollouts before G0/G1 closure.
