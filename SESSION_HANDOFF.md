@@ -331,3 +331,25 @@ At the next session start, read `CONTINUITY_PROTOCOL.md`, `research/STATUS.md`, 
 - **Gate status:** G1b PARTIAL/OPEN, G1c NOT DONE, G0 OPEN, G2 NOT RUN. No Agent/evolution experiment or paid API call was run.
 
 **Next concrete action:** independently review batch 01 and the residual overlap pairs, then author batch 02 (the next V1 case per family across a new domain) with the same schema/reference/near-miss checks. Do not close G1b based on CI alone.
+
+
+## Latest session handoff — hosted API LLM with trainable Agent-side components (2026-11-02)
+
+**Architecture clarification:** the main LLM is accessed through a hosted API as the Agent's reasoning engine. This is not a request to make API/tool calling itself the research problem. Keep the hosted LLM fixed during ordinary Agent training unless a separate provider fine-tuning interface is explicitly verified.
+
+Read first:
+1. `research/API_BASED_AGENT_TRAINING_AUDIT.md` — primary-source audit of AgentOptimizer, Agent Lightning, AMC, offline-RL harness control, SkillOpt, SMITH, and frozen-model harness control.
+2. `research/THESIS_PROPOSAL_FRAMEWORK.md` — section 18 for the updated API-backed architecture.
+3. `research/THESIS_PAPER_MAP.md` — section 8 for the provisional paper map.
+4. `research/STATUS.md` and `research/DECISION_LOG.md` — current stage and D-056.
+
+Key conclusions:
+- Agent training does not require fine-tuning the hosted foundation model. A controller, value/critic, reward/verifier model, skill/function/workflow layer, or optional local auxiliary model can be trained around a frozen API LLM.
+- A800s can train these local components. Ordinary API inference does not update the provider model's weights.
+- The closest work is already substantial: AgentOptimizer (ICML 2024), Agent Lightning (2025), AMC (ICML 2026), offline-RL harness control (2026 preprint), SkillOpt (2026), and SMITH (NeurIPS 2026, open-weight training).
+- Generic frozen-LLM controller/harness training is not a novelty claim. The next task is a mechanism-level audit to identify an EC-specific contribution beyond AW/offline RL, BC, function/skill optimization, AMC, static HPO, and classical AOS/self-adaptation.
+- No paid API call, fine-tuning job, or Agent experiment was started. The controlled-suite G1 gates remain open.
+
+**Next concrete action:** compare the exact controller state/action/reward/training equations of the 2026 offline-RL harness paper and AMC against candidate EC/neuroevolution/program-search methods. Then define one falsifiable EC method and a matched baseline ladder. Do not begin API rollouts until the benchmark, evaluator, and API logging contracts are ready.
+
+**Repository updates in this session:** `research/API_BASED_AGENT_TRAINING_AUDIT.md`, `research/RELATED_WORK_MATRIX.md`, `research/THESIS_PROPOSAL_FRAMEWORK.md`, `research/THESIS_PAPER_MAP.md`, `research/STATUS.md`, `research/DECISION_LOG.md`, and `README.md`.
