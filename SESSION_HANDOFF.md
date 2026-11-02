@@ -388,3 +388,15 @@ A compact external state-action controller is the optimized object; keep the API
 ### Next concrete action
 
 Finish the exact final EvoMAS: Heuristics in the Loop state/action/reward/credit/update audit, then lock the controller representation and experimental baseline ladder. Do not implement OSLVC or start paid API rollouts until G0/G1 gates are sufficiently closed.
+
+
+## Latest verified handoff — final EvoMAS record audit and bounded PDF attempt (2026-11-03)
+
+- Official PMLR final record verified: Wei, Huang, Xu, Wang, and Xing (2026), *EvoMAS: Heuristics in the Loop—Evolving Smarter Agentic Workflows*, PMLR 306, 133736–133763.
+- Final abstract confirms seven evolutionary strategies (six biological exploration/exploitation operators plus a domain-specific transformation operator), adaptive strategy selection, role-level evolution, curriculum-guided workflow evolution, and the Cyber Creator reflective meta-controller.
+- One bounded final-PDF retrieval attempt has been exhausted. The official raw-GitHub PDF is rejected as application/octet-stream, direct PMLR PDF access is unavailable, container download failed, and the official OpenReview link redirects to browser verification.
+- Exact final-version state/action/reward/credit/update equations and ablations remain unverified. Do not infer absence of displacement-conditioned lineage credit from abstract silence. Earlier anonymous manuscript details remain provisional/preprint-only.
+- G0 remains OPEN; G1 remains PARTIAL/OPEN (36/120 authored); G2 remains NOT RUN. No formal experiment, code reproduction, or paid API call occurred.
+- **Next:** do not retry the same PDF URLs. Continue controller representation design and G1 benchmark closure in parallel. Only revisit final EvoMAS equations if a genuinely new accessible author/final source appears.
+
+Updated files: `research/EVOMAS_HIL_METHOD_AUDIT_R1.md`, `research/EVOMAS_HIL_PROVISIONAL_MECHANISM_AUDIT_2026-10-29.md`, `research/STATUS.md`, `research/DECISION_LOG.md`, `research/THESIS_PROPOSAL_FRAMEWORK.md`, and `research/LITERATURE_REVIEW.md`.
