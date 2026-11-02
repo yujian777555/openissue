@@ -1,6 +1,6 @@
 # Current Project Status
 
-**Last updated:** 2026-10-29  
+**Last updated:** 2026-11-02  
 **Stage:** 3 — thesis-level proposal framing and candidate-method validation  
 **Overall status:** OPEN; topic not selected  
 **Source of truth:** this repository
@@ -365,3 +365,17 @@ Added two adversarial regression tests in `test_world_r1.py` and documented the 
 - **Current overlap screen:** highest residual cross-family pairs include F05-D4-V1/F06-D4-V1 (0.267, same train split), F06-D5-V1/F12-D5-V1 (0.267, train/test), F06-D5-V1/F05-D5-V1 (0.261, same train split), F02-D4-V1/F06-D4-V1 (0.250, same train split), F06-D4-V1/F09-D4-V1 (0.250, train/validation), F03-D2-V1/F10-D2-V1 (0.211, train/test), and F09-D2-V1/F03-D2-V1 (0.211, validation/train). These are lexical review priorities, not calibrated leakage probabilities or proof of duplicated mechanisms.
 - **Gate boundary:** G1b remains PARTIAL/OPEN; independent human review, full 120-case semantic leakage audit, frozen final hashes, live prompt-wrapper integration, and external adapter/scorer verification remain outstanding. G1c NOT DONE; G0 OPEN; G2 NOT RUN. No Agent/evolution experiment or paid API call was run.
 - **Next:** continue bounded authoring, prioritizing a mix of V1 coverage and V2 variants with genuine additional decision complexity. Re-screen after each batch and keep all manifest IDs/splits immutable.
+
+
+## API-backed LLM and Agent-side training audit — 2026-11-02
+
+- User clarification: the main LLM is to be accessed through a hosted API. This does **not** mean the LLM itself is an external tool called by the Agent. The intended architecture is a hosted API LLM as the reasoning executor plus a locally controlled Agent runtime and trainable Agent-side components.
+- Added `research/API_BASED_AGENT_TRAINING_AUDIT.md`, a primary-source audit distinguishing model-weight training, Agent-artifact training, controller training, and value-guided black-box trajectory search.
+- Added P150–P155 to `research/RELATED_WORK_MATRIX.md`: AgentOptimizer (ICML 2024), Agent Lightning (2025), offline RL harness control (2026 preprint), SkillOpt (2026), SMITH (NeurIPS 2026), and a frozen-LLM harness control preprint. AMC remains P126 and is explicitly retained as a direct baseline.
+- The literature confirms that Agent training can occur without updating the hosted LLM: AgentOptimizer learns functions; SkillOpt learns skills; recent offline-RL work learns a small controller around a frozen executor; AMC learns a value function to steer black-box trajectories.
+- A800 use is therefore redirected toward locally trainable Agent-side modules: controller/policy, value/critic, reward/verifier model, or an optional small auxiliary LLM/LoRA. Ordinary API inference does not update the provider model weights.
+- Important novelty warning: generic “frozen API LLM + trainable controller/harness/skills” is already covered by 2024–2026 prior art. The thesis must identify an EC-specific mechanism that beats AW/offline RL, BC, AgentOptimizer/SkillOpt, AMC, static HPO, and classical AOS/self-adaptation.
+- Updated `research/THESIS_PROPOSAL_FRAMEWORK.md` and `research/THESIS_PAPER_MAP.md` with this architecture as a requirement and provisional research direction. No final title, controller genotype, or innovation point was approved.
+- DeepSeek's public documentation confirms an OpenAI-compatible inference endpoint and the `deepseek-flash` model name; this does not establish a model-weight fine-tuning endpoint. The design does not assume one.
+- No paid API call, fine-tuning job, or Agent experiment was started. Existing benchmark gates remain open; the controlled suite has 36 authored cases out of 120 and requires independent review/leakage checks before formal experiments.
+- **Next:** perform a mechanism-level audit of the offline-RL harness controller, AMC, AgentOptimizer, SkillOpt, and evolutionary controller/program-search literature; then specify a falsifiable EC method and baseline ladder before drafting the opening report's innovation section.
