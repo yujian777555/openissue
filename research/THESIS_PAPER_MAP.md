@@ -86,3 +86,24 @@ The thesis should target two strong connected contributions first:
 - **C (optional):** a separate transfer/control mechanism only if a distinct prior-art gap is identified. Held-out evaluation alone is not a third innovation.
 
 G0 remains OPEN, G1 PARTIAL/OPEN, and G2 has NOT RUN. No paid API experiment is authorized. See `research/FEASIBILITY_AND_NEXT_GATE_2026-10-29.md`.
+
+
+## 8. API-backed LLM and Agent-side training architecture (2026-11-02)
+
+The intended deployment model is now a hosted API LLM used as the fixed reasoning executor, with training integrated into the Agent runtime. This is distinct from asking the Agent to call external APIs as tools.
+
+| Layer | Candidate object | Training / optimization | EC role |
+|---|---|---|---|
+| Main LLM | Hosted API model, frozen during ordinary training | Inference only; provider fine-tuning is optional and must be verified separately | Not directly evolved unless a supported trainable endpoint is explicitly chosen |
+| Agent controller | Compact state-conditioned policy over harness actions | SFT/BC or offline RL on rollout traces; can be trained locally on A800 | Candidate genotype/policy search, parameter evolution, operator/scale control |
+| Value/critic | State/partial-trajectory value estimator | Train from task outcome and trajectory data | Guide candidate action or evolutionary lineage selection; AMC is a direct baseline |
+| Skills/functions | External skill files, functions, schemas, workflow modules | LLM-assisted edits with held-out validation and rollback | Possible structured evolution, but AgentOptimizer and SkillOpt are direct baselines |
+| Optional auxiliary model | Small open-weight model/LoRA for a bounded Agent-side role | Local GPU training and OpenAI-compatible serving | Candidate trainable component, not a replacement for the hosted main LLM |
+
+### Candidate paper chain (not approved)
+
+- **Paper A — Trainable Agent-side controller:** define a compact, auditable harness state/action representation for an API-backed Agent and establish that a learned controller improves over fixed harness rules. This is not yet an innovation claim because offline RL harness control already exists.
+- **Paper B — Evolutionary controller learning/control:** test a specific EC method for optimizing the Agent-side controller or its structured policy, and require gains over AW/offline RL, BC, static HPO, classical AOS/self-adaptation, and the closest frozen-model baselines. Replacing AW with a GA without a mechanism-level advantage is insufficient.
+- **Paper C — Optional transfer:** test whether the learned evolutionary controller transfers across held-out task families or API providers through a distinct mechanism. Cross-provider evaluation alone is not a third innovation.
+
+The A800s can train a local controller/value model or optional small auxiliary LLM. The main API LLM remains frozen. The paper map will be revised only after the new candidate passes a closest-work audit and the benchmark/API contract gates.
