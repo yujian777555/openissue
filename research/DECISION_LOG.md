@@ -688,3 +688,14 @@ Record consequential project decisions here so future sessions do not reopen set
 - **Candidate retained conditionally:** OSLVC may be tested at the controller level: estimate downstream lineage value conditional on realized action-trace displacement and matched task/state context. This is a hypothesis only; it must beat AW, tuned static EA, classical AOS, ELMER-style strength-only, LVPG-style lineage-only, and naive joint operator-strength controls.
 - **Implication:** A800s may train a local value/critic or auxiliary controller, while the hosted API model remains unchanged. AMC is a feasibility reference for this split; it is not itself the proposed controller-learning method.
 - **Revisit when:** the final EvoMAS: Heuristics in the Loop mechanism audit and G0/G1 gates are closed, and a controlled feasibility experiment tests the stated falsification criteria.
+
+
+## D-059 — Exhaust the bounded final EvoMAS PDF retrieval; retain G0 as open
+
+- **Date:** 2026-11-03
+- **Status:** Accepted as evidence/access decision.
+- **Decision:** Use the official PMLR final record and abstract for verified claims. Do not repeat the same failed final-PDF retrieval routes. Keep G0 OPEN because exact state/action/reward/credit/update equations and ablations remain unverified.
+- **Verified final abstract:** seven evolutionary strategies (six biologically inspired exploration/exploitation operators plus a domain-specific transformation operator), adaptive strategy selection, role-level evolution, curriculum-guided workflow evolution, and Cyber Creator reflective meta-controller.
+- **Access evidence:** official PMLR record exposes the PDF URL; web reader rejects the raw-GitHub PDF as application/octet-stream; direct PMLR PDF access fails; container download fails; official OpenReview link redirects to browser verification.
+- **Implication:** broad adaptive strategy portfolios and reflective evolutionary meta-control are established prior art. Abstract silence is not evidence that displacement-conditioned lineage credit is absent. Earlier anonymous manuscript analysis remains provisional/preprint-only.
+- **Next:** proceed with controller representation design and G1 benchmark closure in parallel; revisit the exact final method only if a new accessible author/final source becomes available.
