@@ -127,3 +127,14 @@ Drop or redesign OSLVC if the residual signal is negligible, unstable, unavailab
 Wei, Y., Huang, Z., Xu, R., Wang, H., & Xing, W. W. (2026). *EvoMAS: Heuristics in the Loop—Evolving Smarter Agentic Workflows*. Proceedings of the 43rd International Conference on Machine Learning, PMLR 306, 133736–133763. https://proceedings.mlr.press/v306/wei26m.html
 
 Wei, Y., Huang, Z., Xu, R., Wang, H., & Xing, W. W. (2026, earlier anonymous submission). *EvoMAS: Heuristics in the Loop—Evolving Smarter Agentic Workflows*. OpenReview manuscript for ICLR 2026, ID 0rJUulYnow. https://openreview.net/pdf?id=0rJUulYnow. **Preprint-only source used provisionally; do not cite as the final ICML method without version verification.**
+
+
+## 9. Final-version retrieval outcome — 2026-11-03
+
+The official PMLR final record is now verified at https://proceedings.mlr.press/v306/wei26m.html. It confirms the seven-strategy repertoire (six biological exploration/exploitation operators plus a domain-specific operator), adaptive strategy selection, role-level evolution, curriculum-guided workflow evolution, and the Cyber Creator reflective meta-controller. Bibliographic details: Wei, Huang, Xu, Wang, and Xing (2026), PMLR 306, 133736–133763.
+
+A bounded attempt to inspect the linked final PDF was completed. The official raw-GitHub PDF is rejected by the reader as application/octet-stream; the direct PMLR PDF route is inaccessible; a container download failed; and the official OpenReview link redirects to browser verification. Do not repeat these same retrieval attempts without a new source.
+
+**What remains unresolved:** exact final-version state features, action representation, reward/credit equations, strategy update schedule, and ablations. Abstract silence does not establish that displacement-conditioned lineage credit is absent. Older anonymous manuscript details remain provisional only.
+
+**Gate update:** G0 remains OPEN, while the bounded final-PDF retrieval action is exhausted. Continue controller representation design and G1 benchmark closure in parallel. Do not claim a novelty verdict or start G2 based on abstract-level evidence.
