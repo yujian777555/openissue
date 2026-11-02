@@ -179,3 +179,8 @@ The deterministic controlled-suite prototype is implemented and under validity a
 - Executor implementation commit `14ac8634607094b720e3c96ad1bd9a786a9386f5` passed 29/29 tests; latest batch-01 test commit `d0b998116bb79277b8243d9cf9d23de171bdb93a` passed 36/36 tests in [CI run 40887208453](https://github.com/yujian777555/openissue/actions/runs/40887208453).
 
 **Gate boundary:** G1 remains PARTIAL/OPEN; independent human review, family-template leakage review, prompt-builder allowlist testing, the remaining 96 cases, final hashes, and external scorer validation remain outstanding. G0 remains OPEN and G2 has not run. No Agent/evolution experiment or paid API call has been performed.
+
+
+## API-backed LLM and Agent-side training
+
+The main LLM is intended to be called through a hosted API. Training can still be integrated into the Agent runtime through local controllers, value models, reward/verifier models, skills, and functions. Read [API-Based LLM Inference and Trainable Agent Components](research/API_BASED_AGENT_TRAINING_AUDIT.md) before changing the thesis architecture. This is a requirement clarification, not an approved innovation claim.
