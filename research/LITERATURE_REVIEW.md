@@ -76,7 +76,7 @@ Do not infer publication acceptance from an arXiv page. Do not infer a limitatio
 
 ## Preliminary registry
 
-The detailed paper list and comparison are maintained in [RELATED_WORK_MATRIX.md](RELATED_WORK_MATRIX.md). It contains indexed entries P01–P140, including repeated papers in candidate-specific audit sections; the unique-paper count has not yet been reconciled, so this is not yet a completed systematic-review corpus. See [CAPABILITY_GAP_REVIEW.md](CAPABILITY_GAP_REVIEW.md) for second-pass synthesis and provisional candidate triage.
+The detailed paper list and comparison are maintained in [RELATED_WORK_MATRIX.md](RELATED_WORK_MATRIX.md). It contains indexed entries P01–P163, including repeated papers in candidate-specific audit sections; the unique-paper count has not yet been reconciled, so this is not yet a completed systematic-review corpus. See [CAPABILITY_GAP_REVIEW.md](CAPABILITY_GAP_REVIEW.md) for second-pass synthesis and provisional candidate triage.
 
 ### Initial core reading order
 
@@ -167,3 +167,6 @@ A critical name collision is resolved: there are two distinct ICML 2026 EvoMAS p
 2. Wei, Y. et al. (2026). *EvoMAS: Heuristics in the Loop—Evolving Smarter Agentic Workflows*. ICML 2026, PMLR 306:133736–133763. Official record: https://proceedings.mlr.press/v306/wei26m.html . The abstract confirms a seven-strategy portfolio, adaptive selection, role-level evolution, curriculum, and Cyber Creator reflective meta-control. Exact reward/state equations remain unverified in this pass.
 
 **Synthesis:** Hu et al. establishes feedback-conditioned mutation/crossover, structured configuration evolution, parent-relative reward selection, and cross-task experience memory as prior art. These cannot be standalone innovation claims. The possible distinction remains realized-displacement-conditioned lineage-value credit in a controlled Agent-policy evolutionary setting. See research/EVOMAS_CONFIG_EVOLUTION_METHOD_AUDIT_R1.md.
+
+
+| 2026-11-03 | Mechanism-level audit of API-backed Agent controllers and harness evolution | Separate frozen-API controller training, black-box trajectory steering, and executable-harness evolution; narrow the surviving EC hypothesis | Added P156–P163 to `research/RELATED_WORK_MATRIX.md` and `research/API_AGENT_EC_MECHANISM_AUDIT_R1.md`. AW already trains a seven-action controller from finite offline rollouts; AMC supports API policy inference plus a local LoRA value model; TTHE, Meta-Harness, Self-Harness, AutoHarness, and HarnessX cover broad harness evolution. Generic frozen-API controller/harness training is not a novelty claim. OSLVC survives only as a conditional hypothesis about displacement-conditioned lineage-value credit for an explicit external controller. No experiment or paid API call started. |
