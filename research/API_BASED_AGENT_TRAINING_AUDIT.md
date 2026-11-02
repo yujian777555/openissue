@@ -88,7 +88,7 @@ Current architecture documentation: https://github.com/microsoft/agent-lightning
 
 **Important boundary:** an OpenAI-compatible proxy is an interface and tracing mechanism, not proof that an arbitrary remote proprietary model can be gradient-updated. The training backend needs suitable policy-training signals. The project's serving documentation discusses token IDs/log-probabilities and notes that ordinary hosted APIs may not expose the exact token-level information required for faithful policy-gradient training. Therefore Agent Lightning is a strong architecture reference, but direct training of a closed API model must not be assumed.
 
-### P152 — Agentic Monte Carlo (ICML 2026)
+### P126 — Agentic Monte Carlo (ICML 2026; cross-reference to the main matrix)
 
 Dae Yon Hwang et al. **Agentic Monte Carlo: Simulating Reinforcement Learning for Black-Box Agents.** Proceedings of ICML 2026, PMLR 306, 49179–49208.  
 Paper: https://proceedings.mlr.press/v306/hwang26i.html  
@@ -98,7 +98,7 @@ Official code: https://github.com/layer6ai-labs/Agentic-Monte-Carlo
 
 **Implication:** value-guided search around a frozen API model is already a strong, peer-reviewed baseline. A new method must not claim “train a value model to improve a black-box Agent” as novel by itself. The exact relation between the value model, evolutionary search, and the Agent's structural policy must be differentiated.
 
-### P153 — Learning to Control LLM Agent Harnesses with Offline Reinforcement Learning (2026 preprint)
+### P152 — Learning to Control LLM Agent Harnesses with Offline Reinforcement Learning (2026 preprint)
 
 Haiwen Yi and Xinyuan Song. **Learning to Control LLM Agent Harnesses with Offline Reinforcement Learning.** arXiv:2607.05458, 2026.  
 Paper: https://arxiv.org/abs/2607.05458
@@ -107,7 +107,7 @@ Paper: https://arxiv.org/abs/2607.05458
 
 **Implication:** this is a direct and very recent baseline for the proposed API-LLM + trainable Agent controller architecture. A thesis contribution cannot simply be “train a small controller around a frozen LLM.” It must demonstrate a specific evolutionary mechanism that improves on AW, behavior cloning, fixed/forced-check rules, and other controller baselines.
 
-### P154 — SkillOpt: Agent skills as trainable parameters (2026)
+### P153 — SkillOpt: Agent skills as trainable parameters (2026)
 
 Microsoft Research. **SkillOpt: Agent skills as trainable parameters.** Microsoft Research article, 2026-06-30; linked paper title: *SkillOpt: Executive Strategy for Self-Evolving Agent Skills*.  
 Research article: https://www.microsoft.com/en-us/research/blog/skillopt-agent-skills-as-trainable-parameters/
@@ -116,7 +116,7 @@ Research article: https://www.microsoft.com/en-us/research/blog/skillopt-agent-s
 
 **Implication:** generic skill-file training, bounded edits, validation gating, and rejected-edit memory are already covered. Skill optimization is a required baseline if the thesis evolves instructions or reusable skills.
 
-### P155 — SMITH: joint tool creation and use (NeurIPS 2026 poster)
+### P154 — SMITH: joint tool creation and use (NeurIPS 2026 poster)
 
 Zhi Rui Tam, Chieh-Yen Lin, Yun-Nung Chen, Shao-Hua Sun, and Hung-yi Lee. **Joint Optimization of Tool Creation and Use for Large Language Model Agents (SMITH).** Accepted to NeurIPS 2026 (Poster).  
 Project/paper/code: https://tool-use-smith.github.io/  
@@ -126,7 +126,7 @@ arXiv: https://arxiv.org/abs/2608.24571
 
 **Implication:** this is relevant to using A800s to train an open-weight auxiliary or Agent model. It is not a direct black-box API-only method because the policy weights are trained. It provides a strong local-training comparison if the thesis includes a trainable local Agent-side model.
 
-### P156 — A Control System, a Dataset, and a Recipe for Making Frozen LLM Agents Learn a Domain (2026 preprint)
+### P155 — A Control System, a Dataset, and a Recipe for Making Frozen LLM Agents Learn a Domain (2026 preprint)
 
 Debjyoti Paul. **A Control System, a Dataset, and a Recipe for Making Frozen LLM Agents Learn a Domain.** arXiv:2607.25415, 2026.  
 Paper: https://arxiv.org/abs/2607.25415
@@ -206,3 +206,19 @@ No experiment, paid API call, or model fine-tuning job was started in this audit
 7. Paul, D. (2026). A Control System, a Dataset, and a Recipe for Making Frozen LLM Agents Learn a Domain. arXiv:2607.25415. https://arxiv.org/abs/2607.25415
 8. DeepSeek API documentation. https://api-docs.deepseek.com/
 9. Agent Lightning v1.0 architecture documentation. https://github.com/microsoft/agent-lightning/blob/main/docs/05-basics.md
+
+
+## 8. Mechanism-level audit update (2026-11-03)
+
+The broad architecture is feasible, but the novelty boundary is narrower than the first pass suggested. See `research/API_AGENT_EC_MECHANISM_AUDIT_R1.md` for the full source-grounded comparison.
+
+Key corrections:
+- **AW Harness MDP (P152)** is a direct controller-learning baseline: compact observable state, seven structural actions, terminal task-rubric reward, and offline advantage-weighted regression. Its finite-buffer analysis explicitly limits outcome gains to the high-return support in the collected buffer.
+- **AMC (P126)** is the strongest implementation precedent for the API/local-sidecar split: its public code uses an OpenAI-compatible `APIModel` for the task-solving policy and a locally trained LoRA + regression-head value model to guide SMC. It steers trajectories; it does not train the API model or a persistent state-action controller.
+- **TTHE (P156)**, **Meta-Harness (P159)**, **Self-Harness (P158)**, **AutoHarness (P160)**, and **HarnessX (P161)** already cover frozen-model harness evolution, trace-guided edits, populations/branches, typed edits, or regression gates. These cannot be claimed as new.
+- **EvoHarness-RL (P157)** combines BPE harness state, SFT, and GRPO, but its reported training uses an open-weight Qwen3-8B policy; it is an adjacent contrast rather than a direct closed-API recipe.
+- **Code Evolution for Control (P163)** shows that generic LLM-driven evolutionary search over executable state-to-action policies is already explored, albeit in LunarLander rather than LLM tool-use agents.
+
+**Revised research object:** a compact external controller over an explicit Agent state/action interface. Keep the main API LLM, tool schemas, and evaluator fixed. The candidate EC mechanism is OSLVC scoped to that controller: estimate operator continuation value conditional on the *realized action-trace displacement* and matched task/state context. This must be compared with AW, BC, AMC, TTHE/HarnessX-style method-level baselines, static EA, classical AOS, ELMER-style scale-only control, LVPG-style lineage-only control, and naive joint operator-strength control.
+
+**No novelty verdict:** the candidate is not approved until it survives the full EvoMAS: Heuristics in the Loop audit, the controller representation audit, and the G0/G1 gates. No API rollout, model fine-tuning, or formal experiment was started in this session.
