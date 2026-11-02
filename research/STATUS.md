@@ -394,3 +394,13 @@ Added two adversarial regression tests in `test_world_r1.py` and documented the 
 - **Falsification conditions:** if AW matches the EC controller, if operator families do not differ in realized displacement, or if displacement-conditioned lineage credit does not improve offspring ranking and held-out task success, revise/drop the candidate.
 - **Current gates unchanged:** G0 OPEN; G1 PARTIAL/OPEN; G2 NOT RUN. The deterministic suite has 36 authored cases out of 120 (84 unauthored). No paid API call, model fine-tuning job, or formal Agent/EC experiment was started.
 - **Next:** finish the exact final-version EvoMAS: Heuristics in the Loop mechanism audit and controller representation design; do not implement OSLVC or start API rollouts before G0/G1 closure.
+
+
+## EvoMAS final PMLR record and bounded PDF retrieval — 2026-11-03
+
+- Re-verified the official final PMLR record for Wei et al., *EvoMAS: Heuristics in the Loop—Evolving Smarter Agentic Workflows*, PMLR 306, 133736–133763 (2026).
+- The final abstract confirms seven strategies (six biological exploration/exploitation operators plus a domain-specific transformation operator), adaptive strategy selection, role-level evolution, curriculum-guided evolution, and the Cyber Creator meta-controller that reflectively updates evolutionary rules/strategies.
+- The official PMLR page exposes the final PDF URL and OpenReview record. One bounded retrieval attempt was completed: the PDF reader rejects the raw-GitHub PDF as application/octet-stream; direct PMLR PDF access is unavailable; container download failed; OpenReview redirects to browser verification.
+- **Exact final-version method details remain unresolved:** state features, action representation, reward/credit equations, update schedule, and ablations. Do not infer that the final paper lacks displacement-conditioned lineage credit from abstract silence.
+- The bounded retrieval action is exhausted; do not repeat the same failed routes unless a genuinely new source appears. Older anonymous manuscript details remain provisional/preprint-only.
+- **G0 remains OPEN** for equation/ablation-level prior-art closure. Continue controller representation and G1 benchmark work in parallel. G1 remains PARTIAL/OPEN (36/120 authored); G2 remains NOT RUN. No experiment, code reproduction, or paid API call was started.
