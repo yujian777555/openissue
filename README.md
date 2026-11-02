@@ -184,3 +184,8 @@ The deterministic controlled-suite prototype is implemented and under validity a
 ## API-backed LLM and Agent-side training
 
 The main LLM is intended to be called through a hosted API. Training can still be integrated into the Agent runtime through local controllers, value models, reward/verifier models, skills, and functions. Read [API-Based LLM Inference and Trainable Agent Components](research/API_BASED_AGENT_TRAINING_AUDIT.md) before changing the thesis architecture. This is a requirement clarification, not an approved innovation claim.
+
+
+### Latest research audit — API-backed Agent × EC
+
+The latest scope refinement and mechanism-level comparison are in [API_AGENT_EC_MECHANISM_AUDIT_R1.md](research/API_AGENT_EC_MECHANISM_AUDIT_R1.md). Generic frozen-API controller training and generic harness evolution are established prior art; the current candidate is a conditional hypothesis about evolutionary credit assignment for a compact external Agent controller.
