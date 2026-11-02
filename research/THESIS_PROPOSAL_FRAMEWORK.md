@@ -300,3 +300,48 @@ The family-held-out evaluation design now has a first executable software protot
 - 16 unit/smoke tests passed in GitHub Actions on Python 3.11.
 
 This milestone validates the feasibility of deterministic task execution and scoring only. It does not establish that evolutionary search improves Agent capability or that OSLVC is novel/effective. The other 108 planned cases, independent oracle review, family leakage audit, final data hashes, and external adapter/scorer are still pending. G1 remains PARTIAL/OPEN; G2 has not started.
+
+
+## 18. 2026-11-02 architecture correction: hosted API LLM plus trainable Agent-side components
+
+The user clarified that the **main LLM is to be used through a hosted API**. This is not a request to make the LLM call external APIs as tools. The default experimental assumption is therefore a frozen API model as the Agent's reasoning executor, with training integrated into the surrounding Agent.
+
+### 18.1 System boundary
+
+- Main LLM: hosted inference API; fixed during ordinary Agent training unless a separate provider fine-tuning service is explicitly verified.
+- Agent runtime/harness: locally implemented and instrumented; controls context assembly, observe/retrieve/tool/check/revise/submit decisions, and state transitions.
+- Trainable Agent-side modules: compact controller, value/critic model, reward/verifier model, skill/function/workflow assets, or optional local auxiliary model.
+- Evolutionary computation: the central candidate optimizer for the Agent-side policy/component; its genotype, operators, fitness, selection, and parameter control must be explicit.
+- A800: used to train local sidecar models (controller/value/reward model or optional LoRA auxiliary model), not assumed to update the remote API model.
+
+### 18.2 New literature boundary
+
+The direct prior art is now recorded in `research/API_BASED_AGENT_TRAINING_AUDIT.md` and P150–P155 of the related-work matrix:
+- AgentOptimizer (ICML 2024) trains functions without changing LLM weights.
+- Agent Lightning (2025; current v1.0) separates Agent rollouts from GPU-side policy training.
+- AMC (ICML 2026; already P126) steers frozen black-box agents with a learned value function and SMC.
+- Learning to Control LLM Agent Harnesses with Offline RL (2026 preprint) trains a small state-conditioned controller around a frozen LLM using offline advantage-weighted regression.
+- SkillOpt (2026) trains a skill file around a frozen target model.
+- SMITH (NeurIPS 2026) jointly trains tool creation and use in an open-weight model; it is a local-model training contrast, not an API-only method.
+- Paul (2026 preprint) learns a policy over a frozen-model harness with contextual bandits/REINFORCE.
+
+### 18.3 Consequence for the thesis
+
+The thesis may include training in the Agent process without fine-tuning the hosted foundation model. However, “frozen API LLM + trainable controller” is already directly studied. The novelty must lie in a more precise EC method for learning/evolving the Agent-side component and must beat strong AW/offline-RL, behavior-cloning, skill/function optimization, AMC, static HPO, and classical AOS/self-adaptation baselines.
+
+A provisional system is:
+
+`Hosted API LLM (frozen) + locally trained Agent controller/value module + evolutionary optimization`
+
+A800 training can be used for the sidecar controller/value model. The API LLM generates the substantive reasoning when invoked; the learned controller determines how the Agent executes the task. No specific controller representation or algorithm has yet been approved.
+
+### 18.4 Revised research gates
+
+1. Define a compact, observable harness state and a bounded action space that does not depend on hidden API-model activations.
+2. Confirm the selected provider's actual API contract: inference endpoint, model/version stability, logprobs/token IDs, and whether a separate fine-tuning endpoint exists. Do not infer weight-training access from ordinary API access.
+3. Reproduce a frozen-API Agent baseline and log complete, privacy-safe trajectories.
+4. Establish strong non-EA training baselines: behavior cloning and offline AW/other suitable controller learning; include AgentOptimizer/SkillOpt and AMC where the optimized object overlaps.
+5. Only then test the EC contribution, with tuned static EA before adaptive parameter/operator control.
+6. Test whole-task-family holdout and, if feasible, cross-provider transfer. Match API calls/model versions across baselines; cost remains secondary.
+
+**Status:** this architecture correction is accepted as a user requirement. It does not approve a thesis title, controller genotype, algorithm, or innovation claim.
