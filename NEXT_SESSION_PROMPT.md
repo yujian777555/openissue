@@ -41,18 +41,18 @@ CURRENT VERIFIED STATE (2026-11-03):
 - No final thesis title, controller genotype, algorithm, or innovation point is approved.
 
 GATES AND IMPLEMENTATION:
-- G0 OPEN: exact final-version state/action/reward/credit/update-equation audit of EvoMAS: Heuristics in the Loop remains unfinished. Abstract-level evidence is not proof that a mechanism is absent.
+- G0 OPEN: the official PMLR final record and abstract for EvoMAS: Heuristics in the Loop are verified. The exact final-version state/action/reward/credit/update equations and ablations remain unverified. One bounded PDF retrieval attempt is exhausted; do not retry the same failed routes. Abstract silence is not proof that a mechanism is absent.
 - G1 PARTIAL/OPEN: controlled suite has 36 authored cases out of 120; 84 remain unauthored. Independent human review, full family-leakage review, final hashes, live Agent prompt-wrapper integration, and external adapter/scorer checks remain outstanding.
 - G2 NOT RUN: no formal Agent/controller/EC experiment has run.
 - Latest code/test commit: 5ce4028cb01ba5b8ded02148270cc28b4a059982. GitHub Actions run 40891768273 passed 36/36 tests on Python 3.11. This verifies the software prototype only, not Agent performance or OSLVC.
-- Latest documentation/audit commit before this prompt refresh: 309d9215da41bdbeee60ab04c2cbf3c56dc899c3. The latest prompt-refresh commit must be checked at session start.
+- Latest documentation/audit commit before this prompt refresh: 5bf4144aa59a37fecedf5585b11930c38f5eb2eb. The latest prompt-refresh commit must be checked at session start.
 - No paid API call, model fine-tuning job, or formal Agent/EC experiment was started.
 - Preserve the family-held-out design: train F01–F06, validation F07–F09, test F10–F12. Do not use held-out outcomes for tuning.
 - Benchmark task-state success, tool validity, conversational quality, and hard safety constraints separately. Hard constraints cannot be traded for task score.
 
 MANDATORY NEXT TASK:
-1. Continue the final-version EvoMAS: Heuristics in the Loop audit. Verify the exact final ICML/PMLR paper's state, action, reward, strategy-credit, and update equations plus ablations. If the final PDF remains inaccessible after one bounded attempt, mark the missing details unresolved; do not infer absence.
-2. Lock the external controller representation and state/action schema. It must be narrower than an unrestricted harness rewrite and use only observable execution features.
+1. Do not repeat the same failed EvoMAS PDF retrieval routes. Use the official PMLR abstract only for confirmed claims; keep G0 OPEN because exact final-version equations/ablations remain unresolved. Revisit only if a genuinely new accessible author/final source appears.
+2. In parallel, lock the external controller representation and state/action schema. It must be narrower than an unrestricted harness rewrite and use only observable execution features; explicitly distinguish it from AW controller training and typed harness evolution in HarnessX.
 3. Define the exact realized action-trace displacement metric and matched parent/task/state evaluation protocol. If the API provider does not guarantee deterministic seeds, use paired repeated blocks and report uncertainty.
 4. Specify the static EA tuning protocol first; compare BC and offline AW before adaptive operator/strength control.
 5. Do not implement OSLVC or start paid API rollouts until G0/G1 are sufficiently closed. When permitted, run a bounded no-paid-call feasibility pilot with equal descendant-evaluation counts and explicit stop rules.
