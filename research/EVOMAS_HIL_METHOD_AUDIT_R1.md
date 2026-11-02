@@ -132,3 +132,38 @@ The PMLR record identifies this as the ICML 2026 final paper by Yangbo Wei, Zhen
 G0 remains **OPEN**. The public-record audit strengthens one negative boundary: generic adaptive strategy selection and reflective meta-control are not viable novelty claims. It does not settle the narrower OSLVC claim.
 
 Make one bounded further attempt to obtain an accessible author/final-paper copy. If unsuccessful, proceed with G1 in parallel and keep G0 explicitly open. Any analysis of an older accessible manuscript must be labeled provisional/preprint-only, and final-version claims must remain unverified. No experiment or paid API call was started in this audit.
+
+
+## Bounded final-version retrieval update — 2026-11-03
+
+### Official final record now verified
+
+The official PMLR record was re-opened and its final bibliographic record and abstract were verified:
+- Yangbo Wei, Zhen Huang, Ronghao Xu, Hong Wang, and Wei W. Xing.
+- *EvoMAS: Heuristics in the Loop—Evolving Smarter Agentic Workflows*.
+- Proceedings of the 43rd International Conference on Machine Learning, PMLR 306, pages 133736–133763, 2026.
+- Official final record: https://proceedings.mlr.press/v306/wei26m.html
+- Official PDF URL exposed by PMLR: https://raw.githubusercontent.com/mlresearch/v306/main/assets/wei26m/wei26m.pdf
+- Official OpenReview link exposed by PMLR: https://openreview.net/forum?id=cdWnpXkcQo
+
+The final abstract explicitly confirms:
+1. a dynamic repertoire of seven evolutionary strategies: six biologically inspired exploration/exploitation operators plus one domain-specific transformation operator;
+2. adaptive strategy selection;
+3. role-level evolution of specialization and collaboration patterns;
+4. curriculum-guided evolution from simple to complex tasks;
+5. the Cyber Creator meta-controller, which formulates and reflectively updates evolutionary rules and strategies.
+
+### Bounded access attempt and epistemic boundary
+
+One bounded attempt to inspect the final PDF has now been completed:
+- The web reader rejects the official raw-GitHub PDF as `application/octet-stream`.
+- The direct PMLR PDF URL is inaccessible through the reader.
+- A container download attempt did not succeed.
+- The official OpenReview link redirects to a browser-verification challenge.
+- A separately surfaced OpenReview identifier `0rJUulYnow` is not treated as a second independent method or as a substitute for the final ICML version.
+
+**Therefore:** final abstract-level mechanisms are verified, but the final paper's exact state features, action representation, reward/credit equations, update cadence, and ablation results remain unverified. Do not claim that the final paper lacks realized-displacement-conditioned lineage credit. Do not repeat the same failed PDF retrieval routes unless a genuinely new accessible source becomes available.
+
+### Gate decision
+
+G0 remains **OPEN**, but the bounded retrieval task is **EXHAUSTED**. Use only the official final abstract for confirmed claims; label the earlier anonymous manuscript analysis as provisional/preprint-only. Proceed with the controller representation and G1 benchmark work in parallel. No experiment, code reproduction, or paid API call was started.
