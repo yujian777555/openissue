@@ -353,3 +353,38 @@ Key conclusions:
 **Next concrete action:** compare the exact controller state/action/reward/training equations of the 2026 offline-RL harness paper and AMC against candidate EC/neuroevolution/program-search methods. Then define one falsifiable EC method and a matched baseline ladder. Do not begin API rollouts until the benchmark, evaluator, and API logging contracts are ready.
 
 **Repository updates in this session:** `research/API_BASED_AGENT_TRAINING_AUDIT.md`, `research/RELATED_WORK_MATRIX.md`, `research/THESIS_PROPOSAL_FRAMEWORK.md`, `research/THESIS_PAPER_MAP.md`, `research/STATUS.md`, `research/DECISION_LOG.md`, and `README.md`.
+
+
+## Latest verified handoff — API-backed Agent × EC mechanism audit R1 (2026-11-03)
+
+**Current project:** only `yujian777555/openissue`. The main LLM is accessed through a hosted API and remains frozen during ordinary training. The trainable objects are external Agent-side components, not the provider model's weights.
+
+Read first:
+1. `research/API_AGENT_EC_MECHANISM_AUDIT_R1.md` — detailed mechanism-level prior-art audit and narrow candidate.
+2. `research/API_BASED_AGENT_TRAINING_AUDIT.md` — architecture and training-interface audit.
+3. `research/THESIS_PROPOSAL_FRAMEWORK.md` — sections 18–19.
+4. `research/THESIS_PAPER_MAP.md` — section 9.
+5. `research/STATUS.md`, `research/DECISION_LOG.md`, and `NEXT_SESSION_PROMPT.md`.
+
+### Verified findings
+
+- AMC's official code provides an API-backed task-solving policy plus a locally trained LoRA/regression value model. This proves feasibility of the API/local-sidecar split; it does not train the API model.
+- Offline AW Harness MDP directly trains a small controller around a frozen LLM using a seven-action state-action interface and terminal task reward. Its finite-buffer theorem constrains outcome gains to the high-return support in the logged buffer.
+- TTHE, Meta-Harness, Self-Harness, AutoHarness, and HarnessX already cover broad executable-harness evolution, population/code search, trace-guided edits, branch lineages, typed edits, and regression gates.
+- EvoHarness-RL uses BPE external state plus SFT/GRPO on an open-weight Qwen3-8B policy, so it is an adjacent contrast rather than an API-only recipe.
+- Generic frozen-API controller training and generic harness evolution are not novelty claims.
+
+### Current candidate — conditional, not approved
+
+A compact external state-action controller is the optimized object; keep the API LLM, tool set, harness semantics, and evaluator fixed. OSLVC may be tested as a controller-level mechanism: estimate operator continuation value conditional on realized action-trace displacement and matched task/state context. It must beat AW, BC, AMC where relevant, tuned static EA, classical AOS, ELMER-style scale-only, LVPG-style lineage-only, and naive joint operator-strength/raw-lineage controls.
+
+### Current gates
+
+- G0 OPEN: exact final EvoMAS: Heuristics in the Loop mechanism audit remains unfinished.
+- G1 PARTIAL/OPEN: controlled suite 36/120 authored; 84 remain unauthored; independent review, leakage checks, final hashes, and external scorer checks remain open.
+- G2 NOT RUN: no formal Agent/controller/EC experiment.
+- No paid API call or model fine-tuning job was started.
+
+### Next concrete action
+
+Finish the exact final EvoMAS: Heuristics in the Loop state/action/reward/credit/update audit, then lock the controller representation and experimental baseline ladder. Do not implement OSLVC or start paid API rollouts until G0/G1 gates are sufficiently closed.
