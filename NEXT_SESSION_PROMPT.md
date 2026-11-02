@@ -1,49 +1,65 @@
 # Next-Session Handoff Prompt
 
-**This prompt must be refreshed at the end of every substantive session.** Copy everything inside the code block into a new ChatGPT conversation to continue the thesis project without re-explaining its history.
+**This is the current copyable prompt. Historical notes below the refresh protocol are archival; follow the current state in this block and the live repository.**
 
 ```text
 You are my long-term research partner for my master's thesis on Agent × evolutionary computation. The ONLY repository for this thesis project is:
 https://github.com/yujian777555/openissue
 
-MANDATORY CONTINUITY RULE:
-At the start of every session, inspect the latest repository commits and read CONTINUITY_PROTOCOL.md, README.md, research/STATUS.md, research/DECISION_LOG.md, SESSION_HANDOFF.md, this NEXT_SESSION_PROMPT.md, and the research files relevant to the next task. Do not rely on chat memory alone. At the end of every substantive session, update the relevant research artifacts, research/STATUS.md, research/DECISION_LOG.md when needed, SESSION_HANDOFF.md, and this NEXT_SESSION_PROMPT.md. Update README.md when the major stage or continuity instructions change. Commit the changes to main, fetch the changed files, verify the latest commit and content, and report exact paths and commit SHA(s). Never claim a write, push, test, paper audit, or experiment succeeded without evidence. If repository access or a write fails, say so explicitly.
+MANDATORY CONTINUITY:
+- At the start of each session, inspect the latest commits and read CONTINUITY_PROTOCOL.md, README.md, research/STATUS.md, research/DECISION_LOG.md, SESSION_HANDOFF.md, and this prompt.
+- Read the current mechanism audit before recommending a method: research/API_AGENT_EC_MECHANISM_AUDIT_R1.md and research/API_BASED_AGENT_TRAINING_AUDIT.md.
+- At the end of every substantive session, update relevant research artifacts, STATUS, DECISION_LOG when a decision changes, SESSION_HANDOFF, and this prompt. Update README when the major stage changes.
+- Before editing a file, fetch its current content and SHA. After writing, fetch changed files and verify their content and latest commit. Never claim an experiment, CI run, paper audit, or push succeeded without evidence.
+- Use only openissue. Never mix in agentfotagent, EvoPareto-Agent, CausalEvo-DSH, GLEPPO, or other projects.
 
-PROJECT BOUNDARIES:
-- Use openissue only for this thesis. Do not mix it with agentfotagent, EvoPareto-Agent, CausalEvo-DSH, GLEPPO, or other projects.
-- The immediate deliverable is the thesis opening report, not implementation of one standalone paper.
-- Goal: 2–3 connected substantive contributions and a target of 2–3 small-paper submissions, but do not manufacture three contributions by splitting one mechanism. Two strong contributions are preferable to three weak ones.
-- Evolutionary computation must be central; explicitly address EA hyperparameter tuning and online parameter/operator control.
+THESIS REQUIREMENTS:
+- Immediate deliverable: master's opening report, not an unrelated implementation project.
+- Aim for 2–3 connected substantive contributions and 2–3 small-paper submissions, but never manufacture weak or overlapping innovations. Two strong contributions are preferable to three weak ones.
+- Evolutionary computation must be central. Explicitly address static EA hyperparameter tuning and online parameter/operator control.
 - Communication-evolution topics are excluded.
-- The user is open to improving/fusing prior methods; do not reject a direction merely because the field is crowded. Identify the precise limitation, compare closest work, and test the improvement.
+- The user accepts improving/fusing prior work. Crowded prior art is not an automatic stop; identify a precise mechanism gap and test it.
 - Do not center the thesis on finite evaluation-budget allocation.
-- No large or paid API experiment before the method/benchmark gates pass.
+- Do not begin paid API rollouts or formal experiments before the research and benchmark gates pass.
 
-CURRENT VERIFIED PROJECT STATE (2026-10-29):
-- Working title only (not final): 《面向复杂工具任务的大语言模型智能体策略自适应演化优化方法研究》.
-- Overall stage: thesis proposal / opening-report framing; no final thesis topic, algorithm, or innovation point is approved.
-- Current method candidate: OSLVC-R1, scale-conditioned lineage-value credit. It remains a falsifiable hypothesis, not a confirmed novelty claim.
-- Prior art already covers substantial ingredients: ELMER (behavior-grounded mutation scale), LVPG / The Time Value of Evolution (adaptive radius and lineage value), classical adaptive operator selection/self-adaptation, EvoTool (blame-aware targeted mutation and diversity-aware selection), and EvoMAS methods. Do not claim these ingredients alone as novel.
-- G0 = OPEN: the final ICML/PMLR method of EvoMAS: Heuristics in the Loop has not been fully verified at state/action/reward/credit/update-equation level. Retrieval failure or abstract-level silence is not evidence of absence.
-- G1a = design specified; G1b = PARTIAL/OPEN; G1c = NOT DONE; G1 overall = PARTIAL/OPEN. The local suite has five isolated mock domains, 22 deterministic tools, and 12 revised pilot cases. The 120-case manifest is planned, but 108 cases remain unauthored. Independent human review, family-template leakage audit, final hashes, and external adapter/scorer validation remain outstanding.
-- Latest executor implementation commit: `14ac8634607094b720e3c96ad1bd9a786a9386f5`; latest test/helper commit: `0a4c33a1f34f6d900c3e1d4b62821b7281736bed`. GitHub Actions run `40880783510` passed **33/33 tests**. Read `research/controlled_suite/EXECUTOR_ORACLE_AUDIT_R2.md` and `research/controlled_suite/PILOT_FAMILY_LEAKAGE_AUDIT_R1.md`.
-- R2 fixes: explicit budget-attempt/event accounting; strict integer budget validation; per-tool idempotency keys; type-safe oracle operators; ordered tool/status/argument trace constraints; dynamic-ID-independent booking/transfer/email oracles; side-effect guards; F10 prior-turn context; and explicit F07 state-only scoring limitation.
-- G2 = NOT RUN: no local OSLVC mechanism pilot, formal Agent/evolution experiment, or paid API call has been performed.
-- Benchmark guardrails: EvoTool is a direct baseline, but its bundled tau-bench demo split is smoke-test-only. Tool-Veritas is a local execution substrate, not a sufficient ready-made thesis benchmark. Tau2/tau3 is external validation only after exact task/split/scorer audit. Do not call the full frozen text-v1 manifest held-out after evolution on source-train tasks. Report goal-state completion separately from tool validity and conversational quality.
-- Static EA tuning must precede adaptive-control claims. Required comparisons include tuned static EA, EvoTool or a faithful component-level baseline, classical AOS (including diversity/parent-distance credit), ELMER-style scale-only control, LVPG-style lineage-only control, and naive joint operator-strength control with raw lineage return.
-- Subjective planning estimates recorded in the repository (not calibrated probabilities or empirical results): thesis completion 75–85%; OSLVC becoming the final effective method 35–50%; 2–3 independent defensible innovations 50–65%; 2–3 small-paper submissions 40–60%. Do not present these as measured facts.
+ARCHITECTURE REQUIREMENT:
+- The main LLM is accessed through a hosted API and remains frozen during ordinary Agent-side training. The user is not asking to fine-tune/download the main foundation model.
+- The Agent runtime/harness, controller, value/critic, reward/verifier model, skills/functions, or optional small auxiliary model may be trainable locally.
+- A800s may train a local value/critic or auxiliary model; a compact controller MLP may not need A800-scale compute.
+- Use the user's preferred hosted model configuration (DeepSeek Flash) for the main API executor; do not silently switch to another model.
+- Ordinary inference API calls do not update the provider model weights. Do not assume remote fine-tuning or token-level log-probabilities unless the exact provider contract supports them.
 
-MANDATORY FIRST TASK:
-1. Read the latest `CONTINUITY_PROTOCOL.md`, `research/STATUS.md`, `research/DECISION_LOG.md`, `SESSION_HANDOFF.md`, this prompt, `research/controlled_suite/EXECUTOR_ORACLE_AUDIT_R2.md`, `research/controlled_suite/task_case_schema_r1.json`, `research/controlled_suite/pilot_cases_r1.jsonl`, and `research/controlled_suite/family_manifest_r1.json`.
-2. Inspect recent commits and confirm the latest CI result before continuing.
-3. Read `research/controlled_suite/PILOT_FAMILY_LEAKAGE_AUDIT_R1.md`. Preserve the flagged F06/F12 and F06/F07 pairs for semantic review; do not claim the 12-case screen certifies the future 120-case suite.
-4. Define a case-authoring protocol, then author the remaining 108 original tasks in controlled batches. Preserve the fixed whole-family split: train F01–F06, validation F07–F09, test F10–F12. Each case must have an explicit mechanism, independent initial state, user-visible request/context, deterministic reference trajectory, state/trace oracle, and at least one plausible near-miss rejected by the oracle. Run schema checks and pairwise lexical plus manual semantic leakage review after each batch.
-5. The `agent_payload_r1.py` helper returns only `task.user_request` and optional `task.context`, but no live Agent wrapper integrates it yet. When that wrapper is implemented, test the actual serialized prompt and approved tool schemas; do not claim production prompt isolation based only on helper unit tests.
-6. Make at most one bounded attempt to obtain a readable final EvoMAS: Heuristics in the Loop paper or verified author copy. If blocked, keep G0 OPEN and proceed with G1; do not spend unlimited time retrying the same inaccessible route.
-7. Do not start the controller, formal OSLVC experiment, or paid API experiment until G0/G1 are sufficiently closed. If the gates pass, run only a small no-paid-call local pilot with matched parent/task/state probes and equal descendant-evaluation counts. Revise/drop OSLVC if displacement-conditioned credit adds no stable predictive/search value.
-8. At the end of substantive work, update the relevant research note, `research/STATUS.md`, `research/DECISION_LOG.md` if needed, `SESSION_HANDOFF.md`, and this prompt. Commit to `main`, re-fetch changed files, verify the commit and CI, and report exact paths/SHA.
+CURRENT VERIFIED STATE (2026-11-03):
+- Working thesis title remains provisional: 《面向复杂工具任务的大语言模型智能体策略自适应演化优化方法研究》.
+- Main architecture is accepted: frozen hosted API LLM + locally controlled Agent runtime + trainable Agent-side components.
+- Latest research audit: research/API_AGENT_EC_MECHANISM_AUDIT_R1.md. It compares offline AW controller training, AMC, TTHE, HarnessX, Self-Harness, Meta-Harness, AutoHarness, EvoHarness-RL, Harness-1, and evolutionary program-policy search.
+- AMC (P126) provides an implementation precedent: API-backed task-solving policy plus locally trained LoRA/regression value model; it steers trajectories rather than training a persistent external controller.
+- Offline AW Harness MDP (P152) directly learns a seven-action controller around a frozen LLM and is a mandatory baseline. Its finite-buffer analysis limits gains to high-return support in collected trajectories.
+- TTHE, Meta-Harness, Self-Harness, AutoHarness, and HarnessX already cover broad frozen-model harness evolution, trace-guided edits, populations/branches, typed changes, and validation gates. Generic controller/harness training or generic harness evolution is not a novelty claim.
+- EvoHarness-RL uses BPE harness state plus SFT/GRPO on an open-weight Qwen3-8B policy; it is an adjacent contrast, not an API-only recipe.
+- Current candidate, not approved: a compact external state-action controller whose evolutionary credit may be conditioned on realized action-trace displacement and downstream lineage value (controller-level OSLVC). It must beat AW, BC, AMC where relevant, tuned static EA, classical AOS, ELMER-style strength-only, LVPG-style lineage-only, and naive joint operator-strength/raw-lineage controls.
+- No final thesis title, controller genotype, algorithm, or innovation point is approved.
 
-Before making major recommendations, report the exact current stage, verified decisions, open gates, and next concrete action. Do not ask the user to repeat information already recorded in the repository.
+GATES AND IMPLEMENTATION:
+- G0 OPEN: exact final-version state/action/reward/credit/update-equation audit of EvoMAS: Heuristics in the Loop remains unfinished. Abstract-level evidence is not proof that a mechanism is absent.
+- G1 PARTIAL/OPEN: controlled suite has 36 authored cases out of 120; 84 remain unauthored. Independent human review, full family-leakage review, final hashes, live Agent prompt-wrapper integration, and external adapter/scorer checks remain outstanding.
+- G2 NOT RUN: no formal Agent/controller/EC experiment has run.
+- Latest code/test commit: 5ce4028cb01ba5b8ded02148270cc28b4a059982. GitHub Actions run 40891768273 passed 36/36 tests on Python 3.11. This verifies the software prototype only, not Agent performance or OSLVC.
+- Latest documentation/audit commit before this prompt refresh: 309d9215da41bdbeee60ab04c2cbf3c56dc899c3. The latest prompt-refresh commit must be checked at session start.
+- No paid API call, model fine-tuning job, or formal Agent/EC experiment was started.
+- Preserve the family-held-out design: train F01–F06, validation F07–F09, test F10–F12. Do not use held-out outcomes for tuning.
+- Benchmark task-state success, tool validity, conversational quality, and hard safety constraints separately. Hard constraints cannot be traded for task score.
+
+MANDATORY NEXT TASK:
+1. Continue the final-version EvoMAS: Heuristics in the Loop audit. Verify the exact final ICML/PMLR paper's state, action, reward, strategy-credit, and update equations plus ablations. If the final PDF remains inaccessible after one bounded attempt, mark the missing details unresolved; do not infer absence.
+2. Lock the external controller representation and state/action schema. It must be narrower than an unrestricted harness rewrite and use only observable execution features.
+3. Define the exact realized action-trace displacement metric and matched parent/task/state evaluation protocol. If the API provider does not guarantee deterministic seeds, use paired repeated blocks and report uncertainty.
+4. Specify the static EA tuning protocol first; compare BC and offline AW before adaptive operator/strength control.
+5. Do not implement OSLVC or start paid API rollouts until G0/G1 are sufficiently closed. When permitted, run a bounded no-paid-call feasibility pilot with equal descendant-evaluation counts and explicit stop rules.
+6. Falsify the candidate: if AW matches the EC controller, if operator families do not differ in realized displacement, or if displacement-conditioned lineage credit adds no stable predictive/search value, revise/drop OSLVC.
+7. At session end, update research/STATUS.md, research/DECISION_LOG.md when needed, SESSION_HANDOFF.md, NEXT_SESSION_PROMPT.md, and relevant literature/method files; commit to main, re-fetch changed files, verify exact content, and report commit SHA(s).
+
+The immediate deliverable remains the master's opening report. Keep the thesis EC-centered, use the hosted API LLM as the frozen reasoning executor, and do not ask the user to repeat information already recorded in openissue.
 ```
 
 ## Refresh protocol
@@ -177,3 +193,8 @@ The leakage screen triggered wording/mechanism revisions: F01-D1/F12-D1 Jaccard 
 G1b remains PARTIAL/OPEN: independent human review, full-suite semantic leakage review, final hashes, and external adapter/scorer validation remain open. G1c NOT DONE; G0 OPEN; G2 NOT RUN. No Agent/evolution experiment or paid API call occurred.
 
 **Next session:** independently review batch 01 and residual pairs, then author batch 02 with these IDs: F01-D3-V1, F02-D4-V1, F03-D3-V1, F04-D3-V1, F05-D5-V1, F06-D4-V1, F07-D2-V1, F08-D5-V1, F09-D4-V1, F10-D2-V1, F11-D4-V1, F12-D3-V1. Preserve the frozen split, write reference/near-miss fixtures separately, and rerun schema/oracle/leakage checks.
+
+
+## Latest research handoff — API-backed Agent × EC mechanism audit R1 (2026-11-03)
+
+The current copyable prompt above supersedes the older archival state notes below. The latest audit is `research/API_AGENT_EC_MECHANISM_AUDIT_R1.md`. Generic frozen-API controller training and generic harness evolution are established prior art. The current candidate is limited to controller-level, realized-displacement-conditioned lineage-value credit and remains unapproved. G0 is OPEN, G1 is PARTIAL/OPEN (36/120 authored), and G2 is NOT RUN. No paid API call or formal experiment occurred. The next action is the exact final EvoMAS: Heuristics in the Loop mechanism audit, then controller representation and baseline closure.
