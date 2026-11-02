@@ -107,3 +107,18 @@ The intended deployment model is now a hosted API LLM used as the fixed reasonin
 - **Paper C — Optional transfer:** test whether the learned evolutionary controller transfers across held-out task families or API providers through a distinct mechanism. Cross-provider evaluation alone is not a third innovation.
 
 The A800s can train a local controller/value model or optional small auxiliary LLM. The main API LLM remains frozen. The paper map will be revised only after the new candidate passes a closest-work audit and the benchmark/API contract gates.
+
+
+## 9. API-backed external-controller contribution map (2026-11-03)
+
+The optimized object is narrowed from a generic Agent harness to a compact external state-action controller around a frozen hosted API LLM. Full mechanism comparison: `research/API_AGENT_EC_MECHANISM_AUDIT_R1.md`.
+
+| Candidate | Research question | Candidate mechanism | Mandatory closest baselines | Status |
+|---|---|---|---|---|
+| A — Operator-specific controller behavior-response calibration | Do typed controller variation operators produce different realized action-trace displacement at the same requested strength, and does operator-specific calibration improve downstream controller search? | Matched parent/task/state probes; measure action-trace displacement and feasibility separately; calibrate each operator's strength-to-behavior response | AW controller, static EA, classical AOS, parent-distance/diversity AOS, ELMER-style scale control, TTHE/HarnessX method-level comparison | Conditional; not yet shown independently publishable |
+| B — Scale-conditioned lineage-value credit for controller evolution | Does downstream controller lineage value depend on operator identity after conditioning on realized behavior displacement and task/state context? | Estimate `Q(s,o,d,h)=m(s,d,h)+a(s,o,d,h)`; use matched comparisons; use local value model only as auxiliary estimator | Raw lineage return, immediate reward, displacement-only control, naive joint operator-strength control, LVPG-style lineage-only, ELMER-style strength-only, AW, tuned static EA, classical AOS | Core candidate; novelty/effectiveness unverified |
+| C — Optional cross-family / cross-model transfer | Can the learned controller or operator preferences transfer to held-out task families or another API model? | Only a distinct transfer mechanism can count as a third contribution | No-transfer, task-specific controller, AW transfer, direct reuse of controller | Optional; held-out testing alone is not an innovation |
+
+**Architecture:** hosted API LLM is frozen; controller and optional value model are local Agent-side components. A800s may train the value/critic or a small auxiliary model. The API model is not fine-tuned.
+
+**Critical acceptance rule:** Paper B is not ready unless it beats a strong offline AW controller and strong static/classical EA baselines on task-state success and held-out task-family success under matched model/API exposure. If not, retain only the empirically supported contributions; do not force three papers.
