@@ -379,3 +379,10 @@ Therefore the thesis must not claim generic harness evolution, generic controlle
 Test in order: fixed API harness; BC; offline AW controller; AMC trajectory steering; strong static EA on the same controller representation; classical AOS/self-adaptation; ELMER-style scale-only; LVPG-style lineage-only; naive joint operator-strength/raw-lineage control; then the OSLVC candidate. If AW matches the EC method or the conditional credit does not improve offspring ranking and held-out task success, revise/drop OSLVC.
 
 The controlled suite remains 36/120 authored and G1 is still open. No formal experiment is authorized by this audit.
+
+
+## 20. EvoMAS final-record audit boundary (2026-11-03)
+
+The official PMLR final abstract for Wei et al. (2026) verifies a seven-strategy portfolio, adaptive strategy selection, role-level evolution, curriculum-guided workflow evolution, and the Cyber Creator reflective meta-controller. The final PDF was not extractable after one bounded attempt; exact state/action/reward/credit/update equations and ablations remain unresolved. G0 therefore remains OPEN. Do not infer absence of displacement-conditioned lineage credit from abstract silence. Older anonymous manuscript details remain provisional/preprint-only. See `research/EVOMAS_HIL_METHOD_AUDIT_R1.md` and decision D-059.
+
+The bounded PDF retrieval task is exhausted. Continue controller representation design and G1 benchmark closure in parallel rather than repeating the same failed URL attempts.
