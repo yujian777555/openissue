@@ -663,3 +663,16 @@ Record consequential project decisions here so future sessions do not reopen set
 - **Counts:** 36/120 cases exist (12 pilot + 24 authored), 84 planned IDs remain unauthored. Whole-family splits are unchanged. Residual overlap pairs are documented in the leakage audit and must receive mechanism-level review.
 - **Boundary:** green CI is not independent review, does not certify family independence, and does not close G1b. G0/G1/G2 boundaries remain unchanged.
 - **Next:** author another bounded batch using the frozen protocol, with an explicit per-case rationale for mechanism, oracle, reference trajectory, and near-miss.
+
+
+## D-056 — Use a hosted API LLM as the default reasoning executor; train Agent-side components
+
+- **Date:** 2026-11-02
+- **Status:** Accepted as an architecture requirement; method and thesis topic remain provisional.
+- **Decision:** The main LLM is to be accessed through a hosted inference API. Do not assume the project will download or fine-tune the main foundation model. Training may be integrated into the Agent runtime by updating controller policies, value/critic models, reward/verifier models, skills/functions, or optional local auxiliary models.
+- **Clarification:** This means the LLM itself is called through an API; it does not mean the user is asking for an Agent whose primary research task is calling external APIs as tools.
+- **Rationale:** This preserves use of a strong hosted LLM while allowing the Agent's execution policy and surrounding components to learn. It also gives the A800 resources a meaningful role without confusing inference access with model-weight access.
+- **Evidence:** AgentOptimizer (ICML 2024) trains Agent functions without changing LLM weights; AMC (ICML 2026) steers a frozen black-box Agent with a learned value function; offline-RL harness control (2026 preprint) trains a small controller around a frozen LLM; SkillOpt (2026) optimizes skills outside a frozen target model. See `research/API_BASED_AGENT_TRAINING_AUDIT.md`.
+- **Novelty boundary:** Frozen API LLM plus trainable Agent-side controller/skills is not novel by itself. Any EC method must beat strong offline-RL/AW, behavior-cloning, AgentOptimizer/SkillOpt, AMC, static HPO, and classical AOS/self-adaptation baselines.
+- **Implication for compute:** A800s may train local controller/value/reward models or a small auxiliary LLM/LoRA. Ordinary hosted API calls are inference only; remote weight updates require a separately documented provider fine-tuning service.
+- **Revisit when:** The provider/model API contract is verified and a mechanism-level audit identifies a distinct EC contribution.
