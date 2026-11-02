@@ -251,7 +251,9 @@ Some baselines optimize different objects; do not pretend they are directly inte
 
 ## 10. Immediate next action
 
-Do not implement OSLVC yet. First finish the exact EvoMAS: Heuristics in the Loop final-version audit and close the controller representation / benchmark protocol. Then run a no-paid-call feasibility pilot only after G0/G1 approval, using matched parent/task/state probes and equal descendant-evaluation counts. Preserve the option to reject OSLVC while retaining the broader API-backed Agent × EC thesis direction.
+Do not implement OSLVC yet. The official PMLR final abstract for EvoMAS: Heuristics in the Loop has now been verified, but one bounded attempt to inspect the final PDF failed; exact state/action/reward/credit/update equations and ablations remain unresolved. G0 stays OPEN, and the same failed PDF routes should not be retried unless a genuinely new accessible source appears.
+
+Proceed in parallel with (i) locking the compact controller representation and its observable state/action schema, and (ii) closing G1 task-family, oracle, leakage, hash, and external-scorer gates. Only after G0/G1 are sufficiently closed should a no-paid-call feasibility pilot run, using matched parent/task/state probes and equal descendant-evaluation counts. Preserve the option to reject OSLVC while retaining the broader API-backed Agent × EC thesis direction.
 
 ## References
 
